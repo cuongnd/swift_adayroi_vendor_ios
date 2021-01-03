@@ -159,7 +159,7 @@ extension SideMenuVC : UITableViewDataSource,UITableViewDelegate
         }
         if indexPath.row == 2
         {
-            self.slideMenuController()?.changeMainViewController(self.CategoryListViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.MyProductViewController, close: true)
             
         }
         if indexPath.row == 3
