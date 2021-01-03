@@ -109,17 +109,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AdayroiAffiliate.xcscheme</key>
+		<key>Pods-AdayroiVendor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AdayroiAffiliateTests.xcscheme</key>
+		<key>Pods-AdayroiVendorTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AdayroiAffiliateUITests.xcscheme</key>
+		<key>Pods-AdayroiVendorUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

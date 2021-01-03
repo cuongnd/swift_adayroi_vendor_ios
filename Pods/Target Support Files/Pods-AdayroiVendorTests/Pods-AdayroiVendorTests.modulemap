@@ -1,0 +1,6 @@
+framework module Pods_AdayroiVendorTests {
+  umbrella header "Pods-AdayroiVendorTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

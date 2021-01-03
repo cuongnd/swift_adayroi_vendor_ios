@@ -1,0 +1,6 @@
+framework module Pods_AdayroiVendor {
+  umbrella header "Pods-AdayroiVendor-umbrella.h"
+
+  export *
+  module * { export * }
+}
