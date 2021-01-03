@@ -33,6 +33,7 @@ class SideMenuVC: UIViewController {
     var FavoriteViewController = UINavigationController()
     var CategoryListViewController = UINavigationController()
     var BlogsViewController = UINavigationController()
+    var MyProductViewController = UINavigationController()
     
     
     //MARK: Viewcontroller lifecycle
@@ -46,8 +47,8 @@ class SideMenuVC: UIViewController {
                 menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
             }
             else{
-//                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات"]
-//                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
+                //                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات"]
+                //                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
                 menuArray = ["Home","Order History","Favorite List","Ratings","Settings"]
                 menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
             }
@@ -56,12 +57,12 @@ class SideMenuVC: UIViewController {
             
             if UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "en" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "N/A"
             {
-                menuArray = ["Trang chủ","Rút tiền","Chia sẻ sản phẩm","Hướng dẫn","Thông tin tài khoản","Đăng xuất"]
+                menuArray = ["Trang chủ","Rút tiền","Sản phẩm của tôi","Hướng dẫn","Thông tin tài khoản","Đăng xuất"]
                 menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
             }
             else{
-//                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات","تسجيل خروج"]
-//                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
+                //                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات","تسجيل خروج"]
+                //                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
                 menuArray = ["Home","Order History","Favorite List","Ratings","Settings","Logout"]
                 menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
             }
@@ -100,19 +101,25 @@ class SideMenuVC: UIViewController {
         self.CategoryListViewController.setNavigationBarHidden(true,animated:true)
         
         let BlogsVC = UIStoryboard(name: "Blogs", bundle: nil).instantiateViewController(withIdentifier: "BlogsVC") as! BlogsVC
-       self.BlogsViewController = UINavigationController(rootViewController: BlogsVC)
-       self.BlogsViewController.setNavigationBarHidden(true,animated:true)
-               
+        self.BlogsViewController = UINavigationController(rootViewController: BlogsVC)
+        self.BlogsViewController.setNavigationBarHidden(true,animated:true)
+        
+        let myProductListVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "MyProductListVC") as! MyProductListVC
+        self.MyProductViewController = UINavigationController(rootViewController: myProductListVC)
+        self.MyProductViewController.setNavigationBarHidden(true,animated:true)
+        
+        
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if UserDefaultManager.getStringFromUserDefaults(key: UD_isSkip) != "1"
         {
-
-              let urlString = API_URL + "/api/users/"+String(UserDefaults.standard.value(forKey: UD_userId) as! String)
-                  let params: NSDictionary = [:]
-                  self.Webservice_GetProfile(url: urlString, params: params)
+            
+            let urlString = API_URL + "/api/users/"+String(UserDefaults.standard.value(forKey: UD_userId) as! String)
+            let params: NSDictionary = [:]
+            self.Webservice_GetProfile(url: urlString, params: params)
         }
     }
 }
@@ -146,7 +153,7 @@ extension SideMenuVC : UITableViewDataSource,UITableViewDelegate
                 self.slideMenuController()?.changeMainViewController(self.LoginViewController, close: true)
             }
             else{
-              self.slideMenuController()?.changeMainViewController(self.historyViewController, close: true)
+                self.slideMenuController()?.changeMainViewController(self.historyViewController, close: true)
             }
             
         }
