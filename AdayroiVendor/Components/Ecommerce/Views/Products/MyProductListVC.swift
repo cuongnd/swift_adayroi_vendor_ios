@@ -85,7 +85,7 @@ class MyProductListVC: UIViewController {
     }
     @objc private func refreshData(_ sender: Any) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
+        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
         
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
@@ -95,7 +95,7 @@ class MyProductListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("hello viewWillAppear")
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
+        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
         
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
