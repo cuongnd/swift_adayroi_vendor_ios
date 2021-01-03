@@ -1514,10 +1514,10 @@
             </objects>
             <point key="canvasLocation" x="-70" y="457"/>
         </scene>
-        <!--Withdrawal ListVC-->
+        <!--My Product ListVC-->
         <scene sceneID="vJZ-uW-uhh">
             <objects>
-                <viewController storyboardIdentifier="WithdrawalListVC" id="13i-OZ-3Z1" customClass="WithdrawalListVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProductListVC" id="13i-OZ-3Z1" customClass="MyProductListVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zsr-CM-d2z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1602,23 +1602,23 @@
                                                 <rect key="frame" x="8" y="87.5" width="398" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jor-oJ-Ume">
-                                                        <rect key="frame" x="0.0" y="0.0" width="222.5" height="30"/>
-                                                        <state key="normal" title="Cài đặt tk ngân hàng"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="210.5" height="30"/>
+                                                        <state key="normal" title="Xóa sản phẩm đã chọn"/>
                                                         <connections>
                                                             <action selector="TouchUpInSideCaiDatTKNganHang:" destination="13i-OZ-3Z1" eventType="touchUpInside" id="grF-iQ-PUF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-0f-MB8">
-                                                        <rect key="frame" x="222.5" y="0.0" width="175.5" height="30"/>
-                                                        <state key="normal" title="Lập lệnh rút tiền"/>
+                                                        <rect key="frame" x="210.5" y="0.0" width="187.5" height="30"/>
+                                                        <state key="normal" title="Thêm sản phẩm mới"/>
                                                         <connections>
                                                             <action selector="TouchUpInsideLapLenhRutTien:" destination="13i-OZ-3Z1" eventType="touchUpInside" id="wqi-E3-ERS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lịch sử rút tiền" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-gj-71P">
-                                                <rect key="frame" x="8" y="125.5" width="123" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-gj-71P">
+                                                <rect key="frame" x="8" y="125.5" width="169" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1761,7 +1761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z19-vs-YGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1065.217391304348" y="921.42857142857133"/>
+            <point key="canvasLocation" x="-2558" y="-670"/>
         </scene>
     </scenes>
     <resources>
