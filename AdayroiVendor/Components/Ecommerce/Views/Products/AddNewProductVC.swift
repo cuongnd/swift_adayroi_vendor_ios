@@ -30,9 +30,9 @@ class AddNewProductVC: UIViewController {
         */
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
+        //self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
         customMask.formattingPattern = "$$$ $$$ $$$ $$$"
-        self.UITextFieldSoTien.delegate = self
+        //self.UITextFieldSoTien.delegate = self
         
     }
     
