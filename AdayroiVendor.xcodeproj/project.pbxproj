@@ -66,6 +66,9 @@
 		04E6CFCD25A1726100C13FA6 /* GetApiRespondeBlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFCC25A1726100C13FA6 /* GetApiRespondeBlogModel.swift */; };
 		04E6CFD025A1C79100C13FA6 /* BlogSubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFCF25A1C79100C13FA6 /* BlogSubCategoryModel.swift */; };
 		04E6CFD225A2093200C13FA6 /* MyProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */; };
+		04E6CFD525A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFD425A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift */; };
+		04E6CFD725A21DC700C13FA6 /* VendorProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFD625A21DC700C13FA6 /* VendorProductModel.swift */; };
+		04E6CFD925A2CE8B00C13FA6 /* AddNewProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */; };
 		04F4993825A02335001A0FAE /* GetApiResponseProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4993725A02334001A0FAE /* GetApiResponseProductsModel.swift */; };
 		04F4993C25A03FA2001A0FAE /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4993B25A03FA2001A0FAE /* SubCategoryModel.swift */; };
 		04F4993E25A0417C001A0FAE /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4993D25A0417C001A0FAE /* ColorModel.swift */; };
@@ -277,6 +280,9 @@
 		04E6CFCC25A1726100C13FA6 /* GetApiRespondeBlogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiRespondeBlogModel.swift; sourceTree = "<group>"; };
 		04E6CFCF25A1C79100C13FA6 /* BlogSubCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogSubCategoryModel.swift; sourceTree = "<group>"; };
 		04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductListVC.swift; sourceTree = "<group>"; };
+		04E6CFD425A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseVendorProductModel.swift; sourceTree = "<group>"; };
+		04E6CFD625A21DC700C13FA6 /* VendorProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorProductModel.swift; sourceTree = "<group>"; };
+		04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewProductVC.swift; sourceTree = "<group>"; };
 		04F4993725A02334001A0FAE /* GetApiResponseProductsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseProductsModel.swift; sourceTree = "<group>"; };
 		04F4993925A03B02001A0FAE /* AdayroiVendor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdayroiVendor.entitlements; sourceTree = "<group>"; };
 		04F4993B25A03FA2001A0FAE /* SubCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
@@ -567,6 +573,7 @@
 			children = (
 				0443F77725947F4A005D5637 /* GetAffiliateInfoModel.swift */,
 				04E6CFC625A0A46300C13FA6 /* GetApiRespondeBlogsModel.swift */,
+				04E6CFD425A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift */,
 				04E6CFCC25A1726100C13FA6 /* GetApiRespondeBlogModel.swift */,
 				0497124C259A9CE70024883E /* GetApiResponseCategoryModel.swift */,
 				0497124E259AE7190024883E /* GetApiResponseProductModel.swift */,
@@ -599,6 +606,7 @@
 		04E6CFD325A2096400C13FA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */,
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
 			);
 			path = Products;
@@ -747,6 +755,7 @@
 				04F4993F25A044C1001A0FAE /* AttributesHeaderModel.swift */,
 				04F4994125A04560001A0FAE /* AttributesDetailModel.swift */,
 				04971250259AE74D0024883E /* ProductModel.swift */,
+				04E6CFD625A21DC700C13FA6 /* VendorProductModel.swift */,
 				0443F6B82591D20F005D5637 /* RutTienModel.swift */,
 				0443F6BA2591D305005D5637 /* WithdrawalStatusModel.swift */,
 				0443F6AF2590F7D1005D5637 /* HieuQuaDonHangModel.swift */,
@@ -1551,6 +1560,7 @@
 				0443F75B2592E5C3005D5637 /* DataHeaderFooter.swift in Sources */,
 				0443F77C25948D75005D5637 /* GetDeletewithdrawalModel.swift in Sources */,
 				0443F7482592E0D8005D5637 /* SwiftDataTableLayout.swift in Sources */,
+				04E6CFD925A2CE8B00C13FA6 /* AddNewProductVC.swift in Sources */,
 				0C42DC1D257BDBAC007009E4 /* ADRItem.swift in Sources */,
 				0C3C2E56256ABFD6000B21C5 /* HomeTitle.swift in Sources */,
 				0C5170E125643E4C00C4EA7F /* HomeVC.swift in Sources */,
@@ -1581,6 +1591,7 @@
 				04E6CFCD25A1726100C13FA6 /* GetApiRespondeBlogModel.swift in Sources */,
 				0C42DC3E257F8E8C007009E4 /* ADRTableSetting.swift in Sources */,
 				0C8A566725846C4400CAD7F1 /* GetOrderResponseModel.swift in Sources */,
+				04E6CFD525A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift in Sources */,
 				0C42DC07257BD6BD007009E4 /* ADRTable.swift in Sources */,
 				0443F7752593734A005D5637 /* DataRowModel.swift in Sources */,
 				0443F77E2594B2AF005D5637 /* WithdrawalLapLenhRutTienVC.swift in Sources */,
@@ -1608,6 +1619,7 @@
 				0C42DC1F257BDBDA007009E4 /* ADRView.swift in Sources */,
 				0443F7552592E109005D5637 /* VirtualPositionTrackable.swift in Sources */,
 				0CD77A62257A30550083BC09 /* Database.swift in Sources */,
+				04E6CFD725A21DC700C13FA6 /* VendorProductModel.swift in Sources */,
 				0C8A566925846C6500CAD7F1 /* OrderModel.swift in Sources */,
 				0CDCD67F258053C2000B7F44 /* ADRFrontEndViewCheckoutVC.swift in Sources */,
 				C8C99E042488D93C00B5C187 /* AllKeyAndMessages.swift in Sources */,

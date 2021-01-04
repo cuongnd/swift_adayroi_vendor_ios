@@ -38,7 +38,7 @@ class MyProductListVC: UIViewController {
     @IBOutlet weak var UIButtonLapLenhRutTien: UIButton!
     
     @IBAction func TouchUpInsideLapLenhRutTien(_ sender: UIButton) {
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "WithdrawalLapLenhRutTienVC") as! WithdrawalLapLenhRutTienVC
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewProductVC") as! AddNewProductVC
         VC.modalPresentationStyle = .overFullScreen
         VC.modalTransitionStyle = .crossDissolve
         VC.delegate = self
@@ -118,7 +118,7 @@ class MyProductListVC: UIViewController {
     
 }
 
-extension MyProductListVC: WithdrawalLapLenhRutDelegate {
+extension MyProductListVC: AddNewProductDelegate {
     
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
