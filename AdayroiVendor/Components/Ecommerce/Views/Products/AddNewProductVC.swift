@@ -8,7 +8,7 @@
 import TLCustomMask
 import UIKit
 import SwiftyJSON
-
+import iOSDropDown
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -20,17 +20,18 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UILabelSoTienToiDa: UILabel!
     @IBOutlet weak var UITextFieldSoTien: UITextField!
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
+    @IBOutlet weak var DropDownCategoriesProduct: DropDown!
     var customMask = TLCustomMask()
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
-        let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
-        print(" ")
-        phoneFormatter.format("+123456789012") /
-        */
+         let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
+         print(" ")
+         phoneFormatter.format("+123456789012") /
+         */
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        //self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
+        let urlGetCategories = API_URL + "/api/categories"
+        self.Webservice_getCategories(url: urlGetCategories, params:[:])
         customMask.formattingPattern = "$$$ $$$ $$$ $$$"
         //self.UITextFieldSoTien.delegate = self
         
@@ -38,15 +39,15 @@ class AddNewProductVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-       
+        
+        
     }
     
     @IBAction func btnTap_Ok(_ sender: UIButton) {
         var amount=String(self.UITextFieldSoTien.text!)
         amount = String(amount.filter { !" \n\t\r".contains($0) })
-
-
+        
+        
         
         if(amount==""){
             UITextFieldSoTien.text="";
@@ -98,7 +99,7 @@ class AddNewProductVC: UIViewController {
                 "amount": amount
             ]
             let url_send_withdrawal_now = API_URL + "/api_task/withdrawals.send_withdrawal_now"
-            self.Webservice_PostLapLenhRutTien(url: url_send_withdrawal_now, params:params)
+            //self.Webservice_PostLapLenhRutTien(url: url_send_withdrawal_now, params:params)
             
             
         }
@@ -130,8 +131,8 @@ extension AddNewProductVC {
     
     
     
-    func Webservice_PostLapLenhRutTien(url:String, params:NSDictionary) -> Void {
-        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+    func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
                 showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
             }
@@ -139,18 +140,28 @@ extension AddNewProductVC {
                 print(jsonResponse!)
                 do {
                     let jsonDecoder = JSONDecoder()
-                    let postLapLenhRutTienModel = try jsonDecoder.decode(PostLapLenhRutTienModel.self, from: jsonResponse!)
-                    if(postLapLenhRutTienModel.result=="success"){
-                        self.dismiss(animated: true) {
-                            self.delegate.refreshData()
+                    let getApiResponseCategoryModel = try jsonDecoder.decode(GetApiResponseCategoryModel.self, from: jsonResponse!)
+                    if(getApiResponseCategoryModel.result=="success"){
+                        
+                        let list_categories:[CategoryModel]=getApiResponseCategoryModel.list_category
+                        
+                        
+                        for index in 0...list_categories.count-1 {
+                            let currentItem=list_categories[index]
+                            self.DropDownCategoriesProduct.optionArray.append(currentItem.name)
+                            self.DropDownCategoriesProduct.optionIds?.insert(index, at: index)
+                            
+                            
                         }
                         
                         
-                        showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Bạn đã lập lệnh thành công, chúng tôi sẽ xem xét và sử lý lệnh này")
+                        
+                        
                     }
                     
                 } catch let error as NSError  {
-                    print("error: \(error)")
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
                 }
                 
                 
@@ -191,9 +202,9 @@ extension AddNewProductVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-
+        
         self.UITextFieldSoTien.text = customMask.formatStringWithRange(range: range, string: string)
-
+        
         return false
     }
 }
