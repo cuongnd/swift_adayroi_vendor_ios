@@ -15,10 +15,9 @@ protocol AddNewProductDelegate {
 class ImageCollectionViewCell: UICollectionViewCell {
     static let reuseID = "ImageCollectionViewCell"
 }
-class DeleteCollectionViewCell: UICollectionViewCell {
-    static let reuseID = "DeleteCollectionViewCell"
-}
+
 class TextCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UILabelHeaderName: UILabel!
     static let reuseID = "TextCollectionViewCell"
 }
 
@@ -355,55 +354,21 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
 extension AddNewProductVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.list_image.count+1
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.headerTitlesImage.count
+        return self.list_image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let row_index=indexPath[0]
-        let column_index=indexPath[1]
-        
-        let current_image:DataRowModel=self.headerTitlesImage[column_index]
-        print("current_image \(current_image)")
-        //if header
-        if(row_index==0){
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionViewCell.reuseID, for: indexPath) as? TextCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            //cell.UILabelText.text=current_rut_tien.text.stringRepresentation
-            //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-            return cell
-        }else{
-            if(current_image.key_column=="stt" || current_image.key_column=="description"){
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionViewCell.reuseID, for: indexPath) as? TextCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-                return cell
-                
-            } else if(current_image.key_column=="image"){
-                let uIimage:UIImage=self.list_image[row_index-1]
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                
-                //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-                return cell
-            } else if(current_image.key_column=="delete"){
-                let uIimage:UIImage=self.list_image[row_index-1]
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteCollectionViewCell.reuseID, for: indexPath) as? DeleteCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                
-                //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-                 return cell
-            }
+        let uIimage:UIImage=self.list_image[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
-            
         }
+        
+        //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+        return cell
         
         
         
