@@ -14,6 +14,7 @@ public enum RowType {
     case Buttom
     case Select
     case UiView
+    case UiIma
 }
 
 public struct DataRowModel {

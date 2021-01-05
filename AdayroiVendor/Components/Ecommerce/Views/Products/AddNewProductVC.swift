@@ -12,6 +12,13 @@ import iOSDropDown
 protocol AddNewProductDelegate {
     func refreshData()
 }
+class ImageCollectionViewCell: UICollectionViewCell {
+    static let reuseID = "ImageCollectionViewCell"
+}
+class DeleteCollectionViewCell: UICollectionViewCell {
+    static let reuseID = "DeleteCollectionViewCell"
+}
+
 
 class AddNewProductVC: UIViewController {
     
@@ -33,6 +40,23 @@ class AddNewProductVC: UIViewController {
     var list_image:[UIImage]=[UIImage]()
     @IBOutlet weak var UICollectionViewListImage: UICollectionView!
     let imagePicker = UIImagePickerController()
+    
+    let headerTitlesImage = [
+        DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
+        DataRowModel(type:.Text, text:DataTableValueType.string("Image"),key_column: "image",column_width: 100,column_height: 50),
+        DataRowModel(type: .Text, text:DataTableValueType.string("Description"),key_column: "description",column_width: 150,column_height: 50),
+        DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "delete",column_width: 100,column_height: 50)
+        
+    ]
+    
+    var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
+    @IBOutlet weak var gridLayout: WithdrawalStickyGridCollectionViewLayout! {
+        didSet {
+            gridLayout.stickyRowsCount = 1
+            gridLayout.stickyColumnsCount = 1
+        }
+    }
+    
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
         
         
@@ -46,14 +70,14 @@ class AddNewProductVC: UIViewController {
         let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
             if !UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
-
+                
                 let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
                 })
-
+                
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             } else {
-               self.imagePicker.sourceType = .camera
+                self.imagePicker.sourceType = .camera
                 self.present(self.imagePicker, animated: true, completion: nil)
             }
             
@@ -82,11 +106,11 @@ class AddNewProductVC: UIViewController {
             let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
             self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
             
-           }
+        }
         DropDownSubCategories.didSelect{(selectedText , index ,id) in
             self.curentSubCategory=self.list_sub_category[index]
-           
-         
+            
+            
         }
         customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
         customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
@@ -94,10 +118,10 @@ class AddNewProductVC: UIViewController {
         self.UITextFieldUnitPrice.delegate = self
         
         /*
-        let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
-        self.UIImageViewAddImage.isUserInteractionEnabled = true
-        self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
-        */
+         let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
+         self.UIImageViewAddImage.isUserInteractionEnabled = true
+         self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
+         */
         
         
         
@@ -305,7 +329,7 @@ extension AddNewProductVC: UITextFieldDelegate{
         
         self.UITextFieldOriginPrice.text = customMask.formatStringWithRange(range: range, string: string)
         self.UITextFieldUnitPrice.text = customMaskUnitPrice.formatStringWithRange(range: range, string: string)
-       
+        
         return false
     }
 }
@@ -319,5 +343,63 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+extension AddNewProductVC: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return self.list_image.count+1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.headerTitlesImage.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let row_index=indexPath[0]
+        let column_index=indexPath[1]
+        
+        let current_rut_tien:DataRowModel=self.headerTitlesImage[column_index]
+        //if header
+        if(row_index==0){
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawalLabelCollectionViewCell.reuseID, for: indexPath) as? WithdrawalLabelCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.UILabelText.text=current_rut_tien.text.stringRepresentation
+            cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            return cell
+        }else{
+            if(current_rut_tien.key_column=="stt" || current_rut_tien.key_column=="description"){
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawalLabelCollectionViewCell.reuseID, for: indexPath) as? WithdrawalLabelCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                cell.UILabelText.text=""
+                cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+                return cell
+                
+            } else if(current_rut_tien.key_column=="image"){
+                let uIimage:UIImage=self.list_image[row_index-1]
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                
+                cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+                return cell
+            } else if(current_rut_tien.key_column=="delete"){
+                let uIimage:UIImage=self.list_image[row_index-1]
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteCollectionViewCell.reuseID, for: indexPath) as? DeleteCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                
+                cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            }
+            return UICollectionViewCell()
+            
+        }
+        
+        
+        
+        
+        
     }
 }
