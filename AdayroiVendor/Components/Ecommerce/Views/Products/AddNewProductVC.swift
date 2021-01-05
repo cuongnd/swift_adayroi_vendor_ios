@@ -22,10 +22,13 @@ class AddNewProductVC: UIViewController {
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     @IBOutlet weak var DropDownCategoriesProduct: DropDown!
     var customMask = TLCustomMask()
+    var customMaskUnitPrice = TLCustomMask()
     var list_category:[CategoryModel]=[CategoryModel]()
     var list_sub_category:[SubCategoryModel]=[SubCategoryModel]()
-    
+    var curentSubCategory:SubCategoryModel=SubCategoryModel()
     @IBOutlet weak var DropDownSubCategories: DropDown!
+    @IBOutlet weak var UITextFieldOriginPrice: UITextField!
+    @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -36,7 +39,6 @@ class AddNewProductVC: UIViewController {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlGetCategories = API_URL + "/api/categories"
         self.Webservice_getCategories(url: urlGetCategories, params:[:])
-        customMask.formattingPattern = "$$$ $$$ $$$ $$$"
         //self.UITextFieldSoTien.delegate = self
         
         DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
@@ -46,10 +48,14 @@ class AddNewProductVC: UIViewController {
             
            }
         DropDownSubCategories.didSelect{(selectedText , index ,id) in
-         var curentSubCategory:SubCategoryModel=self.list_sub_category[index]
-            print("curentSubCategory \(curentSubCategory)")
+            self.curentSubCategory=self.list_sub_category[index]
+           
          
         }
+        customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
+        customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
+        self.UITextFieldOriginPrice.delegate = self
+        self.UITextFieldUnitPrice.delegate = self
         
         
     }
@@ -160,19 +166,13 @@ extension AddNewProductVC {
                     if(getApiResponseSubCategoryModel.result=="success"){
                         
                         self.list_sub_category=getApiResponseSubCategoryModel.list_sub_category
-                        
+                        self.DropDownSubCategories.text=""
                         self.DropDownSubCategories.optionArray.removeAll();
                         for index in 0...self.list_sub_category.count-1 {
                             let currentItem=self.list_sub_category[index]
                             self.DropDownSubCategories.optionArray.append(currentItem.name)
                             self.DropDownSubCategories.optionIds?.insert(index, at: index)
-                            
-                            
                         }
-                        
-                        
-                        
-                        
                     }
                     
                 } catch let error as NSError  {
@@ -260,8 +260,9 @@ extension AddNewProductVC: UITextFieldDelegate{
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         
-        self.UITextFieldSoTien.text = customMask.formatStringWithRange(range: range, string: string)
-        
+        self.UITextFieldOriginPrice.text = customMask.formatStringWithRange(range: range, string: string)
+        self.UITextFieldUnitPrice.text = customMaskUnitPrice.formatStringWithRange(range: range, string: string)
+       
         return false
     }
 }

@@ -2244,6 +2244,8 @@
                     <connections>
                         <outlet property="DropDownCategoriesProduct" destination="RYH-uS-SD7" id="W3g-Dr-zD2"/>
                         <outlet property="DropDownSubCategories" destination="1Vo-fZ-O1L" id="FDu-j1-q01"/>
+                        <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
+                        <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jic-EN-CDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
