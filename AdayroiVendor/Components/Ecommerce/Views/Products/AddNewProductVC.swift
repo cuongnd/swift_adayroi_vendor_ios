@@ -30,17 +30,33 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldOriginPrice: UITextField!
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
-    
+    var list_image:[UIImage]=[UIImage]()
+    let imagePicker = UIImagePickerController()
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
-        //self.imagePicker.delegate = self
+        
+        
+        
+        self.imagePicker.delegate = self
         let alert = UIAlertController(title: "", message: "Select image".localiz(), preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
-            //self.imagePicker.sourceType = .photoLibrary
-            //self.present(self.imagePicker, animated: true, completion: nil)
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
         }
         let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
-            //self.imagePicker.sourceType = .camera
-            //self.present(self.imagePicker, animated: true, completion: nil)
+            if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+
+                let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
+                })
+
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+               self.imagePicker.sourceType = .camera
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+            
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
         alert.addAction(photoLibraryAction)
@@ -290,5 +306,17 @@ extension AddNewProductVC: UITextFieldDelegate{
         self.UITextFieldUnitPrice.text = customMaskUnitPrice.formatStringWithRange(range: range, string: string)
        
         return false
+    }
+}
+extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.list_image.append(pickedImage)
+            //self.img_Profile.image = pickedImage
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
