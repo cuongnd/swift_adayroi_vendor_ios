@@ -24,6 +24,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
     @IBOutlet weak var UILabelDescription: UILabel!
+    @IBOutlet weak var UIButtonColor: UIButton!
     static let reuseID = "ColorCollectionViewCell"
 }
 
@@ -64,6 +65,7 @@ class AddNewProductVC: UIViewController {
         
     ]
     
+    @IBOutlet weak var UIButtonColor: UIButton!
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var gridLayout: WithdrawalStickyGridCollectionViewLayout! {
@@ -175,6 +177,7 @@ class AddNewProductVC: UIViewController {
         
         cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
         cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
+        
         
         multiImagePicker.imagePickerDelegate = self
         multiImageColorPicker.imagePickerDelegate = self
@@ -462,7 +465,10 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             }
             cell.UIImageViewImageUpload.image=uIimage
             cell.UIButtonDeleteImage.tag=indexPath.row
+            cell.UIButtonColor.tag=indexPath.row
             cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
+            cornerRadius(viewName: cell.UIButtonColor, radius: cell.UIButtonColor.frame.height / 2)
+            
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
         }

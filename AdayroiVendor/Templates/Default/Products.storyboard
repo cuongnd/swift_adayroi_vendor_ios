@@ -2031,15 +2031,29 @@
                                                                 <action selector="UIButtonDeleteImage:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="tqB-co-hgl"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-ZN-ILe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="6D5-O9-lgu"/>
+                                                                <constraint firstAttribute="width" constant="25" id="KNg-ML-57z"/>
+                                                            </constraints>
+                                                            <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="circle.fill" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="0Fq-gz-BhV" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="0n1-Rt-nLq"/>
                                                         <constraint firstAttribute="trailing" secondItem="HdF-PO-uNU" secondAttribute="trailing" id="65N-sM-9Nn"/>
                                                         <constraint firstAttribute="bottom" secondItem="hWC-Fx-yCh" secondAttribute="bottom" id="D7x-zs-fzf"/>
+                                                        <constraint firstItem="7U5-ZN-ILe" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="JxM-f1-uy6"/>
                                                         <constraint firstItem="C5v-HU-3u0" firstAttribute="top" secondItem="0Fq-gz-BhV" secondAttribute="bottom" constant="13" id="KZl-49-Q4Z"/>
                                                         <constraint firstItem="hWC-Fx-yCh" firstAttribute="top" secondItem="0Fq-gz-BhV" secondAttribute="bottom" constant="8" id="Q0t-eg-nFj"/>
                                                         <constraint firstItem="HdF-PO-uNU" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="U6O-x9-8Qq"/>
                                                         <constraint firstItem="hWC-Fx-yCh" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" constant="5" id="WxV-BA-1tQ"/>
+                                                        <constraint firstItem="7U5-ZN-ILe" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="Yk5-Nm-dHT"/>
                                                         <constraint firstAttribute="trailing" secondItem="0Fq-gz-BhV" secondAttribute="trailing" id="c4K-oh-TFi"/>
                                                         <constraint firstAttribute="trailing" secondItem="C5v-HU-3u0" secondAttribute="trailing" constant="4" id="mmS-AF-272"/>
                                                         <constraint firstItem="0Fq-gz-BhV" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="nwM-xI-4GE"/>
@@ -2049,6 +2063,7 @@
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="134" height="126"/>
                                                 <connections>
+                                                    <outlet property="UIButtonColor" destination="7U5-ZN-ILe" id="5cc-ft-Ytq"/>
                                                     <outlet property="UIButtonDeleteImage" destination="HdF-PO-uNU" id="uUx-FF-sTI"/>
                                                     <outlet property="UIImageViewImageUpload" destination="0Fq-gz-BhV" id="lwg-IU-JYg"/>
                                                     <outlet property="UILabelDescription" destination="hWC-Fx-yCh" id="RTG-kQ-ILT"/>
@@ -2439,6 +2454,7 @@
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="book" catalog="system" width="128" height="101"/>
         <image name="camera.circle" catalog="system" width="128" height="121"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="copy-icon" width="60" height="60"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
