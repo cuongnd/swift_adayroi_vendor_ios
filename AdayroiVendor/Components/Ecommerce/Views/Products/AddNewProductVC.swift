@@ -22,6 +22,10 @@ class AddNewProductVC: UIViewController {
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     @IBOutlet weak var DropDownCategoriesProduct: DropDown!
     var customMask = TLCustomMask()
+    var list_category:[CategoryModel]=[CategoryModel]()
+    var list_sub_category:[SubCategoryModel]=[SubCategoryModel]()
+    
+    @IBOutlet weak var DropDownSubCategories: DropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -34,6 +38,19 @@ class AddNewProductVC: UIViewController {
         self.Webservice_getCategories(url: urlGetCategories, params:[:])
         customMask.formattingPattern = "$$$ $$$ $$$ $$$"
         //self.UITextFieldSoTien.delegate = self
+        
+        DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
+            var curentCategory:CategoryModel=self.list_category[index]
+            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
+            self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
+            
+           }
+        DropDownSubCategories.didSelect{(selectedText , index ,id) in
+         var curentSubCategory:SubCategoryModel=self.list_sub_category[index]
+            print("curentSubCategory \(curentSubCategory)")
+         
+        }
+        
         
     }
     
@@ -130,6 +147,46 @@ extension AddNewProductVC {
     
     
     
+    func Webservice_getSubCategories(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseSubCategoryModel = try jsonDecoder.decode(GetApiResponseSubCategoryModel.self, from: jsonResponse!)
+                    if(getApiResponseSubCategoryModel.result=="success"){
+                        
+                        self.list_sub_category=getApiResponseSubCategoryModel.list_sub_category
+                        
+                        self.DropDownSubCategories.optionArray.removeAll();
+                        for index in 0...self.list_sub_category.count-1 {
+                            let currentItem=self.list_sub_category[index]
+                            self.DropDownSubCategories.optionArray.append(currentItem.name)
+                            self.DropDownSubCategories.optionIds?.insert(index, at: index)
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
+    
     
     func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -143,11 +200,11 @@ extension AddNewProductVC {
                     let getApiResponseCategoryModel = try jsonDecoder.decode(GetApiResponseCategoryModel.self, from: jsonResponse!)
                     if(getApiResponseCategoryModel.result=="success"){
                         
-                        let list_categories:[CategoryModel]=getApiResponseCategoryModel.list_category
+                        self.list_category=getApiResponseCategoryModel.list_category
                         
                         
-                        for index in 0...list_categories.count-1 {
-                            let currentItem=list_categories[index]
+                        for index in 0...self.list_category.count-1 {
+                            let currentItem=self.list_category[index]
                             self.DropDownCategoriesProduct.optionArray.append(currentItem.name)
                             self.DropDownCategoriesProduct.optionIds?.insert(index, at: index)
                             
