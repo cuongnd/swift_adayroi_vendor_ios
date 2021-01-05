@@ -31,6 +31,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
     var list_image:[UIImage]=[UIImage]()
+    @IBOutlet weak var UICollectionViewListImage: UICollectionView!
     let imagePicker = UIImagePickerController()
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
         
