@@ -32,7 +32,21 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonAddImage: UIButton!
     
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
-        
+        //self.imagePicker.delegate = self
+        let alert = UIAlertController(title: "", message: "Select image".localiz(), preferredStyle: .actionSheet)
+        let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
+            //self.imagePicker.sourceType = .photoLibrary
+            //self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
+            //self.imagePicker.sourceType = .camera
+            //self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
+        alert.addAction(photoLibraryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
