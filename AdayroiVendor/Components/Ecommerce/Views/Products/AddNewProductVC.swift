@@ -29,6 +29,11 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var DropDownSubCategories: DropDown!
     @IBOutlet weak var UITextFieldOriginPrice: UITextField!
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
+    @IBOutlet weak var UIButtonAddImage: UIButton!
+    
+    @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -56,6 +61,13 @@ class AddNewProductVC: UIViewController {
         customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
         self.UITextFieldOriginPrice.delegate = self
         self.UITextFieldUnitPrice.delegate = self
+        
+        /*
+        let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
+        self.UIImageViewAddImage.isUserInteractionEnabled = true
+        self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
+        */
+        
         
         
     }
