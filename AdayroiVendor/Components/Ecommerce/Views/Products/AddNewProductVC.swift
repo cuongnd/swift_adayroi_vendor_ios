@@ -13,6 +13,9 @@ protocol AddNewProductDelegate {
     func refreshData()
 }
 class ImageCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIImageViewImageUpload: UIImageView!
+    @IBOutlet weak var UIButtonDeleteImage: UIButton!
+    @IBOutlet weak var UILabelDescription: UILabel!
     static let reuseID = "ImageCollectionViewCell"
 }
 
@@ -21,7 +24,7 @@ class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
 
-class AddNewProductVC: UIViewController, UICollectionViewDelegate {
+class AddNewProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var delegate: AddNewProductDelegate!
@@ -351,7 +354,7 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
         self.dismiss(animated: true, completion: nil)
     }
 }
-extension AddNewProductVC: UICollectionViewDataSource {
+extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -363,16 +366,36 @@ extension AddNewProductVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let uIimage:UIImage=self.list_image[indexPath.row]
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
+            
             return UICollectionViewCell()
         }
-        
+        cell.UIImageViewImageUpload.image=uIimage
         //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
         return cell
         
         
         
         
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("hell3o4343")
+        return CGSize(width:(UIScreen.main.bounds.width) / 2, height: 120)
+        
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /*
+        let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+        vc.itemsId = data["_id"].stringValue
+        vc.SubCategoryId = data["sub_cat_id"].stringValue
+        self.navigationController?.pushViewController(vc, animated: true)
+        */
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
     }
 }
