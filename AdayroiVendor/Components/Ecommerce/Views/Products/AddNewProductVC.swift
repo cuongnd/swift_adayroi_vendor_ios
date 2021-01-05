@@ -9,6 +9,8 @@ import TLCustomMask
 import UIKit
 import SwiftyJSON
 import iOSDropDown
+import OpalImagePicker
+import Photos
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -44,7 +46,7 @@ class AddNewProductVC: UIViewController {
     var list_image:[UIImage]=[UIImage]()
     @IBOutlet weak var UICollectionViewListImage: UICollectionView!
     let imagePicker = UIImagePickerController()
-    
+    let multiImagePicker = OpalImagePickerController()
     let headerTitlesImage = [
         DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
         DataRowModel(type:.Text, text:DataTableValueType.string("Image"),key_column: "image",column_width: 100,column_height: 50),
@@ -69,7 +71,8 @@ class AddNewProductVC: UIViewController {
         let alert = UIAlertController(title: "", message: "Select image".localiz(), preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
-            self.present(self.imagePicker, animated: true, completion: nil)
+
+            self.present(self.multiImagePicker, animated: true, completion: nil)
         }
         let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
             if !UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -83,6 +86,7 @@ class AddNewProductVC: UIViewController {
             } else {
                 self.imagePicker.sourceType = .camera
                 self.present(self.imagePicker, animated: true, completion: nil)
+                
             }
             
             
@@ -127,7 +131,9 @@ class AddNewProductVC: UIViewController {
          self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
          */
         
-        
+        cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
+        multiImagePicker.imagePickerDelegate = self
+       
         
     }
     
@@ -208,6 +214,26 @@ class AddNewProductVC: UIViewController {
         
     }
     
+    @IBAction func UIButtonDeleteImage(_ sender: UIButton) {
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
+               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                   
+                  let imageIndex=sender.tag
+                          self.list_image.remove(at: imageIndex)
+                          self.UICollectionViewListImage.delegate = self
+                          self.UICollectionViewListImage.dataSource = self
+                          self.UICollectionViewListImage.reloadData()
+                   
+               }
+               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+               alertVC.addAction(yesAction)
+               alertVC.addAction(noAction)
+               self.present(alertVC,animated: true,completion: nil)
+               
+        
+       
+        
+    }
     @IBAction func btnTap_dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -372,6 +398,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return UICollectionViewCell()
         }
         cell.UIImageViewImageUpload.image=uIimage
+        cell.UIButtonDeleteImage.tag=indexPath.row
+        cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
         //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
         return cell
         
@@ -381,8 +409,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("hell3o4343")
-        return CGSize(width:(UIScreen.main.bounds.width) / 2, height: 120)
+        print("UIScreen.main.bounds.width \(UIScreen.main.bounds.width)")
+        return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
         
         
     }
@@ -397,5 +425,37 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
+    }
+}
+extension AddNewProductVC: OpalImagePickerControllerDelegate {
+    func imagePickerDidCancel(_ picker: OpalImagePickerController) {
+        //Cancel action?
+    }
+    
+    func imagePicker(_ picker: OpalImagePickerController, didFinishPickingImages assets: [UIImage]) {
+        //Save Images, update UI
+        for i in 0..<assets.count
+        {
+                self.list_image.append(assets[i])
+        }
+
+        
+        self.UICollectionViewListImage.delegate = self
+        self.UICollectionViewListImage.dataSource = self
+        self.UICollectionViewListImage.reloadData()
+        //Dismiss Controller
+        presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerNumberOfExternalItems(_ picker: OpalImagePickerController) -> Int {
+        return 1
+    }
+    
+    func imagePickerTitleForExternalItems(_ picker: OpalImagePickerController) -> String {
+        return NSLocalizedString("External", comment: "External (title for UISegmentedControl)")
+    }
+    
+    func imagePicker(_ picker: OpalImagePickerController, imageURLforExternalItemAtIndex index: Int) -> URL? {
+        return URL(string: "https://placeimg.com/500/500/nature")
     }
 }

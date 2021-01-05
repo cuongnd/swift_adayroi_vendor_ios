@@ -92,6 +92,7 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - ObjectMapper (3.5.3)
+  - OpalImagePicker (2.1.2)
   - PromisesObjC (1.2.12)
   - razorpay-pod (1.1.10)
   - RxCocoa (6.0.0-rc.2):
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - Localize-Swift (~> 2.0)
   - MBProgressHUD
   - ObjectMapper (~> 3.5)
+  - OpalImagePicker (~> 2.1.0)
   - razorpay-pod
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
@@ -161,6 +163,7 @@ SPEC REPOS:
     - MBProgressHUD
     - nanopb
     - ObjectMapper
+    - OpalImagePicker
     - PromisesObjC
     - razorpay-pod
     - RxCocoa
@@ -197,6 +200,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  OpalImagePicker: 51cbf714f337a93c2631219f1a90389ba936077f
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   razorpay-pod: ee8dc073c65baee8df6e8c4275b1c989bab614a2
   RxCocoa: 38445a25751be5907f52f7ea02c137f52ce2e7f2
@@ -209,6 +213,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
 
-PODFILE CHECKSUM: e2e2d54420fbcbf6f45c09934b0b59f31fa510e9
+PODFILE CHECKSUM: 524eb24773f32ac022d865c6dcd89b330f52e72a
 
 COCOAPODS: 1.10.0

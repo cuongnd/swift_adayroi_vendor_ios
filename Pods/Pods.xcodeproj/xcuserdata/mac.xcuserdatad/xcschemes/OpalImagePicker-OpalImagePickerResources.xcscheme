@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E7382AAF769711EAF703CC8479F4291"
-               BuildableName = "Pods_AdayroiVendorUITests.framework"
-               BlueprintName = "Pods-AdayroiVendorUITests"
+               BlueprintIdentifier = "265D78AF28F751DE873B43A5E2BFD8C2"
+               BuildableName = "OpalImagePickerResources.bundle"
+               BlueprintName = "OpalImagePicker-OpalImagePickerResources"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -31,6 +31,7 @@ target 'AdayroiVendor' do
     pod 'Charts'
     pod 'AnyFormatKit'
     pod "TLCustomMask"
+    pod 'OpalImagePicker', '~> 2.1.0'
 
   target 'AdayroiVendorTests' do
     inherit! :search_paths
