@@ -20,6 +20,12 @@ class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UILabelDescription: UILabel!
     static let reuseID = "ImageCollectionViewCell"
 }
+class ColorCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIImageViewImageUpload: UIImageView!
+    @IBOutlet weak var UIButtonDeleteImage: UIButton!
+    @IBOutlet weak var UILabelDescription: UILabel!
+    static let reuseID = "ColorCollectionViewCell"
+}
 
 class TextCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UILabelHeaderName: UILabel!
@@ -44,9 +50,12 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
     var list_image:[UIImage]=[UIImage]()
+    var list_image_color:[UIImage]=[UIImage]()
+    
     @IBOutlet weak var UICollectionViewListImage: UICollectionView!
     let imagePicker = UIImagePickerController()
     let multiImagePicker = OpalImagePickerController()
+    let multiImageColorPicker = OpalImagePickerController()
     let headerTitlesImage = [
         DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
         DataRowModel(type:.Text, text:DataTableValueType.string("Image"),key_column: "image",column_width: 100,column_height: 50),
@@ -55,6 +64,7 @@ class AddNewProductVC: UIViewController {
         
     ]
     
+    @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var gridLayout: WithdrawalStickyGridCollectionViewLayout! {
         didSet {
@@ -63,6 +73,38 @@ class AddNewProductVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var UIButtonAddImageColor: UIButton!
+    @IBAction func UIButtonClickAddImageColor(_ sender: UIButton) {
+        self.imagePicker.delegate = self
+               let alert = UIAlertController(title: "", message: "Select image color".localiz(), preferredStyle: .actionSheet)
+               let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
+                   self.imagePicker.sourceType = .photoLibrary
+
+                   self.present(self.multiImageColorPicker, animated: true, completion: nil)
+               }
+               let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
+                   if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+                       let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+                       
+                       let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
+                       })
+                       
+                       alertController.addAction(okAction)
+                       self.present(alertController, animated: true, completion: nil)
+                   } else {
+                       self.imagePicker.sourceType = .camera
+                       self.present(self.imagePicker, animated: true, completion: nil)
+                       
+                   }
+                   
+                   
+               }
+               let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
+               alert.addAction(photoLibraryAction)
+               alert.addAction(cameraAction)
+               alert.addAction(cancelAction)
+               self.present(alert, animated: true, completion: nil)
+    }
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
         
         
@@ -132,7 +174,10 @@ class AddNewProductVC: UIViewController {
          */
         
         cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
+        
         multiImagePicker.imagePickerDelegate = self
+        multiImageColorPicker.imagePickerDelegate = self
        
         
     }
@@ -387,21 +432,42 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.list_image.count
+        if(collectionView==self.UICollectionViewListImage){
+            return self.list_image.count
+        }else{
+            return self.list_image_color.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let uIimage:UIImage=self.list_image[indexPath.row]
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
+        if(collectionView==self.UICollectionViewListImage){
+            let uIimage:UIImage=self.list_image[indexPath.row]
             
-            return UICollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
+                
+                return UICollectionViewCell()
+            }
+            cell.UIImageViewImageUpload.image=uIimage
+            cell.UIButtonDeleteImage.tag=indexPath.row
+            cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
+            //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            return cell
+        }else{
+            let uIimage:UIImage=self.list_image_color[indexPath.row]
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.reuseID, for: indexPath) as? ColorCollectionViewCell else {
+                
+                return UICollectionViewCell()
+            }
+            cell.UIImageViewImageUpload.image=uIimage
+            cell.UIButtonDeleteImage.tag=indexPath.row
+            cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
+            //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            return cell
         }
-        cell.UIImageViewImageUpload.image=uIimage
-        cell.UIButtonDeleteImage.tag=indexPath.row
-        cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
-        //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-        return cell
+        
+        
         
         
         
@@ -409,8 +475,12 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("UIScreen.main.bounds.width \(UIScreen.main.bounds.width)")
-        return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
+        if(collectionView==self.UICollectionViewListImage){
+            return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
+        }else{
+            return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
+        }
+       
         
         
     }
@@ -433,17 +503,30 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
     }
     
     func imagePicker(_ picker: OpalImagePickerController, didFinishPickingImages assets: [UIImage]) {
-        //Save Images, update UI
-        for i in 0..<assets.count
-        {
-                self.list_image.append(assets[i])
-        }
+        if(picker==self.multiImagePicker){
+            //Save Images, update UI
+            for i in 0..<assets.count
+            {
+                    self.list_image.append(assets[i])
+            }
 
-        
-        self.UICollectionViewListImage.delegate = self
-        self.UICollectionViewListImage.dataSource = self
-        self.UICollectionViewListImage.reloadData()
-        //Dismiss Controller
+            
+            self.UICollectionViewListImage.delegate = self
+            self.UICollectionViewListImage.dataSource = self
+            self.UICollectionViewListImage.reloadData()
+            //Dismiss Controller
+        }else if(picker==self.multiImageColorPicker){
+            //Save Images, update UI
+            for i in 0..<assets.count
+            {
+                    self.list_image_color.append(assets[i])
+            }
+
+            
+            self.UICollectionViewColorProducts.delegate = self
+            self.UICollectionViewColorProducts.dataSource = self
+            self.UICollectionViewColorProducts.reloadData()
+        }
         presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
