@@ -54,6 +54,12 @@ class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEditColorName: UIButton!
     static let reuseID = "ColorCollectionViewCell"
 }
+class HeaderAttributeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    static let reuseID = "HeaderAttributeCollectionViewCell"
+}
+
 
 class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
@@ -99,6 +105,7 @@ class AddNewProductVC: UIViewController {
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var UIButtonPickupColor: UIButton!
     
+    @IBOutlet weak var UICollectionViewHeaderAttributes: UICollectionView!
     @IBAction func UIButtonTouchUpInsideEditImageDescriptionProduct(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag
         let alertController = UIAlertController(title: "Mô tả ảnh sản phẩm", message: "", preferredStyle: .alert)
@@ -321,6 +328,9 @@ class AddNewProductVC: UIViewController {
         multiImagePicker.imagePickerDelegate = self
         multiImageColorPicker.imagePickerDelegate = self
         
+        
+        self.UICollectionViewHeaderAttributes.delegate = self
+        self.UICollectionViewHeaderAttributes.dataSource = self
         
     }
     
@@ -571,13 +581,25 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
 extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        if(collectionView==self.UICollectionViewListProductImage){
+            return 1
+        }else if(collectionView==self.UICollectionViewHeaderAttributes){
+            return 50
+        }
+        else{
+            return 1
+        }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
             return self.list_product_image.count
-        }else{
+        }else if(collectionView==self.UICollectionViewHeaderAttributes){
+            return 8
+        }
+        else{
             return self.list_image_color.count
         }
         
@@ -599,6 +621,32 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             cornerRadius(viewName: cell.UIButtonProductImageDescription, radius: cell.UIButtonProductImageDescription.frame.height / 2)
             
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            return cell
+        }else if(collectionView==self.UICollectionViewHeaderAttributes){
+            // swiftlint:disable force_cast
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID,
+                                                          for: indexPath) as! HeaderAttributeCollectionViewCell
+
+            if indexPath.section % 2 != 0 {
+                cell.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell.backgroundColor = UIColor.white
+            }
+
+            if indexPath.section == 0 {
+                if indexPath.row == 0 {
+                    cell.contentLabel.text = "Date"
+                } else {
+                    cell.contentLabel.text = "Section"
+                }
+            } else {
+                if indexPath.row == 0 {
+                    cell.contentLabel.text = String(indexPath.section)
+                } else {
+                    cell.contentLabel.text = "Content"
+                }
+            }
+
             return cell
         }else{
             let uIimage:UIImage=self.list_image_color[indexPath.row].image
@@ -667,6 +715,9 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
                 let imageProductModel:ImageProductModel=ImageProductModel(image_description: "", image: assets[i])
                 self.list_product_image.append(imageProductModel)
             }
+            
+            
+            
             
             
             self.UICollectionViewListProductImage.delegate = self

@@ -2121,20 +2121,38 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="NxM-GO-BML"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JkN-sG-r7v">
-                                            <size key="itemSize" width="128" height="128"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JkN-sG-r7v" customClass="HeaderAttributeCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PSX-rk-TZ2">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="PSX-rk-TZ2" customClass="HeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5d4-T5-Dc6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78X-cc-N09">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="78X-cc-N09" firstAttribute="top" secondItem="5d4-T5-Dc6" secondAttribute="top" id="ECc-v2-Viy"/>
+                                                        <constraint firstAttribute="trailing" secondItem="78X-cc-N09" secondAttribute="trailing" id="fLx-6F-B88"/>
+                                                        <constraint firstAttribute="bottom" secondItem="78X-cc-N09" secondAttribute="bottom" id="ixV-L3-5vp"/>
+                                                        <constraint firstItem="78X-cc-N09" firstAttribute="leading" secondItem="5d4-T5-Dc6" secondAttribute="leading" id="wCM-mQ-7S1"/>
+                                                    </constraints>
                                                 </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="contentLabel" destination="78X-cc-N09" id="Uo0-64-3Rc"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -2498,6 +2516,7 @@
                         <outlet property="UIButtonAddImageColor" destination="xyS-NH-Poo" id="Xfi-nt-LFZ"/>
                         <outlet property="UIButtonPickupColor" destination="7Vr-8d-VeV" id="Bgt-1u-Uvc"/>
                         <outlet property="UICollectionViewColorProducts" destination="SJG-JA-0s4" id="4tD-He-jix"/>
+                        <outlet property="UICollectionViewHeaderAttributes" destination="Stt-d9-mqj" id="sl8-7Z-4yf"/>
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
