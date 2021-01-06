@@ -28,25 +28,14 @@
 
 import FlexColorPicker
 
-class ModalSelectColorViewController: DefaultColorPickerViewController {
 
+class ModalSelectColorViewController: DefaultColorPickerViewController {
+var pickedColor = #colorLiteral(red: 0.6813090444, green: 0.253660053, blue: 1, alpha: 1)
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedColor = pickedColor
-        self.delegate = self
     }
 
-    @IBAction func donePressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
-extension ModalSelectColorViewController: ColorPickerDelegate {
-    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-        pickedColor = selectedColor
-    }
 
-    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        dismiss(animated: true, completion: nil)
-    }
-}

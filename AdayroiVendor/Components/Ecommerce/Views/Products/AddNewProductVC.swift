@@ -12,7 +12,7 @@ import iOSDropDown
 import OpalImagePicker
 import Photos
 import FlexColorPicker
-var pickedColor = #colorLiteral(red: 0.6813090444, green: 0.253660053, blue: 1, alpha: 1)
+
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -80,6 +80,7 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
         let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
            modalSelectColorViewController.delegate = self
+            modalSelectColorViewController.pickedColor=UIColor.red
            self.present(modalSelectColorViewController, animated: true, completion: nil)
     }
     @IBOutlet weak var UIButtonAddImageColor: UIButton!
@@ -557,14 +558,15 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 }
 
 extension AddNewProductVC: ColorPickerDelegate {
-
     func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-        pickedColor = selectedColor
-        print("pickedColor \(pickedColor)")
+       
     }
 
     func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        navigationController?.popViewController(animated: true)
+        print("hello confirmedColor \(confirmedColor)")
+        //self.delegate1.refreshDataColor(color: confirmedColor)
+        dismiss(animated: true, completion: nil)
     }
 }
+
 
