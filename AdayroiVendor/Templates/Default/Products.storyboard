@@ -2223,7 +2223,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ank-fX-tOI">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="ank-fX-tOI">
                                                             <rect key="frame" x="0.0" y="0.0" width="200" height="182.5"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfA-lF-0Yc">
@@ -2242,7 +2242,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL3-rP-w0G">
-                                                            <rect key="frame" x="0.0" y="195" width="200" height="55"/>
+                                                            <rect key="frame" x="3" y="195" width="141" height="55"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="55" id="4XX-ZT-hoO"/>
                                                             </constraints>
@@ -2250,13 +2250,30 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7X-m1-9aS">
+                                                            <rect key="frame" x="152" y="204" width="40" height="40"/>
+                                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="Icp-ar-RFG"/>
+                                                                <constraint firstAttribute="height" constant="40" id="o64-hU-y7J"/>
+                                                            </constraints>
+                                                            <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="pencil" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="UIButtonTouchUpInsideEditImageDescriptionProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="4LM-vY-smI"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="yL3-rP-w0G" secondAttribute="trailing" id="8cT-wc-ZLR"/>
                                                         <constraint firstAttribute="trailing" secondItem="VfA-lF-0Yc" secondAttribute="trailing" id="DGJ-AR-mBY"/>
+                                                        <constraint firstItem="r7X-m1-9aS" firstAttribute="top" secondItem="ank-fX-tOI" secondAttribute="bottom" constant="21.5" id="DH6-nD-FuW"/>
                                                         <constraint firstItem="ank-fX-tOI" firstAttribute="leading" secondItem="OS1-Qs-bbp" secondAttribute="leading" id="Gai-66-fet"/>
+                                                        <constraint firstAttribute="trailing" secondItem="r7X-m1-9aS" secondAttribute="trailing" constant="8" id="IYF-SU-RCu"/>
                                                         <constraint firstItem="yL3-rP-w0G" firstAttribute="top" secondItem="ank-fX-tOI" secondAttribute="bottom" constant="12.5" id="Ix5-gu-c06"/>
-                                                        <constraint firstItem="yL3-rP-w0G" firstAttribute="leading" secondItem="OS1-Qs-bbp" secondAttribute="leading" id="JsZ-Vx-6IT"/>
+                                                        <constraint firstItem="yL3-rP-w0G" firstAttribute="leading" secondItem="OS1-Qs-bbp" secondAttribute="leading" constant="3" id="JsZ-Vx-6IT"/>
+                                                        <constraint firstItem="r7X-m1-9aS" firstAttribute="leading" secondItem="yL3-rP-w0G" secondAttribute="trailing" constant="8" id="SX4-Rs-CtY"/>
                                                         <constraint firstAttribute="trailing" secondItem="ank-fX-tOI" secondAttribute="trailing" id="foP-23-buv"/>
                                                         <constraint firstAttribute="bottom" secondItem="yL3-rP-w0G" secondAttribute="bottom" id="jJL-2u-YBt"/>
                                                         <constraint firstItem="VfA-lF-0Yc" firstAttribute="top" secondItem="OS1-Qs-bbp" secondAttribute="top" id="pUw-8b-1qJ"/>
@@ -2266,6 +2283,7 @@
                                                 <size key="customSize" width="200" height="250"/>
                                                 <connections>
                                                     <outlet property="UIButtonDeleteImage" destination="VfA-lF-0Yc" id="1a2-Rx-Adz"/>
+                                                    <outlet property="UIButtonProductImageDescription" destination="r7X-m1-9aS" id="cwk-f1-ntl"/>
                                                     <outlet property="UIImageViewImageUpload" destination="ank-fX-tOI" id="ywS-bd-200"/>
                                                     <outlet property="UILabelDescription" destination="yL3-rP-w0G" id="eYK-JB-6e6"/>
                                                 </connections>
@@ -2480,7 +2498,7 @@
                         <outlet property="UIButtonAddImageColor" destination="xyS-NH-Poo" id="Xfi-nt-LFZ"/>
                         <outlet property="UIButtonPickupColor" destination="7Vr-8d-VeV" id="Bgt-1u-Uvc"/>
                         <outlet property="UICollectionViewColorProducts" destination="SJG-JA-0s4" id="4tD-He-jix"/>
-                        <outlet property="UICollectionViewListImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
+                        <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
                     </connections>

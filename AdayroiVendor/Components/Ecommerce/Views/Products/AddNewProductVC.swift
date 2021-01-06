@@ -27,12 +27,22 @@ struct ImageColorModel {
     }
 }
 
+struct ImageProductModel {
+    var image_description: String
+    var image: UIImage
+    init(image_description:String,image:UIImage) {
+        self.image_description=image_description
+        self.image=image
+    }
+}
+
 
 
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
     @IBOutlet weak var UILabelDescription: UILabel!
+    @IBOutlet weak var UIButtonProductImageDescription: UIButton!
     static let reuseID = "ImageCollectionViewCell"
 }
 class ColorCollectionViewCell: UICollectionViewCell {
@@ -54,6 +64,8 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var btn_ok: UIButton!
     var productImageColorChanging:Int=0
      var productImageColorNameChanging:Int=0
+    var productImageDescriptionChanging:Int=0
+    
     var delegate: AddNewProductDelegate!
     @IBOutlet weak var UILabelSoTienToiDa: UILabel!
     @IBOutlet weak var UITextFieldSoTien: UITextField!
@@ -68,10 +80,10 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldOriginPrice: UITextField!
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
-    var list_image:[UIImage]=[UIImage]()
+    var list_product_image:[ImageProductModel]=[ImageProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
     
-    @IBOutlet weak var UICollectionViewListImage: UICollectionView!
+    @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     let imagePicker = UIImagePickerController()
     let multiImagePicker = OpalImagePickerController()
     let multiImageColorPicker = OpalImagePickerController()
@@ -87,6 +99,29 @@ class AddNewProductVC: UIViewController {
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var UIButtonPickupColor: UIButton!
     
+    @IBAction func UIButtonTouchUpInsideEditImageDescriptionProduct(_ sender: UIButton) {
+        self.productImageDescriptionChanging=sender.tag
+        let alertController = UIAlertController(title: "Mô tả ảnh sản phẩm", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            //textField.isSecureTextEntry = true
+            textField.text=self.list_product_image[self.productImageDescriptionChanging].image_description
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("Current password \(String(describing: textField.text))")
+            self.list_product_image[self.productImageDescriptionChanging].image_description=String(describing: textField.text!)
+            self.UICollectionViewListProductImage.delegate = self
+           self.UICollectionViewListProductImage.dataSource = self
+           self.UICollectionViewListProductImage.reloadData()
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
     @IBAction func UIButtonChangeImageProduct(_ sender: UIButton) {
         self.productImageColorChanging=sender.tag
         self.imagePicker.delegate = self
@@ -371,10 +406,10 @@ class AddNewProductVC: UIViewController {
         let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
             
             let imageIndex=sender.tag
-            self.list_image.remove(at: imageIndex)
-            self.UICollectionViewListImage.delegate = self
-            self.UICollectionViewListImage.dataSource = self
-            self.UICollectionViewListImage.reloadData()
+            self.list_product_image.remove(at: imageIndex)
+            self.UICollectionViewListProductImage.delegate = self
+            self.UICollectionViewListProductImage.dataSource = self
+            self.UICollectionViewListProductImage.reloadData()
             
         }
         let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
@@ -540,8 +575,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(collectionView==self.UICollectionViewListImage){
-            return self.list_image.count
+        if(collectionView==self.UICollectionViewListProductImage){
+            return self.list_product_image.count
         }else{
             return self.list_image_color.count
         }
@@ -549,8 +584,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(collectionView==self.UICollectionViewListImage){
-            let uIimage:UIImage=self.list_image[indexPath.row]
+        if(collectionView==self.UICollectionViewListProductImage){
+            let uIimage:UIImage=self.list_product_image[indexPath.row].image
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
                 
@@ -558,7 +593,11 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             }
             cell.UIImageViewImageUpload.image=uIimage
             cell.UIButtonDeleteImage.tag=indexPath.row
+            cell.UILabelDescription.text=self.list_product_image[indexPath.row].image_description
+            cell.UIButtonProductImageDescription.tag=indexPath.row
             cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
+            cornerRadius(viewName: cell.UIButtonProductImageDescription, radius: cell.UIButtonProductImageDescription.frame.height / 2)
+            
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
         }else{
@@ -593,7 +632,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if(collectionView==self.UICollectionViewListImage){
+        if(collectionView==self.UICollectionViewListProductImage){
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
@@ -625,13 +664,14 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                self.list_image.append(assets[i])
+                let imageProductModel:ImageProductModel=ImageProductModel(image_description: "", image: assets[i])
+                self.list_product_image.append(imageProductModel)
             }
             
             
-            self.UICollectionViewListImage.delegate = self
-            self.UICollectionViewListImage.dataSource = self
-            self.UICollectionViewListImage.reloadData()
+            self.UICollectionViewListProductImage.delegate = self
+            self.UICollectionViewListProductImage.dataSource = self
+            self.UICollectionViewListProductImage.reloadData()
             //Dismiss Controller
         }else if(picker==self.multiImageColorPicker){
             //Save Images, update UI
