@@ -17,8 +17,8 @@ protocol AddNewProductDelegate {
     func refreshData()
 }
 struct ImageColorModel {
-    let color_name: String
-    let image: UIImage
+    var color_name: String
+    var image: UIImage
     var color_value: UIColor
     init(color_name:String,image:UIImage,color_value:UIColor) {
         self.color_name=color_name
@@ -38,19 +38,22 @@ class ImageCollectionViewCell: UICollectionViewCell {
 class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
-    @IBOutlet weak var UILabelDescription: UILabel!
+    @IBOutlet weak var UILabelColorName: UILabel!
     @IBOutlet weak var UIButtonColor: UIButton!
+    @IBOutlet weak var UIButtonChangeImageInCell: UIButton!
+    @IBOutlet weak var UIButtonEditColorName: UIButton!
     static let reuseID = "ColorCollectionViewCell"
 }
 
 class TextCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var UILabelHeaderName: UILabel!
     static let reuseID = "TextCollectionViewCell"
 }
 
 class AddNewProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
+    var productImageColorChanging:Int=0
+     var productImageColorNameChanging:Int=0
     var delegate: AddNewProductDelegate!
     @IBOutlet weak var UILabelSoTienToiDa: UILabel!
     @IBOutlet weak var UITextFieldSoTien: UITextField!
@@ -80,11 +83,64 @@ class AddNewProductVC: UIViewController {
         
     ]
     
-    @IBOutlet weak var UIButtonColor: UIButton!
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var UIButtonPickupColor: UIButton!
-
+    
+    @IBAction func UIButtonChangeImageProduct(_ sender: UIButton) {
+        self.productImageColorChanging=sender.tag
+        self.imagePicker.delegate = self
+        let alert = UIAlertController(title: "", message: "Change Image".localiz(), preferredStyle: .actionSheet)
+        let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
+            if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
+                })
+                
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                self.imagePicker.sourceType = .camera
+                self.present(self.imagePicker, animated: true, completion: nil)
+                
+            }
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
+        alert.addAction(photoLibraryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    @IBAction func UIButtonTouchUpInsideEditColorName(_ sender: UIButton) {
+        self.productImageColorNameChanging=sender.tag
+        let alertController = UIAlertController(title: "Màu sắc", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "màu sắc"
+            textField.text=self.list_image_color[self.productImageColorNameChanging].color_name
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("Current password \(String(describing: textField.text))")
+            self.list_image_color[self.productImageColorNameChanging].color_name=String(describing: textField.text!)
+            self.UICollectionViewColorProducts.delegate = self
+           self.UICollectionViewColorProducts.dataSource = self
+           self.UICollectionViewColorProducts.reloadData()
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
     @IBAction func UIButtonPickupColorProduct(_ sender: UIButton) {
         
         let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
@@ -97,42 +153,61 @@ class AddNewProductVC: UIViewController {
     
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
         let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
-           modalSelectColorViewController.modalSelectColorRutDelegate = self
-           modalSelectColorViewController.pickedColor=self.list_image_color[sender.tag].color_value
-           modalSelectColorViewController.colorIndex=sender.tag
-           self.present(modalSelectColorViewController, animated: true, completion: nil)
+        modalSelectColorViewController.modalSelectColorRutDelegate = self
+        modalSelectColorViewController.pickedColor=self.list_image_color[sender.tag].color_value
+        modalSelectColorViewController.colorIndex=sender.tag
+        self.present(modalSelectColorViewController, animated: true, completion: nil)
+    }
+    @IBAction func UIButtonTouchUpInsideDeleteProductImageColor(_ sender: UIButton) {
+        
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            
+            let imageIndex=sender.tag
+            self.list_image_color.remove(at: imageIndex)
+            self.UICollectionViewColorProducts.delegate = self
+            self.UICollectionViewColorProducts.dataSource = self
+            self.UICollectionViewColorProducts.reloadData()
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
+        
+        
     }
     @IBOutlet weak var UIButtonAddImageColor: UIButton!
     @IBAction func UIButtonClickAddImageColor(_ sender: UIButton) {
         self.imagePicker.delegate = self
-               let alert = UIAlertController(title: "", message: "Select image color".localiz(), preferredStyle: .actionSheet)
-               let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
-                   self.imagePicker.sourceType = .photoLibrary
-
-                   self.present(self.multiImageColorPicker, animated: true, completion: nil)
-               }
-               let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
-                   if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-                       let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
-                       
-                       let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
-                       })
-                       
-                       alertController.addAction(okAction)
-                       self.present(alertController, animated: true, completion: nil)
-                   } else {
-                       self.imagePicker.sourceType = .camera
-                       self.present(self.imagePicker, animated: true, completion: nil)
-                       
-                   }
-                   
-                   
-               }
-               let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
-               alert.addAction(photoLibraryAction)
-               alert.addAction(cameraAction)
-               alert.addAction(cancelAction)
-               self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "", message: "Select image color".localiz(), preferredStyle: .actionSheet)
+        let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
+            self.imagePicker.sourceType = .photoLibrary
+            
+            self.present(self.multiImageColorPicker, animated: true, completion: nil)
+        }
+        let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
+            if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Alright", style: .default, handler: { (alert: UIAlertAction!) in
+                })
+                
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                self.imagePicker.sourceType = .camera
+                self.present(self.imagePicker, animated: true, completion: nil)
+                
+            }
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: .cancel)
+        alert.addAction(photoLibraryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     @IBAction func UIButtonClickAddImage(_ sender: UIButton) {
         
@@ -142,7 +217,7 @@ class AddNewProductVC: UIViewController {
         let alert = UIAlertController(title: "", message: "Select image".localiz(), preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
-
+            
             self.present(self.multiImagePicker, animated: true, completion: nil)
         }
         let cameraAction = UIAlertAction(title: "Camera".localiz(), style: .default) { (action) in
@@ -209,7 +284,7 @@ class AddNewProductVC: UIViewController {
         
         multiImagePicker.imagePickerDelegate = self
         multiImageColorPicker.imagePickerDelegate = self
-       
+        
         
     }
     
@@ -292,22 +367,22 @@ class AddNewProductVC: UIViewController {
     
     @IBAction func UIButtonDeleteImage(_ sender: UIButton) {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
-               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-                   
-                  let imageIndex=sender.tag
-                          self.list_image.remove(at: imageIndex)
-                          self.UICollectionViewListImage.delegate = self
-                          self.UICollectionViewListImage.dataSource = self
-                          self.UICollectionViewListImage.reloadData()
-                   
-               }
-               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
-               alertVC.addAction(yesAction)
-               alertVC.addAction(noAction)
-               self.present(alertVC,animated: true,completion: nil)
-               
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            
+            let imageIndex=sender.tag
+            self.list_image.remove(at: imageIndex)
+            self.UICollectionViewListImage.delegate = self
+            self.UICollectionViewListImage.dataSource = self
+            self.UICollectionViewListImage.reloadData()
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
         
-       
+        
+        
         
     }
     @IBAction func btnTap_dismiss(_ sender: UIButton) {
@@ -440,14 +515,15 @@ extension AddNewProductVC: UITextFieldDelegate{
     }
 }
 extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.list_image.append(pickedImage)
+            self.list_image_color[self.productImageColorChanging].image=pickedImage
             //self.img_Profile.image = pickedImage
         }
-        self.UICollectionViewListImage.delegate = self
-        self.UICollectionViewListImage.dataSource = self
-        self.UICollectionViewListImage.reloadData()
+        self.UICollectionViewColorProducts.delegate = self
+        self.UICollectionViewColorProducts.dataSource = self
+        self.UICollectionViewColorProducts.reloadData()
         
         
         self.dismiss(animated: true, completion: nil)
@@ -494,9 +570,15 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             cell.UIImageViewImageUpload.image=uIimage
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UIButtonColor.tag=indexPath.row
+            cell.UIButtonChangeImageInCell.tag=indexPath.row
+            cell.UIButtonEditColorName.tag=indexPath.row
             cell.UIButtonColor.tintColor=self.list_image_color[indexPath.row].color_value
+            cell.UILabelColorName.text=String(self.list_image_color[indexPath.row].color_name)
             cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
             cornerRadius(viewName: cell.UIButtonColor, radius: cell.UIButtonColor.frame.height / 2)
+            cornerRadius(viewName: cell.UIButtonChangeImageInCell, radius: cell.UIButtonChangeImageInCell.frame.height / 2)
+            cornerRadius(viewName: cell.UIButtonEditColorName, radius: cell.UIButtonEditColorName.frame.height / 2)
+            
             
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
@@ -515,17 +597,17 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
         }
-       
+        
         
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         /*
-        let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
-        vc.itemsId = data["_id"].stringValue
-        vc.SubCategoryId = data["sub_cat_id"].stringValue
-        self.navigationController?.pushViewController(vc, animated: true)
-        */
+         let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+         vc.itemsId = data["_id"].stringValue
+         vc.SubCategoryId = data["sub_cat_id"].stringValue
+         self.navigationController?.pushViewController(vc, animated: true)
+         */
         
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -542,9 +624,9 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                    self.list_image.append(assets[i])
+                self.list_image.append(assets[i])
             }
-
+            
             
             self.UICollectionViewListImage.delegate = self
             self.UICollectionViewListImage.dataSource = self
@@ -557,7 +639,7 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
                 let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: assets[i], color_value: UIColor.brown)
                 self.list_image_color.append(imageColorModel)
             }
-
+            
             
             self.UICollectionViewColorProducts.delegate = self
             self.UICollectionViewColorProducts.dataSource = self
@@ -583,15 +665,15 @@ extension AddNewProductVC: ModalSelectColorRutDelegate {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!
             let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image:no_image, color_value: color)
-           self.list_image_color.append(imageColorModel)
+            self.list_image_color.append(imageColorModel)
         }else{
             self.list_image_color[colorIndex].color_value=color
-                   
+            
         }
         self.UICollectionViewColorProducts.delegate = self
         self.UICollectionViewColorProducts.dataSource = self
         self.UICollectionViewColorProducts.reloadData()
-       
+        
     }
     
     
