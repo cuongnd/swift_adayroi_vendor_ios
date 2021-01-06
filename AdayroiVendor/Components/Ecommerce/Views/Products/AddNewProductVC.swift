@@ -83,11 +83,16 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonColor: UIButton!
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
-    @IBOutlet weak var gridLayout: WithdrawalStickyGridCollectionViewLayout! {
-        didSet {
-            gridLayout.stickyRowsCount = 1
-            gridLayout.stickyColumnsCount = 1
-        }
+    @IBOutlet weak var UIButtonPickupColor: UIButton!
+
+    @IBAction func UIButtonPickupColorProduct(_ sender: UIButton) {
+        
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+        modalSelectColorViewController.modalSelectColorRutDelegate = self
+        modalSelectColorViewController.pickedColor=UIColor.brown
+        modalSelectColorViewController.colorIndex = -1
+        self.present(modalSelectColorViewController, animated: true, completion: nil)
+        
     }
     
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
@@ -199,6 +204,7 @@ class AddNewProductVC: UIViewController {
         
         cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
         cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
         
         
         multiImagePicker.imagePickerDelegate = self
@@ -574,10 +580,17 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 }
 extension AddNewProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
-        self.list_image_color[colorIndex].color_value=color
+        if(colorIndex == -1){
+            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: UIImage(), color_value: color)
+           self.list_image_color.append(imageColorModel)
+        }else{
+            self.list_image_color[colorIndex].color_value=color
+                   
+        }
         self.UICollectionViewColorProducts.delegate = self
-                  self.UICollectionViewColorProducts.dataSource = self
-                  self.UICollectionViewColorProducts.reloadData()
+        self.UICollectionViewColorProducts.dataSource = self
+        self.UICollectionViewColorProducts.reloadData()
+       
     }
     
     

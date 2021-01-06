@@ -2279,6 +2279,21 @@
                                             <action selector="UIButtonClickAddImageColor:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="TbT-BD-5oQ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vr-8d-VeV">
+                                        <rect key="frame" x="332" y="1256" width="36" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="dMd-tR-w79"/>
+                                            <constraint firstAttribute="width" constant="36" id="wEL-Ld-wzU"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="pencil.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="UIButtonPickupColorProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="86r-XA-kXc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Stt-d9-mqj" secondAttribute="trailing" constant="8" id="0Kf-lf-9mt"/>
@@ -2286,12 +2301,14 @@
                                     <constraint firstItem="HrJ-d3-NBf" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="1SY-zA-KAc"/>
                                     <constraint firstItem="2Y0-Ad-Vk1" firstAttribute="top" secondItem="OST-MX-cjF" secondAttribute="bottom" constant="8" id="40U-1t-tg9"/>
                                     <constraint firstItem="g8r-Rk-3Jh" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="49Z-lf-35w"/>
+                                    <constraint firstItem="7Vr-8d-VeV" firstAttribute="top" secondItem="gkJ-aF-WgI" secondAttribute="bottom" constant="1" id="4jJ-BR-caM"/>
                                     <constraint firstItem="3Fh-KF-m7p" firstAttribute="top" secondItem="2Y0-Ad-Vk1" secondAttribute="bottom" constant="8" id="6Yu-zh-Vzb"/>
                                     <constraint firstItem="tUQ-Gq-sHb" firstAttribute="top" secondItem="iEN-7D-yDL" secondAttribute="bottom" constant="8" id="6y3-YX-Sve"/>
                                     <constraint firstItem="wQ3-Qo-2Tm" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="8UR-WU-2eH"/>
                                     <constraint firstItem="h0I-DO-niv" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="11" id="9NP-1g-Vx3"/>
                                     <constraint firstItem="dB0-Bz-sxv" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="9Qo-jH-PjW"/>
                                     <constraint firstItem="2Y0-Ad-Vk1" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="AI6-JC-7PS"/>
+                                    <constraint firstItem="xyS-NH-Poo" firstAttribute="leading" secondItem="7Vr-8d-VeV" secondAttribute="trailing" constant="2" id="Bay-OB-woA"/>
                                     <constraint firstItem="wQ3-Qo-2Tm" firstAttribute="top" secondItem="3Fh-KF-m7p" secondAttribute="bottom" constant="8" id="Bpw-5t-clE"/>
                                     <constraint firstItem="gkJ-aF-WgI" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="Bxz-rn-yB9"/>
                                     <constraint firstItem="HrJ-d3-NBf" firstAttribute="top" secondItem="SJG-JA-0s4" secondAttribute="bottom" constant="7.5" id="DMs-m8-X9i"/>
@@ -2442,6 +2459,7 @@
                         <outlet property="DropDownSubCategories" destination="1Vo-fZ-O1L" id="FDu-j1-q01"/>
                         <outlet property="UIButtonAddImage" destination="VA9-qu-Qtz" id="exs-Lo-jJr"/>
                         <outlet property="UIButtonAddImageColor" destination="xyS-NH-Poo" id="Xfi-nt-LFZ"/>
+                        <outlet property="UIButtonPickupColor" destination="7Vr-8d-VeV" id="Bgt-1u-Uvc"/>
                         <outlet property="UICollectionViewColorProducts" destination="SJG-JA-0s4" id="4tD-He-jix"/>
                         <outlet property="UICollectionViewListImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
@@ -2484,6 +2502,7 @@
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="placeholder_image" width="1200" height="800"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
