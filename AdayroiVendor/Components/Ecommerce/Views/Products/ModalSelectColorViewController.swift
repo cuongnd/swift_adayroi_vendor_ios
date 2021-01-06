@@ -28,14 +28,31 @@
 
 import FlexColorPicker
 
-
+protocol ModalSelectColorRutDelegate {
+    func refreshData(colorIndex:Int,color:UIColor)
+}
 class ModalSelectColorViewController: DefaultColorPickerViewController {
 var pickedColor = #colorLiteral(red: 0.6813090444, green: 0.253660053, blue: 1, alpha: 1)
+     var modalSelectColorRutDelegate: ModalSelectColorRutDelegate!
+    var colorIndex:Int=0
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedColor = pickedColor
+        self.delegate=self
+    }
+    
+
+}
+extension ModalSelectColorViewController: ColorPickerDelegate {
+    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
+       
     }
 
+    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
+        print("hello confirmedColor \(confirmedColor)")
+        self.modalSelectColorRutDelegate.refreshData(colorIndex:self.colorIndex,color: confirmedColor)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 

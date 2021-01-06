@@ -79,8 +79,9 @@ class AddNewProductVC: UIViewController {
     
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
         let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
-           modalSelectColorViewController.delegate = self
-            modalSelectColorViewController.pickedColor=UIColor.red
+           modalSelectColorViewController.modalSelectColorRutDelegate = self
+           modalSelectColorViewController.pickedColor=UIColor.red
+           modalSelectColorViewController.colorIndex=sender.tag
            self.present(modalSelectColorViewController, animated: true, completion: nil)
     }
     @IBOutlet weak var UIButtonAddImageColor: UIButton!
@@ -556,17 +557,12 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
         return URL(string: "https://placeimg.com/500/500/nature")
     }
 }
-
-extension AddNewProductVC: ColorPickerDelegate {
-    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-       
+extension AddNewProductVC: ModalSelectColorRutDelegate {
+    func refreshData(colorIndex:Int,color: UIColor) {
+        print("hello refreshData")
     }
-
-    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        print("hello confirmedColor \(confirmedColor)")
-        //self.delegate1.refreshDataColor(color: confirmedColor)
-        dismiss(animated: true, completion: nil)
-    }
+    
+    
 }
 
 
