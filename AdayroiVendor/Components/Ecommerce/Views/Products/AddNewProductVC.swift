@@ -35,7 +35,16 @@ struct ImageProductModel {
         self.image=image
     }
 }
-
+struct HeaderAttributeModel {
+    var title: String
+    var price: Double
+    var note:String
+    init(title:String,price:Double,note:String) {
+        self.title=title
+        self.price=price
+        self.note=note
+    }
+}
 
 
 class ImageCollectionViewCell: UICollectionViewCell {
@@ -69,7 +78,7 @@ class AddNewProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var productImageColorChanging:Int=0
-     var productImageColorNameChanging:Int=0
+    var productImageColorNameChanging:Int=0
     var productImageDescriptionChanging:Int=0
     
     var delegate: AddNewProductDelegate!
@@ -88,6 +97,8 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonAddImage: UIButton!
     var list_product_image:[ImageProductModel]=[ImageProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
+    var list_header_attribute:[HeaderAttributeModel]=[HeaderAttributeModel]()
+    
     
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     let imagePicker = UIImagePickerController()
@@ -97,6 +108,13 @@ class AddNewProductVC: UIViewController {
         DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
         DataRowModel(type:.Text, text:DataTableValueType.string("Image"),key_column: "image",column_width: 100,column_height: 50),
         DataRowModel(type: .Text, text:DataTableValueType.string("Description"),key_column: "description",column_width: 150,column_height: 50),
+        DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "delete",column_width: 100,column_height: 50)
+        
+    ]
+    let headerAttributeProduct = [
+        DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
+        DataRowModel(type:.Text, text:DataTableValueType.string("title"),key_column: "title",column_width: 100,column_height: 50),
+        DataRowModel(type: .Text, text:DataTableValueType.string("note"),key_column: "note",column_width: 150,column_height: 50),
         DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "delete",column_width: 100,column_height: 50)
         
     ]
@@ -119,8 +137,8 @@ class AddNewProductVC: UIViewController {
             print("Current password \(String(describing: textField.text))")
             self.list_product_image[self.productImageDescriptionChanging].image_description=String(describing: textField.text!)
             self.UICollectionViewListProductImage.delegate = self
-           self.UICollectionViewListProductImage.dataSource = self
-           self.UICollectionViewListProductImage.reloadData()
+            self.UICollectionViewListProductImage.dataSource = self
+            self.UICollectionViewListProductImage.reloadData()
             //compare the current password and do action here
         }
         alertController.addAction(confirmAction)
@@ -174,8 +192,8 @@ class AddNewProductVC: UIViewController {
             print("Current password \(String(describing: textField.text))")
             self.list_image_color[self.productImageColorNameChanging].color_name=String(describing: textField.text!)
             self.UICollectionViewColorProducts.delegate = self
-           self.UICollectionViewColorProducts.dataSource = self
-           self.UICollectionViewColorProducts.reloadData()
+            self.UICollectionViewColorProducts.dataSource = self
+            self.UICollectionViewColorProducts.reloadData()
             //compare the current password and do action here
         }
         alertController.addAction(confirmAction)
@@ -597,7 +615,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         if(collectionView==self.UICollectionViewListProductImage){
             return self.list_product_image.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
-            return 8
+            return 4
         }
         else{
             return self.list_image_color.count
@@ -626,13 +644,48 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             // swiftlint:disable force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID,
                                                           for: indexPath) as! HeaderAttributeCollectionViewCell
-
+            
             if indexPath.section % 2 != 0 {
                 cell.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
                 cell.backgroundColor = UIColor.white
             }
-
+            
+            let row_index=indexPath[0]
+            let column_index=indexPath[1]
+            
+            let currentDataRowModel:DataRowModel = self.headerAttributeProduct[column_index]
+            //if header
+            if(row_index==0){
+                
+                cell.contentLabel.text = currentDataRowModel.text.stringRepresentation
+                return cell
+            }else{
+                if(currentDataRowModel.key_column==""){
+                    
+                    return cell
+                    
+                    
+                }else if(currentDataRowModel.key_column=="stt"){
+                    cell.contentLabel.text = String(indexPath.section+1)
+                    return cell
+                }else if(currentDataRowModel.key_column=="title"){
+                    cell.contentLabel.text="title"
+                    return cell
+                }else if(currentDataRowModel.key_column=="note"){
+                    cell.contentLabel.text="note"
+                    return cell
+                }else if(currentDataRowModel.key_column=="delete"){
+                    cell.contentLabel.text="delete"
+                    return cell
+                }
+                return UICollectionViewCell()
+                
+            }
+            
+            
+            
+            //headerAttributeTitlesImage
             if indexPath.section == 0 {
                 if indexPath.row == 0 {
                     cell.contentLabel.text = "Date"
@@ -646,7 +699,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
                     cell.contentLabel.text = "Content"
                 }
             }
-
+            
             return cell
         }else{
             let uIimage:UIImage=self.list_image_color[indexPath.row].image
@@ -682,6 +735,12 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView==self.UICollectionViewListProductImage){
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
+        }else if(collectionView==self.UICollectionViewHeaderAttributes){
+            let row_index=indexPath[0]
+            let column_index=indexPath[1]
+            let currentDataRowModel:DataRowModel = self.headerAttributeProduct[column_index]
+            return CGSize(width:currentDataRowModel.column_width, height: currentDataRowModel.column_height)
+            
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
         }
