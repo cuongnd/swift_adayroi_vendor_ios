@@ -124,6 +124,7 @@ class AddNewProductVC: UIViewController {
         let alertController = UIAlertController(title: "Màu sắc", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "màu sắc"
+            //textField.isSecureTextEntry = true
             textField.text=self.list_image_color[self.productImageColorNameChanging].color_name
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
