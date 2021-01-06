@@ -16,6 +16,19 @@ import FlexColorPicker
 protocol AddNewProductDelegate {
     func refreshData()
 }
+struct ImageColorModel {
+    let color_name: String
+    let image: UIImage
+    var color_value: UIColor
+    init(color_name:String,image:UIImage,color_value:UIColor) {
+        self.color_name=color_name
+        self.image=image
+        self.color_value=color_value
+    }
+}
+
+
+
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
@@ -53,7 +66,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
     var list_image:[UIImage]=[UIImage]()
-    var list_image_color:[UIImage]=[UIImage]()
+    var list_image_color:[ImageColorModel]=[ImageColorModel]()
     
     @IBOutlet weak var UICollectionViewListImage: UICollectionView!
     let imagePicker = UIImagePickerController()
@@ -80,7 +93,7 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
         let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
            modalSelectColorViewController.modalSelectColorRutDelegate = self
-           modalSelectColorViewController.pickedColor=UIColor.red
+           modalSelectColorViewController.pickedColor=self.list_image_color[sender.tag].color_value
            modalSelectColorViewController.colorIndex=sender.tag
            self.present(modalSelectColorViewController, animated: true, completion: nil)
     }
@@ -466,7 +479,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
         }else{
-            let uIimage:UIImage=self.list_image_color[indexPath.row]
+            let uIimage:UIImage=self.list_image_color[indexPath.row].image
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.reuseID, for: indexPath) as? ColorCollectionViewCell else {
                 
@@ -475,6 +488,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             cell.UIImageViewImageUpload.image=uIimage
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UIButtonColor.tag=indexPath.row
+            cell.UIButtonColor.tintColor=self.list_image_color[indexPath.row].color_value
             cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
             cornerRadius(viewName: cell.UIButtonColor, radius: cell.UIButtonColor.frame.height / 2)
             
@@ -534,7 +548,8 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                    self.list_image_color.append(assets[i])
+                let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: assets[i], color_value: UIColor.brown)
+                self.list_image_color.append(imageColorModel)
             }
 
             
@@ -559,7 +574,10 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 }
 extension AddNewProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
-        print("hello refreshData")
+        self.list_image_color[colorIndex].color_value=color
+        self.UICollectionViewColorProducts.delegate = self
+                  self.UICollectionViewColorProducts.dataSource = self
+                  self.UICollectionViewColorProducts.reloadData()
     }
     
     
