@@ -581,7 +581,8 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 extension AddNewProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
-            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: UIImage(), color_value: color)
+            let no_image  = UIImage(named: "placeholder_image")!
+            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image:no_image, color_value: color)
            self.list_image_color.append(imageColorModel)
         }else{
             self.list_image_color[colorIndex].color_value=color
