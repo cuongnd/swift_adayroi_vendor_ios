@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0413939A25A575C2002D4149 /* ModalSelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */; };
 		0443F6A82590D834005D5637 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A72590D834005D5637 /* HomeVC2.swift */; };
 		0443F6AA2590F30A005D5637 /* GetDoanhThuTheoThangResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */; };
 		0443F6AC2590F370005D5637 /* DoanhThuThangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */; };
@@ -222,6 +223,7 @@
 
 /* Begin PBXFileReference section */
 		01E2E19DB1CA0A2FA3792ED6 /* Pods-AdayroiVendorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorUITests.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorUITests/Pods-AdayroiVendorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectColorViewController.swift; sourceTree = "<group>"; };
 		0443F6A72590D834005D5637 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC2.swift; sourceTree = "<group>"; };
 		0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDoanhThuTheoThangResponseModel.swift; sourceTree = "<group>"; };
 		0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoanhThuThangModel.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 			children = (
 				04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */,
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
+				0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -1606,6 +1609,7 @@
 				0C42DC25257BDD27007009E4 /* ADRIndex.swift in Sources */,
 				0497124B259A96B70024883E /* CategoryModel.swift in Sources */,
 				0443F7322592DD0E005D5637 /* DataStructureModel.swift in Sources */,
+				0413939A25A575C2002D4149 /* ModalSelectColorViewController.swift in Sources */,
 				0C42DC12257BD7A4007009E4 /* ADRFrontEndController.swift in Sources */,
 				880BDE9224D55F870085FC1D /* NoteVC.swift in Sources */,
 				0443F6AC2590F370005D5637 /* DoanhThuThangModel.swift in Sources */,

@@ -12,6 +12,7 @@ import iOSDropDown
 import OpalImagePicker
 import Photos
 import FlexColorPicker
+var pickedColor = #colorLiteral(red: 0.6813090444, green: 0.253660053, blue: 1, alpha: 1)
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -76,6 +77,11 @@ class AddNewProductVC: UIViewController {
         }
     }
     
+    @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+           modalSelectColorViewController.delegate = self
+           self.present(modalSelectColorViewController, animated: true, completion: nil)
+    }
     @IBOutlet weak var UIButtonAddImageColor: UIButton!
     @IBAction func UIButtonClickAddImageColor(_ sender: UIButton) {
         self.imagePicker.delegate = self
@@ -549,14 +555,16 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
         return URL(string: "https://placeimg.com/500/500/nature")
     }
 }
-// MyController is the controller that presents DefaultColorPickerViewController
+
 extension AddNewProductVC: ColorPickerDelegate {
 
-    func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-        // code to handle that user selected a color without confirmed it yet (may change selected color)
+    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
+        pickedColor = selectedColor
+        print("pickedColor \(pickedColor)")
     }
-    
-    func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        // code to handle that user has confirmed selected color
+
+    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
+        navigationController?.popViewController(animated: true)
     }
 }
+
