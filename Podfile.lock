@@ -48,6 +48,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Reachability (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
+  - FlexColorPicker (1.4.2)
   - GoogleAppMeasurement (7.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - ETBinding
   - Firebase/Core
   - Firebase/Messaging
+  - FlexColorPicker
   - ImageSlideshow
   - iOSDropDown
   - IQKeyboardManagerSwift
@@ -151,6 +153,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FlexColorPicker
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -188,6 +191,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
   FirebaseInstanceID: 5ccdee6a84e6b4bb5316de0a8cd88bc749ba490d
   FirebaseMessaging: 68d1bcb14880189558a8ae57167abe0b7e417232
+  FlexColorPicker: d7ed5cfd8ceb936f2930e4e30629f9448967a5f8
   GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
@@ -213,6 +217,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
 
-PODFILE CHECKSUM: 524eb24773f32ac022d865c6dcd89b330f52e72a
+PODFILE CHECKSUM: 140400b3e8813c6536c129dbdec21fa55c58aba5
 
 COCOAPODS: 1.10.0

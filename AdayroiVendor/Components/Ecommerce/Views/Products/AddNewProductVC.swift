@@ -11,6 +11,7 @@ import SwiftyJSON
 import iOSDropDown
 import OpalImagePicker
 import Photos
+import FlexColorPicker
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -546,5 +547,16 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
     
     func imagePicker(_ picker: OpalImagePickerController, imageURLforExternalItemAtIndex index: Int) -> URL? {
         return URL(string: "https://placeimg.com/500/500/nature")
+    }
+}
+// MyController is the controller that presents DefaultColorPickerViewController
+extension AddNewProductVC: ColorPickerDelegate {
+
+    func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
+        // code to handle that user selected a color without confirmed it yet (may change selected color)
+    }
+    
+    func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
+        // code to handle that user has confirmed selected color
     }
 }
