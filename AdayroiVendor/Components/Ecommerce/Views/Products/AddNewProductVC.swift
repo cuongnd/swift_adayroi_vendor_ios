@@ -80,7 +80,7 @@ class AddNewProductVC: UIViewController {
     var productImageColorChanging:Int=0
     var productImageColorNameChanging:Int=0
     var productImageDescriptionChanging:Int=0
-    
+    var productHeaderAttributeChanging:Int=0
     var delegate: AddNewProductDelegate!
     @IBOutlet weak var UILabelSoTienToiDa: UILabel!
     @IBOutlet weak var UITextFieldSoTien: UITextField!
@@ -111,9 +111,9 @@ class AddNewProductVC: UIViewController {
         DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "delete",column_width: 100,column_height: 50)
         
     ]
-    let headerAttributeProduct = [
+    let headerAttributeTitleProduct = [
         DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
-        DataRowModel(type:.Text, text:DataTableValueType.string("title"),key_column: "title",column_width: 100,column_height: 50),
+        DataRowModel(type:.Text, text:DataTableValueType.string("2021-01-06 23:25:46.307394+0700"),key_column: "title",column_width: 100,column_height: 50),
         DataRowModel(type: .Text, text:DataTableValueType.string("note"),key_column: "note",column_width: 150,column_height: 50),
         DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "delete",column_width: 100,column_height: 50)
         
@@ -124,6 +124,65 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonPickupColor: UIButton!
     
     @IBOutlet weak var UICollectionViewHeaderAttributes: UICollectionView!
+    
+    @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        /*
+         let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
+         print(" ")
+         phoneFormatter.format("+123456789012") /
+         */
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+        let urlGetCategories = API_URL + "/api/categories"
+        self.Webservice_getCategories(url: urlGetCategories, params:[:])
+        //self.UITextFieldSoTien.delegate = self
+        
+        DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
+            var curentCategory:CategoryModel=self.list_category[index]
+            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
+            self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
+            
+        }
+        DropDownSubCategories.didSelect{(selectedText , index ,id) in
+            self.curentSubCategory=self.list_sub_category[index]
+            
+            
+        }
+        customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
+        customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
+        self.UITextFieldOriginPrice.delegate = self
+        self.UITextFieldUnitPrice.delegate = self
+        
+        /*
+         let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
+         self.UIImageViewAddImage.isUserInteractionEnabled = true
+         self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
+         */
+        
+        cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
+        
+        
+        multiImagePicker.imagePickerDelegate = self
+        multiImageColorPicker.imagePickerDelegate = self
+        
+        
+        self.UICollectionViewHeaderAttributes.delegate = self
+        self.UICollectionViewHeaderAttributes.dataSource = self
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+    }
+    
+    
     @IBAction func UIButtonTouchUpInsideEditImageDescriptionProduct(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag
         let alertController = UIAlertController(title: "Mô tả ảnh sản phẩm", message: "", preferredStyle: .alert)
@@ -304,59 +363,7 @@ class AddNewProductVC: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        /*
-         let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
-         print(" ")
-         phoneFormatter.format("+123456789012") /
-         */
-        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlGetCategories = API_URL + "/api/categories"
-        self.Webservice_getCategories(url: urlGetCategories, params:[:])
-        //self.UITextFieldSoTien.delegate = self
-        
-        DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
-            var curentCategory:CategoryModel=self.list_category[index]
-            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
-            self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
-            
-        }
-        DropDownSubCategories.didSelect{(selectedText , index ,id) in
-            self.curentSubCategory=self.list_sub_category[index]
-            
-            
-        }
-        customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        self.UITextFieldOriginPrice.delegate = self
-        self.UITextFieldUnitPrice.delegate = self
-        
-        /*
-         let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
-         self.UIImageViewAddImage.isUserInteractionEnabled = true
-         self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
-         */
-        
-        cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
-        cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
-        cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
-        
-        
-        multiImagePicker.imagePickerDelegate = self
-        multiImageColorPicker.imagePickerDelegate = self
-        
-        
-        self.UICollectionViewHeaderAttributes.delegate = self
-        self.UICollectionViewHeaderAttributes.dataSource = self
-        
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        
-    }
     
     @IBAction func btnTap_Ok(_ sender: UIButton) {
         var amount=String(self.UITextFieldSoTien.text!)
@@ -452,6 +459,32 @@ class AddNewProductVC: UIViewController {
     @IBAction func btnTap_dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func UIButtonTouchUpInsideAddAttributeHeader(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            //textField.isSecureTextEntry = true
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            let content=String(describing: textField.text)
+            let headerAttributeModel:HeaderAttributeModel=HeaderAttributeModel(title: content, price: 0.0, note: "")
+            self.list_header_attribute.append(headerAttributeModel)
+            self.UICollectionViewHeaderAttributes.delegate = self
+            self.UICollectionViewHeaderAttributes.dataSource = self
+            self.UICollectionViewHeaderAttributes.reloadData()
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
     
     
     
@@ -602,7 +635,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         if(collectionView==self.UICollectionViewListProductImage){
             return 1
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
-            return 50
+            return self.list_header_attribute.count+1
         }
         else{
             return 1
@@ -615,7 +648,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         if(collectionView==self.UICollectionViewListProductImage){
             return self.list_product_image.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
-            return 4
+            return self.headerAttributeTitleProduct.count
         }
         else{
             return self.list_image_color.count
@@ -654,7 +687,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             let row_index=indexPath[0]
             let column_index=indexPath[1]
             
-            let currentDataRowModel:DataRowModel = self.headerAttributeProduct[column_index]
+            let currentDataRowModel:DataRowModel = self.headerAttributeTitleProduct[column_index]
             //if header
             if(row_index==0){
                 
@@ -733,13 +766,14 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("hello CGSize")
         if(collectionView==self.UICollectionViewListProductImage){
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
-            let row_index=indexPath[0]
+            print("hello343434")
             let column_index=indexPath[1]
-            let currentDataRowModel:DataRowModel = self.headerAttributeProduct[column_index]
-            return CGSize(width:currentDataRowModel.column_width, height: currentDataRowModel.column_height)
+            let currentDataRowModel:DataRowModel = self.headerAttributeTitleProduct[column_index]
+            return CGSize(width:300, height: currentDataRowModel.column_height)
             
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)

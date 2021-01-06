@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderAttributeCustomCollectionViewLayout: UICollectionViewLayout {
 
-    let numberOfColumns = 8
+    let numberOfColumns = 4
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
 
