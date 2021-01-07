@@ -2164,6 +2164,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLa-8G-DPi">
                                                             <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                             <state key="normal" title="Delete"/>
+                                                            <connections>
+                                                                <action selector="UIButtonDeleteHeadAtrribute:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="653-Qq-rb5"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -2176,6 +2179,33 @@
                                                 <size key="customSize" width="166" height="26"/>
                                                 <connections>
                                                     <outlet property="UIButtonDelete" destination="xLa-8G-DPi" id="4J6-Uh-uQM"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="cCA-L1-N3K" customClass="EditHeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="36" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ePo-Ug-TPs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tif-Ec-Cc9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="Edit"/>
+                                                            <connections>
+                                                                <action selector="UIButtonEditHeadAttribute:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="8Ko-zZ-Dac"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Tif-Ec-Cc9" firstAttribute="top" secondItem="ePo-Ug-TPs" secondAttribute="top" id="CoM-wN-Wzo"/>
+                                                        <constraint firstItem="Tif-Ec-Cc9" firstAttribute="leading" secondItem="ePo-Ug-TPs" secondAttribute="leading" id="Csv-mk-PbA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Tif-Ec-Cc9" secondAttribute="trailing" id="TfU-mN-Z8I"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Tif-Ec-Cc9" secondAttribute="bottom" id="Tp6-Kl-Opo"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonEdit" destination="Tif-Ec-Cc9" id="MgI-4H-nZq"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

@@ -67,7 +67,15 @@ struct CellHeaderAttribute {
                 cell!.backgroundColor = UIColor.white
             }
             return cell!
-        }else if(!self.is_head && self.columnType == "button"){
+        }else if(!self.is_head && self.columnName == "edit"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditHeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? EditHeaderAttributeCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -123,6 +131,10 @@ class HeaderAttributeDeleteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonDelete: UIButton!
     static let reuseID = "HeaderAttributeDeleteCollectionViewCell"
 }
+class EditHeaderAttributeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIButtonEdit: UIButton!
+    static let reuseID = "EditHeaderAttributeCollectionViewCell"
+}
 class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
@@ -168,10 +180,11 @@ class AddNewProductVC: UIViewController {
         CellHeaderAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
-        CellHeaderAttribute(title: "Hành động",is_head: true,columnType: "",columnName: ""),
+        CellHeaderAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+        CellHeaderAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
         
         
-    ]]
+        ]]
     
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
@@ -236,7 +249,11 @@ class AddNewProductVC: UIViewController {
         
     }
     
+    @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
+    }
     
+    @IBAction func UIButtonDeleteHeadAtrribute(_ sender: UIButton) {
+    }
     @IBAction func UIButtonTouchUpInsideEditImageDescriptionProduct(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag
         let alertController = UIAlertController(title: "Mô tả ảnh sản phẩm", message: "", preferredStyle: .alert)
@@ -526,7 +543,8 @@ class AddNewProductVC: UIViewController {
                 CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
                 CellHeaderAttribute(title: content,is_head: false,columnType: "content", columnName: ""),
                 CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: ""),
-                CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: ""),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
                 
                 
             ]);
@@ -714,7 +732,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return self.list_product_image.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
-            return 4
+            return self.headerAttributeTitleProduct[0].count
         }
         else{
             return self.list_image_color.count

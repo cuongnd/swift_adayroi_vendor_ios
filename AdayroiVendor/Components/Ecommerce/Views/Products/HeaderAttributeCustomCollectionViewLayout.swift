@@ -27,9 +27,10 @@ class HeaderAttributeCustomCollectionViewLayout: UICollectionViewLayout {
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var itemsSize = [CGSize]()
     var contentSize: CGSize = .zero
-    var cellWidthHeight:CellWidthHeight=CellWidthHeight(width: [70,100,100,100], headHeight: 30,bodyHeight: 30)
-    let numberOfColumns = 4
+    var cellWidthHeight:CellWidthHeight=CellWidthHeight(width: [70,100,100,100,100], headHeight: 30,bodyHeight: 30)
+    var numberOfColumns = 5
     override func prepare() {
+        self.numberOfColumns = self.cellWidthHeight.width.count
         guard let collectionView = collectionView else {
             return
         }
