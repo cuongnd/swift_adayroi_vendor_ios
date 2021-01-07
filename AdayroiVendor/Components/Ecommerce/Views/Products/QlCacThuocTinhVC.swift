@@ -21,7 +21,6 @@ protocol ModalAttributeHeadIndexDelegate {
 
 struct CellAttribute {
     var title:String!
-    var price:Double!
     var is_head:Bool!
     var columnType:String!
     var columnName:String!
@@ -145,16 +144,25 @@ class QlCacThuocTinhVC: UIViewController {
         
         let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = ""
+            textField.placeholder = "Thuộc tính"
             textField.tag=sender.tag
             textField.text=self.AttributeNameList[sender.tag][1].title
             //textField.isSecureTextEntry = true
         }
+        alertController.addTextField { textField in
+            textField.placeholder = "Giá"
+            textField.tag=sender.tag
+            textField.text=String(self.AttributeNameList[sender.tag][2].title)
+            //textField.isSecureTextEntry = true
+        }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
-            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            let content=String(describing: textField.text!)
-            
-            self.AttributeNameList[textField.tag][1].title=content;
+            let alertController = alertController
+            let textFieldTitle = alertController?.textFields?.first
+            let textFieldPrice = alertController?.textFields?.last
+            let contentTitle=String(describing: textFieldTitle!.text!)
+            let contentPrice=String(describing: textFieldPrice!.text!)
+            self.AttributeNameList[textFieldTitle!.tag][1].title=contentTitle;
+            self.AttributeNameList[textFieldPrice!.tag][2].title=contentPrice;
             self.UICollectionViewAttributes.delegate = self
             self.UICollectionViewAttributes.dataSource = self
             self.UICollectionViewAttributes.reloadData()
@@ -199,18 +207,24 @@ class QlCacThuocTinhVC: UIViewController {
     
    
     @IBAction func UIButtonTouchUpInsideAddAttributeAndPrice(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Thêm thuộc tính và giá", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = ""
+            textField.placeholder = "Thuộc tính"
             //textField.isSecureTextEntry = true
         }
+        alertController.addTextField { textField in
+                   textField.placeholder = "Giá"
+                   //textField.isSecureTextEntry = true
+               }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
-            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            let content=String(describing: textField.text!)
+            let textFieldTitle = alertController?.textFields?.first
+            let textFieldPrice = alertController?.textFields?.last
+            let contentTitle=String(describing: textFieldTitle!.text!)
+            let contentPrice=String(describing: textFieldPrice!.text!)
             self.AttributeNameList.append([
                 CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                CellAttribute(title: content, is_head: false,columnType: "content", columnName: "title"),
-                CellAttribute(title: "120 000 đ", is_head: false,columnType: "content", columnName: "note"),
+                CellAttribute(title: contentTitle, is_head: false,columnType: "content", columnName: "title"),
+                CellAttribute(title: contentPrice, is_head: false,columnType: "content", columnName: "note"),
                 CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
                 CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
                 
