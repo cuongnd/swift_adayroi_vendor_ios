@@ -13,6 +13,7 @@ import OpalImagePicker
 import Photos
 import FlexColorPicker
 
+
 protocol AddNewProductDelegate {
     func refreshData()
 }
@@ -267,9 +268,10 @@ class AddNewProductVC: UIViewController {
     }
     @IBAction func UIButtonQLCacThuocTinh(_ sender: UIButton) {
         let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
-               qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
-               qlCacThuocTinhVC.attributeHeadIndex = -1
-               self.present(qlCacThuocTinhVC, animated: true, completion: nil)
+        qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
+        qlCacThuocTinhVC.attributeHeadIndex = sender.tag
+        qlCacThuocTinhVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        self.present(qlCacThuocTinhVC, animated: true, completion: nil)
     }
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
@@ -593,15 +595,29 @@ class AddNewProductVC: UIViewController {
     @IBAction func btnTap_dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    var alertTextField: UITextField!
+    @objc func textFieldDidChange(){
+
+        if let e = alertTextField.text {
+            let alertButton = alertController.actions[0]
+            alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
+        }
+    }
+    var alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
     @IBAction func UIButtonTouchUpInsideAddAttributeHeader(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        
         alertController.addTextField { textField in
+            self.alertTextField = textField
             textField.placeholder = ""
             //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
             let content=String(describing: textField.text!)
+            if(content==""){
+                return
+            }
             self.headerAttributeTitleProduct.append([
                 CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
                 CellHeaderAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
@@ -622,10 +638,12 @@ class AddNewProductVC: UIViewController {
             self.UICollectionViewHeaderAttributes.reloadData()
             //compare the current password and do action here
         }
+        confirmAction.isEnabled = false
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+         
         
     }
     

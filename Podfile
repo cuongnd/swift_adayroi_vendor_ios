@@ -33,6 +33,10 @@ target 'AdayroiVendor' do
     pod "TLCustomMask"
     pod 'OpalImagePicker', '~> 2.1.0'
     pod 'FlexColorPicker'
+    pod "Utils"
+    pod 'XLForm'
+    pod 'JVFloatLabeledTextField', '1.0.2', :inhibit_warnings => true
+    pod 'AXRatingView', '1.0.3', :inhibit_warnings => true
 
 
   target 'AdayroiVendorTests' do

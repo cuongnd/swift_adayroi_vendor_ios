@@ -2842,6 +2842,7 @@
                     <connections>
                         <outlet property="UIButtonAddHeaderAttribute" destination="A0e-eP-ycT" id="KAg-gK-BiC"/>
                         <outlet property="UICollectionViewAttributes" destination="9zq-a8-bWj" id="oen-6W-v6F"/>
+                        <outlet property="UILabelQLCacThuocTinh" destination="Pf3-jX-3mf" id="sdN-2P-F7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZG-LZ-EiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

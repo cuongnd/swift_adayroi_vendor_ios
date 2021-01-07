@@ -93,8 +93,9 @@ class QlCacThuocTinhVC: UIViewController {
     
 
     var attributeHeadIndex:Int=0
+    var attributeHead:[CellHeaderAttribute]=[CellHeaderAttribute]()
     
-    
+    @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
    
     var AttributeNameList = [[
@@ -130,6 +131,7 @@ class QlCacThuocTinhVC: UIViewController {
         
         self.UICollectionViewAttributes.delegate = self
         self.UICollectionViewAttributes.dataSource = self
+        self.UILabelQLCacThuocTinh.text="Quản lý các thuộc tính:\(self.attributeHead[1].title!)";
         
     }
     
@@ -158,8 +160,12 @@ class QlCacThuocTinhVC: UIViewController {
             let alertController = alertController
             let textFieldTitle = alertController?.textFields?.first
             let textFieldPrice = alertController?.textFields?.last
+            
             let contentTitle=String(describing: textFieldTitle!.text!)
             let contentPrice=String(describing: textFieldPrice!.text!)
+            if(contentTitle == "" || contentPrice == ""){
+                return
+            }
             self.AttributeNameList[textFieldTitle!.tag][1].title=contentTitle;
             self.AttributeNameList[textFieldPrice!.tag][2].title=contentPrice;
             self.UICollectionViewAttributes.delegate = self

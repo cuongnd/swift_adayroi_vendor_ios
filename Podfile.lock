@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.4.1)
   - AnyFormatKit (2.0.6)
+  - AXRatingView (1.0.3)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
@@ -81,6 +82,7 @@ PODS:
   - ImageSlideshow/Core (1.9.2)
   - iOSDropDown (0.3.4)
   - IQKeyboardManagerSwift (6.5.6)
+  - JVFloatLabeledTextField (1.0.2)
   - LanguageManager-iOS (1.2.3)
   - Layout (0.7.0):
     - Layout/Core (= 0.7.0)
@@ -112,10 +114,12 @@ PODS:
   - SwiftyJSON (5.0.0)
   - TagListView (1.4.1)
   - TLCustomMask (2.0.0)
+  - XLForm (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
   - AnyFormatKit
+  - AXRatingView (= 1.0.3)
   - Charts
   - ETBinding
   - Firebase/Core
@@ -124,6 +128,7 @@ DEPENDENCIES:
   - ImageSlideshow
   - iOSDropDown
   - IQKeyboardManagerSwift
+  - JVFloatLabeledTextField (= 1.0.2)
   - LanguageManager-iOS
   - Layout (~> 0.6)
   - Localize-Swift (~> 2.0)
@@ -139,11 +144,13 @@ DEPENDENCIES:
   - SwiftyJSON
   - TagListView (~> 1.0)
   - TLCustomMask
+  - XLForm
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AnyFormatKit
+    - AXRatingView
     - Charts
     - ETBinding
     - Firebase
@@ -160,6 +167,7 @@ SPEC REPOS:
     - ImageSlideshow
     - iOSDropDown
     - IQKeyboardManagerSwift
+    - JVFloatLabeledTextField
     - LanguageManager-iOS
     - Layout
     - Localize-Swift
@@ -178,10 +186,12 @@ SPEC REPOS:
     - SwiftyJSON
     - TagListView
     - TLCustomMask
+    - XLForm
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AnyFormatKit: 3401a4e46db072447a4c7656fa5dc06b12b6678c
+  AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   ETBinding: 27be01c2b38dbc88b63189a0ca05187cd24be2ec
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
@@ -198,6 +208,7 @@ SPEC CHECKSUMS:
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  JVFloatLabeledTextField: 58a3a32cfb800e5b224f676987e7c13abf50a14d
   LanguageManager-iOS: 020a6849c97949683926773fd5b82baceaa142db
   Layout: 06efb0889c3065340eefceefb938b0add675a12b
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
@@ -216,7 +227,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
+  XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: 140400b3e8813c6536c129dbdec21fa55c58aba5
+PODFILE CHECKSUM: a8d4d8fa78a2955a2e16381527c8c23bfede47c1
 
 COCOAPODS: 1.10.0
