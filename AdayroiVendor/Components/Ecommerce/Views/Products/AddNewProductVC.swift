@@ -58,8 +58,24 @@ struct CellHeaderAttribute {
                 cell!.backgroundColor = UIColor.white
             }
             return cell!
-        }
-        if(!self.is_head && self.columnType == "content"){
+        }else if(!self.is_head && self.columnName == "stt"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            cell!.contentLabel.text=String(indexPath.section)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }else if(!self.is_head && self.columnType == "button"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
             cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
@@ -69,16 +85,6 @@ struct CellHeaderAttribute {
             }
             return cell!
         }
-        if(!self.is_head && self.columnType == "button"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            return cell!
-        }
-        return UICollectionViewCell()
     }
 }
 struct HeaderAttributeModel {
@@ -517,10 +523,10 @@ class AddNewProductVC: UIViewController {
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
             let content=String(describing: textField.text!)
             self.headerAttributeTitleProduct.append([
-                CellHeaderAttribute(title: "Stt",is_head: false,columnType: "content", columnName: ""),
-                CellHeaderAttribute(title: "title",is_head: false,columnType: "content", columnName: ""),
-                CellHeaderAttribute(title: "note",is_head: false,columnType: "content", columnName: ""),
-                CellHeaderAttribute(title: "Hành động",is_head: false,columnType: "button",columnName: ""),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                CellHeaderAttribute(title: content,is_head: false,columnType: "content", columnName: ""),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: ""),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: ""),
                 
                 
             ]);
