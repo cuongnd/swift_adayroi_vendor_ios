@@ -47,19 +47,35 @@ struct CellHeaderAttribute {
         self.columnType=columnType
         self.columnName=columnName
     }
+    
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
             //cell.contentLabel.text=String(self.title)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
             return cell!
         }
         if(!self.is_head && self.columnType == "content"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
             //cell.contentLabel.text=String(self.title)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
             return cell!
         }
         if(!self.is_head && self.columnType == "button"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
             return cell!
         }
         return UICollectionViewCell()
@@ -692,7 +708,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return self.list_product_image.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
-            return 5
+            return 4
         }
         else{
             return self.list_image_color.count
