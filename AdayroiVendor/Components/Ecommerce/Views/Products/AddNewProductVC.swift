@@ -76,6 +76,15 @@ struct CellHeaderAttribute {
             }
             cell?.UIButtonEdit.tag = indexPath.section
             return cell!
+        }else if(!self.is_head && self.columnName == "edit_attributes"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditAttributesCollectionViewCell.reuseID, for: indexPath) as? EditAttributesCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            cell?.UIButtonEdit.tag = indexPath.section
+            return cell!
         }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
@@ -137,6 +146,10 @@ class EditHeaderAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEdit: UIButton!
     static let reuseID = "EditHeaderAttributeCollectionViewCell"
 }
+class EditAttributesCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIButtonEdit: UIButton!
+    static let reuseID = "EditAttributesCollectionViewCell"
+}
 class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
@@ -182,6 +195,8 @@ class AddNewProductVC: UIViewController {
         CellHeaderAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
+        CellHeaderAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+        CellHeaderAttribute(title: "Sửa thuộc tính",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
         
@@ -249,6 +264,13 @@ class AddNewProductVC: UIViewController {
         super.viewWillDisappear(animated)
         
         
+    }
+    @IBAction func UIButtonQLCacThuocTinh(_ sender: UIButton) {
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+               modalSelectColorViewController.modalSelectColorRutDelegate = self
+               modalSelectColorViewController.pickedColor=UIColor.brown
+               modalSelectColorViewController.colorIndex = -1
+               self.present(modalSelectColorViewController, animated: true, completion: nil)
     }
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
@@ -583,8 +605,10 @@ class AddNewProductVC: UIViewController {
             let content=String(describing: textField.text!)
             self.headerAttributeTitleProduct.append([
                 CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
-                CellHeaderAttribute(title: content,is_head: false,columnType: "content", columnName: ""),
-                CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: ""),
+                CellHeaderAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+                CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
                 CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
                 CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
                 

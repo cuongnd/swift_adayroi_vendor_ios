@@ -2208,6 +2208,33 @@
                                                     <outlet property="UIButtonEdit" destination="Tif-Ec-Cc9" id="MgI-4H-nZq"/>
                                                 </connections>
                                             </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditAttributesCollectionViewCell" id="qKs-xG-HZB" customClass="EditAttributesCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="232" y="36" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O6J-eP-KdF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-GV-dD7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="QL thuộc tính"/>
+                                                            <connections>
+                                                                <action selector="UIButtonQLCacThuocTinh:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="26C-Wn-WgC"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="x3Z-GV-dD7" firstAttribute="top" secondItem="O6J-eP-KdF" secondAttribute="top" id="BK6-3Z-PB4"/>
+                                                        <constraint firstItem="x3Z-GV-dD7" firstAttribute="leading" secondItem="O6J-eP-KdF" secondAttribute="leading" id="Omg-HS-H8E"/>
+                                                        <constraint firstAttribute="trailing" secondItem="x3Z-GV-dD7" secondAttribute="trailing" id="hsO-V7-0U8"/>
+                                                        <constraint firstAttribute="bottom" secondItem="x3Z-GV-dD7" secondAttribute="bottom" id="nsh-aB-m56"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonEdit" destination="x3Z-GV-dD7" id="ktp-KG-FY7"/>
+                                                </connections>
+                                            </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả ngắn sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB0-Bz-sxv">
