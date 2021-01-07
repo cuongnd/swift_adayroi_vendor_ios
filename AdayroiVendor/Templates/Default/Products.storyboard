@@ -2793,6 +2793,9 @@
                                                 <state key="normal" title="Lưu lại">
                                                     <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="UIButtonSave:" destination="OEd-cG-9Od" eventType="touchUpInside" id="w2g-uC-v9v"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVp-gc-Bia">
                                                 <rect key="frame" x="203" y="0.0" width="195" height="54"/>
@@ -2801,6 +2804,9 @@
                                                 <state key="normal" title="Hủy">
                                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="UIButtonCancel:" destination="OEd-cG-9Od" eventType="touchUpInside" id="63Q-ft-QKY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

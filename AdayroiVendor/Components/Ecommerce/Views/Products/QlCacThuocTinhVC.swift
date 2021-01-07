@@ -16,7 +16,7 @@ import FlexColorPicker
 
 
 protocol ModalAttributeHeadIndexDelegate {
-    func refreshData(colorIndex:Int,color:UIColor)
+    func refreshData(AttributeHeadIndex:Int,CellAttributeList:[[CellAttribute]])
 }
 
 struct CellAttribute {
@@ -93,7 +93,6 @@ class QlCacThuocTinhVC: UIViewController {
     
 
     var attributeHeadIndex:Int=0
-    var delegate: AddNewProductDelegate!
     
     
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
@@ -195,16 +194,7 @@ class QlCacThuocTinhVC: UIViewController {
         
     }
    
-    
-    @IBAction func btnTap_Ok(_ sender: UIButton) {
-        
-        
-        
-        
-        
-        
-    }
-    
+
    
     @IBAction func UIButtonTouchUpInsideAddAttributeAndPrice(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Thêm thuộc tính và giá", message: "", preferredStyle: .alert)
@@ -241,7 +231,14 @@ class QlCacThuocTinhVC: UIViewController {
         present(alertController, animated: true, completion: nil)
         
     }
+    @IBAction func UIButtonCancel(_ sender: UIButton) {
+         dismiss(animated: true, completion: nil)
+    }
     
+    @IBAction func UIButtonSave(_ sender: UIButton) {
+        self.modalAttributeHeadIndexDelegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellAttributeList: self.AttributeNameList)
+               dismiss(animated: true, completion: nil)
+    }
     
     
     
@@ -339,14 +336,5 @@ extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
     }
-}
-
-extension QlCacThuocTinhVC: ModalSelectColorRutDelegate {
-    func refreshData(colorIndex:Int,color: UIColor) {
-        
-        
-    }
-    
-    
 }
 

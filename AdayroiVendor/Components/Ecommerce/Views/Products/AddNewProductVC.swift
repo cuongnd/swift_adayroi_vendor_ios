@@ -154,7 +154,7 @@ class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
 
-class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
+class AddNewProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var productImageColorChanging:Int=0
@@ -937,6 +937,14 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
     func imagePicker(_ picker: OpalImagePickerController, imageURLforExternalItemAtIndex index: Int) -> URL? {
         return URL(string: "https://placeimg.com/500/500/nature")
     }
+}
+
+extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
+    func refreshData(AttributeHeadIndex: Int, CellAttributeList: [[CellAttribute]]) {
+        print("CellAttributeList \(CellAttributeList)")
+    }
+    
+    
 }
 extension AddNewProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
