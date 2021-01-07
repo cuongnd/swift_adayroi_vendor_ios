@@ -236,6 +236,7 @@ class QlCacThuocTinhVC: UIViewController {
     }
     
     @IBAction func UIButtonSave(_ sender: UIButton) {
+        self.AttributeNameList.remove(at: 0)
         self.modalAttributeHeadIndexDelegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellAttributeList: self.AttributeNameList)
                dismiss(animated: true, completion: nil)
     }
