@@ -2154,6 +2154,30 @@
                                                     <outlet property="contentLabel" destination="78X-cc-N09" id="Uo0-64-3Rc"/>
                                                 </connections>
                                             </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Cnk-rQ-1uT" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="232" y="0.0" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YXF-jp-aEw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLa-8G-DPi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="Delete"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="xLa-8G-DPi" firstAttribute="top" secondItem="YXF-jp-aEw" secondAttribute="top" id="5HW-Ap-Npw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xLa-8G-DPi" secondAttribute="bottom" id="8sT-Mn-odq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xLa-8G-DPi" secondAttribute="trailing" id="EJ9-jE-IiY"/>
+                                                        <constraint firstItem="xLa-8G-DPi" firstAttribute="leading" secondItem="YXF-jp-aEw" secondAttribute="leading" id="i4a-mh-zYc"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonDelete" destination="xLa-8G-DPi" id="4J6-Uh-uQM"/>
+                                                </connections>
+                                            </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả ngắn sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB0-Bz-sxv">
