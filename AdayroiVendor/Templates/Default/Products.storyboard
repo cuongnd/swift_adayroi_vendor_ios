@@ -2752,33 +2752,6 @@
                                                     <outlet property="UIButtonEdit" destination="BKA-wR-L78" id="0Jj-9e-c2I"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditAttributesCollectionViewCell" id="tOl-Ah-ZHm" customClass="EditAttributesCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                <rect key="frame" x="232" y="36" width="166" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HEN-4E-qg4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOb-Bt-tPZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                            <state key="normal" title="QL thuộc tính"/>
-                                                            <connections>
-                                                                <action selector="UIButtonQLCacThuocTinh:" destination="OEd-cG-9Od" eventType="touchUpInside" id="QPb-nM-qAR"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="YOb-Bt-tPZ" firstAttribute="leading" secondItem="HEN-4E-qg4" secondAttribute="leading" id="9DI-4b-v9v"/>
-                                                        <constraint firstAttribute="bottom" secondItem="YOb-Bt-tPZ" secondAttribute="bottom" id="nwS-eD-hcH"/>
-                                                        <constraint firstItem="YOb-Bt-tPZ" firstAttribute="top" secondItem="HEN-4E-qg4" secondAttribute="top" id="snV-K4-0uw"/>
-                                                        <constraint firstAttribute="trailing" secondItem="YOb-Bt-tPZ" secondAttribute="trailing" id="vTt-d1-2eA"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="166" height="26"/>
-                                                <connections>
-                                                    <outlet property="UIButtonEdit" destination="YOb-Bt-tPZ" id="iRP-yf-Vvk"/>
-                                                </connections>
-                                            </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-eP-ycT">
@@ -2793,7 +2766,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButtonTouchUpInsideAddAttributeHeader:" destination="OEd-cG-9Od" eventType="touchUpInside" id="nb2-dW-Qwb"/>
+                                            <action selector="UIButtonTouchUpInsideAddAttributeAndPrice:" destination="OEd-cG-9Od" eventType="touchUpInside" id="nb2-dW-Qwb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2862,7 +2835,7 @@
                     <size key="freeformSize" width="414" height="800"/>
                     <connections>
                         <outlet property="UIButtonAddHeaderAttribute" destination="A0e-eP-ycT" id="KAg-gK-BiC"/>
-                        <outlet property="UICollectionViewHeaderAttributes" destination="9zq-a8-bWj" id="oen-6W-v6F"/>
+                        <outlet property="UICollectionViewAttributes" destination="9zq-a8-bWj" id="oen-6W-v6F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZG-LZ-EiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

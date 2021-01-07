@@ -27,7 +27,7 @@ class QlCacThuocTinhCollectionViewLayout: UICollectionViewLayout {
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var itemsSize = [CGSize]()
     var contentSize: CGSize = .zero
-    var cellWidthHeight:CellWidthHeight=CellWidthHeight(width: [40,100,100,300,150,100,100], headHeight: 30,bodyHeight: 30)
+    var cellWidthHeight:CellWidthHeightAttribute=CellWidthHeightAttribute(width: [40,90,90,60,60], headHeight: 30,bodyHeight: 30)
     var numberOfColumns = 5
     override func prepare() {
         self.numberOfColumns = self.cellWidthHeight.width.count
