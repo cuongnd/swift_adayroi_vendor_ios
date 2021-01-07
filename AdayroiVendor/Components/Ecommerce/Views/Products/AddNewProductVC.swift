@@ -51,7 +51,7 @@ struct CellHeaderAttribute {
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
-            //cell.contentLabel.text=String(self.title)
+            cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -61,7 +61,7 @@ struct CellHeaderAttribute {
         }
         if(!self.is_head && self.columnType == "content"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
-            //cell.contentLabel.text=String(self.title)
+            cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
