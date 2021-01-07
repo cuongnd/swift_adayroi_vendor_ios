@@ -13,36 +13,21 @@ import OpalImagePicker
 import Photos
 import FlexColorPicker
 
-protocol AddNewProductDelegate {
-    func refreshData()
-}
-struct ImageColorModel {
-    var color_name: String
-    var image: UIImage
-    var color_value: UIColor
-    init(color_name:String,image:UIImage,color_value:UIColor) {
-        self.color_name=color_name
-        self.image=image
-        self.color_value=color_value
-    }
+
+
+protocol ModalAttributeHeadIndexDelegate {
+    func refreshData(colorIndex:Int,color:UIColor)
 }
 
-struct ImageProductModel {
-    var image_description: String
-    var image: UIImage
-    init(image_description:String,image:UIImage) {
-        self.image_description=image_description
-        self.image=image
-    }
-}
-
-struct CellHeaderAttribute {
+struct CellAttribute {
     var title:String!
+    var price:Double!
     var is_head:Bool!
     var columnType:String!
     var columnName:String!
-    init(title:String,is_head:Bool,columnType:String,columnName:String) {
+    init(title:String,price:Double,is_head:Bool,columnType:String,columnName:String) {
         self.title=title
+        self.price=price
         self.is_head=is_head
         self.columnType=columnType
         self.columnName=columnName
@@ -76,15 +61,6 @@ struct CellHeaderAttribute {
             }
             cell?.UIButtonEdit.tag = indexPath.section
             return cell!
-        }else if(!self.is_head && self.columnName == "edit_attributes"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditAttributesCollectionViewCell.reuseID, for: indexPath) as? EditAttributesCollectionViewCell
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            cell?.UIButtonEdit.tag = indexPath.section
-            return cell!
         }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
@@ -106,58 +82,20 @@ struct CellHeaderAttribute {
         }
     }
 }
-struct HeaderAttributeModel {
-    var title: String
-    var price: Double
-    var note:String
-    init(title:String,price:Double,note:String) {
-        self.title=title
-        self.price=price
-        self.note=note
-    }
-}
 
 
-class ImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var UIImageViewImageUpload: UIImageView!
-    @IBOutlet weak var UIButtonDeleteImage: UIButton!
-    @IBOutlet weak var UILabelDescription: UILabel!
-    @IBOutlet weak var UIButtonProductImageDescription: UIButton!
-    static let reuseID = "ImageCollectionViewCell"
-}
-class ColorCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var UIImageViewImageUpload: UIImageView!
-    @IBOutlet weak var UIButtonDeleteImage: UIButton!
-    @IBOutlet weak var UILabelColorName: UILabel!
-    @IBOutlet weak var UIButtonColor: UIButton!
-    @IBOutlet weak var UIButtonChangeImageInCell: UIButton!
-    @IBOutlet weak var UIButtonEditColorName: UIButton!
-    static let reuseID = "ColorCollectionViewCell"
-}
-class HeaderAttributeCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var contentLabel: UILabel!
-    static let reuseID = "HeaderAttributeCollectionViewCell"
-}
-class HeaderAttributeDeleteCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var UIButtonDelete: UIButton!
-    static let reuseID = "HeaderAttributeDeleteCollectionViewCell"
-}
-class EditHeaderAttributeCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var UIButtonEdit: UIButton!
-    static let reuseID = "EditHeaderAttributeCollectionViewCell"
-}
-class EditAttributesCollectionViewCell: UICollectionViewCell {
+
+class EditAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEdit: UIButton!
     static let reuseID = "EditAttributesCollectionViewCell"
 }
-class TextCollectionViewCell: UICollectionViewCell {
-    static let reuseID = "TextCollectionViewCell"
-}
 
-class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
+
+class QlCacThuocTinhVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var productImageColorChanging:Int=0
+    var attributeHeadIndex:Int=0
     var productImageColorNameChanging:Int=0
     var productImageDescriptionChanging:Int=0
     var productHeaderAttributeChanging:Int=0
@@ -211,7 +149,7 @@ class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
     
     @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
     
-    
+      var modalAttributeHeadIndexDelegate: ModalAttributeHeadIndexDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -221,24 +159,10 @@ class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
          */
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlGetCategories = API_URL + "/api/categories"
-        self.Webservice_getCategories(url: urlGetCategories, params:[:])
+        //self.Webservice_getCategories(url: urlGetCategories, params:[:])
         //self.UITextFieldSoTien.delegate = self
         
-        DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
-            var curentCategory:CategoryModel=self.list_category[index]
-            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
-            self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
-            
-        }
-        DropDownSubCategories.didSelect{(selectedText , index ,id) in
-            self.curentSubCategory=self.list_sub_category[index]
-            
-            
-        }
-        customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        self.UITextFieldOriginPrice.delegate = self
-        self.UITextFieldUnitPrice.delegate = self
+        
         
         /*
          let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
@@ -246,13 +170,8 @@ class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
          self.UIImageViewAddImage.addGestureRecognizer(tapAddImage)
          */
         
-        cornerRadius(viewName: self.UIButtonAddImage, radius: self.UIButtonAddImage.frame.height / 2)
-        cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
-        cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
         cornerRadius(viewName: self.UIButtonAddHeaderAttribute, radius: self.UIButtonAddHeaderAttribute.frame.height / 2)
         
-        multiImagePicker.imagePickerDelegate = self
-        multiImageColorPicker.imagePickerDelegate = self
         
         
         self.UICollectionViewHeaderAttributes.delegate = self
@@ -266,10 +185,11 @@ class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
         
     }
     @IBAction func UIButtonQLCacThuocTinh(_ sender: UIButton) {
-        let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
-               qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
-               qlCacThuocTinhVC.attributeHeadIndex = -1
-               self.present(qlCacThuocTinhVC, animated: true, completion: nil)
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+               modalSelectColorViewController.modalSelectColorRutDelegate = self
+               modalSelectColorViewController.pickedColor=UIColor.brown
+               modalSelectColorViewController.colorIndex = -1
+               self.present(modalSelectColorViewController, animated: true, completion: nil)
     }
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
@@ -641,7 +561,7 @@ class AddNewProductVC: UIViewController, ModalAttributeHeadIndexDelegate {
 
 
 //MARK: WithdrawalList
-extension AddNewProductVC {
+extension QlCacThuocTinhVC {
     
     
     
@@ -747,7 +667,7 @@ extension AddNewProductVC {
     }
     
 }
-extension AddNewProductVC: UITextFieldDelegate{
+extension QlCacThuocTinhVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -758,7 +678,7 @@ extension AddNewProductVC: UITextFieldDelegate{
         return false
     }
 }
-extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension QlCacThuocTinhVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -776,7 +696,7 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
         self.dismiss(animated: true, completion: nil)
     }
 }
-extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
@@ -888,7 +808,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
 }
-extension AddNewProductVC: OpalImagePickerControllerDelegate {
+extension QlCacThuocTinhVC: OpalImagePickerControllerDelegate {
     func imagePickerDidCancel(_ picker: OpalImagePickerController) {
         //Cancel action?
     }
@@ -938,7 +858,7 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
         return URL(string: "https://placeimg.com/500/500/nature")
     }
 }
-extension AddNewProductVC: ModalSelectColorRutDelegate {
+extension QlCacThuocTinhVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!

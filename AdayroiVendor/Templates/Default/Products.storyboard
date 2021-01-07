@@ -2631,6 +2631,244 @@
             </objects>
             <point key="canvasLocation" x="3522" y="-1056"/>
         </scene>
+        <!--Ql Cac Thuoc TinhVC-->
+        <scene sceneID="ssD-N8-ELx">
+            <objects>
+                <viewController storyboardIdentifier="QlCacThuocTinhVC" id="OEd-cG-9Od" customClass="QlCacThuocTinhVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1BH-JO-o3G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coU-no-GG3">
+                                <rect key="frame" x="0.0" y="30" width="414" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quản lý các thuộc tính" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-jX-3mf">
+                                        <rect key="frame" x="118" y="16.5" width="178" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="7nn-yC-bLE"/>
+                                    <constraint firstItem="Pf3-jX-3mf" firstAttribute="centerY" secondItem="coU-no-GG3" secondAttribute="centerY" id="Mb2-qj-RaX"/>
+                                    <constraint firstItem="Pf3-jX-3mf" firstAttribute="centerX" secondItem="coU-no-GG3" secondAttribute="centerX" id="ri3-Ra-YYg"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9D-su-97K">
+                                <rect key="frame" x="0.0" y="83" width="414" height="641"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-a8-bWj">
+                                        <rect key="frame" x="8" y="43.5" width="398" height="598"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="598" id="1UE-td-p0e"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WF-1N-mPh" customClass="QlCacThuocTinhCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <size key="itemSize" width="166" height="26"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="u5g-Ev-zQw" customClass="HeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="V7V-cD-uBL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7Y-4d-dzL">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="o7Y-4d-dzL" secondAttribute="bottom" id="6Qi-mK-aWz"/>
+                                                        <constraint firstItem="o7Y-4d-dzL" firstAttribute="top" secondItem="V7V-cD-uBL" secondAttribute="top" id="Nag-Zt-z8I"/>
+                                                        <constraint firstAttribute="trailing" secondItem="o7Y-4d-dzL" secondAttribute="trailing" id="gxn-YB-4w2"/>
+                                                        <constraint firstItem="o7Y-4d-dzL" firstAttribute="leading" secondItem="V7V-cD-uBL" secondAttribute="leading" id="vxl-vk-DhP"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="contentLabel" destination="o7Y-4d-dzL" id="MW3-hX-TR3"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Y03-e3-egF" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="232" y="0.0" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Gv-Lw-qfx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8it-jK-r5E">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="Delete"/>
+                                                            <connections>
+                                                                <action selector="UIButtonDeleteHeadAtrribute:" destination="OEd-cG-9Od" eventType="touchUpInside" id="z12-4G-o1K"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="8it-jK-r5E" secondAttribute="bottom" id="0W8-MO-BEq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8it-jK-r5E" secondAttribute="trailing" id="8Ka-dI-yFk"/>
+                                                        <constraint firstItem="8it-jK-r5E" firstAttribute="top" secondItem="1Gv-Lw-qfx" secondAttribute="top" id="FBe-Ml-nUz"/>
+                                                        <constraint firstItem="8it-jK-r5E" firstAttribute="leading" secondItem="1Gv-Lw-qfx" secondAttribute="leading" id="SM4-tn-3JQ"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonDelete" destination="8it-jK-r5E" id="Zkb-9M-dDo"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="jbM-YB-pfQ" customClass="EditHeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="36" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HBj-Lm-HSo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKA-wR-L78">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="Edit"/>
+                                                            <connections>
+                                                                <action selector="UIButtonEditHeadAttribute:" destination="OEd-cG-9Od" eventType="touchUpInside" id="wC1-xj-Xzz"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="BKA-wR-L78" secondAttribute="trailing" id="8JD-O6-pBR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BKA-wR-L78" secondAttribute="bottom" id="QRz-h3-oeL"/>
+                                                        <constraint firstItem="BKA-wR-L78" firstAttribute="top" secondItem="HBj-Lm-HSo" secondAttribute="top" id="lGq-Er-TfU"/>
+                                                        <constraint firstItem="BKA-wR-L78" firstAttribute="leading" secondItem="HBj-Lm-HSo" secondAttribute="leading" id="px8-8f-frl"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonEdit" destination="BKA-wR-L78" id="0Jj-9e-c2I"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditAttributesCollectionViewCell" id="tOl-Ah-ZHm" customClass="EditAttributesCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="232" y="36" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HEN-4E-qg4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOb-Bt-tPZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                            <state key="normal" title="QL thuộc tính"/>
+                                                            <connections>
+                                                                <action selector="UIButtonQLCacThuocTinh:" destination="OEd-cG-9Od" eventType="touchUpInside" id="QPb-nM-qAR"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="YOb-Bt-tPZ" firstAttribute="leading" secondItem="HEN-4E-qg4" secondAttribute="leading" id="9DI-4b-v9v"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YOb-Bt-tPZ" secondAttribute="bottom" id="nwS-eD-hcH"/>
+                                                        <constraint firstItem="YOb-Bt-tPZ" firstAttribute="top" secondItem="HEN-4E-qg4" secondAttribute="top" id="snV-K4-0uw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YOb-Bt-tPZ" secondAttribute="trailing" id="vTt-d1-2eA"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                                <connections>
+                                                    <outlet property="UIButtonEdit" destination="YOb-Bt-tPZ" id="iRP-yf-Vvk"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-eP-ycT">
+                                        <rect key="frame" x="376" y="10" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6Yf-3v-9St"/>
+                                            <constraint firstAttribute="width" constant="30" id="i03-di-kCT"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="UIButtonTouchUpInsideAddAttributeHeader:" destination="OEd-cG-9Od" eventType="touchUpInside" id="nb2-dW-Qwb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9zq-a8-bWj" firstAttribute="top" secondItem="A0e-eP-ycT" secondAttribute="bottom" constant="3.5" id="BYy-ov-XyF"/>
+                                    <constraint firstItem="A0e-eP-ycT" firstAttribute="top" secondItem="u9D-su-97K" secondAttribute="top" constant="10" id="E0N-lZ-qoi"/>
+                                    <constraint firstItem="9zq-a8-bWj" firstAttribute="centerX" secondItem="u9D-su-97K" secondAttribute="centerX" id="Px6-cJ-ow9"/>
+                                    <constraint firstAttribute="bottom" secondItem="9zq-a8-bWj" secondAttribute="bottom" constant="-1" id="TIy-ng-kfn"/>
+                                    <constraint firstAttribute="trailing" secondItem="9zq-a8-bWj" secondAttribute="trailing" constant="8" id="TT6-Iw-ZgY"/>
+                                    <constraint firstAttribute="trailing" secondItem="A0e-eP-ycT" secondAttribute="trailing" constant="8" id="fML-s9-aXs"/>
+                                    <constraint firstItem="9zq-a8-bWj" firstAttribute="leading" secondItem="u9D-su-97K" secondAttribute="leading" constant="8" id="mG3-ee-XMB"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2A-0o-1QV">
+                                <rect key="frame" x="0.0" y="724" width="414" height="76"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-uY-W5b">
+                                        <rect key="frame" x="8" y="8" width="398" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iN-JQ-P5W">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="54"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Lưu lại">
+                                                    <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVp-gc-Bia">
+                                                <rect key="frame" x="203" y="0.0" width="195" height="54"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Hủy">
+                                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="dvE-uY-W5b" firstAttribute="leading" secondItem="O2A-0o-1QV" secondAttribute="leading" constant="8" id="4cg-mw-rrG"/>
+                                    <constraint firstAttribute="height" constant="76" id="IAf-9O-HwL"/>
+                                    <constraint firstAttribute="bottom" secondItem="dvE-uY-W5b" secondAttribute="bottom" constant="14" id="fcx-dX-PA7"/>
+                                    <constraint firstAttribute="trailing" secondItem="dvE-uY-W5b" secondAttribute="trailing" constant="8" id="iTy-4l-nYM"/>
+                                    <constraint firstItem="dvE-uY-W5b" firstAttribute="top" secondItem="O2A-0o-1QV" secondAttribute="top" constant="8" id="y6p-52-1G6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="O2A-0o-1QV" firstAttribute="leading" secondItem="ItM-qs-axr" secondAttribute="leading" id="21v-U0-lT9"/>
+                            <constraint firstItem="coU-no-GG3" firstAttribute="top" secondItem="1BH-JO-o3G" secondAttribute="top" constant="30" id="24J-h9-clf"/>
+                            <constraint firstAttribute="bottom" secondItem="u9D-su-97K" secondAttribute="bottom" constant="76" id="2MR-HK-lj0"/>
+                            <constraint firstItem="u9D-su-97K" firstAttribute="trailing" secondItem="ItM-qs-axr" secondAttribute="trailing" id="3Nc-nF-JYe"/>
+                            <constraint firstItem="u9D-su-97K" firstAttribute="top" secondItem="coU-no-GG3" secondAttribute="bottom" id="65B-8S-utp"/>
+                            <constraint firstItem="O2A-0o-1QV" firstAttribute="trailing" secondItem="ItM-qs-axr" secondAttribute="trailing" id="81u-op-10k"/>
+                            <constraint firstItem="u9D-su-97K" firstAttribute="width" secondItem="1BH-JO-o3G" secondAttribute="width" id="PYu-Bg-KSc"/>
+                            <constraint firstItem="ItM-qs-axr" firstAttribute="trailing" secondItem="coU-no-GG3" secondAttribute="trailing" id="cU3-6n-R6r"/>
+                            <constraint firstItem="coU-no-GG3" firstAttribute="leading" secondItem="1BH-JO-o3G" secondAttribute="leading" id="fci-nK-6pN"/>
+                            <constraint firstItem="u9D-su-97K" firstAttribute="leading" secondItem="ItM-qs-axr" secondAttribute="leading" id="kA8-4l-bif"/>
+                            <constraint firstItem="u9D-su-97K" firstAttribute="centerX" secondItem="1BH-JO-o3G" secondAttribute="centerX" id="sah-fi-jSB"/>
+                            <constraint firstAttribute="bottom" secondItem="O2A-0o-1QV" secondAttribute="bottom" id="yvg-Nk-0xW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ItM-qs-axr"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="800"/>
+                    <connections>
+                        <outlet property="UIButtonAddHeaderAttribute" destination="A0e-eP-ycT" id="KAg-gK-BiC"/>
+                        <outlet property="UICollectionViewHeaderAttributes" destination="9zq-a8-bWj" id="oen-6W-v6F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZG-LZ-EiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4237.68115942029" y="-753.34821428571422"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
