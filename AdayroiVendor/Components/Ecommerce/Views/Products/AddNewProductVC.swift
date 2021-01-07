@@ -74,6 +74,7 @@ struct CellHeaderAttribute {
             } else {
                 cell!.backgroundColor = UIColor.white
             }
+            cell?.UIButtonEdit.tag = indexPath.section
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
@@ -82,6 +83,7 @@ struct CellHeaderAttribute {
             } else {
                 cell!.backgroundColor = UIColor.white
             }
+            cell?.UIButtonDelete.tag = indexPath.section
             return cell!
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
@@ -250,9 +252,49 @@ class AddNewProductVC: UIViewController {
     }
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            textField.tag=sender.tag
+            textField.text=self.headerAttributeTitleProduct[sender.tag][1].title
+            //textField.isSecureTextEntry = true
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            let content=String(describing: textField.text!)
+            
+            self.headerAttributeTitleProduct[textField.tag][1].title=content;
+            self.UICollectionViewHeaderAttributes.delegate = self
+            self.UICollectionViewHeaderAttributes.dataSource = self
+            self.UICollectionViewHeaderAttributes.reloadData()
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     @IBAction func UIButtonDeleteHeadAtrribute(_ sender: UIButton) {
+        
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            
+            self.headerAttributeTitleProduct.remove(at: sender.tag)
+            self.UICollectionViewHeaderAttributes.delegate = self
+            self.UICollectionViewHeaderAttributes.dataSource = self
+            self.UICollectionViewHeaderAttributes.reloadData()
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
+        
+        
     }
     @IBAction func UIButtonTouchUpInsideEditImageDescriptionProduct(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag
