@@ -7,17 +7,28 @@
 //
 
 import UIKit
+struct CellWidthHeight {
+    var width:[Int]
+    var headHeight:Int
+    var bodyHeight:Int
+    init(width:[Int],headHeight:Int,bodyHeight:Int) {
+           self.width=width
+           self.headHeight=headHeight
+        self.bodyHeight=bodyHeight
+       }
+}
 
 class HeaderAttributeCustomCollectionViewLayout: UICollectionViewLayout {
 
-    let numberOfColumns = 4
+    
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
 
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var itemsSize = [CGSize]()
     var contentSize: CGSize = .zero
-
+    var cellWidthHeight:CellWidthHeight=CellWidthHeight(width: [70,100,100,100], headHeight: 30,bodyHeight: 30)
+    let numberOfColumns = 4
     override func prepare() {
         guard let collectionView = collectionView else {
             return
@@ -101,10 +112,17 @@ extension HeaderAttributeCustomCollectionViewLayout {
             var sectionAttributes: [UICollectionViewLayoutAttributes] = []
 
             for index in 0..<numberOfColumns {
+                var width=self.cellWidthHeight.width[index]
+                var height=self.cellWidthHeight.bodyHeight
+                if(section==0){
+                    width=self.cellWidthHeight.width[index]
+                    height=self.cellWidthHeight.headHeight
+                }
+                
                 let itemSize = itemsSize[index]
                 let indexPath = IndexPath(item: index, section: section)
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                attributes.frame = CGRect(x: xOffset, y: yOffset, width: itemSize.width, height: itemSize.height).integral
+                attributes.frame = CGRect(x: xOffset, y: yOffset, width: CGFloat(width), height: CGFloat(height)).integral
 
                 if section == 0 && index == 0 {
                     // First cell should be on top
@@ -127,7 +145,7 @@ extension HeaderAttributeCustomCollectionViewLayout {
 
                 sectionAttributes.append(attributes)
 
-                xOffset += itemSize.width
+                xOffset += CGFloat(width)
                 column += 1
 
                 if column == numberOfColumns {

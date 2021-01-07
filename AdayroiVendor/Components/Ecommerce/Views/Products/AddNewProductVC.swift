@@ -160,8 +160,8 @@ class AddNewProductVC: UIViewController {
     ]
     var headerAttributeTitleProduct = [[
         CellHeaderAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
-        CellHeaderAttribute(title: "title",is_head: true,columnType: "", columnName: ""),
-        CellHeaderAttribute(title: "note",is_head: true,columnType: "", columnName: ""),
+        CellHeaderAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
+        CellHeaderAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
         CellHeaderAttribute(title: "Hành động",is_head: true,columnType: "",columnName: ""),
         
         
@@ -867,5 +867,4 @@ extension AddNewProductVC: ModalSelectColorRutDelegate {
     
     
 }
-
 
