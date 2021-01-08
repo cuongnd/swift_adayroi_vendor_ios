@@ -21,6 +21,7 @@ class OtherAttributeEditVC: UIViewController {
     @IBOutlet weak var UITextFieldSoTien: UITextField!
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     var customMask = TLCustomMask()
+    var otherAttributeHeadIndex:Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         /*

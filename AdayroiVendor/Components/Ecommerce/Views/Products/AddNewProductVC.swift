@@ -849,13 +849,13 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonTouchUpInsideAddOtherAttributeProduct(_ sender: UIButton) {
         
         let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
-                otherAttributeEditVC.modalAttributeHeadIndexDelegate = self
-               otherAttributeEditVC.attributeHeadIndex = sender.tag
-               otherAttributeEditVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+                otherAttributeEditVC.delegate = self
+               otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
+               //otherAttributeEditVC.otherAttributeHead=self.headerAttributeTitleProduct[sender.tag]
                self.present(otherAttributeEditVC, animated: true, completion: nil)
         
         
-        
+        /*
         
         
         alertController=UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
@@ -897,6 +897,7 @@ class AddNewProductVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+        */
         
         
     }
@@ -1258,6 +1259,15 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
        self.UICollectionViewHeaderAttributes.dataSource = self
        self.UICollectionViewHeaderAttributes.reloadData()
     }
+    
+    
+}
+
+extension AddNewProductVC: OtherAttributeEditDelegate {
+    func refreshData() {
+        
+    }
+    
     
     
 }
