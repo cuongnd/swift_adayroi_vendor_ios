@@ -848,6 +848,16 @@ class AddNewProductVC: UIViewController {
     }
     @IBAction func UIButtonTouchUpInsideAddOtherAttributeProduct(_ sender: UIButton) {
         
+        let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
+                otherAttributeEditVC.modalAttributeHeadIndexDelegate = self
+               otherAttributeEditVC.attributeHeadIndex = sender.tag
+               otherAttributeEditVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+               self.present(otherAttributeEditVC, animated: true, completion: nil)
+        
+        
+        
+        
+        
         alertController=UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
             self.alertTextField = textField
@@ -855,6 +865,7 @@ class AddNewProductVC: UIViewController {
             //textField.isSecureTextEntry = true
             textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
         }
+        
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
             let content=String(describing: textField.text!)

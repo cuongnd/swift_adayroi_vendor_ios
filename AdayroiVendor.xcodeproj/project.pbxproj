@@ -12,6 +12,7 @@
 		0413939E25A70534002D4149 /* QlCacThuocTinhVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */; };
 		041393A025A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939F25A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift */; };
 		041393A425A89D89002D4149 /* OtherAttributeCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */; };
+		041393A625A8A17D002D4149 /* OtherAttributeEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393A525A8A17D002D4149 /* OtherAttributeEditVC.swift */; };
 		0443F6A82590D834005D5637 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A72590D834005D5637 /* HomeVC2.swift */; };
 		0443F6AA2590F30A005D5637 /* GetDoanhThuTheoThangResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */; };
 		0443F6AC2590F370005D5637 /* DoanhThuThangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */; };
@@ -232,6 +233,7 @@
 		0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlCacThuocTinhVC.swift; sourceTree = "<group>"; };
 		0413939F25A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlCacThuocTinhCollectionViewLayout.swift; sourceTree = "<group>"; };
 		041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherAttributeCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		041393A525A8A17D002D4149 /* OtherAttributeEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherAttributeEditVC.swift; sourceTree = "<group>"; };
 		0443F6A72590D834005D5637 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC2.swift; sourceTree = "<group>"; };
 		0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDoanhThuTheoThangResponseModel.swift; sourceTree = "<group>"; };
 		0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoanhThuThangModel.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */,
 				0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */,
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
+				041393A525A8A17D002D4149 /* OtherAttributeEditVC.swift */,
 				0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */,
 				0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */,
 				041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */,
@@ -1547,6 +1550,7 @@
 				C8C99DC62488D77E00B5C187 /* AppDelegate.swift in Sources */,
 				0443F7302592DD0E005D5637 /* DataTableFixedColumnType.swift in Sources */,
 				0443F7842594CC7A005D5637 /* TaiKhoanNganHangModel.swift in Sources */,
+				041393A625A8A17D002D4149 /* OtherAttributeEditVC.swift in Sources */,
 				0443F7532592E109005D5637 /* SwiftDataTableDataSourceAndDelegate.swift in Sources */,
 				0C42DC19257BD9B5007009E4 /* ADRTableCart.swift in Sources */,
 				0443F72A2592DA7C005D5637 /* DataTableValueType.swift in Sources */,
