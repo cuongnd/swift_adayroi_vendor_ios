@@ -637,6 +637,11 @@ class AddNewProductVC: UIViewController {
             self.UICollectionViewHeaderAttributes.delegate = self
             self.UICollectionViewHeaderAttributes.dataSource = self
             self.UICollectionViewHeaderAttributes.reloadData()
+            
+            // IMPORTANT: this is the key to make your cells auto-sizing
+            if let collectionViewLayout = self.UICollectionViewHeaderAttributes.collectionViewLayout as? UICollectionViewFlowLayout {
+                collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            }
             //compare the current password and do action here
         }
         confirmAction.isEnabled = false
