@@ -121,6 +121,78 @@ struct CellHeaderAttribute {
         }
     }
 }
+struct OrtherHeadAttribute {
+    var title:String!
+    var is_head:Bool!
+    var columnType:String!
+    var columnName:String!
+    var list_attribute:[[CellAttribute]]=[[CellAttribute]]()
+    init(title:String,is_head:Bool,columnType:String,columnName:String) {
+        self.title=title
+        self.is_head=is_head
+        self.columnType=columnType
+        self.columnName=columnName
+    }
+    
+    func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
+        if(self.is_head){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            cell!.contentLabel.text=String(self.title)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }else if(!self.is_head && self.columnName == "stt"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            cell!.contentLabel.text=String(indexPath.section)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }else if(!self.is_head && self.columnName == "edit"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditHeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? EditHeaderAttributeCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            cell?.UIButtonEdit.tag = indexPath.section
+            return cell!
+        }else if(!self.is_head && self.columnName == "edit_attributes"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditAttributesCollectionViewCell.reuseID, for: indexPath) as? EditAttributesCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            cell?.UIButtonEdit.tag = indexPath.section
+            return cell!
+        }else if(!self.is_head && self.columnName == "delete"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            cell?.UIButtonDelete.tag = indexPath.section
+            return cell!
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            cell!.contentLabel.text=String(self.title)
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            return cell!
+        }
+    }
+}
+
 struct HeaderAttributeModel {
     var title: String
     var price: Double
@@ -225,7 +297,18 @@ class AddNewProductVC: UIViewController {
         
         
         ]]
-    
+    var OrderheaderAttributeTitleProduct = [[
+           CellHeaderAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Sửa thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+           CellHeaderAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+           
+           
+           ]]
+       
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var UIButtonPickupColor: UIButton!
@@ -235,6 +318,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonLinkVideo: UIButton!
     @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
     @IBOutlet weak var UICollectionViewListLinkVideo: UICollectionView!
+    @IBOutlet weak var UICollectionViewOtherHeadAttribute: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -917,6 +1001,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return self.list_product_image.count
         }else if(collectionView==self.UICollectionViewListLinkVideo){
             return self.list_video_link.count
+        }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
+            return self.OrderheaderAttributeTitleProduct[0].count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct[0].count

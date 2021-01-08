@@ -2876,6 +2876,7 @@
                         <outlet property="UICollectionViewHeaderAttributes" destination="Stt-d9-mqj" id="sl8-7Z-4yf"/>
                         <outlet property="UICollectionViewListLinkVideo" destination="0ak-RK-kWm" id="9YP-9r-xkw"/>
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
+                        <outlet property="UICollectionViewOtherHeadAttribute" destination="8pi-YN-mPb" id="wIQ-C2-Kq4"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
                     </connections>
