@@ -189,6 +189,7 @@ class QlCacThuocTinhVC: UIViewController {
             textField.tag=sender.tag
             textField.text=String(self.AttributeNameList[sender.tag][2].title)
             //textField.isSecureTextEntry = true
+            textField.keyboardType = .numberPad
             textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
@@ -206,7 +207,6 @@ class QlCacThuocTinhVC: UIViewController {
             self.UICollectionViewAttributes.reloadData()
             //compare the current password and do action here
         }
-        confirmAction.isEnabled=false
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -248,6 +248,7 @@ class QlCacThuocTinhVC: UIViewController {
             textField.placeholder = "Giá"
             //textField.isSecureTextEntry = true
             self.alertTextFieldPrice = textField
+            textField.keyboardType = .numberPad
             textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
