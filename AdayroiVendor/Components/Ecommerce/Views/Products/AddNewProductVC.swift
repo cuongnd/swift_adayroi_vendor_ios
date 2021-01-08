@@ -298,7 +298,7 @@ class AddNewProductVC: UIViewController {
         
         
         ]]
-    var OrderheaderAttributeTitleProduct = [[
+    var orderheaderAttributeTitleProduct = [[
            CellOrtherHeadAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
@@ -369,6 +369,9 @@ class AddNewProductVC: UIViewController {
         
         self.UICollectionViewHeaderAttributes.delegate = self
         self.UICollectionViewHeaderAttributes.dataSource = self
+        self.UICollectionViewOtherHeadAttribute.delegate = self
+        self.UICollectionViewOtherHeadAttribute.dataSource = self
+        
         
     }
     
@@ -849,7 +852,7 @@ class AddNewProductVC: UIViewController {
             if(content==""){
                 return
             }
-            self.OrderheaderAttributeTitleProduct.append([
+            self.orderheaderAttributeTitleProduct.append([
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
                 CellOrtherHeadAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
@@ -1032,7 +1035,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         if(collectionView==self.UICollectionViewListProductImage){
             return 1
         }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
-            return self.OrderheaderAttributeTitleProduct.count
+            return self.orderheaderAttributeTitleProduct.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct.count
@@ -1050,7 +1053,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         }else if(collectionView==self.UICollectionViewListLinkVideo){
             return self.list_video_link.count
         }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
-            return self.OrderheaderAttributeTitleProduct[0].count
+            return self.orderheaderAttributeTitleProduct[0].count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct[0].count
@@ -1098,7 +1101,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             
         }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
             // swiftlint:disable force_cast
-            let cellOrtherHeadAttribute:CellOrtherHeadAttribute=self.OrderheaderAttributeTitleProduct[indexPath.section][indexPath.row]
+            let cellOrtherHeadAttribute:CellOrtherHeadAttribute=self.orderheaderAttributeTitleProduct[indexPath.section][indexPath.row]
             let cell  = cellOrtherHeadAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
             return cell
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
