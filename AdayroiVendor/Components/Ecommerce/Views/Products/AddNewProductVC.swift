@@ -1031,6 +1031,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
             return 1
+        }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
+            return self.OrderheaderAttributeTitleProduct.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct.count
