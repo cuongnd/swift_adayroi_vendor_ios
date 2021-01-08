@@ -91,13 +91,13 @@ class EditAttributeCollectionViewCell: UICollectionViewCell {
 
 class QlCacThuocTinhVC: UIViewController {
     
-
+    
     var attributeHeadIndex:Int=0
     var attributeHead:[CellHeaderAttribute]=[CellHeaderAttribute]()
     
     @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
-   
+    
     var AttributeNameList = [[
         CellAttribute(title: "Stt", is_head: true,columnType: "", columnName: ""),
         CellAttribute(title: "Title", is_head: true,columnType: "", columnName: ""),
@@ -113,7 +113,7 @@ class QlCacThuocTinhVC: UIViewController {
     
     @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
     
-      var modalAttributeHeadIndexDelegate: ModalAttributeHeadIndexDelegate!
+    var modalAttributeHeadIndexDelegate: ModalAttributeHeadIndexDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -135,7 +135,7 @@ class QlCacThuocTinhVC: UIViewController {
         if(self.attributeHead[3].list_attribute.count>0){
             for i in 0..<self.attributeHead[3].list_attribute.count
             {
-             AttributeNameList.append(attributeHead[3].list_attribute[i]);
+                AttributeNameList.append(attributeHead[3].list_attribute[i]);
             }
             
             
@@ -151,27 +151,26 @@ class QlCacThuocTinhVC: UIViewController {
     }
     var alertTextFieldTitle: UITextField!
     @objc func textFieldDidChangeTitle(){
-
         if let e = alertTextFieldTitle.text {
             let alertButton = alertController.actions[0]
-            alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
+            alertButton.isEnabled = (e.trimmingCharacters(in: .whitespacesAndNewlines)=="" || self.alertTextFieldPrice.text!.trimmingCharacters(in: .whitespacesAndNewlines)=="") ? false : true
         }
     }
-    @objc var alertTextFieldPrice: UITextField!
-       @objc func textFieldDidChangePrice(){
-
-           if let e = alertTextFieldTitle.text {
-               let alertButton = alertController.actions[0]
-               alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
-           }
-       }
+    var alertTextFieldPrice: UITextField!
+    @objc func textFieldDidChangePrice(){
+        
+        if let e = alertTextFieldTitle.text {
+            let alertButton = alertController.actions[0]
+            alertButton.isEnabled = (e.trimmingCharacters(in: .whitespacesAndNewlines)=="" || self.alertTextFieldTitle.text!.trimmingCharacters(in: .whitespacesAndNewlines)=="") ? false : true
+        }
+    }
     var alertController:UIAlertController=UIAlertController()
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
         
         alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
-             self.alertTextFieldTitle = textField
+            self.alertTextFieldTitle = textField
             textField.placeholder = "Thuộc tính"
             textField.tag=sender.tag
             textField.text=self.AttributeNameList[sender.tag][1].title
@@ -179,12 +178,12 @@ class QlCacThuocTinhVC: UIViewController {
             textField.addTarget(self, action: #selector(self.textFieldDidChangeTitle), for: UIControl.Event.editingChanged)
         }
         alertController.addTextField { textField in
-            self.alertTextFieldPrice = textField
             textField.placeholder = "Giá"
+            self.alertTextFieldPrice = textField
             textField.tag=sender.tag
             textField.text=String(self.AttributeNameList[sender.tag][2].title)
             //textField.isSecureTextEntry = true
-            textField.addTarget(self, action: #selector(setter: self.alertTextFieldPrice), for: UIControl.Event.editingChanged)
+            textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             let alertController = alertController
@@ -193,9 +192,7 @@ class QlCacThuocTinhVC: UIViewController {
             
             let contentTitle=String(describing: textFieldTitle!.text!)
             let contentPrice=String(describing: textFieldPrice!.text!)
-            if(contentTitle == "" || contentPrice == ""){
-                return
-            }
+            
             self.AttributeNameList[textFieldTitle!.tag][1].title=contentTitle;
             self.AttributeNameList[textFieldPrice!.tag][2].title=contentPrice;
             self.UICollectionViewAttributes.delegate = self
@@ -203,7 +200,7 @@ class QlCacThuocTinhVC: UIViewController {
             self.UICollectionViewAttributes.reloadData()
             //compare the current password and do action here
         }
-        confirmAction.isEnabled = false
+        confirmAction.isEnabled=false
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -230,19 +227,23 @@ class QlCacThuocTinhVC: UIViewController {
         
         
     }
-   
-
-   
+    
+    
+    
     @IBAction func UIButtonTouchUpInsideAddAttributeAndPrice(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Thêm thuộc tính và giá", message: "", preferredStyle: .alert)
+        alertController = UIAlertController(title: "Thêm thuộc tính và giá", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
+            self.alertTextFieldTitle = textField
             textField.placeholder = "Thuộc tính"
             //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(self.textFieldDidChangeTitle), for: UIControl.Event.editingChanged)
         }
         alertController.addTextField { textField in
-                   textField.placeholder = "Giá"
-                   //textField.isSecureTextEntry = true
-               }
+            textField.placeholder = "Giá"
+            //textField.isSecureTextEntry = true
+            self.alertTextFieldPrice = textField
+            textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
+        }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             let textFieldTitle = alertController?.textFields?.first
             let textFieldPrice = alertController?.textFields?.last
@@ -262,6 +263,7 @@ class QlCacThuocTinhVC: UIViewController {
             self.UICollectionViewAttributes.reloadData()
             //compare the current password and do action here
         }
+        confirmAction.isEnabled=false
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -269,13 +271,13 @@ class QlCacThuocTinhVC: UIViewController {
         
     }
     @IBAction func UIButtonCancel(_ sender: UIButton) {
-         dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func UIButtonSave(_ sender: UIButton) {
         self.AttributeNameList.remove(at: 0)
         self.modalAttributeHeadIndexDelegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellAttributeList: self.AttributeNameList)
-               dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -293,7 +295,7 @@ extension QlCacThuocTinhVC {
     
     
     
-   
+    
     
     func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -325,7 +327,7 @@ extension QlCacThuocTinhVC {
             }
         }
     }
-  
+    
     
 }
 
@@ -347,14 +349,14 @@ extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return self.AttributeNameList[0].count
+        return self.AttributeNameList[0].count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cellAttribute:CellAttribute=self.AttributeNameList[indexPath.section][indexPath.row]
-                   let cell  = cellAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
-                   return cell
+        let cellAttribute:CellAttribute=self.AttributeNameList[indexPath.section][indexPath.row]
+        let cell  = cellAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
+        return cell
         
         
         
