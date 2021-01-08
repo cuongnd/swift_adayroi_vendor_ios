@@ -2600,7 +2600,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="NZH-sV-G8X" customClass="ImageCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCollectionViewCell" id="NZH-sV-G8X" customClass="VideoCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fdx-7t-fvM">
@@ -2622,7 +2622,7 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="UIButtonDeleteImage:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="NsN-5d-Cfp"/>
+                                                                <action selector="UIButtonTouchUpInsideDeleteLinkVideo:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="Yt8-DQ-AWR"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIm-3u-R9f">
@@ -2646,7 +2646,7 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="UIButtonTouchUpInsideEditImageDescriptionProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="SmT-8p-zi4"/>
+                                                                <action selector="UIButtonTouchUpInsideEditLinkVideoCaption:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="FVf-Gq-lPg"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -2686,7 +2686,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButtonClickAddImage:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="N5a-ch-BDn"/>
+                                            <action selector="UIButtonAddNewLinkVideo:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="5V7-9w-tXE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2870,9 +2870,11 @@
                         <outlet property="UIButtonAddHeaderAttribute" destination="DgX-DU-fZL" id="Mwu-AL-pPJ"/>
                         <outlet property="UIButtonAddImage" destination="VA9-qu-Qtz" id="exs-Lo-jJr"/>
                         <outlet property="UIButtonAddImageColor" destination="xyS-NH-Poo" id="Xfi-nt-LFZ"/>
+                        <outlet property="UIButtonLinkVideo" destination="6Au-Kg-C3i" id="q3A-ag-fLL"/>
                         <outlet property="UIButtonPickupColor" destination="7Vr-8d-VeV" id="Bgt-1u-Uvc"/>
                         <outlet property="UICollectionViewColorProducts" destination="SJG-JA-0s4" id="4tD-He-jix"/>
                         <outlet property="UICollectionViewHeaderAttributes" destination="Stt-d9-mqj" id="sl8-7Z-4yf"/>
+                        <outlet property="UICollectionViewListLinkVideo" destination="0ak-RK-kWm" id="9YP-9r-xkw"/>
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>

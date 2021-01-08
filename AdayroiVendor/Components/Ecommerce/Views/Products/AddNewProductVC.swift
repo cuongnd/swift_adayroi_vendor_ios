@@ -37,6 +37,19 @@ struct ImageProductModel {
     }
 }
 
+struct VideoProductModel {
+    var video_link: String
+    var video_caption: String
+    var video_image: String
+    init(video_link:String,video_caption:String,video_image:String) {
+        self.video_link=video_link
+        self.video_caption=video_caption
+        self.video_image=video_image
+    }
+}
+
+
+
 struct CellHeaderAttribute {
     var title:String!
     var is_head:Bool!
@@ -152,6 +165,13 @@ class EditAttributesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEdit: UIButton!
     static let reuseID = "EditAttributesCollectionViewCell"
 }
+class VideoCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIImageViewImageUpload: UIImageView!
+    @IBOutlet weak var UIButtonDeleteImage: UIButton!
+    @IBOutlet weak var UILabelDescription: UILabel!
+    @IBOutlet weak var UIButtonProductImageDescription: UIButton!
+    static let reuseID = "VideoCollectionViewCell"
+}
 class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
@@ -178,6 +198,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
     var list_product_image:[ImageProductModel]=[ImageProductModel]()
+    var list_video_link:[VideoProductModel]=[VideoProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
     var list_header_attribute:[HeaderAttributeModel]=[HeaderAttributeModel]()
     
@@ -211,7 +232,9 @@ class AddNewProductVC: UIViewController {
     
     @IBOutlet weak var UICollectionViewHeaderAttributes: UICollectionView!
     
+    @IBOutlet weak var UIButtonLinkVideo: UIButton!
     @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
+    @IBOutlet weak var UICollectionViewListLinkVideo: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -252,6 +275,7 @@ class AddNewProductVC: UIViewController {
         cornerRadius(viewName: self.UIButtonAddImageColor, radius: self.UIButtonAddImageColor.frame.height / 2)
         cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
         cornerRadius(viewName: self.UIButtonAddHeaderAttribute, radius: self.UIButtonAddHeaderAttribute.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonLinkVideo, radius: self.UIButtonLinkVideo.frame.height / 2)
         
         multiImagePicker.imagePickerDelegate = self
         multiImageColorPicker.imagePickerDelegate = self
@@ -652,6 +676,78 @@ class AddNewProductVC: UIViewController {
          
         
     }
+    var alertTextFieldLinkVideo: UITextField!
+    @objc func textFieldDidChangeLinkVideo(){
+
+        if let e = alertTextFieldLinkVideo.text {
+            let alertButton = alertController.actions[0]
+            let video_link = e.trimmingCharacters(in: .whitespacesAndNewlines)
+            print("video_link \(video_link)")
+            print("video_link.youtubeID \(video_link.youtubeID)")
+            
+            if(video_link.youtubeID != nil){
+                alertButton.isEnabled=true
+            }
+        }
+    }
+    @IBAction func UIButtonAddNewLinkVideo(_ sender: UIButton) {
+        alertController=UIAlertController(title: "Link video youtube", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            self.alertTextFieldLinkVideo = textField
+            textField.placeholder = "Link Video"
+            //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(self.textFieldDidChangeLinkVideo), for: UIControl.Event.editingChanged)
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            let video_link=String(describing: textField.text!)
+            if(video_link==""){
+                return
+            }
+            let video_image="https://img.youtube.com/vi/\(video_link.youtubeID!)/hqdefault.jpg"
+            
+            print("video_image \(video_image)")
+            let videoProductModel:VideoProductModel=VideoProductModel(video_link: video_link, video_caption: "", video_image: video_image)
+           self.list_video_link.append(videoProductModel)
+            
+            self.UICollectionViewListLinkVideo.delegate = self
+            self.UICollectionViewListLinkVideo.dataSource = self
+            self.UICollectionViewListLinkVideo.reloadData()
+          }
+            //compare the current password and do action here
+        
+        confirmAction.isEnabled = false
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    @IBAction func UIButtonTouchUpInsideDeleteLinkVideo(_ sender: UIButton) {
+    }
+    @IBAction func UIButtonTouchUpInsideEditLinkVideoCaption(_ sender: UIButton) {
+        self.productImageDescriptionChanging=sender.tag
+        let alertController = UIAlertController(title: "Mô tả video", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            //textField.isSecureTextEntry = true
+            textField.tag=sender.tag
+            textField.text=self.list_video_link[sender.tag].video_caption
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("video_caption \(String(describing: textField.text))")
+            self.list_video_link[textField.tag].video_caption=String(describing: textField.text!)
+            self.UICollectionViewListLinkVideo.delegate = self
+            self.UICollectionViewListLinkVideo.dataSource = self
+            self.UICollectionViewListLinkVideo.reloadData()
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     
     
@@ -819,6 +915,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
             return self.list_product_image.count
+        }else if(collectionView==self.UICollectionViewListLinkVideo){
+            return self.list_video_link.count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct[0].count
@@ -846,6 +944,24 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
+        }else if(collectionView==self.UICollectionViewListLinkVideo){
+            let video_image:String=self.list_video_link[indexPath.row].video_image
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.reuseID, for: indexPath) as? VideoCollectionViewCell else {
+                
+                return UICollectionViewCell()
+            }
+            cell.UIImageViewImageUpload.sd_setImage(with: URL(string: video_image), placeholderImage: UIImage(named: "placeholder_image"))
+
+            cell.UIButtonDeleteImage.tag=indexPath.row
+            cell.UILabelDescription.text=self.list_video_link[indexPath.row].video_caption
+            cell.UIButtonProductImageDescription.tag=indexPath.row
+            cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
+            cornerRadius(viewName: cell.UIButtonProductImageDescription, radius: cell.UIButtonProductImageDescription.frame.height / 2)
+            
+            //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
+            return cell
+            
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             // swiftlint:disable force_cast
             
@@ -887,6 +1003,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         print("hello CGSize")
         if(collectionView==self.UICollectionViewListProductImage){
+            return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
+        }else if(collectionView==self.UICollectionViewListLinkVideo){
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("hello343434")
@@ -997,5 +1115,19 @@ extension AddNewProductVC: ModalSelectColorRutDelegate {
     }
     
     
+}
+extension String {
+    var youtubeID: String? {
+        let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
+
+        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let range = NSRange(location: 0, length: count)
+
+        guard let result = regex?.firstMatch(in: self, range: range) else {
+            return nil
+        }
+
+        return (self as NSString).substring(with: result.range)
+    }
 }
 
