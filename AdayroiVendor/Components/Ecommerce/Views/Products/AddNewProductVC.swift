@@ -42,6 +42,7 @@ struct CellHeaderAttribute {
     var is_head:Bool!
     var columnType:String!
     var columnName:String!
+    var list_attribute:[[CellAttribute]]=[[CellAttribute]]()
     init(title:String,is_head:Bool,columnType:String,columnName:String) {
         self.title=title
         self.is_head=is_head
@@ -603,9 +604,9 @@ class AddNewProductVC: UIViewController {
             alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
         }
     }
-    var alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+    var alertController:UIAlertController=UIAlertController()
     @IBAction func UIButtonTouchUpInsideAddAttributeHeader(_ sender: UIButton) {
-        
+        alertController=UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
             self.alertTextField = textField
             textField.placeholder = ""
@@ -959,7 +960,17 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 
 extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
     func refreshData(AttributeHeadIndex: Int, CellAttributeList: [[CellAttribute]]) {
-        print("CellAttributeList \(CellAttributeList)")
+        var list_attribute:[String]=[String]()
+        for i in 0..<CellAttributeList.count
+           {
+            list_attribute.append("\(CellAttributeList[i][1].title!)(\(CellAttributeList[i][2].title!))");
+           }
+        let joined2 = list_attribute.joined(separator: ", ")
+        self.headerAttributeTitleProduct[AttributeHeadIndex][3].title=joined2
+        self.headerAttributeTitleProduct[AttributeHeadIndex][3].list_attribute=CellAttributeList
+        self.UICollectionViewHeaderAttributes.delegate = self
+       self.UICollectionViewHeaderAttributes.dataSource = self
+       self.UICollectionViewHeaderAttributes.reloadData()
     }
     
     

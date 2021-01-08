@@ -128,10 +128,19 @@ class QlCacThuocTinhVC: UIViewController {
         cornerRadius(viewName: self.UIButtonAddHeaderAttribute, radius: self.UIButtonAddHeaderAttribute.frame.height / 2)
         
         
-        
+        self.AttributeNameList[0][1].title = self.attributeHead[1].title!
         self.UICollectionViewAttributes.delegate = self
         self.UICollectionViewAttributes.dataSource = self
         self.UILabelQLCacThuocTinh.text="Quản lý các thuộc tính:\(self.attributeHead[1].title!)";
+        if(self.attributeHead[3].list_attribute.count>0){
+            for i in 0..<self.attributeHead[3].list_attribute.count
+            {
+             AttributeNameList.append(attributeHead[3].list_attribute[i]);
+            }
+            
+            
+        }
+        
         
     }
     
@@ -140,21 +149,42 @@ class QlCacThuocTinhVC: UIViewController {
         
         
     }
+    var alertTextFieldTitle: UITextField!
+    @objc func textFieldDidChangeTitle(){
+
+        if let e = alertTextFieldTitle.text {
+            let alertButton = alertController.actions[0]
+            alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
+        }
+    }
+    @objc var alertTextFieldPrice: UITextField!
+       @objc func textFieldDidChangePrice(){
+
+           if let e = alertTextFieldTitle.text {
+               let alertButton = alertController.actions[0]
+               alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
+           }
+       }
+    var alertController:UIAlertController=UIAlertController()
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
         
-        let alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
+             self.alertTextFieldTitle = textField
             textField.placeholder = "Thuộc tính"
             textField.tag=sender.tag
             textField.text=self.AttributeNameList[sender.tag][1].title
             //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(self.textFieldDidChangeTitle), for: UIControl.Event.editingChanged)
         }
         alertController.addTextField { textField in
+            self.alertTextFieldPrice = textField
             textField.placeholder = "Giá"
             textField.tag=sender.tag
             textField.text=String(self.AttributeNameList[sender.tag][2].title)
             //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(setter: self.alertTextFieldPrice), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             let alertController = alertController
@@ -173,6 +203,7 @@ class QlCacThuocTinhVC: UIViewController {
             self.UICollectionViewAttributes.reloadData()
             //compare the current password and do action here
         }
+        confirmAction.isEnabled = false
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
