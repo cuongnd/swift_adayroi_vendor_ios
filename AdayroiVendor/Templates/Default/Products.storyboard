@@ -2578,7 +2578,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButtonTouchUpInsideAddAttributeHeader:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="tNG-TH-mQ8"/>
+                                            <action selector="UIButtonTouchUpInsideAddOtherAttributeProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="IS7-yb-OBx"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-nx-x4e">
@@ -2870,6 +2870,7 @@
                         <outlet property="UIButtonAddHeaderAttribute" destination="DgX-DU-fZL" id="Mwu-AL-pPJ"/>
                         <outlet property="UIButtonAddImage" destination="VA9-qu-Qtz" id="exs-Lo-jJr"/>
                         <outlet property="UIButtonAddImageColor" destination="xyS-NH-Poo" id="Xfi-nt-LFZ"/>
+                        <outlet property="UIButtonAddOtherAttributeProduct" destination="T0w-Ff-5un" id="dZ2-eg-tVb"/>
                         <outlet property="UIButtonLinkVideo" destination="6Au-Kg-C3i" id="q3A-ag-fLL"/>
                         <outlet property="UIButtonPickupColor" destination="7Vr-8d-VeV" id="Bgt-1u-Uvc"/>
                         <outlet property="UICollectionViewColorProducts" destination="SJG-JA-0s4" id="4tD-He-jix"/>

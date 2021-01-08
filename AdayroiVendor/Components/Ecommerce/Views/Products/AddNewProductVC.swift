@@ -121,7 +121,7 @@ struct CellHeaderAttribute {
         }
     }
 }
-struct OrtherHeadAttribute {
+struct CellOrtherHeadAttribute {
     var title:String!
     var is_head:Bool!
     var columnType:String!
@@ -269,6 +269,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldOriginPrice: UITextField!
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
+    @IBOutlet weak var UIButtonAddOtherAttributeProduct: UIButton!
     var list_product_image:[ImageProductModel]=[ImageProductModel]()
     var list_video_link:[VideoProductModel]=[VideoProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
@@ -298,13 +299,13 @@ class AddNewProductVC: UIViewController {
         
         ]]
     var OrderheaderAttributeTitleProduct = [[
-           CellHeaderAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Sửa thuộc tính",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
-           CellHeaderAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+           CellOrtherHeadAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Sửa thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
            
            
            ]]
@@ -360,6 +361,7 @@ class AddNewProductVC: UIViewController {
         cornerRadius(viewName: self.UIButtonPickupColor, radius: self.UIButtonPickupColor.frame.height / 2)
         cornerRadius(viewName: self.UIButtonAddHeaderAttribute, radius: self.UIButtonAddHeaderAttribute.frame.height / 2)
         cornerRadius(viewName: self.UIButtonLinkVideo, radius: self.UIButtonLinkVideo.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonAddOtherAttributeProduct, radius: self.UIButtonAddOtherAttributeProduct.frame.height / 2)
         
         multiImagePicker.imagePickerDelegate = self
         multiImageColorPicker.imagePickerDelegate = self
@@ -832,6 +834,50 @@ class AddNewProductVC: UIViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
+    @IBAction func UIButtonTouchUpInsideAddOtherAttributeProduct(_ sender: UIButton) {
+        
+        alertController=UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            self.alertTextField = textField
+            textField.placeholder = ""
+            //textField.isSecureTextEntry = true
+            textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            let content=String(describing: textField.text!)
+            if(content==""){
+                return
+            }
+            self.OrderheaderAttributeTitleProduct.append([
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                CellOrtherHeadAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                
+                
+            ]);
+            self.UICollectionViewOtherHeadAttribute.delegate = self
+            self.UICollectionViewOtherHeadAttribute.dataSource = self
+            self.UICollectionViewOtherHeadAttribute.reloadData()
+            
+            // IMPORTANT: this is the key to make your cells auto-sizing
+            if let collectionViewLayout = self.UICollectionViewHeaderAttributes.collectionViewLayout as? UICollectionViewFlowLayout {
+                collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            }
+            //compare the current password and do action here
+        }
+        confirmAction.isEnabled = false
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+        
+    }
     
     
     
@@ -1048,6 +1094,11 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             //cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
             return cell
             
+        }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
+            // swiftlint:disable force_cast
+            let cellOrtherHeadAttribute:CellOrtherHeadAttribute=self.OrderheaderAttributeTitleProduct[indexPath.section][indexPath.row]
+            let cell  = cellOrtherHeadAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
+            return cell
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             // swiftlint:disable force_cast
             
@@ -1092,6 +1143,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
         }else if(collectionView==self.UICollectionViewListLinkVideo){
             return CGSize(width:(UIScreen.main.bounds.width-26)/2, height: 250)
+        }else if(collectionView==self.UICollectionViewHeaderAttributes){
+            return CGSize(width:300, height: 40)
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("hello343434")
             return CGSize(width:300, height: 40)
