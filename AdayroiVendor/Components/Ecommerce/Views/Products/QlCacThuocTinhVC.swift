@@ -153,15 +153,21 @@ class QlCacThuocTinhVC: UIViewController {
     @objc func textFieldDidChangeTitle(){
         if let e = alertTextFieldTitle.text {
             let alertButton = alertController.actions[0]
-            alertButton.isEnabled = (e.trimmingCharacters(in: .whitespacesAndNewlines)=="" || self.alertTextFieldPrice.text!.trimmingCharacters(in: .whitespacesAndNewlines)=="") ? false : true
+            let title=e.trimmingCharacters(in: .whitespacesAndNewlines)
+            let price=self.alertTextFieldPrice.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            print("title:\(title), price:\(price)")
+            alertButton.isEnabled = (title == "" || price == "") ? false : true
         }
     }
     var alertTextFieldPrice: UITextField!
     @objc func textFieldDidChangePrice(){
         
-        if let e = alertTextFieldTitle.text {
+        if let e = alertTextFieldPrice.text {
             let alertButton = alertController.actions[0]
-            alertButton.isEnabled = (e.trimmingCharacters(in: .whitespacesAndNewlines)=="" || self.alertTextFieldTitle.text!.trimmingCharacters(in: .whitespacesAndNewlines)=="") ? false : true
+            let title = self.alertTextFieldTitle.text!.trimmingCharacters(in: .whitespacesAndNewlines);
+            let price=e.trimmingCharacters(in: .whitespacesAndNewlines)
+            print("title:\(title), price:\(price)")
+            alertButton.isEnabled = (title=="" || price=="") ? false : true
         }
     }
     var alertController:UIAlertController=UIAlertController()
