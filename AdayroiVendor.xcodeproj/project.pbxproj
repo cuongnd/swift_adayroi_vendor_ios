@@ -11,6 +11,7 @@
 		0413939C25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */; };
 		0413939E25A70534002D4149 /* QlCacThuocTinhVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */; };
 		041393A025A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413939F25A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift */; };
+		041393A425A89D89002D4149 /* OtherAttributeCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */; };
 		0443F6A82590D834005D5637 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A72590D834005D5637 /* HomeVC2.swift */; };
 		0443F6AA2590F30A005D5637 /* GetDoanhThuTheoThangResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */; };
 		0443F6AC2590F370005D5637 /* DoanhThuThangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */; };
@@ -230,6 +231,7 @@
 		0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAttributeCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlCacThuocTinhVC.swift; sourceTree = "<group>"; };
 		0413939F25A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlCacThuocTinhCollectionViewLayout.swift; sourceTree = "<group>"; };
+		041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherAttributeCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0443F6A72590D834005D5637 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC2.swift; sourceTree = "<group>"; };
 		0443F6A92590F309005D5637 /* GetDoanhThuTheoThangResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDoanhThuTheoThangResponseModel.swift; sourceTree = "<group>"; };
 		0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoanhThuThangModel.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
 				0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */,
 				0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */,
+				041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */,
 				0413939F25A70813002D4149 /* QlCacThuocTinhCollectionViewLayout.swift */,
 			);
 			path = Products;
@@ -1607,6 +1610,7 @@
 				C8C99DC82488D77E00B5C187 /* SceneDelegate.swift in Sources */,
 				0C42DC2C257C6D62007009E4 /* ObjectMapperFrontendProduct.swift in Sources */,
 				04E6CFCD25A1726100C13FA6 /* GetApiRespondeBlogModel.swift in Sources */,
+				041393A425A89D89002D4149 /* OtherAttributeCustomCollectionViewLayout.swift in Sources */,
 				0C42DC3E257F8E8C007009E4 /* ADRTableSetting.swift in Sources */,
 				0C8A566725846C4400CAD7F1 /* GetOrderResponseModel.swift in Sources */,
 				04E6CFD525A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift in Sources */,

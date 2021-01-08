@@ -136,7 +136,7 @@ struct CellOrtherHeadAttribute {
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OtherAttributeCollectionViewCell.reuseID, for: indexPath) as? OtherAttributeCollectionViewCell
             cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -145,7 +145,7 @@ struct CellOrtherHeadAttribute {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "stt"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OtherAttributeCollectionViewCell.reuseID, for: indexPath) as? OtherAttributeCollectionViewCell
             cell!.contentLabel.text=String(indexPath.section)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -154,16 +154,7 @@ struct CellOrtherHeadAttribute {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "edit"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditHeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? EditHeaderAttributeCollectionViewCell
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            cell?.UIButtonEdit.tag = indexPath.section
-            return cell!
-        }else if(!self.is_head && self.columnName == "edit_attributes"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditAttributesCollectionViewCell.reuseID, for: indexPath) as? EditAttributesCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditOtherAttributeCollectionViewCell.reuseID, for: indexPath) as? EditOtherAttributeCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -172,7 +163,7 @@ struct CellOrtherHeadAttribute {
             cell?.UIButtonEdit.tag = indexPath.section
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OtherAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? OtherAttributeDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -181,7 +172,7 @@ struct CellOrtherHeadAttribute {
             cell?.UIButtonDelete.tag = indexPath.section
             return cell!
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OtherAttributeCollectionViewCell.reuseID, for: indexPath) as? OtherAttributeCollectionViewCell
             cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -225,14 +216,33 @@ class HeaderAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     static let reuseID = "HeaderAttributeCollectionViewCell"
 }
+class OtherAttributeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var contentLabel: UILabel!
+    static let reuseID = "OtherAttributeCollectionViewCell"
+}
 class HeaderAttributeDeleteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonDelete: UIButton!
     static let reuseID = "HeaderAttributeDeleteCollectionViewCell"
 }
+class OtherAttributeDeleteCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIButtonDelete: UIButton!
+    static let reuseID = "OtherAttributeDeleteCollectionViewCell"
+}
+
+class EditOtherAttributeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIButtonEdit: UIButton!
+    static let reuseID = "EditOtherAttributeCollectionViewCell"
+}
+
 class EditHeaderAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEdit: UIButton!
     static let reuseID = "EditHeaderAttributeCollectionViewCell"
 }
+class EditOtherAttributesCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var UIButtonEdit: UIButton!
+    static let reuseID = "EditAttributesCollectionViewCell"
+}
+
 class EditAttributesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEdit: UIButton!
     static let reuseID = "EditAttributesCollectionViewCell"
@@ -303,7 +313,6 @@ class AddNewProductVC: UIViewController {
            CellOrtherHeadAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Sửa thuộc tính",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
            
@@ -857,7 +866,6 @@ class AddNewProductVC: UIViewController {
                 CellOrtherHeadAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
                 CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
                 
