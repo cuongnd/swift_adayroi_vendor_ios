@@ -1768,7 +1768,7 @@
             <objects>
                 <viewController storyboardIdentifier="AddNewProductVC" id="Hiw-6r-tKI" customClass="AddNewProductVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4oH-II-j9t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2496"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2996"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqH-AR-cQ1">
@@ -1789,7 +1789,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1G1-6G-EHN">
-                                <rect key="frame" x="0.0" y="83" width="414" height="2337"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="2837"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HW-Ev-n5y">
                                         <rect key="frame" x="8" y="8" width="107" height="20.5"/>
@@ -2675,14 +2675,14 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Au-Kg-C3i">
-                                        <rect key="frame" x="372" y="364" width="36" height="36"/>
+                                        <rect key="frame" x="370" y="364" width="36" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="VIA-bU-4CF"/>
                                             <constraint firstAttribute="height" constant="36" id="wNg-VB-5CO"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="camera.circle" catalog="system">
+                                        <state key="normal" image="link.circle.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2696,7 +2696,7 @@
                                     <constraint firstItem="HrJ-d3-NBf" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="1SY-zA-KAc"/>
                                     <constraint firstItem="2Y0-Ad-Vk1" firstAttribute="top" secondItem="OST-MX-cjF" secondAttribute="bottom" constant="8" id="40U-1t-tg9"/>
                                     <constraint firstItem="g8r-Rk-3Jh" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="49Z-lf-35w"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Au-Kg-C3i" secondAttribute="trailing" constant="6" id="4iP-Xa-fYF"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Au-Kg-C3i" secondAttribute="trailing" constant="8" id="4iP-Xa-fYF"/>
                                     <constraint firstItem="7Vr-8d-VeV" firstAttribute="top" secondItem="gkJ-aF-WgI" secondAttribute="bottom" constant="1" id="4jJ-BR-caM"/>
                                     <constraint firstItem="8pi-YN-mPb" firstAttribute="top" secondItem="T0w-Ff-5un" secondAttribute="bottom" constant="3.5" id="6UI-rm-Btu"/>
                                     <constraint firstItem="3Fh-KF-m7p" firstAttribute="top" secondItem="2Y0-Ad-Vk1" secondAttribute="bottom" constant="8" id="6Yu-zh-Vzb"/>
@@ -2812,7 +2812,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-1H-s2z">
-                                <rect key="frame" x="0.0" y="2420" width="414" height="76"/>
+                                <rect key="frame" x="0.0" y="2920" width="414" height="76"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="A1O-dU-8cq">
                                         <rect key="frame" x="8" y="8" width="398" height="54"/>
@@ -2863,7 +2863,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XLg-nE-FzU"/>
                     </view>
-                    <size key="freeformSize" width="414" height="2496"/>
+                    <size key="freeformSize" width="414" height="2996"/>
                     <connections>
                         <outlet property="DropDownCategoriesProduct" destination="RYH-uS-SD7" id="W3g-Dr-zD2"/>
                         <outlet property="DropDownSubCategories" destination="1Vo-fZ-O1L" id="FDu-j1-q01"/>
@@ -3131,6 +3131,7 @@
         <image name="ic_cart" width="246" height="259"/>
         <image name="ic_promotion" width="1056" height="497"/>
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
+        <image name="link.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
