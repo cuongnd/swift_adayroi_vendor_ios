@@ -850,11 +850,23 @@ class AddNewProductVC: UIViewController {
         
         let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
                 otherAttributeEditVC.delegate = self
+        if(sender.tag==0){
+            otherAttributeEditVC.otherAttributeHeadIndex = -1
+            otherAttributeEditVC.otherAttributeHead=[
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "title"),
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+            ]
+            
+        }else{
                otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
                otherAttributeEditVC.otherAttributeHead=self.orderheaderAttributeTitleProduct[sender.tag]
-               self.present(otherAttributeEditVC, animated: true, completion: nil)
-        
-        
+               
+        }
+        self.present(otherAttributeEditVC, animated: true, completion: nil)
         /*
         
         
@@ -1264,10 +1276,19 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
 }
 
 extension AddNewProductVC: OtherAttributeEditDelegate {
-    func refreshData() {
+    func refreshData(otherAttributeHeadIndex: Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
+        if(otherAttributeHeadIndex == -1){
+            self.orderheaderAttributeTitleProduct.append(otherAttributeHead);
+        }else{
+            self.orderheaderAttributeTitleProduct[otherAttributeHeadIndex]=otherAttributeHead
+        }
         
+        self.UICollectionViewOtherHeadAttribute.delegate = self
+        self.UICollectionViewOtherHeadAttribute.dataSource = self
+        self.UICollectionViewOtherHeadAttribute.reloadData()
     }
     
+   
     
     
 }

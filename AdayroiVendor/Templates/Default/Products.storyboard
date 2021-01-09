@@ -3250,7 +3250,8 @@
                         <viewLayoutGuide key="safeArea" id="fef-vd-lwv"/>
                     </view>
                     <connections>
-                        <outlet property="UITextFieldSoTien" destination="MZu-Y1-f08" id="Sje-Zf-u8N"/>
+                        <outlet property="UITextFieldAttributeName" destination="MZu-Y1-f08" id="Sje-Zf-u8N"/>
+                        <outlet property="UITextViewDescription" destination="Xz3-tT-w45" id="hqa-3e-3iU"/>
                         <outlet property="btn_ok" destination="D9c-B7-Yk0" id="oVJ-vG-A7A"/>
                     </connections>
                 </viewController>
