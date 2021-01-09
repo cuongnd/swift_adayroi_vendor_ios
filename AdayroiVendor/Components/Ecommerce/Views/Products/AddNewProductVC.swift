@@ -867,60 +867,9 @@ class AddNewProductVC: UIViewController {
                
         }
         self.present(otherAttributeEditVC, animated: true, completion: nil)
-        /*
-        
-        
-        alertController=UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
-        alertController.addTextField { textField in
-            self.alertTextField = textField
-            textField.placeholder = ""
-            //textField.isSecureTextEntry = true
-            textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
-        }
-        
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
-            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            let content=String(describing: textField.text!)
-            if(content==""){
-                return
-            }
-            self.orderheaderAttributeTitleProduct.append([
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
-                CellOrtherHeadAttribute(title: content,is_head: false,columnType: "content", columnName: "title"),
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
-                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
-                
-                
-            ]);
-            self.UICollectionViewOtherHeadAttribute.delegate = self
-            self.UICollectionViewOtherHeadAttribute.dataSource = self
-            self.UICollectionViewOtherHeadAttribute.reloadData()
-            
-            // IMPORTANT: this is the key to make your cells auto-sizing
-            if let collectionViewLayout = self.UICollectionViewHeaderAttributes.collectionViewLayout as? UICollectionViewFlowLayout {
-                collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            }
-            //compare the current password and do action here
-        }
-        confirmAction.isEnabled = false
-        alertController.addAction(confirmAction)
-        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-        */
-        
+       
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 
