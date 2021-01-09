@@ -22,6 +22,7 @@ class OtherAttributeEditVC: UIViewController {
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     var customMask = TLCustomMask()
     var otherAttributeHeadIndex:Int = -1
+    var otherAttributeHead:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
@@ -29,11 +30,7 @@ class OtherAttributeEditVC: UIViewController {
         print(" ")
         phoneFormatter.format("+123456789012") /
         */
-        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
-        customMask.formattingPattern = "$$$ $$$ $$$ $$$"
-        self.UITextFieldSoTien.delegate = self
+       
         
     }
     

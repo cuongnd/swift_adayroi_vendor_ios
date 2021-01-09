@@ -851,7 +851,7 @@ class AddNewProductVC: UIViewController {
         let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
                 otherAttributeEditVC.delegate = self
                otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
-               //otherAttributeEditVC.otherAttributeHead=self.headerAttributeTitleProduct[sender.tag]
+               otherAttributeEditVC.otherAttributeHead=self.orderheaderAttributeTitleProduct[sender.tag]
                self.present(otherAttributeEditVC, animated: true, completion: nil)
         
         
