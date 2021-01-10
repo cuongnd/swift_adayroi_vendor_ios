@@ -273,6 +273,8 @@ class AddNewProductVC: UIViewController {
     var customMask = TLCustomMask()
     var customMaskUnitPrice = TLCustomMask()
     var list_category:[CategoryModel]=[CategoryModel]()
+    var list_warehouse:[WarehouseModel]=[WarehouseModel]()
+    
     var list_sub_category:[SubCategoryModel]=[SubCategoryModel]()
     var curentSubCategory:SubCategoryModel=SubCategoryModel()
     @IBOutlet weak var DropDownSubCategories: DropDown!
@@ -309,15 +311,24 @@ class AddNewProductVC: UIViewController {
         
         ]]
     var orderheaderAttributeTitleProduct = [[
-           CellOrtherHeadAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Nội dung",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+        CellOrtherHeadAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
+        CellOrtherHeadAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+        CellOrtherHeadAttribute(title: "Nội dung",is_head: true,columnType: "", columnName: ""),
+        CellOrtherHeadAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+        CellOrtherHeadAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+        
+        
+        ]]
+    var wareHousehead = [[
+           CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: ""),
+           CellWareHouseHead(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellWareHouseHead(title: "Nội dung",is_head: true,columnType: "", columnName: ""),
+           CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+           CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: ""),
            
            
            ]]
-       
+    
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
     @IBOutlet weak var UIButtonPickupColor: UIButton!
@@ -328,6 +339,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
     @IBOutlet weak var UICollectionViewListLinkVideo: UICollectionView!
     @IBOutlet weak var UICollectionViewOtherHeadAttribute: UICollectionView!
+    @IBOutlet weak var UICollectionViewWareHouses: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -377,8 +389,15 @@ class AddNewProductVC: UIViewController {
         
         self.UICollectionViewHeaderAttributes.delegate = self
         self.UICollectionViewHeaderAttributes.dataSource = self
+        
         self.UICollectionViewOtherHeadAttribute.delegate = self
         self.UICollectionViewOtherHeadAttribute.dataSource = self
+     
+        self.UICollectionViewWareHouses.delegate = self
+        self.UICollectionViewWareHouses.dataSource = self
+        
+        let urlGetwarehouses = API_URL + "/api/warehouses"
+        //self.Webservice_getWarehouses(url: urlGetwarehouses, params:[:])
         
         
     }
@@ -719,7 +738,7 @@ class AddNewProductVC: UIViewController {
     }
     var alertTextField: UITextField!
     @objc func textFieldDidChange(){
-
+        
         if let e = alertTextField.text {
             let alertButton = alertController.actions[0]
             alertButton.isEnabled = e.trimmingCharacters(in: .whitespacesAndNewlines)=="" ? false : true
@@ -770,12 +789,12 @@ class AddNewProductVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
-         
+        
         
     }
     var alertTextFieldLinkVideo: UITextField!
     @objc func textFieldDidChangeLinkVideo(){
-
+        
         if let e = alertTextFieldLinkVideo.text {
             let alertButton = alertController.actions[0]
             let video_link = e.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -805,13 +824,13 @@ class AddNewProductVC: UIViewController {
             
             print("video_image \(video_image)")
             let videoProductModel:VideoProductModel=VideoProductModel(video_link: video_link, video_caption: "", video_image: video_image)
-           self.list_video_link.append(videoProductModel)
+            self.list_video_link.append(videoProductModel)
             
             self.UICollectionViewListLinkVideo.delegate = self
             self.UICollectionViewListLinkVideo.dataSource = self
             self.UICollectionViewListLinkVideo.reloadData()
-          }
-            //compare the current password and do action here
+        }
+        //compare the current password and do action here
         
         confirmAction.isEnabled = false
         alertController.addAction(confirmAction)
@@ -848,24 +867,24 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonTouchUpInsideEditAndAddNewOtherAttributeProduct(_ sender: UIButton) {
         
         let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
-                otherAttributeEditVC.delegate = self
+        otherAttributeEditVC.delegate = self
         if(sender.tag==0){
             otherAttributeEditVC.otherAttributeHeadIndex = -1
             otherAttributeEditVC.otherAttributeHead=[
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "title"),
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "title"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
             ]
             
         }else{
-               otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
-               otherAttributeEditVC.otherAttributeHead=self.orderheaderAttributeTitleProduct[sender.tag]
-               
+            otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
+            otherAttributeEditVC.otherAttributeHead=self.orderheaderAttributeTitleProduct[sender.tag]
+            
         }
         self.present(otherAttributeEditVC, animated: true, completion: nil)
-       
+        
         
     }
 }
@@ -912,6 +931,8 @@ extension AddNewProductVC {
     }
     
     
+    
+    
     func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -951,6 +972,41 @@ extension AddNewProductVC {
             }
         }
     }
+    func Webservice_getWarehouses(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
+                    if(getApiResponseWarehousesModel.result=="success"){
+                        
+                        self.list_warehouse=getApiResponseWarehousesModel.list_warehouse
+                        self.UICollectionViewWareHouses.delegate = self
+                        self.UICollectionViewWareHouses.dataSource = self
+                        self.UICollectionViewWareHouses.reloadData()
+                        
+                        
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
+    
+    
     func Webservice_GetAffiliateInfo(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -1033,6 +1089,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             return self.list_video_link.count
         }else if(collectionView==self.UICollectionViewOtherHeadAttribute){
             return self.orderheaderAttributeTitleProduct[0].count
+        }else if(collectionView==self.UICollectionViewWareHouses){
+            return self.wareHousehead[0].count
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct[0].count
@@ -1068,7 +1126,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
                 return UICollectionViewCell()
             }
             cell.UIImageViewImageUpload.sd_setImage(with: URL(string: video_image), placeholderImage: UIImage(named: "placeholder_image"))
-
+            
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UILabelDescription.text=self.list_video_link[indexPath.row].video_caption
             cell.UIButtonProductImageDescription.tag=indexPath.row
@@ -1089,6 +1147,10 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             
             let cellHeaderAttribute:CellHeaderAttribute=self.headerAttributeTitleProduct[indexPath.section][indexPath.row]
             let cell  = cellHeaderAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
+            return cell
+        }else if(collectionView==self.UICollectionViewWareHouses){
+            let cellWareHouseHead:CellWareHouseHead=self.wareHousehead[indexPath.section][indexPath.row]
+            let cell  = cellWareHouseHead.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
             return cell
         }else{
             let uIimage:UIImage=self.list_image_color[indexPath.row].image
@@ -1132,7 +1194,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("hello343434")
             return CGSize(width:300, height: 40)
-            
+        }else if(collectionView==self.UICollectionViewWareHouses){
+             return CGSize(width:300, height: 40)
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
         }
@@ -1208,15 +1271,15 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
     func refreshData(AttributeHeadIndex: Int, CellAttributeList: [[CellAttribute]]) {
         var list_attribute:[String]=[String]()
         for i in 0..<CellAttributeList.count
-           {
+        {
             list_attribute.append("\(CellAttributeList[i][1].title!)(\(CellAttributeList[i][2].title!))");
-           }
+        }
         let joined2 = list_attribute.joined(separator: ", ")
         self.headerAttributeTitleProduct[AttributeHeadIndex][3].title=joined2
         self.headerAttributeTitleProduct[AttributeHeadIndex][3].list_attribute=CellAttributeList
         self.UICollectionViewHeaderAttributes.delegate = self
-       self.UICollectionViewHeaderAttributes.dataSource = self
-       self.UICollectionViewHeaderAttributes.reloadData()
+        self.UICollectionViewHeaderAttributes.dataSource = self
+        self.UICollectionViewHeaderAttributes.reloadData()
     }
     
     
@@ -1235,7 +1298,7 @@ extension AddNewProductVC: OtherAttributeEditDelegate {
         self.UICollectionViewOtherHeadAttribute.reloadData()
     }
     
-   
+    
     
     
 }
@@ -1260,14 +1323,14 @@ extension AddNewProductVC: ModalSelectColorRutDelegate {
 extension String {
     var youtubeID: String? {
         let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
-
+        
         let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         let range = NSRange(location: 0, length: count)
-
+        
         guard let result = regex?.firstMatch(in: self, range: range) else {
             return nil
         }
-
+        
         return (self as NSString).substring(with: result.range)
     }
 }

@@ -1935,7 +1935,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Màu sắc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-Cz-RqB">
-                                        <rect key="frame" x="8" y="1548" width="64.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1567" width="64.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1947,7 +1947,7 @@
                                         </constraints>
                                     </switch>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkJ-aF-WgI">
-                                        <rect key="frame" x="8" y="1412" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="1431" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="r36-u5-b3Q"/>
@@ -1959,18 +1959,37 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5hL-v9-hbe">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WareHouseDeleteCollectionViewCell" id="Pox-WW-0Ig" customClass="WareHouseDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6RJ-jy-amF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BJR-fJ-j0a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WareHouseEditCollectionViewCell" id="ZfI-4Z-FWP" customClass="WareHouseEditCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="232" y="0.0" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cQz-z8-NIU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WarehouseLabelCollectionViewCell" id="AfW-7G-hsN" customClass="WarehouseLabelCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="36" width="166" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NYy-Xl-CoF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="166" height="26"/>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-JA-0s4" userLabel="Collection View màu sắc">
-                                        <rect key="frame" x="8" y="1577" width="398" height="150"/>
+                                        <rect key="frame" x="8" y="1596" width="398" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="m7B-RE-a2d"/>
@@ -2110,13 +2129,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặc điểm của sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrJ-d3-NBf">
-                                        <rect key="frame" x="8" y="1734.5" width="183.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1753.5" width="183.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Stt-d9-mqj">
-                                        <rect key="frame" x="8" y="1762.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="1781.5" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="NxM-GO-BML"/>
@@ -2238,13 +2257,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả ngắn sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB0-Bz-sxv">
-                                        <rect key="frame" x="8" y="2105.5" width="165" height="20.5"/>
+                                        <rect key="frame" x="8" y="2124.5" width="165" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yrf-q8-Y9Z">
-                                        <rect key="frame" x="10" y="2134" width="398" height="128"/>
+                                        <rect key="frame" x="10" y="2153" width="398" height="128"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="LbB-H9-dF4"/>
@@ -2264,13 +2283,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả đầy đủ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r7-Vj-M8R">
-                                        <rect key="frame" x="8" y="2277" width="99.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="2296" width="99.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sPl-MD-VIf">
-                                        <rect key="frame" x="8" y="2305.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="2324.5" width="398" height="128"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="md0-t8-TTj"/>
@@ -2394,7 +2413,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyS-NH-Poo">
-                                        <rect key="frame" x="370" y="1541" width="36" height="35"/>
+                                        <rect key="frame" x="370" y="1560" width="36" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="Ddn-bB-m5V"/>
@@ -2409,7 +2428,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vr-8d-VeV">
-                                        <rect key="frame" x="332" y="1541" width="36" height="35"/>
+                                        <rect key="frame" x="332" y="1560" width="36" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="dMd-tR-w79"/>
@@ -2424,7 +2443,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgX-DU-fZL">
-                                        <rect key="frame" x="376" y="1729" width="30" height="30"/>
+                                        <rect key="frame" x="376" y="1748" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="4MH-D1-aUM"/>
@@ -2439,13 +2458,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặc điểm khác của sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-pz-CDi">
-                                        <rect key="frame" x="8" y="1903" width="224.5" height="21"/>
+                                        <rect key="frame" x="8" y="1922" width="224.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8pi-YN-mPb">
-                                        <rect key="frame" x="8" y="1931.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="1950.5" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Pxm-Xu-GxP"/>
@@ -2537,7 +2556,7 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0w-Ff-5un">
-                                        <rect key="frame" x="376" y="1898" width="30" height="30"/>
+                                        <rect key="frame" x="376" y="1917" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="g39-aj-FU0"/>
@@ -2659,6 +2678,12 @@
                                             <action selector="UIButtonAddNewLinkVideo:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="5V7-9w-tXE"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="quản lý kho hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJU-NB-95V">
+                                        <rect key="frame" x="8" y="1406" width="110.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Stt-d9-mqj" secondAttribute="trailing" constant="8" id="0Kf-lf-9mt"/>
@@ -2679,12 +2704,14 @@
                                     <constraint firstItem="xyS-NH-Poo" firstAttribute="leading" secondItem="7Vr-8d-VeV" secondAttribute="trailing" constant="2" id="Bay-OB-woA"/>
                                     <constraint firstItem="wQ3-Qo-2Tm" firstAttribute="top" secondItem="3Fh-KF-m7p" secondAttribute="bottom" constant="8" id="Bpw-5t-clE"/>
                                     <constraint firstItem="gkJ-aF-WgI" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="Bxz-rn-yB9"/>
+                                    <constraint firstItem="sJU-NB-95V" firstAttribute="top" secondItem="4h7-pX-eJW" secondAttribute="bottom" constant="8" id="C9P-i8-qKZ"/>
                                     <constraint firstItem="HrJ-d3-NBf" firstAttribute="top" secondItem="SJG-JA-0s4" secondAttribute="bottom" constant="7.5" id="DMs-m8-X9i"/>
                                     <constraint firstItem="xO4-DA-Gjl" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="DOL-i6-Q00"/>
                                     <constraint firstItem="wQ3-Qo-2Tm" firstAttribute="centerX" secondItem="1G1-6G-EHN" secondAttribute="centerX" id="DXZ-9L-YK2"/>
                                     <constraint firstItem="0ak-RK-kWm" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="F5q-FB-WUy"/>
                                     <constraint firstItem="SJG-JA-0s4" firstAttribute="top" secondItem="QPb-Cz-RqB" secondAttribute="bottom" constant="8.5" id="G3L-Ol-QA7"/>
                                     <constraint firstItem="SJG-JA-0s4" firstAttribute="top" secondItem="xyS-NH-Poo" secondAttribute="bottom" constant="1" id="Gw0-nf-oJb"/>
+                                    <constraint firstItem="gkJ-aF-WgI" firstAttribute="top" secondItem="sJU-NB-95V" secondAttribute="bottom" constant="8" id="H3r-DF-Tpx"/>
                                     <constraint firstItem="8pi-YN-mPb" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="HKe-zA-QMB"/>
                                     <constraint firstItem="QXh-Se-w8V" firstAttribute="centerY" secondItem="4h7-pX-eJW" secondAttribute="centerY" id="Hy2-7g-JzL"/>
                                     <constraint firstItem="YLl-Ak-hUp" firstAttribute="top" secondItem="PgD-Dl-rGP" secondAttribute="bottom" constant="8" id="IsH-rp-nE8"/>
@@ -2746,7 +2773,6 @@
                                     <constraint firstItem="DgX-DU-fZL" firstAttribute="top" secondItem="SJG-JA-0s4" secondAttribute="bottom" constant="2" id="i3S-6e-stL"/>
                                     <constraint firstItem="iEN-7D-yDL" firstAttribute="top" secondItem="g8r-Rk-3Jh" secondAttribute="bottom" constant="8" id="iQX-JS-tI4"/>
                                     <constraint firstAttribute="trailing" secondItem="qru-Ol-XLG" secondAttribute="trailing" constant="8" id="iQY-zm-kGe"/>
-                                    <constraint firstItem="gkJ-aF-WgI" firstAttribute="top" secondItem="YHO-iT-KYn" secondAttribute="bottom" constant="8" id="ijf-ld-nfb"/>
                                     <constraint firstItem="OST-MX-cjF" firstAttribute="top" secondItem="YLl-Ak-hUp" secondAttribute="bottom" constant="8" id="iyi-r3-J3K"/>
                                     <constraint firstAttribute="trailing" secondItem="sPl-MD-VIf" secondAttribute="trailing" constant="8" id="j1h-Tr-p4g"/>
                                     <constraint firstItem="RYH-uS-SD7" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="jBU-a3-1Lk"/>
@@ -2771,6 +2797,7 @@
                                     <constraint firstItem="Yrf-q8-Y9Z" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="10" id="uG9-ox-7Iz"/>
                                     <constraint firstItem="Stt-d9-mqj" firstAttribute="top" secondItem="DgX-DU-fZL" secondAttribute="bottom" constant="3.5" id="uGy-Xd-URR"/>
                                     <constraint firstItem="VA9-qu-Qtz" firstAttribute="top" secondItem="R3l-g6-Ch7" secondAttribute="bottom" constant="6.5" id="uHA-4B-1gF"/>
+                                    <constraint firstItem="sJU-NB-95V" firstAttribute="leading" secondItem="1G1-6G-EHN" secondAttribute="leading" constant="8" id="uIN-0z-LiG"/>
                                     <constraint firstItem="Vk1-4Q-9B3" firstAttribute="top" secondItem="IVB-Do-3Am" secondAttribute="bottom" constant="8" id="uOZ-P8-ybN"/>
                                     <constraint firstItem="6Au-Kg-C3i" firstAttribute="top" secondItem="xO4-DA-Gjl" secondAttribute="bottom" id="vBt-Ya-gFm"/>
                                     <constraint firstItem="RYH-uS-SD7" firstAttribute="top" secondItem="Vk1-4Q-9B3" secondAttribute="bottom" constant="8" id="vf9-kT-bKQ"/>
@@ -2848,6 +2875,7 @@
                         <outlet property="UICollectionViewListLinkVideo" destination="0ak-RK-kWm" id="9YP-9r-xkw"/>
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UICollectionViewOtherHeadAttribute" destination="8pi-YN-mPb" id="wIQ-C2-Kq4"/>
+                        <outlet property="UICollectionViewWareHouses" destination="gkJ-aF-WgI" id="e3a-D8-S4O"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
                     </connections>
