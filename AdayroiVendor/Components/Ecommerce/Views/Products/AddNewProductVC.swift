@@ -310,9 +310,8 @@ class AddNewProductVC: UIViewController {
         ]]
     var orderheaderAttributeTitleProduct = [[
            CellOrtherHeadAttribute(title: "Stt",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Title",is_head: true,columnType: "", columnName: ""),
-           CellOrtherHeadAttribute(title: "Note",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
+           CellOrtherHeadAttribute(title: "Nội dung",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Sửa",is_head: true,columnType: "", columnName: ""),
            CellOrtherHeadAttribute(title: "Xóa",is_head: true,columnType: "",columnName: ""),
            
@@ -846,7 +845,7 @@ class AddNewProductVC: UIViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-    @IBAction func UIButtonTouchUpInsideAddOtherAttributeProduct(_ sender: UIButton) {
+    @IBAction func UIButtonTouchUpInsideEditAndAddNewOtherAttributeProduct(_ sender: UIButton) {
         
         let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
                 otherAttributeEditVC.delegate = self
@@ -855,7 +854,6 @@ class AddNewProductVC: UIViewController {
             otherAttributeEditVC.otherAttributeHead=[
             CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
             CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "title"),
-            CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
             CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
             CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
             CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),

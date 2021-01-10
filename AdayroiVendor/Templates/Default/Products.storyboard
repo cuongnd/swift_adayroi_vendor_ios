@@ -2517,6 +2517,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kA-p0-PDL">
                                                             <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                             <state key="normal" title="Edit"/>
+                                                            <connections>
+                                                                <action selector="UIButtonTouchUpInsideEditAndAddNewOtherAttributeProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="vKj-J9-xOs"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -2545,7 +2548,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButtonTouchUpInsideAddOtherAttributeProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="IS7-yb-OBx"/>
+                                            <action selector="UIButtonTouchUpInsideEditAndAddNewOtherAttributeProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="IS7-yb-OBx"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-nx-x4e">

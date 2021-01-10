@@ -26,7 +26,7 @@ class OtherAttributeEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.UITextFieldAttributeName.text=otherAttributeHead[1].title
-        self.UITextViewDescription.text=otherAttributeHead[3].title
+        self.UITextViewDescription.text=otherAttributeHead[2].title
         /*
         let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
         print(" ")
@@ -61,8 +61,8 @@ class OtherAttributeEditVC: UIViewController {
         }
        
         if(description==""){
-               UITextFieldAttributeName.text="";
-               UITextFieldAttributeName.becomeFirstResponder()
+               UITextViewDescription.text="";
+               UITextViewDescription.becomeFirstResponder()
                let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các giá trị cho thuộc tính", preferredStyle: .alert)
                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
                self.present(alert, animated: true)
@@ -70,7 +70,7 @@ class OtherAttributeEditVC: UIViewController {
                return
            }
         self.otherAttributeHead[1].title=attributeName
-        otherAttributeHead[3].title=description
+        otherAttributeHead[2].title=description
         self.dismiss(animated: true) {
             self.delegate.refreshData(otherAttributeHeadIndex: self.otherAttributeHeadIndex,otherAttributeHead: self.otherAttributeHead)
         }
