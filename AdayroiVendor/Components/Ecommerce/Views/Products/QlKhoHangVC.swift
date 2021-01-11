@@ -36,10 +36,10 @@ class QlKhoHangVC: UIViewController {
     @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     
-    var AttributeNameList = [[
+    var wareHouseList = [[
         CellWareHouseHeadManager(title: "Stt", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Title", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Price", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Tên kho hàng", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Địa chỉ kho hàng", is_head: true,columnType: "", columnName: ""),
         CellWareHouseHeadManager(title: "Sửa", is_head: true,columnType: "", columnName: ""),
         CellWareHouseHeadManager(title: "Xóa", is_head: true,columnType: "",columnName: ""),
         
@@ -47,13 +47,24 @@ class QlKhoHangVC: UIViewController {
         ]]
     
     
-    @IBOutlet weak var UICollectionViewAttributes: UICollectionView!
+    @IBOutlet weak var UICollectionViewWareHouses: UICollectionView!
     
-    @IBOutlet weak var UIButtonAddHeaderAttribute: UIButton!
+    @IBOutlet weak var UIButtonAddWareHouse: UIButton!
     
     var Delegate: QLKhoHangVCDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
+        var nibCell = UINib(nibName:WarehouseManagerLabelCollectionViewCell.reuseID, bundle: nil)
+       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID)
+       
+       nibCell = UINib(nibName:WareHouseManagerEditCollectionViewCell.reuseID, bundle: nil)
+       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerEditCollectionViewCell.reuseID)
+       
+       nibCell = UINib(nibName:WareHouseManagerDeleteCollectionViewCell.reuseID, bundle: nil)
+       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID)
+               
+                                       
+        
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
          print(" ")
@@ -63,12 +74,12 @@ class QlKhoHangVC: UIViewController {
         let urlGetCategories = API_URL + "/api/categories"
         
         
-        cornerRadius(viewName: self.UIButtonAddHeaderAttribute, radius: self.UIButtonAddHeaderAttribute.frame.height / 2)
+        cornerRadius(viewName: self.UIButtonAddWareHouse, radius: self.UIButtonAddWareHouse.frame.height / 2)
         
         
         //self.AttributeNameList[0][1].title = self.attributeHead[1].title!
-        //self.UICollectionViewAttributes.delegate = self
-        //self.UICollectionViewAttributes.dataSource = self
+        self.UICollectionViewWareHouses.delegate = self
+        self.UICollectionViewWareHouses.dataSource = self
         //self.UILabelQLCacThuocTinh.text="Quản lý các thuộc tính:\(self.attributeHead[1].title!)";
         /*
         if(self.attributeHead[3].list_attribute.count>0){
@@ -114,43 +125,11 @@ class QlKhoHangVC: UIViewController {
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
         
-        alertController = UIAlertController(title: "Tiêu đề thuộc tính", message: "", preferredStyle: .alert)
-        alertController.addTextField { textField in
-            self.alertTextFieldTitle = textField
-            textField.placeholder = "Thuộc tính"
-            textField.tag=sender.tag
-            textField.text=self.AttributeNameList[sender.tag][1].title
-            //textField.isSecureTextEntry = true
-            textField.addTarget(self, action: #selector(self.textFieldDidChangeTitle), for: UIControl.Event.editingChanged)
-        }
-        alertController.addTextField { textField in
-            textField.placeholder = "Giá"
-            self.alertTextFieldPrice = textField
-            textField.tag=sender.tag
-            textField.text=String(self.AttributeNameList[sender.tag][2].title)
-            //textField.isSecureTextEntry = true
-            textField.keyboardType = .numberPad
-            textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
-        }
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
-            let alertController = alertController
-            let textFieldTitle = alertController?.textFields?.first
-            let textFieldPrice = alertController?.textFields?.last
-            
-            let contentTitle=String(describing: textFieldTitle!.text!)
-            let contentPrice=String(describing: textFieldPrice!.text!)
-            
-            self.AttributeNameList[textFieldTitle!.tag][1].title=contentTitle;
-            self.AttributeNameList[textFieldPrice!.tag][2].title=contentPrice;
-            self.UICollectionViewAttributes.delegate = self
-            self.UICollectionViewAttributes.dataSource = self
-            self.UICollectionViewAttributes.reloadData()
-            //compare the current password and do action here
-        }
-        alertController.addAction(confirmAction)
-        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
+       let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        editWareHouseVC.delegate = self
+        //editWareHouseVC.attributeHeadIndex = sender.tag
+        //editWareHouseVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        self.present(editWareHouseVC, animated: true, completion: nil)
         
     }
     
@@ -160,10 +139,10 @@ class QlKhoHangVC: UIViewController {
         
         let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
             
-            self.AttributeNameList.remove(at: sender.tag)
-            self.UICollectionViewAttributes.delegate = self
-            self.UICollectionViewAttributes.dataSource = self
-            self.UICollectionViewAttributes.reloadData()
+            self.wareHouseList.remove(at: sender.tag)
+            self.UICollectionViewWareHouses.delegate = self
+            self.UICollectionViewWareHouses.dataSource = self
+            self.UICollectionViewWareHouses.reloadData()
             
         }
         let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
@@ -177,44 +156,11 @@ class QlKhoHangVC: UIViewController {
     
     
     @IBAction func UIButtonTouchUpInsideAddAttributeAndPrice(_ sender: UIButton) {
-        alertController = UIAlertController(title: "Thêm thuộc tính và giá", message: "", preferredStyle: .alert)
-        alertController.addTextField { textField in
-            self.alertTextFieldTitle = textField
-            textField.placeholder = "Thuộc tính"
-            //textField.isSecureTextEntry = true
-            textField.addTarget(self, action: #selector(self.textFieldDidChangeTitle), for: UIControl.Event.editingChanged)
-        }
-        alertController.addTextField { textField in
-            textField.placeholder = "Giá"
-            //textField.isSecureTextEntry = true
-            self.alertTextFieldPrice = textField
-            textField.keyboardType = .numberPad
-            textField.addTarget(self, action: #selector(self.textFieldDidChangePrice), for: UIControl.Event.editingChanged)
-        }
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
-            let textFieldTitle = alertController?.textFields?.first
-            let textFieldPrice = alertController?.textFields?.last
-            let contentTitle=String(describing: textFieldTitle!.text!)
-            let contentPrice=String(describing: textFieldPrice!.text!)
-            self.AttributeNameList.append([
-                CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                CellWareHouseHeadManager(title: contentTitle, is_head: false,columnType: "content", columnName: "title"),
-                CellWareHouseHeadManager(title: contentPrice, is_head: false,columnType: "content", columnName: "note"),
-                CellWareHouseHeadManager(title: "", is_head: false,columnType: "button",columnName: "edit"),
-                CellWareHouseHeadManager(title: "", is_head: false,columnType: "button",columnName: "delete"),
-                
-                
-            ]);
-            self.UICollectionViewAttributes.delegate = self
-            self.UICollectionViewAttributes.dataSource = self
-            self.UICollectionViewAttributes.reloadData()
-            //compare the current password and do action here
-        }
-        confirmAction.isEnabled=false
-        alertController.addAction(confirmAction)
-        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
+        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        editWareHouseVC.delegate = self
+        //editWareHouseVC.attributeHeadIndex = sender.tag
+        //editWareHouseVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        self.present(editWareHouseVC, animated: true, completion: nil)
         
     }
     @IBAction func UIButtonCancel(_ sender: UIButton) {
@@ -222,8 +168,8 @@ class QlKhoHangVC: UIViewController {
     }
     
     @IBAction func UIButtonSave(_ sender: UIButton) {
-        self.AttributeNameList.remove(at: 0)
-        self.Delegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellKhoHangList: self.AttributeNameList)
+        self.wareHouseList.remove(at: 0)
+        self.Delegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellKhoHangList: self.wareHouseList)
         dismiss(animated: true, completion: nil)
     }
     
@@ -284,9 +230,9 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
             return 1
-        }else if(collectionView==self.UICollectionViewAttributes){
-            print("self.headerAttributeTitleProduct.count:\(self.AttributeNameList.count)")
-            return self.AttributeNameList.count
+        }else if(collectionView==self.UICollectionViewWareHouses){
+            print("self.headerAttributeTitleProduct.count:\(self.wareHouseList.count)")
+            return self.wareHouseList.count
         }
         else{
             return 1
@@ -296,12 +242,12 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.AttributeNameList[0].count
+        return self.wareHouseList[0].count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let CellKhoHang:CellWareHouseHeadManager=self.AttributeNameList[indexPath.section][indexPath.row]
+        let CellKhoHang:CellWareHouseHeadManager=self.wareHouseList[indexPath.section][indexPath.row]
         let cell  = CellKhoHang.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
         return cell
         
@@ -325,3 +271,12 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     }
 }
 
+extension QlKhoHangVC: EditWareHouseVCEditDelegate {
+    func refreshData(otherAttributeHeadIndex: Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
+        
+    }
+    
+    
+    
+    
+}

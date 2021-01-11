@@ -77,6 +77,7 @@
 		0469045325AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045125AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.swift */; };
 		0469045425AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469045225AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.xib */; };
 		0469045625AC439F0022EBEF /* WareHouseManagerCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045525AC439F0022EBEF /* WareHouseManagerCustomCollectionViewLayout.swift */; };
+		0469045825AC63110022EBEF /* EditWareHouseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045725AC63110022EBEF /* EditWareHouseVC.swift */; };
 		0493654B25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */; };
 		04971249259A366A0024883E /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971248259A366A0024883E /* CategoryListVC.swift */; };
 		0497124B259A96B70024883E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124A259A96B70024883E /* CategoryModel.swift */; };
@@ -317,6 +318,7 @@
 		0469045125AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseManagerDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469045225AC43130022EBEF /* WareHouseManagerDeleteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseManagerDeleteCollectionViewCell.xib; sourceTree = "<group>"; };
 		0469045525AC439F0022EBEF /* WareHouseManagerCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WareHouseManagerCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		0469045725AC63110022EBEF /* EditWareHouseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWareHouseVC.swift; sourceTree = "<group>"; };
 		0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalStickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		04971248259A366A0024883E /* CategoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		0497124A259A96B70024883E /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 				0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */,
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
 				041393A525A8A17D002D4149 /* OtherAttributeEditVC.swift */,
+				0469045725AC63110022EBEF /* EditWareHouseVC.swift */,
 				0469043E25AC25C80022EBEF /* QlKhoHangVC.swift */,
 				0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */,
 				0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */,
@@ -1755,6 +1758,7 @@
 				0C8A567B25874F8800CAD7F1 /* OrderUserModel.swift in Sources */,
 				0C8A5661258330ED00CAD7F1 /* OrderDataUploadModel.swift in Sources */,
 				0C8A565F25831BA900CAD7F1 /* ImageModel.swift in Sources */,
+				0469045825AC63110022EBEF /* EditWareHouseVC.swift in Sources */,
 				C8C99DC82488D77E00B5C187 /* SceneDelegate.swift in Sources */,
 				0C42DC2C257C6D62007009E4 /* ObjectMapperFrontendProduct.swift in Sources */,
 				04E6CFCD25A1726100C13FA6 /* GetApiRespondeBlogModel.swift in Sources */,
