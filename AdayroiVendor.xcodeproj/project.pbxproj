@@ -671,6 +671,13 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		0469044025AC352F0022EBEF /* KhoHang */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KhoHang;
+			sourceTree = "<group>";
+		};
 		04971247259A36140024883E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +698,7 @@
 		04E6CFD325A2096400C13FA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				0469044025AC352F0022EBEF /* KhoHang */,
 				0469041E25AB59890022EBEF /* cell */,
 				04E6CFD825A2CE8B00C13FA6 /* AddNewProductVC.swift */,
 				0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */,

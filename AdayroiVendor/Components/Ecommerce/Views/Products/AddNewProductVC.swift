@@ -856,7 +856,7 @@ class AddNewProductVC: UIViewController {
     }
     @IBAction func UIButtonTouchUpInsideQLKhoHang(_ sender: UIButton) {
         let qlKhoHangVC = self.storyboard?.instantiateViewController(identifier: "QlKhoHangVC") as! QlKhoHangVC
-        qlKhoHangVC.delegate = self
+        qlKhoHangVC.Delegate = self
         //qlKhoHangVC.attributeHeadIndex = sender.tag
         //qlKhoHangVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
         self.present(qlKhoHangVC, animated: true, completion: nil)
@@ -1305,7 +1305,11 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
     
 }
 
-extension AddNewProductVC: QlKhoHangDelegate {
+extension AddNewProductVC: QLKhoHangVCDelegate {
+    func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellKhoHang]]) {
+        
+    }
+    
    
     
     
