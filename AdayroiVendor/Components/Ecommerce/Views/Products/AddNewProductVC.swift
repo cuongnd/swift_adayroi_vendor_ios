@@ -344,6 +344,18 @@ class AddNewProductVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var nibCell = UINib(nibName:WarehouseLabelCollectionViewCell.reuseID, bundle: nil)
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID)
+        /*
+        nibCell = UINib(nibName:WareHouseEditCollectionViewCell.reuseID, bundle: nil)
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseEditCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:WareHouseDeleteCollectionViewCell.reuseID, bundle: nil)
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseDeleteCollectionViewCell.reuseID)
+        */
+                                
+                   
+        
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
          print(" ")

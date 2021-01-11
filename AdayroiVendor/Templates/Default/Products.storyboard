@@ -1958,35 +1958,7 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WareHouseDeleteCollectionViewCell" id="Pox-WW-0Ig" customClass="WareHouseDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BJR-fJ-j0a">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="166" height="26"/>
-                                            </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WareHouseEditCollectionViewCell" id="ZfI-4Z-FWP" customClass="WareHouseEditCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                <rect key="frame" x="232" y="0.0" width="166" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cQz-z8-NIU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="166" height="26"/>
-                                            </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WarehouseLabelCollectionViewCell" id="AfW-7G-hsN" customClass="WarehouseLabelCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="36" width="166" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NYy-Xl-CoF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="166" height="26"/>
-                                            </collectionViewCell>
-                                        </cells>
+                                        <cells/>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-JA-0s4" userLabel="Collection View màu sắc">
                                         <rect key="frame" x="8" y="1596" width="398" height="150"/>
