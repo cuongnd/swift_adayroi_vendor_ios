@@ -27,7 +27,7 @@ struct CellWareHouseHeadManager {
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseLabelCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
             cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -36,7 +36,7 @@ struct CellWareHouseHeadManager {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "stt"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseLabelCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
             //cell!.contentLabel.text=String(indexPath.section)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
@@ -45,7 +45,7 @@ struct CellWareHouseHeadManager {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "edit"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseEditCollectionViewCell.reuseID, for: indexPath) as? WareHouseEditCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseManagerEditCollectionViewCell.reuseID, for: indexPath) as? WareHouseManagerEditCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -54,7 +54,7 @@ struct CellWareHouseHeadManager {
             cell?.UIButtonEdit.tag = indexPath.section
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseDeleteCollectionViewCell.reuseID, for: indexPath) as? WareHouseDeleteCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID, for: indexPath) as? WareHouseManagerDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -63,7 +63,7 @@ struct CellWareHouseHeadManager {
             cell?.UIButtonDelete.tag = indexPath.section
             return cell!
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseLabelCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
             cell!.contentLabel.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
