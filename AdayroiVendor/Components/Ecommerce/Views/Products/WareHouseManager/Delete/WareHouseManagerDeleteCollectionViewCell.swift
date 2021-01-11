@@ -9,7 +9,8 @@
 import UIKit
 
 class WareHouseManagerDeleteCollectionViewCell: UICollectionViewCell {
-static let reuseID = "WareHouseManagerDeleteCollectionViewCell"
+    @IBOutlet weak var UIButtonDelete: UIButton!
+    static let reuseID = "WareHouseManagerDeleteCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

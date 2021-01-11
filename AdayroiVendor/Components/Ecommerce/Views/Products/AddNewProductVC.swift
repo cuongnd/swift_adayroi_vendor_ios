@@ -1306,7 +1306,7 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
 }
 
 extension AddNewProductVC: QLKhoHangVCDelegate {
-    func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellKhoHang]]) {
+    func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellWareHouseHeadManager]]) {
         
     }
     

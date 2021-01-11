@@ -9,7 +9,8 @@
 import UIKit
 
 class WareHouseManagerEditCollectionViewCell: UICollectionViewCell {
-static let reuseID = "WareHouseManagerEditCollectionViewCell"
+    @IBOutlet weak var UIButtonEdit: UIButton!
+    static let reuseID = "WareHouseManagerEditCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

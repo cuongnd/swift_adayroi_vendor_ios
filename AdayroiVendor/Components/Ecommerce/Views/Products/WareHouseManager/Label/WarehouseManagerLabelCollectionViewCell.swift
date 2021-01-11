@@ -10,6 +10,7 @@ import UIKit
 
 class WarehouseManagerLabelCollectionViewCell: UICollectionViewCell {
 static let reuseID = "WarehouseManagerLabelCollectionViewCell"
+    @IBOutlet weak var contentLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

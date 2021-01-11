@@ -16,69 +16,7 @@ import FlexColorPicker
 
 
 protocol QLKhoHangVCDelegate {
-    func refreshData(AttributeHeadIndex:Int,CellKhoHangList:[[CellKhoHang]])
-}
-
-struct CellKhoHang {
-    var title:String!
-    var is_head:Bool!
-    var columnType:String!
-    var columnName:String!
-    init(title:String,is_head:Bool,columnType:String,columnName:String) {
-        self.title=title
-        self.is_head=is_head
-        self.columnType=columnType
-        self.columnName=columnName
-    }
-    
-    func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
-        if(self.is_head){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
-            cell!.contentLabel.text=String(self.title)
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            return cell!
-        }else if(!self.is_head && self.columnName == "stt"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
-            cell!.contentLabel.text=String(indexPath.section)
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            return cell!
-        }else if(!self.is_head && self.columnName == "edit"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditHeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? EditHeaderAttributeCollectionViewCell
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            cell?.UIButtonEdit.tag = indexPath.section
-            return cell!
-        }else if(!self.is_head && self.columnName == "delete"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeDeleteCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeDeleteCollectionViewCell
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            cell?.UIButtonDelete.tag = indexPath.section
-            return cell!
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAttributeCollectionViewCell.reuseID, for: indexPath) as? HeaderAttributeCollectionViewCell
-            cell!.contentLabel.text=String(self.title)
-            if indexPath.section % 2 != 0 {
-                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
-            } else {
-                cell!.backgroundColor = UIColor.white
-            }
-            return cell!
-        }
-    }
+    func refreshData(AttributeHeadIndex:Int,CellKhoHangList:[[CellWareHouseHeadManager]])
 }
 
 
@@ -99,11 +37,11 @@ class QlKhoHangVC: UIViewController {
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     
     var AttributeNameList = [[
-        CellKhoHang(title: "Stt", is_head: true,columnType: "", columnName: ""),
-        CellKhoHang(title: "Title", is_head: true,columnType: "", columnName: ""),
-        CellKhoHang(title: "Price", is_head: true,columnType: "", columnName: ""),
-        CellKhoHang(title: "Sửa", is_head: true,columnType: "", columnName: ""),
-        CellKhoHang(title: "Xóa", is_head: true,columnType: "",columnName: ""),
+        CellWareHouseHeadManager(title: "Stt", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Title", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Price", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Sửa", is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHeadManager(title: "Xóa", is_head: true,columnType: "",columnName: ""),
         
         
         ]]
@@ -259,11 +197,11 @@ class QlKhoHangVC: UIViewController {
             let contentTitle=String(describing: textFieldTitle!.text!)
             let contentPrice=String(describing: textFieldPrice!.text!)
             self.AttributeNameList.append([
-                CellKhoHang(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                CellKhoHang(title: contentTitle, is_head: false,columnType: "content", columnName: "title"),
-                CellKhoHang(title: contentPrice, is_head: false,columnType: "content", columnName: "note"),
-                CellKhoHang(title: "", is_head: false,columnType: "button",columnName: "edit"),
-                CellKhoHang(title: "", is_head: false,columnType: "button",columnName: "delete"),
+                CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
+                CellWareHouseHeadManager(title: contentTitle, is_head: false,columnType: "content", columnName: "title"),
+                CellWareHouseHeadManager(title: contentPrice, is_head: false,columnType: "content", columnName: "note"),
+                CellWareHouseHeadManager(title: "", is_head: false,columnType: "button",columnName: "edit"),
+                CellWareHouseHeadManager(title: "", is_head: false,columnType: "button",columnName: "delete"),
                 
                 
             ]);
@@ -363,7 +301,7 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let CellKhoHang:CellKhoHang=self.AttributeNameList[indexPath.section][indexPath.row]
+        let CellKhoHang:CellWareHouseHeadManager=self.AttributeNameList[indexPath.section][indexPath.row]
         let cell  = CellKhoHang.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
         return cell
         
