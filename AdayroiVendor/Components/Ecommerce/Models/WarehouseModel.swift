@@ -25,4 +25,13 @@ struct WarehouseModel: Codable {
         case create_date = "create_date"
         case modify_date = "modify_date"
     }
+    init() {
+        _id = ""
+        user_id = ""
+        warehouse_name = ""
+        warehouse_address = ""
+        warehouse_phonenumber=""
+        create_date=""
+        modify_date=""
+    }
 }

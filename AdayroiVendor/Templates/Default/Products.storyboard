@@ -3145,7 +3145,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButtonTouchUpInsideAddAttributeAndPrice:" destination="3yW-Ed-HYO" eventType="touchUpInside" id="8TY-5t-B3v"/>
+                                            <action selector="UIButtonTouchUpInsideAddWarehouse:" destination="3yW-Ed-HYO" eventType="touchUpInside" id="8TY-5t-B3v"/>
                                         </connections>
                                     </button>
                                 </subviews>

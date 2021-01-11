@@ -19,6 +19,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvS-sT-kZD">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <state key="normal" title="Xóa"/>
+                        <connections>
+                            <action selector="UIButtonTouchUpInside:" destination="gTV-IL-0wX" eventType="touchUpInside" id="nxI-DB-dZt"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

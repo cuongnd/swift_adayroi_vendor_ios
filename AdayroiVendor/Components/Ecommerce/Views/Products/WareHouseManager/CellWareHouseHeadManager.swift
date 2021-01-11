@@ -18,14 +18,15 @@ struct CellWareHouseHeadManager {
     var is_head:Bool
     var columnType:String
     var columnName:String
-    var event:ObjectiveC
-    init(title:String,is_head:Bool,columnType:String,columnName:String,event:ObjectiveC) {
+    var action:Selector
+    init(title:String,is_head:Bool,columnType:String,columnName:String,action: Selector) {
         self.title=title
         self.is_head=is_head
         self.columnType=columnType
         self.columnName=columnName
-        self.event=event
+        self.action=action
     }
+   
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
@@ -54,6 +55,7 @@ struct CellWareHouseHeadManager {
                 cell!.backgroundColor = UIColor.white
             }
             cell?.UIButtonEdit.tag = indexPath.section
+            cell?.UIButtonEdit.addTarget(self, action: self.action, for: .touchUpInside)
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID, for: indexPath) as? WareHouseManagerDeleteCollectionViewCell
@@ -63,6 +65,8 @@ struct CellWareHouseHeadManager {
                 cell!.backgroundColor = UIColor.white
             }
             cell?.UIButtonDelete.tag = indexPath.section
+            cell?.UIButtonDelete.addTarget(self, action: self.action, for: .touchUpInside)
+
             return cell!
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell

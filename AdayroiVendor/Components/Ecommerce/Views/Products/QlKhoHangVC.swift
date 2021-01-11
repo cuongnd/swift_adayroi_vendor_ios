@@ -36,15 +36,7 @@ class QlKhoHangVC: UIViewController {
     @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     
-    var wareHouseCellList = [[
-        CellWareHouseHeadManager(title: "Stt", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Tên kho hàng", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Địa chỉ kho hàng", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Sửa", is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHeadManager(title: "Xóa", is_head: true,columnType: "",columnName: ""),
-        
-        
-        ]]
+    var wareHouseCellList = [[CellWareHouseHeadManager]]()
     
     
     @IBOutlet weak var UICollectionViewWareHouses: UICollectionView!
@@ -55,16 +47,26 @@ class QlKhoHangVC: UIViewController {
     var Delegate: QLKhoHangVCDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let selector = #selector(self.nothing(_:))
+        wareHouseCellList = [[
+            CellWareHouseHeadManager(title: "Stt", is_head: true,columnType: "", columnName: "",action: selector),
+            CellWareHouseHeadManager(title: "Tên kho hàng", is_head: true,columnType: "", columnName: "",action:  selector),
+            CellWareHouseHeadManager(title: "Địa chỉ kho hàng", is_head: true,columnType: "", columnName: "",action: selector),
+            CellWareHouseHeadManager(title: "Sửa", is_head: true,columnType: "", columnName: "",action: selector),
+            CellWareHouseHeadManager(title: "Xóa", is_head: true,columnType: "",columnName: "",action: selector),
+            
+            
+            ]]
         var nibCell = UINib(nibName:WarehouseManagerLabelCollectionViewCell.reuseID, bundle: nil)
-       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID)
-       
-       nibCell = UINib(nibName:WareHouseManagerEditCollectionViewCell.reuseID, bundle: nil)
-       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerEditCollectionViewCell.reuseID)
-       
-       nibCell = UINib(nibName:WareHouseManagerDeleteCollectionViewCell.reuseID, bundle: nil)
-       self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID)
-               
-                                       
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:WareHouseManagerEditCollectionViewCell.reuseID, bundle: nil)
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerEditCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:WareHouseManagerDeleteCollectionViewCell.reuseID, bundle: nil)
+        self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID)
+        
+        
         
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
@@ -72,9 +74,9 @@ class QlKhoHangVC: UIViewController {
          phoneFormatter.format("+123456789012") /
          */
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
-         let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
+        let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
         self.Webservice_getListWareHouse(url: urlStringGetListWarehouse, params: [:])
-               
+        
         cornerRadius(viewName: self.UIButtonAddWareHouse, radius: self.UIButtonAddWareHouse.frame.height / 2)
         
         
@@ -83,14 +85,14 @@ class QlKhoHangVC: UIViewController {
         self.UICollectionViewWareHouses.dataSource = self
         //self.UILabelQLCacThuocTinh.text="Quản lý các thuộc tính:\(self.attributeHead[1].title!)";
         /*
-        if(self.attributeHead[3].list_attribute.count>0){
-            for i in 0..<self.attributeHead[3].list_attribute.count
-            {
-                //AttributeNameList.append(attributeHead[3].list_attribute[i]);
-            }
-            
-            
-        }
+         if(self.attributeHead[3].list_attribute.count>0){
+         for i in 0..<self.attributeHead[3].list_attribute.count
+         {
+         //AttributeNameList.append(attributeHead[3].list_attribute[i]);
+         }
+         
+         
+         }
          */
         
         
@@ -126,7 +128,7 @@ class QlKhoHangVC: UIViewController {
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
         
-       let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
         editWareHouseVC.delegate = self
         //editWareHouseVC.attributeHeadIndex = sender.tag
         //editWareHouseVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
@@ -156,11 +158,11 @@ class QlKhoHangVC: UIViewController {
     
     
     
-    @IBAction func UIButtonTouchUpInsideAddAttributeAndPrice(_ sender: UIButton) {
+    @IBAction func UIButtonTouchUpInsideAddWarehouse(_ sender: UIButton) {
         let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
         editWareHouseVC.delegate = self
-        //editWareHouseVC.attributeHeadIndex = sender.tag
-        //editWareHouseVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        editWareHouseVC.warehouse = WarehouseModel()
+        editWareHouseVC.warehouse_index = -1
         self.present(editWareHouseVC, animated: true, completion: nil)
         
     }
@@ -173,9 +175,41 @@ class QlKhoHangVC: UIViewController {
         self.Delegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellKhoHangList: self.wareHouseCellList)
         dismiss(animated: true, completion: nil)
     }
+    @objc func nothing(_ sender: UIButton){
+        print("hello34343")
+        
+    }
+    @objc func deleteWarehouse(_ sender: UIButton){
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
+               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                let warehouse:WarehouseModel=self.listWarehouse[sender.tag-1]
+                   let params: NSDictionary = [
+                                  "_id": warehouse._id,
+                              ]
+                              
+                   let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+                  let urlStringGetListWarehouse = API_URL + "/api_task/warehouse.delete_warehouse?user_id=\(user_id)"
+                  self.Webservice_getDeleteWareHouse(url: urlStringGetListWarehouse, params: params)
+                   
+               }
+               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+               alertVC.addAction(yesAction)
+               alertVC.addAction(noAction)
+               self.present(alertVC,animated: true,completion: nil)
+        
+    }
+    @objc func editWarehouse(_ sender: UIButton){
+        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        editWareHouseVC.delegate = self
+        editWareHouseVC.warehouse = self.listWarehouse[sender.tag-1]
+        editWareHouseVC.warehouse_index=sender.tag-1
+        self.present(editWareHouseVC, animated: true, completion: nil)
+        
+    }
 }
 //MARK: WithdrawalList
 extension QlKhoHangVC {
+    
     func Webservice_getListWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -191,20 +225,20 @@ extension QlKhoHangVC {
                         for i in 0..<self.listWarehouse.count
                         {
                             let warehouse:WarehouseModel=self.listWarehouse[i];
-                              self.wareHouseCellList.append([
-                                  CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                                  CellWareHouseHeadManager(title: warehouse.warehouse_name, is_head: false,columnType: "content", columnName: ""),
-                                  CellWareHouseHeadManager(title: warehouse.warehouse_address, is_head: false,columnType: "content", columnName: ""),
-                                  CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit"),
-                                  CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete"),
-                                  ])
-                                 
+                            self.wareHouseCellList.append([
+                                CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt",action: #selector(self.nothing(_:))),
+                                CellWareHouseHeadManager(title: warehouse.warehouse_name, is_head: false,columnType: "content", columnName: "",action: #selector(self.nothing(_:))),
+                                CellWareHouseHeadManager(title: warehouse.warehouse_address, is_head: false,columnType: "content", columnName: "",action: #selector(self.nothing(_:))),
+                                CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit",action: #selector(self.editWarehouse(_:))),
+                                CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete",action: #selector(self.nothing(_:))),
+                            ])
+                            
                         }
                         
                         self.UICollectionViewWareHouses.delegate = self
                         self.UICollectionViewWareHouses.dataSource = self
                         self.UICollectionViewWareHouses.reloadData()
-
+                        
                     }
                     
                 } catch let error as NSError  {
@@ -218,7 +252,48 @@ extension QlKhoHangVC {
             }
         }
     }
-    
+    func Webservice_getDeleteWareHouse(url:String, params:NSDictionary) -> Void {
+           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+               if strErrorMessage.count != 0 {
+                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+               }
+               else {
+                   print(jsonResponse!)
+                   do {
+                       let jsonDecoder = JSONDecoder()
+                       let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
+                       if(getApiResponseWarehousesModel.result=="success"){
+                           self.listWarehouse=getApiResponseWarehousesModel.list_warehouse
+                           for i in 0..<self.listWarehouse.count
+                           {
+                               let warehouse:WarehouseModel=self.listWarehouse[i];
+                               self.wareHouseCellList.append([
+                                   CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt",action: #selector(self.nothing(_:))),
+                                   CellWareHouseHeadManager(title: warehouse.warehouse_name, is_head: false,columnType: "content", columnName: "",action: #selector(self.nothing(_:))),
+                                   CellWareHouseHeadManager(title: warehouse.warehouse_address, is_head: false,columnType: "content", columnName: "",action: #selector(self.nothing(_:))),
+                                   CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit",action: #selector(self.editWarehouse(_:))),
+                                   CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete",action: #selector(self.nothing(_:))),
+                               ])
+                               
+                           }
+                           
+                           self.UICollectionViewWareHouses.delegate = self
+                           self.UICollectionViewWareHouses.dataSource = self
+                           self.UICollectionViewWareHouses.reloadData()
+                           
+                       }
+                       
+                   } catch let error as NSError  {
+                       showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                       
+                   }
+                   
+                   
+                   //print("userModel:\(userModel)")
+                   
+               }
+           }
+       }
     
 }
 
@@ -270,16 +345,10 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
 }
 
 extension QlKhoHangVC: EditWareHouseVCEditDelegate {
-    func refreshData(warehouseModel: WarehouseModel) {
-        self.wareHouseCellList.append([
-        CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
-        CellWareHouseHeadManager(title: warehouseModel.warehouse_name, is_head: false,columnType: "content", columnName: ""),
-        CellWareHouseHeadManager(title: warehouseModel.warehouse_address, is_head: false,columnType: "content", columnName: ""),
-        CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit"),
-        CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete"),
-        ])
-        self.UICollectionViewWareHouses.delegate = self
-        self.UICollectionViewWareHouses.dataSource = self
-        self.UICollectionViewWareHouses.reloadData()
+    func refreshData(warehouse_index:Int,warehouseModel: WarehouseModel) {
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+        let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
+        self.Webservice_getListWareHouse(url: urlStringGetListWarehouse, params: [:])
+        
     }
 }

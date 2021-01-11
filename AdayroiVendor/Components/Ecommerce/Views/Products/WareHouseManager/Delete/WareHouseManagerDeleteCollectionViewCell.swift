@@ -16,4 +16,6 @@ class WareHouseManagerDeleteCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    @IBAction func UIButtonTouchUpInside(_ sender: UIButton) {
+    }
 }
