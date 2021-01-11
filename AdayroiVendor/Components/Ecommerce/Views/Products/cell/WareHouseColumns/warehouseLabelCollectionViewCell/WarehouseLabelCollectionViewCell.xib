@@ -16,15 +16,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4V-IK-qn8">
-                        <rect key="frame" x="33" y="12" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4V-IK-qn8">
+                        <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="T4V-IK-qn8" secondAttribute="bottom" id="4y8-13-tnT"/>
+                <constraint firstItem="T4V-IK-qn8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FFf-N2-Nle"/>
+                <constraint firstAttribute="trailing" secondItem="T4V-IK-qn8" secondAttribute="trailing" id="PUi-3B-rzM"/>
+                <constraint firstItem="T4V-IK-qn8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="u6f-Uu-L7a"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="125" height="44"/>
             <connections>

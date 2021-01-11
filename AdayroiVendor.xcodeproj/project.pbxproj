@@ -67,6 +67,7 @@
 		0469043525ABBB3A0022EBEF /* CellWareHouseHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043425ABBB3A0022EBEF /* CellWareHouseHead.swift */; };
 		0469043825AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043625AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift */; };
 		0469043925AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469043725AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib */; };
+		0469043B25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043A25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift */; };
 		0493654B25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */; };
 		04971249259A366A0024883E /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971248259A366A0024883E /* CategoryListVC.swift */; };
 		0497124B259A96B70024883E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124A259A96B70024883E /* CategoryModel.swift */; };
@@ -297,6 +298,7 @@
 		0469043425ABBB3A0022EBEF /* CellWareHouseHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWareHouseHead.swift; sourceTree = "<group>"; };
 		0469043625AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarehouseLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469043725AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WarehouseLabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		0469043A25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WareHouseCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalStickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		04971248259A366A0024883E /* CategoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		0497124A259A96B70024883E /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 		0469042425ABB3DB0022EBEF /* WareHouseColumns */ = {
 			isa = PBXGroup;
 			children = (
+				0469043A25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift */,
 				0469042A25ABB5510022EBEF /* Edit */,
 				0469042525ABB42A0022EBEF /* Delete */,
 				0469042325AB5A7E0022EBEF /* warehouseLabelCollectionViewCell */,
@@ -1583,6 +1586,7 @@
 				0C3C2E43256ABB70000B21C5 /* HomeDiscountProductCell.swift in Sources */,
 				04D47EB025A3DE290038AF3D /* GetApiResponseSubCategoryModel.swift in Sources */,
 				C8B4B8502497485A0085ACAC /* ForgotPassword.swift in Sources */,
+				0469043B25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift in Sources */,
 				04E6CFC725A0A46300C13FA6 /* GetApiRespondeBlogsModel.swift in Sources */,
 				0C8A565B2583186E00CAD7F1 /* GetPaymentResponseModel.swift in Sources */,
 				0443F7542592E109005D5637 /* DataCellRowRepresentable.swift in Sources */,
