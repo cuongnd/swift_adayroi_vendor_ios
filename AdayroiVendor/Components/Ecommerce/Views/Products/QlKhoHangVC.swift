@@ -25,8 +25,8 @@ class QlKhoHangVC: UIViewController {
     var otherAttributeHead:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.UITextFieldAttributeName.text=otherAttributeHead[1].title
-        self.UITextViewDescription.text=otherAttributeHead[2].title
+        //self.UITextFieldAttributeName.text=otherAttributeHead[1].title
+        //self.UITextViewDescription.text=otherAttributeHead[2].title
         /*
         let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
         print(" ")

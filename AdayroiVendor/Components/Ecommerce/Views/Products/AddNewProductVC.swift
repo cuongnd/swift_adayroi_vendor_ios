@@ -855,11 +855,11 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonTouchUpInsideDeleteLinkVideo(_ sender: UIButton) {
     }
     @IBAction func UIButtonTouchUpInsideQLKhoHang(_ sender: UIButton) {
-        let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
-        qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
-        qlCacThuocTinhVC.attributeHeadIndex = sender.tag
-        qlCacThuocTinhVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
-        self.present(qlCacThuocTinhVC, animated: true, completion: nil)
+        let qlKhoHangVC = self.storyboard?.instantiateViewController(identifier: "QlKhoHangVC") as! QlKhoHangVC
+        qlKhoHangVC.delegate = self
+        //qlKhoHangVC.attributeHeadIndex = sender.tag
+        //qlKhoHangVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        self.present(qlKhoHangVC, animated: true, completion: nil)
     }
     @IBAction func UIButtonTouchUpInsideEditLinkVideoCaption(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag
@@ -1304,6 +1304,14 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
     
     
 }
+
+extension AddNewProductVC: QlKhoHangDelegate {
+   
+    
+    
+}
+
+
 
 extension AddNewProductVC: OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex: Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
