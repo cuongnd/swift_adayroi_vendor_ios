@@ -3125,7 +3125,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="598" id="82w-Eq-YHP"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xIn-ue-OJX" customClass="QlCacThuocTinhCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xIn-ue-OJX" customClass="WareHouseManagerCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
                                             <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>

@@ -37,7 +37,7 @@ struct CellWareHouseHeadManager {
             return cell!
         }else if(!self.is_head && self.columnName == "stt"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
-            //cell!.contentLabel.text=String(indexPath.section)
+            cell!.contentLabel.text=String(indexPath.section)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {

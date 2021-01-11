@@ -274,11 +274,11 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
 extension QlKhoHangVC: EditWareHouseVCEditDelegate {
     func refreshData(warehouseModel: WarehouseModel) {
         self.wareHouseList.append([
-        CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: ""),
+        CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
         CellWareHouseHeadManager(title: warehouseModel.warehouse_name, is_head: false,columnType: "content", columnName: ""),
         CellWareHouseHeadManager(title: warehouseModel.warehouse_address, is_head: false,columnType: "content", columnName: ""),
-        CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: ""),
-        CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: ""),
+        CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit"),
+        CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete"),
         ])
         self.UICollectionViewWareHouses.delegate = self
         self.UICollectionViewWareHouses.dataSource = self
