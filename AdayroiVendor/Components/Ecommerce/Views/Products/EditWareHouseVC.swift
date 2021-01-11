@@ -17,8 +17,6 @@ class EditWareHouseVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var delegate: EditWareHouseVCEditDelegate!
-    @IBOutlet weak var UITextFieldAttributeName: UITextField!
-    @IBOutlet weak var UITextViewDescription: UITextView!
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     var customMask = TLCustomMask()
     var otherAttributeHeadIndex:Int = -1
@@ -43,6 +41,7 @@ class EditWareHouseVC: UIViewController {
     }
     
     @IBAction func btnTap_Ok(_ sender: UIButton) {
+        /*
         var attributeName=String(self.UITextFieldAttributeName.text!)
         var description=String(self.UITextViewDescription.text!)
         
@@ -71,6 +70,7 @@ class EditWareHouseVC: UIViewController {
            }
         self.otherAttributeHead[1].title=attributeName
         otherAttributeHead[2].title=description
+        */
         self.dismiss(animated: true) {
             self.delegate.refreshData(otherAttributeHeadIndex: self.otherAttributeHeadIndex,otherAttributeHead: self.otherAttributeHead)
         }
@@ -88,13 +88,3 @@ class EditWareHouseVC: UIViewController {
 
 
 
-extension EditWareHouseVC: UITextFieldDelegate{
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-
-        self.UITextFieldAttributeName.text = customMask.formatStringWithRange(range: range, string: string)
-
-        return false
-    }
-}
