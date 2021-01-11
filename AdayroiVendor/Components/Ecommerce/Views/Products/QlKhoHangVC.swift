@@ -36,7 +36,7 @@ class QlKhoHangVC: UIViewController {
     @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     
-    var wareHouseList = [[
+    var wareHouseCellList = [[
         CellWareHouseHeadManager(title: "Stt", is_head: true,columnType: "", columnName: ""),
         CellWareHouseHeadManager(title: "Tên kho hàng", is_head: true,columnType: "", columnName: ""),
         CellWareHouseHeadManager(title: "Địa chỉ kho hàng", is_head: true,columnType: "", columnName: ""),
@@ -50,6 +50,7 @@ class QlKhoHangVC: UIViewController {
     @IBOutlet weak var UICollectionViewWareHouses: UICollectionView!
     
     @IBOutlet weak var UIButtonAddWareHouse: UIButton!
+    var listWarehouse:[WarehouseModel]=[WarehouseModel]()
     
     var Delegate: QLKhoHangVCDelegate!
     override func viewDidLoad() {
@@ -70,10 +71,10 @@ class QlKhoHangVC: UIViewController {
          print(" ")
          phoneFormatter.format("+123456789012") /
          */
-        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlGetCategories = API_URL + "/api/categories"
-        
-        
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+         let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
+        self.Webservice_getListWareHouse(url: urlStringGetListWarehouse, params: [:])
+               
         cornerRadius(viewName: self.UIButtonAddWareHouse, radius: self.UIButtonAddWareHouse.frame.height / 2)
         
         
@@ -139,7 +140,7 @@ class QlKhoHangVC: UIViewController {
         
         let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
             
-            self.wareHouseList.remove(at: sender.tag)
+            self.wareHouseCellList.remove(at: sender.tag)
             self.UICollectionViewWareHouses.delegate = self
             self.UICollectionViewWareHouses.dataSource = self
             self.UICollectionViewWareHouses.reloadData()
@@ -168,29 +169,14 @@ class QlKhoHangVC: UIViewController {
     }
     
     @IBAction func UIButtonSave(_ sender: UIButton) {
-        self.wareHouseList.remove(at: 0)
-        self.Delegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellKhoHangList: self.wareHouseList)
+        self.wareHouseCellList.remove(at: 0)
+        self.Delegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellKhoHangList: self.wareHouseCellList)
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
-    
 }
-
-
-
 //MARK: WithdrawalList
 extension QlKhoHangVC {
-    
-    
-    
-    
-    
-    func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
+    func Webservice_getListWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
                 showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
@@ -199,14 +185,26 @@ extension QlKhoHangVC {
                 print(jsonResponse!)
                 do {
                     let jsonDecoder = JSONDecoder()
-                    let getApiResponseCategoryModel = try jsonDecoder.decode(GetApiResponseCategoryModel.self, from: jsonResponse!)
-                    if(getApiResponseCategoryModel.result=="success"){
+                    let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
+                    if(getApiResponseWarehousesModel.result=="success"){
+                        self.listWarehouse=getApiResponseWarehousesModel.list_warehouse
+                        for i in 0..<self.listWarehouse.count
+                        {
+                            let warehouse:WarehouseModel=self.listWarehouse[i];
+                              self.wareHouseCellList.append([
+                                  CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
+                                  CellWareHouseHeadManager(title: warehouse.warehouse_name, is_head: false,columnType: "content", columnName: ""),
+                                  CellWareHouseHeadManager(title: warehouse.warehouse_address, is_head: false,columnType: "content", columnName: ""),
+                                  CellWareHouseHeadManager(title: "Sửa", is_head: false,columnType: "button", columnName: "edit"),
+                                  CellWareHouseHeadManager(title: "Xóa", is_head: false,columnType: "button",columnName: "delete"),
+                                  ])
+                                 
+                        }
                         
-                        
-                        
-                        
-                        
-                        
+                        self.UICollectionViewWareHouses.delegate = self
+                        self.UICollectionViewWareHouses.dataSource = self
+                        self.UICollectionViewWareHouses.reloadData()
+
                     }
                     
                 } catch let error as NSError  {
@@ -231,8 +229,8 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
         if(collectionView==self.UICollectionViewListProductImage){
             return 1
         }else if(collectionView==self.UICollectionViewWareHouses){
-            print("self.headerAttributeTitleProduct.count:\(self.wareHouseList.count)")
-            return self.wareHouseList.count
+            print("self.headerAttributeTitleProduct.count:\(self.wareHouseCellList.count)")
+            return self.wareHouseCellList.count
         }
         else{
             return 1
@@ -242,12 +240,12 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.wareHouseList[0].count
+        return self.wareHouseCellList[0].count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let CellKhoHang:CellWareHouseHeadManager=self.wareHouseList[indexPath.section][indexPath.row]
+        let CellKhoHang:CellWareHouseHeadManager=self.wareHouseCellList[indexPath.section][indexPath.row]
         let cell  = CellKhoHang.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
         return cell
         
@@ -273,7 +271,7 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
 
 extension QlKhoHangVC: EditWareHouseVCEditDelegate {
     func refreshData(warehouseModel: WarehouseModel) {
-        self.wareHouseList.append([
+        self.wareHouseCellList.append([
         CellWareHouseHeadManager(title: "", is_head: false,columnType: "content", columnName: "stt"),
         CellWareHouseHeadManager(title: warehouseModel.warehouse_name, is_head: false,columnType: "content", columnName: ""),
         CellWareHouseHeadManager(title: warehouseModel.warehouse_address, is_head: false,columnType: "content", columnName: ""),

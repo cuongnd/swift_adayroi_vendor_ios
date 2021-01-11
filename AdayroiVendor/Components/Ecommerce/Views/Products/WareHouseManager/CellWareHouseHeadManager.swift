@@ -18,11 +18,13 @@ struct CellWareHouseHeadManager {
     var is_head:Bool
     var columnType:String
     var columnName:String
-    init(title:String,is_head:Bool,columnType:String,columnName:String) {
+    var event:ObjectiveC
+    init(title:String,is_head:Bool,columnType:String,columnName:String,event:ObjectiveC) {
         self.title=title
         self.is_head=is_head
         self.columnType=columnType
         self.columnName=columnName
+        self.event=event
     }
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {

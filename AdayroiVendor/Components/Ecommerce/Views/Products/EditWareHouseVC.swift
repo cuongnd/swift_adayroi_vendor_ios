@@ -88,8 +88,8 @@ class EditWareHouseVC: UIViewController {
              "warehouse_phonenumber": wareHousePhoneNumber
          ]
         
-         let urlStringPostUpdateUser = API_URL + "/api_task/warehouse.add_warehouse?user_id=\(user_id)"
-         self.Webservice_getUpdateWareHouse(url: urlStringPostUpdateUser, params: params)
+         let urlStringPostUpdateWarehouse = API_URL + "/api_task/warehouse.add_warehouse?user_id=\(user_id)"
+         self.Webservice_getUpdateWareHouse(url: urlStringPostUpdateWarehouse, params: params)
         
         
        
