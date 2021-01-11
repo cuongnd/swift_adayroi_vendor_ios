@@ -282,6 +282,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldUnitPrice: UITextField!
     @IBOutlet weak var UIButtonAddImage: UIButton!
     @IBOutlet weak var UIButtonAddOtherAttributeProduct: UIButton!
+    @IBOutlet weak var UIButtonQlKhoHang: UIButton!
     var list_product_image:[ImageProductModel]=[ImageProductModel]()
     var list_video_link:[VideoProductModel]=[VideoProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
@@ -346,13 +347,13 @@ class AddNewProductVC: UIViewController {
         super.viewDidLoad()
         var nibCell = UINib(nibName:WarehouseLabelCollectionViewCell.reuseID, bundle: nil)
         self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID)
-        /*
+        
         nibCell = UINib(nibName:WareHouseEditCollectionViewCell.reuseID, bundle: nil)
         self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseEditCollectionViewCell.reuseID)
         
         nibCell = UINib(nibName:WareHouseDeleteCollectionViewCell.reuseID, bundle: nil)
         self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseDeleteCollectionViewCell.reuseID)
-        */
+        
                                 
                    
         
@@ -852,6 +853,13 @@ class AddNewProductVC: UIViewController {
         
     }
     @IBAction func UIButtonTouchUpInsideDeleteLinkVideo(_ sender: UIButton) {
+    }
+    @IBAction func UIButtonTouchUpInsideQLKhoHang(_ sender: UIButton) {
+        let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
+        qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
+        qlCacThuocTinhVC.attributeHeadIndex = sender.tag
+        qlCacThuocTinhVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        self.present(qlCacThuocTinhVC, animated: true, completion: nil)
     }
     @IBAction func UIButtonTouchUpInsideEditLinkVideoCaption(_ sender: UIButton) {
         self.productImageDescriptionChanging=sender.tag

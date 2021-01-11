@@ -68,6 +68,7 @@
 		0469043825AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043625AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift */; };
 		0469043925AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469043725AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib */; };
 		0469043B25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043A25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift */; };
+		0469043F25AC25C80022EBEF /* QlKhoHangVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469043E25AC25C80022EBEF /* QlKhoHangVC.swift */; };
 		0493654B25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */; };
 		04971249259A366A0024883E /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971248259A366A0024883E /* CategoryListVC.swift */; };
 		0497124B259A96B70024883E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124A259A96B70024883E /* CategoryModel.swift */; };
@@ -299,6 +300,7 @@
 		0469043625AC0D910022EBEF /* WarehouseLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarehouseLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469043725AC0D910022EBEF /* WarehouseLabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WarehouseLabelCollectionViewCell.xib; sourceTree = "<group>"; };
 		0469043A25AC0FC90022EBEF /* WareHouseCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WareHouseCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		0469043E25AC25C80022EBEF /* QlKhoHangVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlKhoHangVC.swift; sourceTree = "<group>"; };
 		0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalStickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		04971248259A366A0024883E /* CategoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		0497124A259A96B70024883E /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */,
 				04E6CFD125A2093200C13FA6 /* MyProductListVC.swift */,
 				041393A525A8A17D002D4149 /* OtherAttributeEditVC.swift */,
+				0469043E25AC25C80022EBEF /* QlKhoHangVC.swift */,
 				0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */,
 				0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */,
 				041393A325A89D88002D4149 /* OtherAttributeCustomCollectionViewLayout.swift */,
@@ -1636,6 +1639,7 @@
 				C89F47FA248A64A700694308 /* Webservices.swift in Sources */,
 				0443F7862594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift in Sources */,
 				0443F6B725918539005D5637 /* GetLichSuRutTienResponseModel.swift in Sources */,
+				0469043F25AC25C80022EBEF /* QlKhoHangVC.swift in Sources */,
 				0443F77825947F4A005D5637 /* GetAffiliateInfoModel.swift in Sources */,
 				88F6721E24A4ADE5000061FB /* PromoCodeListVC.swift in Sources */,
 				0CD77A64257A48FC0083BC09 /* ADRFrontEndProduct.swift in Sources */,
