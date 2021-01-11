@@ -8,31 +8,21 @@
 import Foundation
 struct WarehouseModel: Codable {
     let _id: String
-    let name: String
-    let status: Bool
-    let added_date: String
-    let added_user_id: String
-    let updated_date: String?=""
-    let updated_user_id: String
-    let ordering: Int
-    let alias: String
-    let description: String
-    let default_photo: ImageModel
-    let default_icon: ImageModel
+    let user_id: String
+    let warehouse_name: String
+    let warehouse_address: String
+    let warehouse_phonenumber: String
+    let create_date: String
+    let modify_date: String
    
     
     enum CodingKeys: String, CodingKey {
        case _id = "_id"
-        case name = "name"
-        case status = "status"
-        case added_date = "added_date"
-        case added_user_id = "added_user_id"
-        case updated_date = "updated_date"
-        case updated_user_id = "updated_user_id"
-        case ordering = "ordering"
-        case alias = "alias"
-        case description = "description"
-        case default_photo =  "default_photo"
-        case default_icon = "default_icon"
+        case user_id = "user_id"
+        case warehouse_name = "warehouse_name"
+        case warehouse_address = "warehouse_address"
+        case warehouse_phonenumber = "warehouse_phonenumber"
+        case create_date = "create_date"
+        case modify_date = "modify_date"
     }
 }

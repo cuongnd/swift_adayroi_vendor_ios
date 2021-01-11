@@ -3524,6 +3524,9 @@
                                                 <state key="normal" title="Lưu lại">
                                                     <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnTapSave:" destination="ooB-DH-OFZ" eventType="touchUpInside" id="pYi-LT-4jo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a4-v0-Ob2">
                                                 <rect key="frame" x="203" y="0.0" width="195" height="54"/>
@@ -3532,6 +3535,9 @@
                                                 <state key="normal" title="Hủy">
                                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnTap_dismiss:" destination="ooB-DH-OFZ" eventType="touchUpInside" id="kH0-tB-FHt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -3563,6 +3569,11 @@
                         <viewLayoutGuide key="safeArea" id="XdS-cR-TME"/>
                     </view>
                     <size key="freeformSize" width="414" height="800"/>
+                    <connections>
+                        <outlet property="UITextFieldWareHouseName" destination="rC3-tG-geL" id="x0N-Uu-A30"/>
+                        <outlet property="UITextFieldWareHousePhoneNumber" destination="WCJ-WH-h16" id="E4H-Pj-F90"/>
+                        <outlet property="UITextViewWareHouseAddress" destination="iwf-V4-R0p" id="BJH-w6-wAl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYL-q1-99u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
