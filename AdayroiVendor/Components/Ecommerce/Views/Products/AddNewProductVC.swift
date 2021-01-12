@@ -220,6 +220,35 @@ struct CellOrtherHeadAttribute {
     }
 }
 
+struct HeaderAttributeTitleModel {
+    var title: String
+    var note:String
+    var list_attribute:[HeaderAttributeModel]=[HeaderAttributeModel]()
+    init(title:String,note:String,list_attribute:[HeaderAttributeModel]) {
+        self.title=title
+        self.note=note
+        self.list_attribute=list_attribute
+    }
+    
+    var dictionary: [String: Any] {
+        var list_attribute:[NSDictionary]=[NSDictionary]()
+        if(self.list_attribute.count>0){
+            for index in 0...self.list_attribute.count-1 {
+                let currentItem=self.list_attribute[index]
+                list_attribute.append(currentItem.nsDictionary)
+                
+            }
+        }
+        return [
+            "title": title,
+            "note": note,
+            "list_attribute":list_attribute
+        ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
+}
 struct HeaderAttributeModel {
     var title: String
     var price: Double
@@ -229,8 +258,17 @@ struct HeaderAttributeModel {
         self.price=price
         self.note=note
     }
+    var dictionary: [String: Any] {
+        return [
+            "title": title,
+            "price": price,
+            "note": note
+        ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 }
-
 
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
@@ -322,7 +360,7 @@ class AddNewProductVC: UIViewController {
     var list_product_image:[ImageProductModel]=[ImageProductModel]()
     var list_video_link:[VideoProductModel]=[VideoProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
-    var list_header_attribute:[HeaderAttributeModel]=[HeaderAttributeModel]()
+    var list_header_attribute_title:[HeaderAttributeTitleModel]=[HeaderAttributeTitleModel]()
     
     
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
@@ -477,6 +515,7 @@ class AddNewProductVC: UIViewController {
         let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
         qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
         qlCacThuocTinhVC.attributeHeadIndex = sender.tag
+        qlCacThuocTinhVC.attributeTitleHeadIndex = sender.tag-1
         qlCacThuocTinhVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
         self.present(qlCacThuocTinhVC, animated: true, completion: nil)
     }
@@ -498,6 +537,7 @@ class AddNewProductVC: UIViewController {
             self.UICollectionViewHeaderAttributes.delegate = self
             self.UICollectionViewHeaderAttributes.dataSource = self
             self.UICollectionViewHeaderAttributes.reloadData()
+            self.list_header_attribute_title[textField.tag-1].title=content
             //compare the current password and do action here
         }
         alertController.addAction(confirmAction)
@@ -517,6 +557,7 @@ class AddNewProductVC: UIViewController {
             self.UICollectionViewHeaderAttributes.delegate = self
             self.UICollectionViewHeaderAttributes.dataSource = self
             self.UICollectionViewHeaderAttributes.reloadData()
+            self.list_header_attribute_title.remove(at: sender.tag-1)
             
         }
         let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
@@ -817,6 +858,7 @@ class AddNewProductVC: UIViewController {
             self.alertTextField = textField
             textField.placeholder = ""
             //textField.isSecureTextEntry = true
+            
             textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
@@ -838,8 +880,8 @@ class AddNewProductVC: UIViewController {
             ]);
             
             
-            let headerAttributeModel:HeaderAttributeModel=HeaderAttributeModel(title: content, price: 0.0, note: "")
-            self.list_header_attribute.append(headerAttributeModel)
+            let headerAttributeTitleModel:HeaderAttributeTitleModel=HeaderAttributeTitleModel(title: content, note: "", list_attribute: [HeaderAttributeModel]())
+            self.list_header_attribute_title.append(headerAttributeTitleModel)
             self.UICollectionViewHeaderAttributes.delegate = self
             self.UICollectionViewHeaderAttributes.dataSource = self
             self.UICollectionViewHeaderAttributes.reloadData()
@@ -1033,16 +1075,17 @@ class AddNewProductVC: UIViewController {
         //product image
         var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
         
-        
-        for index in 0...self.list_product_image.count-1 {
-            let currentItem=self.list_product_image[index]
-            listImageProductCodableDict.append(currentItem.nsDictionary)
-            
+        if(self.list_product_image.count>0){
+            for index in 0...self.list_product_image.count-1 {
+                let currentItem=self.list_product_image[index]
+                listImageProductCodableDict.append(currentItem.nsDictionary)
+                
+            }
         }
+        
         
         //video product
         var listVideoLinkCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-        
         if(self.list_video_link.count>0){
             for index in 0...self.list_video_link.count-1 {
                 let currentItem=self.list_video_link[index]
@@ -1050,6 +1093,24 @@ class AddNewProductVC: UIViewController {
                 
             }
         }
+        //product in ware house
+        var listTotalProductInWarehouseCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        if(self.list_total_product_in_warehouse.count>0){
+            for index in 0...self.list_total_product_in_warehouse.count-1 {
+                let currentItem=self.list_total_product_in_warehouse[index]
+                listTotalProductInWarehouseCodableDict.append(currentItem.nsDictionary)
+                
+            }
+        }
+        //
+        var listHeaderAttributeTitleCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+       if(self.list_header_attribute_title.count>0){
+           for index in 0...self.list_header_attribute_title.count-1 {
+               let currentItem=self.list_header_attribute_title[index]
+               listHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
+               
+           }
+       }
         let parameters: [String : Any] = [
             "product_name": product_name,
             "product_code": product_code,
@@ -1063,6 +1124,10 @@ class AddNewProductVC: UIViewController {
             "product_unit_price": product_unit_price,
             "product_short_description": product_short_description,
             "product_full_description": product_full_description,
+            "list_product_image":listImageProductCodableDict,
+            "list_video_link":listVideoLinkCodableDict,
+            "list_total_product_in_warehouse":listTotalProductInWarehouseCodableDict,
+            "list_header_attribute_title":listHeaderAttributeTitleCodableDict
         ]
         let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
         
@@ -1088,7 +1153,7 @@ class AddNewProductVC: UIViewController {
             
         }
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
-        WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers, keyName:"image") { (response, error) in
+        WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
             
             MBProgressHUD.hide(for: self.view, animated: false)
             if error != nil {
@@ -1543,11 +1608,14 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
 }
 
 extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
-    func refreshData(AttributeHeadIndex: Int, CellAttributeList: [[CellAttribute]]) {
+    func refreshData(AttributeHeadIndex: Int,attributeTitleHeadIndex:Int, CellAttributeList: [[CellAttribute]]) {
         var list_attribute:[String]=[String]()
         for i in 0..<CellAttributeList.count
         {
-            list_attribute.append("\(CellAttributeList[i][1].title!)(\(CellAttributeList[i][2].title!))");
+            let title:String=CellAttributeList[i][1].title!
+            let price:String=CellAttributeList[i][2].title!
+            list_attribute.append("\(title)(\(price))");
+            self.list_header_attribute_title[attributeTitleHeadIndex].list_attribute.append(HeaderAttributeModel(title: title, price: 2.2, note: ""))
         }
         let joined2 = list_attribute.joined(separator: ", ")
         self.headerAttributeTitleProduct[AttributeHeadIndex][3].title=joined2
@@ -1555,6 +1623,8 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
         self.UICollectionViewHeaderAttributes.delegate = self
         self.UICollectionViewHeaderAttributes.dataSource = self
         self.UICollectionViewHeaderAttributes.reloadData()
+        
+        
     }
     
     

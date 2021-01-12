@@ -16,7 +16,7 @@ import FlexColorPicker
 
 
 protocol ModalAttributeHeadIndexDelegate {
-    func refreshData(AttributeHeadIndex:Int,CellAttributeList:[[CellAttribute]])
+    func refreshData(AttributeHeadIndex:Int,attributeTitleHeadIndex:Int,CellAttributeList:[[CellAttribute]])
 }
 
 struct CellAttribute {
@@ -93,6 +93,7 @@ class QlCacThuocTinhVC: UIViewController {
     
     
     var attributeHeadIndex:Int=0
+    var attributeTitleHeadIndex:Int=0
     var attributeHead:[CellHeaderAttribute]=[CellHeaderAttribute]()
     
     @IBOutlet weak var UILabelQLCacThuocTinh: UILabel!
@@ -283,7 +284,7 @@ class QlCacThuocTinhVC: UIViewController {
     
     @IBAction func UIButtonSave(_ sender: UIButton) {
         self.AttributeNameList.remove(at: 0)
-        self.modalAttributeHeadIndexDelegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,CellAttributeList: self.AttributeNameList)
+        self.modalAttributeHeadIndexDelegate.refreshData(AttributeHeadIndex:self.attributeHeadIndex,attributeTitleHeadIndex:self.attributeTitleHeadIndex, CellAttributeList: self.AttributeNameList)
         dismiss(animated: true, completion: nil)
     }
     

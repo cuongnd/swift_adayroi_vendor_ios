@@ -297,7 +297,7 @@ class WebServices: NSObject
                 }
         }
     }
-    func multipartWebServiceUploadProduct(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String: Any], fileData:[DataUpload], fileUrl:URL?, headers:HTTPHeaders, keyName:String, completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){
+    func multipartWebServiceUploadProduct(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String:Any], fileData:[DataUpload], fileUrl:URL?, headers:HTTPHeaders,  completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){
         
         print("Fetching WS : \(URLString)")
         print("With parameters : \(parameters)")

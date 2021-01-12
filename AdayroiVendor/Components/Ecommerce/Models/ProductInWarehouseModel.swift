@@ -43,4 +43,15 @@ struct ProductInWarehouseModel: Codable {
         total_product=0
         unlimit=1
     }
+    var dictionary: [String: Any] {
+        return [
+            "warehouse_id": _id,
+            "user_id": user_id,
+            "total_product": total_product,
+            "unlimit": unlimit
+        ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 }
