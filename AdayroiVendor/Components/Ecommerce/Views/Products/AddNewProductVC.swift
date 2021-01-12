@@ -46,6 +46,14 @@ struct VideoProductModel {
         self.video_caption=video_caption
         self.video_image=video_image
     }
+    var dictionary: [String: Any] {
+        return ["video_link": video_link,
+                "video_caption": video_caption,
+                "video_image": video_image]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 }
 
 
@@ -387,8 +395,6 @@ class AddNewProductVC: UIViewController {
         }
         customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
         customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        self.UITextFieldOriginPrice.delegate = self
-        self.UITextFieldUnitPrice.delegate = self
         
         /*
          let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
@@ -994,8 +1000,27 @@ class AddNewProductVC: UIViewController {
 
         var product_full_description=String(self.UITextViewProductFullDescription.text!)
         product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
-
-       
+        
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+       let params: NSDictionary = [
+                      "product_name": product_name,
+                      "product_code": product_code,
+                      "product_length": product_length,
+                      "product_height": product_height,
+                      "product_width": product_width,
+                      "product_weight": product_weight,
+                      "product_unit": product_unit,
+                      "product_alias": product_alias,
+                      "product_orignal_price": product_orignal_price,
+                      "product_unit_price": product_unit_price,
+                      "product_short_description": product_short_description,
+                      "product_full_description": product_full_description,
+                      "list_video_link": self.list_video_link.description,
+                  ]
+                  
+                  let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
+                  self.Webservice_getUpdateProduct(url: urlStringPostAddNewProduct, params: params)
+        
 
         
     }
@@ -1041,7 +1066,32 @@ extension AddNewProductVC {
             }
         }
     }
-    
+    func Webservice_getUpdateProduct(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseAddNewProductModel = try jsonDecoder.decode(GetApiResponseAddNewProductModel.self, from: jsonResponse!)
+                    if(getApiResponseAddNewProductModel.result=="success"){
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     
     
     
