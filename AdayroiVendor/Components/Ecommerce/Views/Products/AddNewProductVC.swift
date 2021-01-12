@@ -320,15 +320,8 @@ class AddNewProductVC: UIViewController {
         
         
         ]]
-    var wareHousehead = [[
-           CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: ""),
-           CellWareHouseHead(title: "Thuộc tính",is_head: true,columnType: "", columnName: ""),
-           CellWareHouseHead(title: "Nội dung",is_head: true,columnType: "", columnName: ""),
-           CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: ""),
-           CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: ""),
-           
-           
-           ]]
+    var wareHouseheadFisrtRow:[CellWareHouseHead]=[]
+    var wareHousehead:[[CellWareHouseHead]] = [[CellWareHouseHead]]()
     
     @IBOutlet weak var UICollectionViewColorProducts: UICollectionView!
     var list_image_source:[[DataRowModel]]=[[DataRowModel]]()
@@ -409,8 +402,18 @@ class AddNewProductVC: UIViewController {
         self.UICollectionViewWareHouses.delegate = self
         self.UICollectionViewWareHouses.dataSource = self
         
-        let urlGetwarehouses = API_URL + "/api/warehouses"
-        //self.Webservice_getWarehouses(url: urlGetwarehouses, params:[:])
+        self.wareHouseheadFisrtRow=[
+        CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHead(title: "Kho hàng",is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHead(title: "Số lượng sản phẩm",is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: ""),
+        CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+        
+        
+        ]
+        self.wareHousehead.append(self.wareHouseheadFisrtRow)
+        let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
+        self.Webservice_getListWareHouse(url: urlStringGetListWarehouse, params: [:])
         
         
     }
@@ -1053,7 +1056,49 @@ extension AddNewProductVC {
             }
         }
     }
-    
+    func Webservice_getListWareHouse(url:String, params:NSDictionary) -> Void {
+           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+               if strErrorMessage.count != 0 {
+                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+               }
+               else {
+                   print(jsonResponse!)
+                   do {
+                       let jsonDecoder = JSONDecoder()
+                       let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
+                       if(getApiResponseWarehousesModel.result=="success"){
+                           self.list_warehouse=getApiResponseWarehousesModel.list_warehouse
+                           self.wareHousehead.removeAll()
+                           self.wareHousehead.append(self.wareHouseheadFisrtRow)
+                           for i in 0..<self.list_warehouse.count
+                           {
+                               let warehouse:WarehouseModel=self.list_warehouse[i];
+                               self.wareHousehead.append([
+                                   CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt"),
+                                   CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: ""),
+                                   CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: ""),
+                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: ""),
+                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: ""),                               ])
+                               
+                           }
+                           
+                           self.UICollectionViewWareHouses.delegate = self
+                           self.UICollectionViewWareHouses.dataSource = self
+                           self.UICollectionViewWareHouses.reloadData()
+                           
+                       }
+                       
+                   } catch let error as NSError  {
+                       showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                       
+                   }
+                   
+                   
+                   //print("userModel:\(userModel)")
+                   
+               }
+           }
+       }
 }
 extension AddNewProductVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
@@ -1094,6 +1139,8 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             print("self.headerAttributeTitleProduct.count:\(self.headerAttributeTitleProduct.count)")
             return self.headerAttributeTitleProduct.count
+        }else if(collectionView==self.UICollectionViewWareHouses){
+            return self.wareHousehead.count
         }
         else{
             return 1
