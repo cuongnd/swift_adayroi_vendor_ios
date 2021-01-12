@@ -347,8 +347,8 @@ class AddNewProductVC: UIViewController {
         nibCell = UINib(nibName:WareHouseDeleteCollectionViewCell.reuseID, bundle: nil)
         self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WareHouseDeleteCollectionViewCell.reuseID)
         
-                                
-                   
+        
+        
         
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
@@ -398,18 +398,17 @@ class AddNewProductVC: UIViewController {
         
         self.UICollectionViewOtherHeadAttribute.delegate = self
         self.UICollectionViewOtherHeadAttribute.dataSource = self
-     
+        
         self.UICollectionViewWareHouses.delegate = self
         self.UICollectionViewWareHouses.dataSource = self
         let selector = #selector(self.nothing(_:))
         self.wareHouseheadFisrtRow=[
-        CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: "stt",action: selector),
-        CellWareHouseHead(title: "Kho hàng",is_head: true,columnType: "", columnName: "",action: selector),
-        CellWareHouseHead(title: "Số lượng sản phẩm",is_head: true,columnType: "", columnName: "",action: selector),
-        CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action: selector),
-        CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: "delete",action: selector),
-        
-        
+            CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: "stt",action: selector),
+            CellWareHouseHead(title: "Kho hàng",is_head: true,columnType: "", columnName: "",action: selector),
+            CellWareHouseHead(title: "Số lượng sản phẩm",is_head: true,columnType: "", columnName: "",action: selector),
+            CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action: selector)
+            
+            
         ]
         self.wareHousehead.append(self.wareHouseheadFisrtRow)
         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -914,21 +913,21 @@ class AddNewProductVC: UIViewController {
         
     }
     @objc func nothing(_ sender: UIButton){
-          
-           
-       }
-       @objc func deleteWarehouse(_ sender: UIButton){
-          
-           
-       }
-       @objc func editTotalProductWarehouse(_ sender: UIButton){
-           
-           let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
-           editProductInWareHouseVC.delegate = self
-           editProductInWareHouseVC.productInWarehouse = ProductInWarehouseModel()
-           editProductInWareHouseVC.productInWarehouseIndex = -1
-           self.present(editProductInWareHouseVC, animated: true, completion: nil)
-       }
+        
+        
+    }
+    @objc func deleteWarehouse(_ sender: UIButton){
+        
+        
+    }
+    @objc func editTotalProductWarehouse(_ sender: UIButton){
+        
+        let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
+        editProductInWareHouseVC.delegate = self
+        editProductInWareHouseVC.productInWarehouse = self.list_total_product_in_warehouse[sender.tag-1]
+        editProductInWareHouseVC.productInWarehouseIndex = sender.tag-1
+        self.present(editProductInWareHouseVC, animated: true, completion: nil)
+    }
 }
 
 
@@ -1043,48 +1042,48 @@ extension AddNewProductVC {
         }
     }
     func Webservice_getListTotalProductInWareHouse(url:String, params:NSDictionary) -> Void {
-           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-               if strErrorMessage.count != 0 {
-                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-               }
-               else {
-                   do {
-                       let jsonDecoder = JSONDecoder()
-                       let getApiResponseProductInWarehousesModel = try jsonDecoder.decode(GetApiResponseProductInWarehousesModel.self, from: jsonResponse!)
-                       if(getApiResponseProductInWarehousesModel.result=="success"){
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseProductInWarehousesModel = try jsonDecoder.decode(GetApiResponseProductInWarehousesModel.self, from: jsonResponse!)
+                    if(getApiResponseProductInWarehousesModel.result=="success"){
                         self.list_total_product_in_warehouse=getApiResponseProductInWarehousesModel.list_product_in_warehouse
-                           self.wareHousehead.removeAll()
-                           self.wareHousehead.append(self.wareHouseheadFisrtRow)
-                           for i in 0..<self.list_total_product_in_warehouse.count
-                           {
-                               let productInWarehouse:ProductInWarehouseModel=self.list_total_product_in_warehouse[i];
-                               self.wareHousehead.append([
-                                   CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: productInWarehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: String(productInWarehouse.total_product),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editTotalProductWarehouse(_:))),
-                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete",action:  #selector(self.nothing(_:)))
-                               ])
-                               
-                           }
-                           
-                           self.UICollectionViewWareHouses.delegate = self
-                           self.UICollectionViewWareHouses.dataSource = self
-                           self.UICollectionViewWareHouses.reloadData()
-                           
-                       }
-                       
-                   } catch let error as NSError  {
-                       showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
-                       
-                   }
-                   
-                   
-                   //print("userModel:\(userModel)")
-                   
-               }
-           }
-       }
+                        self.wareHousehead.removeAll()
+                        self.wareHousehead.append(self.wareHouseheadFisrtRow)
+                        for i in 0..<self.list_total_product_in_warehouse.count
+                        {
+                            let productInWarehouse:ProductInWarehouseModel=self.list_total_product_in_warehouse[i];
+                            let text_total:String=productInWarehouse.unlimit == 1 ? "không giới hạn":String(productInWarehouse.total_product)
+                            self.wareHousehead.append([
+                                CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+                                CellWareHouseHead(title: productInWarehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                CellWareHouseHead(title: text_total,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editTotalProductWarehouse(_:)))
+                            ])
+                            
+                        }
+                        
+                        self.UICollectionViewWareHouses.delegate = self
+                        self.UICollectionViewWareHouses.dataSource = self
+                        self.UICollectionViewWareHouses.reloadData()
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
 }
 extension AddNewProductVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
@@ -1248,7 +1247,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
             print("hello343434")
             return CGSize(width:300, height: 40)
         }else if(collectionView==self.UICollectionViewWareHouses){
-             return CGSize(width:300, height: 40)
+            return CGSize(width:300, height: 40)
         }else{
             return CGSize(width:(UIScreen.main.bounds.width-26)/3, height: 128)
         }
@@ -1343,19 +1342,29 @@ extension AddNewProductVC: QLKhoHangVCDelegate {
         
     }
     
-   
+    
     
     
 }
 
 extension AddNewProductVC: EditProductInWareHouseVCEditDelegate {
     func refreshData(productInWarehouseIndex: Int, productInWarehouse: ProductInWarehouseModel) {
-        
+        self.list_total_product_in_warehouse[productInWarehouseIndex]=productInWarehouse
+        let text_total:String=productInWarehouse.unlimit == 1 ? "không giới hạn":String(productInWarehouse.total_product)
+        self.wareHousehead[productInWarehouseIndex]=[
+            CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+            CellWareHouseHead(title: productInWarehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellWareHouseHead(title: text_total,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editTotalProductWarehouse(_:))),
+        ]
+        self.UICollectionViewWareHouses.delegate = self
+        self.UICollectionViewWareHouses.dataSource = self
+        self.UICollectionViewWareHouses.reloadData()
     }
     
     
     
-   
+    
     
     
 }

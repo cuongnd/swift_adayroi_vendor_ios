@@ -25,6 +25,13 @@ class EditProductInWareHouseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.UITextFieldTotalProduct.text=String(productInWarehouse.total_product)
+        UISwitchUnlimitTotal.isOn=productInWarehouse.unlimit == 1 ? true : false
+        if(productInWarehouse.unlimit == 1){
+            UITextFieldTotalProduct.text=""
+            UITextFieldTotalProduct.isEnabled=false
+        }else{
+            UITextFieldTotalProduct.isEnabled=true
+        }
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
          print(" ")

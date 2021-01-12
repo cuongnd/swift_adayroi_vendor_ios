@@ -27,8 +27,8 @@ class WareHouseCustomCollectionViewLayout: UICollectionViewLayout {
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var itemsSize = [CGSize]()
     var contentSize: CGSize = .zero
-    var cellWidthHeight:CellWidthHeightWareHouse=CellWidthHeightWareHouse(width: [40,100,300,100,100], headHeight: 30,bodyHeight: 30)
-    var numberOfColumns = 5
+    var cellWidthHeight:CellWidthHeightWareHouse=CellWidthHeightWareHouse(width: [40,140,120,70], headHeight: 30,bodyHeight: 30)
+    var numberOfColumns = 4
     override func prepare() {
         self.numberOfColumns = self.cellWidthHeight.width.count
         guard let collectionView = collectionView else {
