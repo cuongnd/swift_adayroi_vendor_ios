@@ -273,7 +273,7 @@ class AddNewProductVC: UIViewController {
     var customMask = TLCustomMask()
     var customMaskUnitPrice = TLCustomMask()
     var list_category:[CategoryModel]=[CategoryModel]()
-    var list_warehouse:[WarehouseModel]=[WarehouseModel]()
+    var list_total_product_in_warehouse:[ProductInWarehouseModel]=[ProductInWarehouseModel]()
     
     var list_sub_category:[SubCategoryModel]=[SubCategoryModel]()
     var curentSubCategory:SubCategoryModel=SubCategoryModel()
@@ -412,8 +412,11 @@ class AddNewProductVC: UIViewController {
         
         ]
         self.wareHousehead.append(self.wareHouseheadFisrtRow)
-        let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"
-        self.Webservice_getListWareHouse(url: urlStringGetListWarehouse, params: [:])
+        let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
+        let params: NSDictionary = [
+            "product_id": ""
+        ]
+        self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
         
         
     }
@@ -1011,39 +1014,6 @@ extension AddNewProductVC {
             }
         }
     }
-    func Webservice_getWarehouses(url:String, params:NSDictionary) -> Void {
-        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-            if strErrorMessage.count != 0 {
-                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-            }
-            else {
-                print(jsonResponse!)
-                do {
-                    let jsonDecoder = JSONDecoder()
-                    let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
-                    if(getApiResponseWarehousesModel.result=="success"){
-                        
-                        self.list_warehouse=getApiResponseWarehousesModel.list_warehouse
-                        self.UICollectionViewWareHouses.delegate = self
-                        self.UICollectionViewWareHouses.dataSource = self
-                        self.UICollectionViewWareHouses.reloadData()
-                        
-                        
-                        
-                        
-                    }
-                    
-                } catch let error as NSError  {
-                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
-                    
-                }
-                
-                
-                //print("userModel:\(userModel)")
-                
-            }
-        }
-    }
     
     
     func Webservice_GetAffiliateInfo(url:String, params:NSDictionary) -> Void {
@@ -1072,27 +1042,26 @@ extension AddNewProductVC {
             }
         }
     }
-    func Webservice_getListWareHouse(url:String, params:NSDictionary) -> Void {
+    func Webservice_getListTotalProductInWareHouse(url:String, params:NSDictionary) -> Void {
            WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
                if strErrorMessage.count != 0 {
                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
                }
                else {
-                   print(jsonResponse!)
                    do {
                        let jsonDecoder = JSONDecoder()
-                       let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
-                       if(getApiResponseWarehousesModel.result=="success"){
-                           self.list_warehouse=getApiResponseWarehousesModel.list_warehouse
+                       let getApiResponseProductInWarehousesModel = try jsonDecoder.decode(GetApiResponseProductInWarehousesModel.self, from: jsonResponse!)
+                       if(getApiResponseProductInWarehousesModel.result=="success"){
+                        self.list_total_product_in_warehouse=getApiResponseProductInWarehousesModel.list_product_in_warehouse
                            self.wareHousehead.removeAll()
                            self.wareHousehead.append(self.wareHouseheadFisrtRow)
-                           for i in 0..<self.list_warehouse.count
+                           for i in 0..<self.list_total_product_in_warehouse.count
                            {
-                               let warehouse:WarehouseModel=self.list_warehouse[i];
+                               let productInWarehouse:ProductInWarehouseModel=self.list_total_product_in_warehouse[i];
                                self.wareHousehead.append([
                                    CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: productInWarehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: String(productInWarehouse.total_product),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                                    CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editTotalProductWarehouse(_:))),
                                    CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete",action:  #selector(self.nothing(_:)))
                                ])

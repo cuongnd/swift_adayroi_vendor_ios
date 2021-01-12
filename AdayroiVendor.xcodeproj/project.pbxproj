@@ -81,6 +81,8 @@
 		0469045A25AC6DC80022EBEF /* GetApiResponseUpdateWarehousesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045925AC6DC80022EBEF /* GetApiResponseUpdateWarehousesModel.swift */; };
 		0469045C25ACF3B50022EBEF /* GetApiResponseDeleteWarehousesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045B25ACF3B50022EBEF /* GetApiResponseDeleteWarehousesModel.swift */; };
 		0469045E25AD47010022EBEF /* EditProductInWareHouseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045D25AD47010022EBEF /* EditProductInWareHouseVC.swift */; };
+		0469046025AD51DF0022EBEF /* GetApiResponseProductInWarehousesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469045F25AD51DF0022EBEF /* GetApiResponseProductInWarehousesModel.swift */; };
+		0469046225AD521D0022EBEF /* ProductInWarehouseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469046125AD521D0022EBEF /* ProductInWarehouseModel.swift */; };
 		0493654B25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */; };
 		04971249259A366A0024883E /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971248259A366A0024883E /* CategoryListVC.swift */; };
 		0497124B259A96B70024883E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124A259A96B70024883E /* CategoryModel.swift */; };
@@ -325,6 +327,8 @@
 		0469045925AC6DC80022EBEF /* GetApiResponseUpdateWarehousesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseUpdateWarehousesModel.swift; sourceTree = "<group>"; };
 		0469045B25ACF3B50022EBEF /* GetApiResponseDeleteWarehousesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseDeleteWarehousesModel.swift; sourceTree = "<group>"; };
 		0469045D25AD47010022EBEF /* EditProductInWareHouseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProductInWareHouseVC.swift; sourceTree = "<group>"; };
+		0469045F25AD51DF0022EBEF /* GetApiResponseProductInWarehousesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseProductInWarehousesModel.swift; sourceTree = "<group>"; };
+		0469046125AD521D0022EBEF /* ProductInWarehouseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInWarehouseModel.swift; sourceTree = "<group>"; };
 		0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalStickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		04971248259A366A0024883E /* CategoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		0497124A259A96B70024883E /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 				04E6CFCC25A1726100C13FA6 /* GetApiRespondeBlogModel.swift */,
 				0497124C259A9CE70024883E /* GetApiResponseCategoryModel.swift */,
 				0469042F25ABB72C0022EBEF /* GetApiResponseWarehousesModel.swift */,
+				0469045F25AD51DF0022EBEF /* GetApiResponseProductInWarehousesModel.swift */,
 				0469045925AC6DC80022EBEF /* GetApiResponseUpdateWarehousesModel.swift */,
 				0469045B25ACF3B50022EBEF /* GetApiResponseDeleteWarehousesModel.swift */,
 				04D47EAF25A3DE290038AF3D /* GetApiResponseSubCategoryModel.swift */,
@@ -910,6 +915,7 @@
 				0443F6AB2590F370005D5637 /* DoanhThuThangModel.swift */,
 				0497124A259A96B70024883E /* CategoryModel.swift */,
 				0469043125ABB75F0022EBEF /* WarehouseModel.swift */,
+				0469046125AD521D0022EBEF /* ProductInWarehouseModel.swift */,
 				04E6CFCF25A1C79100C13FA6 /* BlogSubCategoryModel.swift */,
 				04F4993B25A03FA2001A0FAE /* SubCategoryModel.swift */,
 				04F4993D25A0417C001A0FAE /* ColorModel.swift */,
@@ -1640,6 +1646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C811991D2495F58000F9CF6F /* TutorialVC.swift in Sources */,
+				0469046225AD521D0022EBEF /* ProductInWarehouseModel.swift in Sources */,
 				C8BAC0652488F44B00ECE181 /* ProductDetailsVC.swift in Sources */,
 				0443F73E2592E033005D5637 /* DataCell.swift in Sources */,
 				0C42DC23257BDCC4007009E4 /* ADRViewFrontEnd.swift in Sources */,
@@ -1672,6 +1679,7 @@
 				C8C99DD02488D77E00B5C187 /* AdayroiVendor.xcdatamodeld in Sources */,
 				0C172C5B256ED43D005DA537 /* test2.swift in Sources */,
 				C8C99E022488D93C00B5C187 /* Reachability.swift in Sources */,
+				0469046025AD51DF0022EBEF /* GetApiResponseProductInWarehousesModel.swift in Sources */,
 				0443F6AE2590F785005D5637 /* GetHieuQuaDonHangResponseModel.swift in Sources */,
 				0CD77A5B257A283A0083BC09 /* ADRModel.swift in Sources */,
 				880BDE9024D5524F0085FC1D /* AddonceListVC.swift in Sources */,
