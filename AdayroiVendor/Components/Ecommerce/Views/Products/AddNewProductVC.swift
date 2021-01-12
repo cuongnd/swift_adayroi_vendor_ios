@@ -1065,22 +1065,28 @@ class AddNewProductVC: UIViewController {
             "product_full_description": product_full_description,
         ]
         let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
-        for index in 0...self.list_product_image.count-1 {
-            let currentItem=self.list_product_image[index]
-            listImageProductCodableDict.append(currentItem.nsDictionary)
-            
-        }
         
         var list_DataUpload:[DataUpload]=[DataUpload]()
-        for index in 0...self.list_product_image.count-1 {
-                  let currentItem=self.list_product_image[index]
-             let image_name = randomString(length: 8)
-            let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
-                    list_DataUpload.append(datUpload)
-                  
-              }
-        
-      
+        if(self.list_product_image.count>0){
+            for index in 0...self.list_product_image.count-1 {
+                let currentItem=self.list_product_image[index]
+                let image_name = randomString(length: 8)
+                let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                list_DataUpload.append(datUpload)
+                
+            }
+            
+        }
+        if(self.list_image_color.count>0){
+            for index in 0...self.list_image_color.count-1 {
+                let currentItem=self.list_image_color[index]
+                let image_name = randomString(length: 8)
+                let datUpload:DataUpload=DataUpload(key_name: "image_product_color", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                list_DataUpload.append(datUpload)
+                
+            }
+            
+        }
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
         WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers, keyName:"image") { (response, error) in
             
@@ -1102,7 +1108,7 @@ class AddNewProductVC: UIViewController {
             }
         }
         
-       
+        
         
         
         
