@@ -918,9 +918,13 @@ class AddNewProductVC: UIViewController {
           
            
        }
-       @objc func editWarehouse(_ sender: UIButton){
+       @objc func editTotalProductWarehouse(_ sender: UIButton){
            
-           
+           let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+           editWareHouseVC.delegate = self
+           editWareHouseVC.warehouse = WarehouseModel()
+           editWareHouseVC.warehouse_index = -1
+           self.present(editWareHouseVC, animated: true, completion: nil)
        }
 }
 
@@ -1089,8 +1093,9 @@ extension AddNewProductVC {
                                    CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
                                    CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                                    CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.nothing(_:))),
-                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete",action:  #selector(self.nothing(_:))),                               ])
+                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editTotalProductWarehouse(_:))),
+                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete",action:  #selector(self.nothing(_:)))
+                               ])
                                
                            }
                            

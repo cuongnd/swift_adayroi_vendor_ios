@@ -3579,6 +3579,153 @@
             </objects>
             <point key="canvasLocation" x="6424.6376811594209" y="-1088.1696428571429"/>
         </scene>
+        <!--Edit Product In Ware HouseVC-->
+        <scene sceneID="D1C-ZB-rzm">
+            <objects>
+                <viewController storyboardIdentifier="EditProductInWareHouseVC" id="LhM-aw-SYg" customClass="EditProductInWareHouseVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vNn-gR-Ggg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDB-Gf-GBz">
+                                <rect key="frame" x="0.0" y="30" width="414" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sửa số lượng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-jY-CAU">
+                                        <rect key="frame" x="154.5" y="16.5" width="105.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="YHb-jY-CAU" firstAttribute="centerX" secondItem="HDB-Gf-GBz" secondAttribute="centerX" id="dkQ-pM-xp3"/>
+                                    <constraint firstAttribute="height" constant="53" id="g9B-HK-q7t"/>
+                                    <constraint firstItem="YHb-jY-CAU" firstAttribute="centerY" secondItem="HDB-Gf-GBz" secondAttribute="centerY" id="js7-rl-8f7"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCH-FY-XjI">
+                                <rect key="frame" x="0.0" y="83" width="414" height="641"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX0-sT-ToO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="641"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng sản phẩm có trong kho hàng này ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vZ-61-vJl">
+                                                <rect key="frame" x="8" y="8" width="355" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bky-vR-GdS">
+                                                <rect key="frame" x="8" y="43" width="135" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="135" id="D50-JU-T2z"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-Gu-0Q2">
+                                                <rect key="frame" x="359" y="45" width="51" height="31"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không giới hạn số lượng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysV-Jy-ZCl">
+                                                <rect key="frame" x="158" y="50" width="185" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="0vZ-61-vJl" firstAttribute="top" secondItem="LX0-sT-ToO" secondAttribute="top" constant="8" id="2zQ-vF-jip"/>
+                                            <constraint firstItem="ysV-Jy-ZCl" firstAttribute="top" secondItem="0vZ-61-vJl" secondAttribute="bottom" constant="21.5" id="6As-qF-kra"/>
+                                            <constraint firstItem="Bky-vR-GdS" firstAttribute="leading" secondItem="LX0-sT-ToO" secondAttribute="leading" constant="8" id="MlV-lJ-PYb"/>
+                                            <constraint firstItem="Bky-vR-GdS" firstAttribute="top" secondItem="0vZ-61-vJl" secondAttribute="bottom" constant="14.5" id="NBn-50-9wc"/>
+                                            <constraint firstItem="4Yd-Gu-0Q2" firstAttribute="top" secondItem="0vZ-61-vJl" secondAttribute="bottom" constant="16.5" id="RZc-dG-Bg5"/>
+                                            <constraint firstItem="0vZ-61-vJl" firstAttribute="leading" secondItem="LX0-sT-ToO" secondAttribute="leading" constant="8" id="Stv-UX-18a"/>
+                                            <constraint firstItem="4Yd-Gu-0Q2" firstAttribute="centerY" secondItem="Bky-vR-GdS" secondAttribute="centerY" id="XT4-24-Tm6"/>
+                                            <constraint firstItem="4Yd-Gu-0Q2" firstAttribute="leading" secondItem="ysV-Jy-ZCl" secondAttribute="trailing" constant="16" id="fgr-zL-IPc"/>
+                                            <constraint firstItem="4Yd-Gu-0Q2" firstAttribute="centerY" secondItem="ysV-Jy-ZCl" secondAttribute="centerY" id="moM-j3-LMT"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Yd-Gu-0Q2" secondAttribute="trailing" constant="6" id="zyl-og-rBg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LX0-sT-ToO" firstAttribute="centerY" secondItem="XCH-FY-XjI" secondAttribute="centerY" id="3IS-bb-mrF"/>
+                                    <constraint firstItem="LX0-sT-ToO" firstAttribute="centerX" secondItem="XCH-FY-XjI" secondAttribute="centerX" id="J3C-Zq-nIb"/>
+                                    <constraint firstAttribute="trailing" secondItem="LX0-sT-ToO" secondAttribute="trailing" id="KYq-ax-ebX"/>
+                                    <constraint firstAttribute="height" constant="641" id="SXF-iw-KRq"/>
+                                    <constraint firstAttribute="bottom" secondItem="LX0-sT-ToO" secondAttribute="bottom" id="cqq-gw-b5i"/>
+                                    <constraint firstItem="LX0-sT-ToO" firstAttribute="leading" secondItem="XCH-FY-XjI" secondAttribute="leading" id="erI-7i-abj"/>
+                                    <constraint firstItem="LX0-sT-ToO" firstAttribute="top" secondItem="XCH-FY-XjI" secondAttribute="top" id="jSu-3l-U1Z"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-bf-rlY">
+                                <rect key="frame" x="0.0" y="724" width="414" height="76"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nwM-Tu-IsQ">
+                                        <rect key="frame" x="8" y="8" width="398" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDq-mX-CJe">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="54"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Lưu lại">
+                                                    <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnTapSave:" destination="LhM-aw-SYg" eventType="touchUpInside" id="cwL-l1-EFs"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtA-i6-StO">
+                                                <rect key="frame" x="203" y="0.0" width="195" height="54"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Hủy">
+                                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnTap_dismiss:" destination="LhM-aw-SYg" eventType="touchUpInside" id="u3X-gk-RjH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="nwM-Tu-IsQ" firstAttribute="top" secondItem="CRv-bf-rlY" secondAttribute="top" constant="8" id="3kD-SE-BRB"/>
+                                    <constraint firstAttribute="height" constant="76" id="73X-CU-EdZ"/>
+                                    <constraint firstItem="nwM-Tu-IsQ" firstAttribute="leading" secondItem="CRv-bf-rlY" secondAttribute="leading" constant="8" id="RIl-E6-oRw"/>
+                                    <constraint firstAttribute="trailing" secondItem="nwM-Tu-IsQ" secondAttribute="trailing" constant="8" id="T2W-KB-BiH"/>
+                                    <constraint firstAttribute="bottom" secondItem="nwM-Tu-IsQ" secondAttribute="bottom" constant="14" id="g0P-EJ-YkX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CRv-bf-rlY" firstAttribute="trailing" secondItem="ggP-gs-iiL" secondAttribute="trailing" id="0rD-LC-FY1"/>
+                            <constraint firstAttribute="bottom" secondItem="CRv-bf-rlY" secondAttribute="bottom" id="6NH-uD-8zG"/>
+                            <constraint firstItem="XCH-FY-XjI" firstAttribute="trailing" secondItem="ggP-gs-iiL" secondAttribute="trailing" id="6ms-fQ-iTX"/>
+                            <constraint firstItem="HDB-Gf-GBz" firstAttribute="leading" secondItem="vNn-gR-Ggg" secondAttribute="leading" id="DkS-nK-L5z"/>
+                            <constraint firstItem="XCH-FY-XjI" firstAttribute="centerX" secondItem="vNn-gR-Ggg" secondAttribute="centerX" id="G3q-TD-32E"/>
+                            <constraint firstItem="ggP-gs-iiL" firstAttribute="trailing" secondItem="HDB-Gf-GBz" secondAttribute="trailing" id="JPd-g9-D8V"/>
+                            <constraint firstItem="CRv-bf-rlY" firstAttribute="leading" secondItem="ggP-gs-iiL" secondAttribute="leading" id="XBO-Th-cQ0"/>
+                            <constraint firstItem="XCH-FY-XjI" firstAttribute="top" secondItem="HDB-Gf-GBz" secondAttribute="bottom" id="XQL-M5-QiD"/>
+                            <constraint firstItem="XCH-FY-XjI" firstAttribute="leading" secondItem="ggP-gs-iiL" secondAttribute="leading" id="njz-Bq-Pr5"/>
+                            <constraint firstAttribute="bottom" secondItem="XCH-FY-XjI" secondAttribute="bottom" constant="76" id="qad-B7-BX2"/>
+                            <constraint firstItem="HDB-Gf-GBz" firstAttribute="top" secondItem="vNn-gR-Ggg" secondAttribute="top" constant="30" id="xjV-MT-lhw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ggP-gs-iiL"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="800"/>
+                    <connections>
+                        <outlet property="UISwitchUnlimitTotal" destination="4Yd-Gu-0Q2" id="UzT-EF-hgN"/>
+                        <outlet property="UITextFieldTotalProduct" destination="Bky-vR-GdS" id="ZuO-tV-p76"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUj-s2-Pui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7097" y="-1088"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
