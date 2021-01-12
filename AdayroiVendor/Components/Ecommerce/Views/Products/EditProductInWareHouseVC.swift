@@ -59,7 +59,7 @@ class EditProductInWareHouseVC: UIViewController {
             if(totalProduct==""){
                 UITextFieldTotalProduct.text="";
                 UITextFieldTotalProduct.becomeFirstResponder()
-                let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập tên kho hàng", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập Số lượng sản phẩm có trong kho hàng này", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
                 self.present(alert, animated: true)
                 
@@ -73,7 +73,7 @@ class EditProductInWareHouseVC: UIViewController {
                 
                 return
             }
-            if((totalProduct as NSString).floatValue < 10000){
+            if((totalProduct as NSString).floatValue > 10000){
                 
                 UITextFieldTotalProduct.becomeFirstResponder()
                 let alert = UIAlertController(title: "Thông báo", message: "Nếu bạn có nhiều sản phẩm xin chọn 'không giới hạn số lượng'", preferredStyle: .alert)
