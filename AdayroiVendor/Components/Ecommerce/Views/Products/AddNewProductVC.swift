@@ -920,11 +920,11 @@ class AddNewProductVC: UIViewController {
        }
        @objc func editTotalProductWarehouse(_ sender: UIButton){
            
-           let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
-           editWareHouseVC.delegate = self
-           editWareHouseVC.warehouse = WarehouseModel()
-           editWareHouseVC.warehouse_index = -1
-           self.present(editWareHouseVC, animated: true, completion: nil)
+           let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
+           //editWareHouseVC.delegate = self
+           //editWareHouseVC.warehouse = WarehouseModel()
+           //editWareHouseVC.warehouse_index = -1
+           self.present(editProductInWareHouseVC, animated: true, completion: nil)
        }
 }
 

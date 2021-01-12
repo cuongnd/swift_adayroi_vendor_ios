@@ -3626,6 +3626,9 @@
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-Gu-0Q2">
                                                 <rect key="frame" x="359" y="45" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="UISwitchUnlimitChangeStatus:" destination="LhM-aw-SYg" eventType="valueChanged" id="6Vn-Fp-Ke8"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không giới hạn số lượng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysV-Jy-ZCl">
                                                 <rect key="frame" x="158" y="50" width="185" height="21"/>

@@ -25,8 +25,6 @@ class EditProductInWareHouseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.UITextFieldTotalProduct.text=warehouse.warehouse_name
-        self.UITextViewWareHouseAddress.text=warehouse.warehouse_address
-        self.UITextFieldWareHousePhoneNumber.text=warehouse.warehouse_phonenumber
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
          print(" ")
@@ -41,65 +39,50 @@ class EditProductInWareHouseVC: UIViewController {
         
         
     }
+    @IBAction func UISwitchUnlimitChangeStatus(_ sender: UISwitch) {
+        if(sender.isOn){
+            UITextFieldTotalProduct.text=""
+            UITextFieldTotalProduct.isEnabled=false
+        }else{
+            UITextFieldTotalProduct.isEnabled=true
+        }
+    }
+   
     
     @IBAction func btnTapSave(_ sender: UIButton) {
         
-        var wareHouseName=String(self.UITextFieldTotalProduct.text!)
-        var wareHouseAddress=String(self.UITextViewWareHouseAddress.text!)
-        var wareHousePhoneNumber=String(self.UITextFieldWareHousePhoneNumber.text!)
+       
         
-        wareHouseName = String(wareHouseName.filter { !" \n\t\r".contains($0) })
-        wareHouseAddress = String(wareHouseAddress.filter { !" \n\t\r".contains($0) })
-        wareHousePhoneNumber = String(wareHousePhoneNumber.filter { !" \n\t\r".contains($0) })
-        
-        if(wareHouseName==""){
-            UITextFieldTotalProduct.text="";
-            UITextFieldTotalProduct.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập tên kho hàng", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        
-        if(wareHouseAddress==""){
-            UITextViewWareHouseAddress.text="";
-            UITextViewWareHouseAddress.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập địa chỉ kho  hàng", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            return
-        }
-        if(wareHousePhoneNumber==""){
-            UITextFieldWareHousePhoneNumber.text="";
-            UITextFieldWareHousePhoneNumber.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số điện thoại kho hàng", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            return
-        }
-        
-        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
-        if(warehouse._id != ""){
-            let params: NSDictionary = [
-                "_id": warehouse._id,
-                "warehouse_name": wareHouseName,
-                "warehouse_address": wareHouseAddress,
-                "warehouse_phonenumber": wareHousePhoneNumber
-            ]
-            
-            let urlStringPostUpdateWarehouse = API_URL + "/api_task/warehouse.update_warehouse?user_id=\(user_id)"
-            self.Webservice_getUpdateWareHouse(url: urlStringPostUpdateWarehouse, params: params)
+        var totalProduct=String(self.UITextFieldTotalProduct.text!)
+        totalProduct = String(totalProduct.filter { !" \n\t\r".contains($0) })
+        if(!UISwitchUnlimitTotal.isOn){
+            if(totalProduct==""){
+                UITextFieldTotalProduct.text="";
+                UITextFieldTotalProduct.becomeFirstResponder()
+                let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập tên kho hàng", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+                return
+            }
+            if(!totalProduct.isNumber){
+                UITextFieldTotalProduct.becomeFirstResponder()
+                let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+                return
+            }
+            if((totalProduct as NSString).floatValue < 10000){
+                
+                UITextFieldTotalProduct.becomeFirstResponder()
+                let alert = UIAlertController(title: "Thông báo", message: "Nếu bạn có nhiều sản phẩm xin chọn 'không giới hạn số lượng'", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+                return
+            }
         }else{
-            let params: NSDictionary = [
-                "_id": warehouse._id,
-                "warehouse_name": wareHouseName,
-                "warehouse_address": wareHouseAddress,
-                "warehouse_phonenumber": wareHousePhoneNumber
-            ]
-            
-            let urlStringPostUpdateWarehouse = API_URL + "/api_task/warehouse.add_warehouse?user_id=\(user_id)"
-            self.Webservice_getUpdateWareHouse(url: urlStringPostUpdateWarehouse, params: params)
             
         }
         
