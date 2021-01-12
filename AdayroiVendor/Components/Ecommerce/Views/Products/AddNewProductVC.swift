@@ -1051,7 +1051,19 @@ extension AddNewProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiResponseProductInWarehousesModel = try jsonDecoder.decode(GetApiResponseProductInWarehousesModel.self, from: jsonResponse!)
                     if(getApiResponseProductInWarehousesModel.result=="success"){
+                        
+                        let list_total_product_in_warehouse_old=self.list_total_product_in_warehouse
                         self.list_total_product_in_warehouse=getApiResponseProductInWarehousesModel.list_product_in_warehouse
+                        for i in 0..<self.list_total_product_in_warehouse.count
+                        {
+                            for j in 0..<list_total_product_in_warehouse_old.count
+                            {
+                                if(self.list_total_product_in_warehouse[i]._id == list_total_product_in_warehouse_old[j]._id){
+                                    self.list_total_product_in_warehouse[i].total_product=list_total_product_in_warehouse_old[j].total_product
+                                    self.list_total_product_in_warehouse[i].unlimit=list_total_product_in_warehouse_old[j].unlimit
+                                }
+                            }
+                        }
                         self.wareHousehead.removeAll()
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         for i in 0..<self.list_total_product_in_warehouse.count
