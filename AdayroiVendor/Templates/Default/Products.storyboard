@@ -2877,6 +2877,9 @@
                                                 <state key="normal" title="Lưu lại">
                                                     <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="UIButtonTouchUpInsideSaveProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="w9H-7m-0vc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWq-Qp-Iq0">
                                                 <rect key="frame" x="203" y="0.0" width="195" height="54"/>

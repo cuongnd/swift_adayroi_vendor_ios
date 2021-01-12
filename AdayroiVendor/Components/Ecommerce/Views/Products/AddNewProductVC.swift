@@ -942,6 +942,63 @@ class AddNewProductVC: UIViewController {
         editProductInWareHouseVC.productInWarehouseIndex = sender.tag-1
         self.present(editProductInWareHouseVC, animated: true, completion: nil)
     }
+    @IBAction func UIButtonTouchUpInsideSaveProduct(_ sender: UIButton) {
+        /*
+         @IBOutlet weak var UITextFieldProductName: UITextField!
+            @IBOutlet weak var UITextFieldProductCode: UITextField!
+            @IBOutlet weak var UITextFieldProductLength: UITextField!
+            @IBOutlet weak var UITextFieldProductWidth: UITextField!
+            @IBOutlet weak var UITextFieldProductHeight: UITextField!
+            @IBOutlet weak var UITextFieldProductWeight: UITextField!
+            @IBOutlet weak var UITextFieldProductUnit: UITextField!
+            @IBOutlet weak var UITextFieldAlias: UITextField!
+            @IBOutlet weak var DropDownProductCatId: DropDown!
+            @IBOutlet weak var DropDownProductSubCatId: DropDown!
+            @IBOutlet weak var UITextFieldProductOrignalPrice: UITextField!
+            @IBOutlet weak var UITextFieldProductUnitPrice: UITextField!
+            @IBOutlet weak var UITextViewProductShortDescription: UITextView!
+            @IBOutlet weak var UITextViewProductFullDescription: UITextView!
+         */
+        var product_name=String(self.UITextFieldProductName.text!)
+        product_name = String(product_name.filter { !" \n\t\r".contains($0) })
+        
+        var product_code=String(self.UITextFieldProductCode.text!)
+        product_code = String(product_code.filter { !" \n\t\r".contains($0) })
+        
+        var product_length=String(self.UITextFieldProductLength.text!)
+        product_length = String(product_length.filter { !" \n\t\r".contains($0) })
+
+        var product_height=String(self.UITextFieldProductHeight.text!)
+        product_height = String(product_height.filter { !" \n\t\r".contains($0) })
+
+        var product_width=String(self.UITextFieldProductWidth.text!)
+        product_width = String(product_width.filter { !" \n\t\r".contains($0) })
+
+        var product_weight=String(self.UITextFieldProductWeight.text!)
+        product_weight = String(product_weight.filter { !" \n\t\r".contains($0) })
+
+        var product_unit=String(self.UITextFieldProductUnit.text!)
+        product_unit = String(product_unit.filter { !" \n\t\r".contains($0) })
+
+        var product_alias=String(self.UITextFieldAlias.text!)
+        product_alias = String(product_alias.filter { !" \n\t\r".contains($0) })
+
+        var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
+        product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
+
+        var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
+        product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
+
+        var product_short_description=String(self.UITextViewProductShortDescription.text!)
+        product_short_description = String(product_short_description.filter { !" \n\t\r".contains($0) })
+
+        var product_full_description=String(self.UITextViewProductFullDescription.text!)
+        product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
+
+       
+
+        
+    }
 }
 
 
