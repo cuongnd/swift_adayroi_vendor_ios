@@ -297,6 +297,50 @@ class WebServices: NSObject
                 }
         }
     }
+    func multipartWebServiceUploadProduct(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String: Any], fileData:[DataUpload], fileUrl:URL?, headers:HTTPHeaders, keyName:String, completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){
+        
+        print("Fetching WS : \(URLString)")
+        print("With parameters : \(parameters)")
+        
+        if  !NetworkReachabilityManager()!.isReachable {
+            showAlertMessage(titleStr: "Error!", messageStr: MESSAGE_ERR_NETWORK)
+            return
+        }
+        
+        AF.upload(multipartFormData: { MultipartFormData in
+            for (key, value) in parameters {
+                MultipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            for item_file in fileData {
+                MultipartFormData.append(item_file.data, withName: item_file.key_name, fileName: item_file.file_name, mimeType: item_file.mime_type)
+            }
+        }, to: URLString, method: .post, headers: headers)
+            .responseJSON { (response) in
+                if let statusCode = response.response?.statusCode {
+                    if  statusCode == HttpResponseStatusCode.noAuthorization.rawValue {
+                        showAlertMessage(titleStr: "Error!", messageStr: "Something went wrong.. Try again.")
+                        return
+                    }
+                }
+                if let error = response.error {
+                    completion(nil, error as NSError?)
+                }
+                else {
+                    guard let data = response.data
+                        else {
+                            showAlertMessage(titleStr: "Error!", messageStr: "Something went wrong.. Try again.")
+                            return
+                    }
+                    do {
+                        let unparsedObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as AnyObject
+                        completion(unparsedObject, nil)
+                    }
+                    catch let exception as NSError {
+                        completion(nil, exception)
+                    }
+                }
+        }
+    }
     
     func multipartWebServiceArray(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String: Any], fileData:[Data], fileUrl:URL?, headers:HTTPHeaders, keyName:String, completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){
         

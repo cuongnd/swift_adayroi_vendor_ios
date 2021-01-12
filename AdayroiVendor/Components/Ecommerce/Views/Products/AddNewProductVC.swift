@@ -13,6 +13,10 @@ import OpalImagePicker
 import Photos
 import FlexColorPicker
 
+import Foundation
+import SystemConfiguration
+import Alamofire
+import MBProgressHUD
 
 protocol AddNewProductDelegate {
     func refreshData()
@@ -27,6 +31,20 @@ struct ImageColorModel {
         self.color_value=color_value
     }
 }
+struct DataUpload {
+    var key_name:String
+    var file_name: String
+    var data:Data
+    var mime_type: String
+    init(key_name:String,file_name:String,data:Data,mime_type:String) {
+        self.key_name=key_name
+        self.file_name=file_name
+        self.data=data
+        self.mime_type=mime_type
+    }
+}
+
+
 
 struct ImageProductModel {
     var image_description: String
@@ -36,11 +54,11 @@ struct ImageProductModel {
         self.image=image
     }
     var dictionary: [String: Any] {
-         var imageData = image.jpegData(compressionQuality: 0.5)
+        var imageData = image.jpegData(compressionQuality: 0.5)?.base64EncodedData()
         return [
             "image_description": image_description,
             "image": imageData
-                ]
+        ]
     }
     var nsDictionary: NSDictionary {
         return dictionary as NSDictionary
@@ -961,19 +979,19 @@ class AddNewProductVC: UIViewController {
     @IBAction func UIButtonTouchUpInsideSaveProduct(_ sender: UIButton) {
         /*
          @IBOutlet weak var UITextFieldProductName: UITextField!
-            @IBOutlet weak var UITextFieldProductCode: UITextField!
-            @IBOutlet weak var UITextFieldProductLength: UITextField!
-            @IBOutlet weak var UITextFieldProductWidth: UITextField!
-            @IBOutlet weak var UITextFieldProductHeight: UITextField!
-            @IBOutlet weak var UITextFieldProductWeight: UITextField!
-            @IBOutlet weak var UITextFieldProductUnit: UITextField!
-            @IBOutlet weak var UITextFieldAlias: UITextField!
-            @IBOutlet weak var DropDownProductCatId: DropDown!
-            @IBOutlet weak var DropDownProductSubCatId: DropDown!
-            @IBOutlet weak var UITextFieldProductOrignalPrice: UITextField!
-            @IBOutlet weak var UITextFieldProductUnitPrice: UITextField!
-            @IBOutlet weak var UITextViewProductShortDescription: UITextView!
-            @IBOutlet weak var UITextViewProductFullDescription: UITextView!
+         @IBOutlet weak var UITextFieldProductCode: UITextField!
+         @IBOutlet weak var UITextFieldProductLength: UITextField!
+         @IBOutlet weak var UITextFieldProductWidth: UITextField!
+         @IBOutlet weak var UITextFieldProductHeight: UITextField!
+         @IBOutlet weak var UITextFieldProductWeight: UITextField!
+         @IBOutlet weak var UITextFieldProductUnit: UITextField!
+         @IBOutlet weak var UITextFieldAlias: UITextField!
+         @IBOutlet weak var DropDownProductCatId: DropDown!
+         @IBOutlet weak var DropDownProductSubCatId: DropDown!
+         @IBOutlet weak var UITextFieldProductOrignalPrice: UITextField!
+         @IBOutlet weak var UITextFieldProductUnitPrice: UITextField!
+         @IBOutlet weak var UITextViewProductShortDescription: UITextView!
+         @IBOutlet weak var UITextViewProductFullDescription: UITextView!
          */
         var product_name=String(self.UITextFieldProductName.text!)
         product_name = String(product_name.filter { !" \n\t\r".contains($0) })
@@ -983,76 +1001,111 @@ class AddNewProductVC: UIViewController {
         
         var product_length=String(self.UITextFieldProductLength.text!)
         product_length = String(product_length.filter { !" \n\t\r".contains($0) })
-
+        
         var product_height=String(self.UITextFieldProductHeight.text!)
         product_height = String(product_height.filter { !" \n\t\r".contains($0) })
-
+        
         var product_width=String(self.UITextFieldProductWidth.text!)
         product_width = String(product_width.filter { !" \n\t\r".contains($0) })
-
+        
         var product_weight=String(self.UITextFieldProductWeight.text!)
         product_weight = String(product_weight.filter { !" \n\t\r".contains($0) })
-
+        
         var product_unit=String(self.UITextFieldProductUnit.text!)
         product_unit = String(product_unit.filter { !" \n\t\r".contains($0) })
-
+        
         var product_alias=String(self.UITextFieldAlias.text!)
         product_alias = String(product_alias.filter { !" \n\t\r".contains($0) })
-
+        
         var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
         product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
-
+        
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
-
+        
         var product_short_description=String(self.UITextViewProductShortDescription.text!)
         product_short_description = String(product_short_description.filter { !" \n\t\r".contains($0) })
-
+        
         var product_full_description=String(self.UITextViewProductFullDescription.text!)
         product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
-        
+        //product image
         var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-               
-               
-               for index in 0...self.list_product_image.count-1 {
-                   let currentItem=self.list_product_image[index]
-                listImageProductCodableDict.append(currentItem.nsDictionary)
-                   
-               }
         
         
-        var listVideoLinkCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-        
-        
-        for index in 0...self.list_video_link.count-1 {
-            let currentItem=self.list_video_link[index]
-            listVideoLinkCodableDict.append(currentItem.nsDictionary)
+        for index in 0...self.list_product_image.count-1 {
+            let currentItem=self.list_product_image[index]
+            listImageProductCodableDict.append(currentItem.nsDictionary)
             
         }
-       
-       let params: NSDictionary = [
-                      "product_name": product_name,
-                      "product_code": product_code,
-                      "product_length": product_length,
-                      "product_height": product_height,
-                      "product_width": product_width,
-                      "product_weight": product_weight,
-                      "product_unit": product_unit,
-                      "product_alias": product_alias,
-                      "product_orignal_price": product_orignal_price,
-                      "product_unit_price": product_unit_price,
-                      "product_short_description": product_short_description,
-                      "product_full_description": product_full_description,
-                      "list_video_link": listVideoLinkCodableDict,
-                      "list_image_product": listImageProductCodableDict,
-                  ]
-                  
-                  let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
-                  self.Webservice_getUpdateProduct(url: urlStringPostAddNewProduct, params: params)
         
-
+        //video product
+        var listVideoLinkCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        
+        if(self.list_video_link.count>0){
+            for index in 0...self.list_video_link.count-1 {
+                let currentItem=self.list_video_link[index]
+                listVideoLinkCodableDict.append(currentItem.nsDictionary)
+                
+            }
+        }
+        let parameters: [String : Any] = [
+            "product_name": product_name,
+            "product_code": product_code,
+            "product_length": product_length,
+            "product_height": product_height,
+            "product_width": product_width,
+            "product_weight": product_weight,
+            "product_unit": product_unit,
+            "product_alias": product_alias,
+            "product_orignal_price": product_orignal_price,
+            "product_unit_price": product_unit_price,
+            "product_short_description": product_short_description,
+            "product_full_description": product_full_description,
+        ]
+        let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
+        for index in 0...self.list_product_image.count-1 {
+            let currentItem=self.list_product_image[index]
+            listImageProductCodableDict.append(currentItem.nsDictionary)
+            
+        }
+        
+        var list_DataUpload:[DataUpload]=[DataUpload]()
+        for index in 0...self.list_product_image.count-1 {
+                  let currentItem=self.list_product_image[index]
+             let image_name = randomString(length: 8)
+            let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                    list_DataUpload.append(datUpload)
+                  
+              }
+        
+      
+        let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
+        WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers, keyName:"image") { (response, error) in
+            
+            MBProgressHUD.hide(for: self.view, animated: false)
+            if error != nil {
+                showAlertMessage(titleStr: "", messageStr: error!.localizedDescription)
+            }
+            else {
+                print(response!)
+                let responseData = response as! NSDictionary
+                let responseCode = responseData.value(forKey: "status") as! NSNumber
+                let responseMsg = responseData.value(forKey: "message") as! String
+                if responseCode == 1 {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                else {
+                    showAlertMessage(titleStr: "", messageStr: responseMsg)
+                }
+            }
+        }
+        
+       
+        
+        
+        
         
     }
 }
