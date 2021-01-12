@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 protocol OtherAttributeEditDelegate {
-    func refreshData(otherAttributeHeadIndex:Int,otherAttributeHead:[CellOrtherHeadAttribute])
+    func refreshData(otherAttributeHeadIndex:Int,otherAttributeTitleHeadIndex:Int,otherAttributeHead:[CellOrtherHeadAttribute])
 }
 
 class OtherAttributeEditVC: UIViewController {
@@ -22,6 +22,7 @@ class OtherAttributeEditVC: UIViewController {
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     var customMask = TLCustomMask()
     var otherAttributeHeadIndex:Int = -1
+    var otherAttributeTitleHeadIndex:Int = -1
     var otherAttributeHead:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,7 @@ class OtherAttributeEditVC: UIViewController {
         self.otherAttributeHead[1].title=attributeName
         otherAttributeHead[2].title=description
         self.dismiss(animated: true) {
-            self.delegate.refreshData(otherAttributeHeadIndex: self.otherAttributeHeadIndex,otherAttributeHead: self.otherAttributeHead)
+            self.delegate.refreshData(otherAttributeHeadIndex: self.otherAttributeHeadIndex,otherAttributeTitleHeadIndex:self.otherAttributeTitleHeadIndex, otherAttributeHead: self.otherAttributeHead)
         }
         
       }

@@ -270,6 +270,30 @@ struct HeaderAttributeModel {
     }
 }
 
+
+struct OtherHeaderAttributeTitleModel {
+    var title: String
+    var note:String
+    var description:String
+    init(title:String,note:String,description:String) {
+        self.title=title
+        self.note=note
+        self.description=description
+    }
+    
+    var dictionary: [String: Any] {
+        return [
+            "title": title,
+            "note": note,
+            "description":description
+        ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
+}
+
+
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
@@ -361,7 +385,7 @@ class AddNewProductVC: UIViewController {
     var list_video_link:[VideoProductModel]=[VideoProductModel]()
     var list_image_color:[ImageColorModel]=[ImageColorModel]()
     var list_header_attribute_title:[HeaderAttributeTitleModel]=[HeaderAttributeTitleModel]()
-    
+    var list_other_header_attribute_title:[OtherHeaderAttributeTitleModel]=[OtherHeaderAttributeTitleModel]()
     
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     let imagePicker = UIImagePickerController()
@@ -995,6 +1019,7 @@ class AddNewProductVC: UIViewController {
             
         }else{
             otherAttributeEditVC.otherAttributeHeadIndex = sender.tag
+            otherAttributeEditVC.otherAttributeTitleHeadIndex = sender.tag-1
             otherAttributeEditVC.otherAttributeHead=self.orderheaderAttributeTitleProduct[sender.tag]
             
         }
@@ -1669,11 +1694,14 @@ extension AddNewProductVC: EditProductInWareHouseVCEditDelegate {
 }
 
 extension AddNewProductVC: OtherAttributeEditDelegate {
-    func refreshData(otherAttributeHeadIndex: Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
+    func refreshData(otherAttributeHeadIndex: Int,otherAttributeTitleHeadIndex:Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
         if(otherAttributeHeadIndex == -1){
             self.orderheaderAttributeTitleProduct.append(otherAttributeHead);
+            self.list_other_header_attribute_title.append(OtherHeaderAttributeTitleModel(title:"title1" , note: "note1", description: "description"))
         }else{
             self.orderheaderAttributeTitleProduct[otherAttributeHeadIndex]=otherAttributeHead
+            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].title="title1"
+            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].description="description"
         }
         
         self.UICollectionViewOtherHeadAttribute.delegate = self
