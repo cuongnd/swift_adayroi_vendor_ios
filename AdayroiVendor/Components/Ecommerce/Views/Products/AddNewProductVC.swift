@@ -35,6 +35,16 @@ struct ImageProductModel {
         self.image_description=image_description
         self.image=image
     }
+    var dictionary: [String: Any] {
+         var imageData = image.jpegData(compressionQuality: 0.5)
+        return [
+            "image_description": image_description,
+            "image": imageData
+                ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 }
 
 struct VideoProductModel {
@@ -1002,6 +1012,26 @@ class AddNewProductVC: UIViewController {
         product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+        
+        var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+               
+               
+               for index in 0...self.list_product_image.count-1 {
+                   let currentItem=self.list_product_image[index]
+                listImageProductCodableDict.append(currentItem.nsDictionary)
+                   
+               }
+        
+        
+        var listVideoLinkCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        
+        
+        for index in 0...self.list_video_link.count-1 {
+            let currentItem=self.list_video_link[index]
+            listVideoLinkCodableDict.append(currentItem.nsDictionary)
+            
+        }
+       
        let params: NSDictionary = [
                       "product_name": product_name,
                       "product_code": product_code,
@@ -1015,7 +1045,8 @@ class AddNewProductVC: UIViewController {
                       "product_unit_price": product_unit_price,
                       "product_short_description": product_short_description,
                       "product_full_description": product_full_description,
-                      "list_video_link": self.list_video_link.description,
+                      "list_video_link": listVideoLinkCodableDict,
+                      "list_image_product": listImageProductCodableDict,
                   ]
                   
                   let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
