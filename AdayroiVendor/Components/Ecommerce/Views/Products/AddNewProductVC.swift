@@ -1339,6 +1339,12 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
 
 extension AddNewProductVC: QLKhoHangVCDelegate {
     func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellWareHouseHeadManager]]) {
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+        let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
+        let params: NSDictionary = [
+            "product_id": ""
+        ]
+        self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
         
     }
     
