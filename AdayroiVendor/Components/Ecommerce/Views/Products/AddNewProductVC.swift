@@ -334,6 +334,20 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UICollectionViewListLinkVideo: UICollectionView!
     @IBOutlet weak var UICollectionViewOtherHeadAttribute: UICollectionView!
     @IBOutlet weak var UICollectionViewWareHouses: UICollectionView!
+    @IBOutlet weak var UITextFieldProductName: UITextField!
+    @IBOutlet weak var UITextFieldProductCode: UITextField!
+    @IBOutlet weak var UITextFieldProductLength: UITextField!
+    @IBOutlet weak var UITextFieldProductWidth: UITextField!
+    @IBOutlet weak var UITextFieldProductHeight: UITextField!
+    @IBOutlet weak var UITextFieldProductWeight: UITextField!
+    @IBOutlet weak var UITextFieldProductUnit: UITextField!
+    @IBOutlet weak var UITextFieldAlias: UITextField!
+    @IBOutlet weak var DropDownProductCatId: DropDown!
+    @IBOutlet weak var DropDownProductSubCatId: DropDown!
+    @IBOutlet weak var UITextFieldProductOrignalPrice: UITextField!
+    @IBOutlet weak var UITextFieldProductUnitPrice: UITextField!
+    @IBOutlet weak var UITextViewProductShortDescription: UITextView!
+    @IBOutlet weak var UITextViewProductFullDescription: UITextView!
     
     
     override func viewDidLoad() {

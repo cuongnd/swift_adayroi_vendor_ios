@@ -2919,6 +2919,8 @@
                     <size key="freeformSize" width="414" height="2996"/>
                     <connections>
                         <outlet property="DropDownCategoriesProduct" destination="RYH-uS-SD7" id="W3g-Dr-zD2"/>
+                        <outlet property="DropDownProductCatId" destination="RYH-uS-SD7" id="7rJ-IX-adP"/>
+                        <outlet property="DropDownProductSubCatId" destination="1Vo-fZ-O1L" id="1g1-Sq-qft"/>
                         <outlet property="DropDownSubCategories" destination="1Vo-fZ-O1L" id="FDu-j1-q01"/>
                         <outlet property="UIButtonAddHeaderAttribute" destination="DgX-DU-fZL" id="Mwu-AL-pPJ"/>
                         <outlet property="UIButtonAddImage" destination="VA9-qu-Qtz" id="exs-Lo-jJr"/>
@@ -2933,8 +2935,19 @@
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UICollectionViewOtherHeadAttribute" destination="8pi-YN-mPb" id="wIQ-C2-Kq4"/>
                         <outlet property="UICollectionViewWareHouses" destination="gkJ-aF-WgI" id="e3a-D8-S4O"/>
+                        <outlet property="UITextFieldAlias" destination="6dw-NO-JW5" id="SnM-yQ-LoT"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
-                        <outlet property="UITextFieldUnitPrice" destination="2Y0-Ad-Vk1" id="uKR-bi-XOo"/>
+                        <outlet property="UITextFieldProductCode" destination="qru-Ol-XLG" id="ADU-39-pJn"/>
+                        <outlet property="UITextFieldProductHeight" destination="BCe-TY-fyR" id="BRP-qa-uAB"/>
+                        <outlet property="UITextFieldProductLength" destination="4rQ-UK-Pcd" id="SpT-Na-evB"/>
+                        <outlet property="UITextFieldProductName" destination="R3l-g6-Ch7" id="hd1-dK-lCm"/>
+                        <outlet property="UITextFieldProductOrignalPrice" destination="YLl-Ak-hUp" id="HhX-HC-l9O"/>
+                        <outlet property="UITextFieldProductUnit" destination="a9O-Ah-kUh" id="TyN-Yc-Asq"/>
+                        <outlet property="UITextFieldProductUnitPrice" destination="2Y0-Ad-Vk1" id="43H-6t-8Cd"/>
+                        <outlet property="UITextFieldProductWeight" destination="Fyh-Dy-dcx" id="jZN-qn-4ok"/>
+                        <outlet property="UITextFieldProductWidth" destination="wDW-RT-IM9" id="ZI3-Fa-MWl"/>
+                        <outlet property="UITextViewProductFullDescription" destination="sPl-MD-VIf" id="3C1-Hs-jKc"/>
+                        <outlet property="UITextViewProductShortDescription" destination="Yrf-q8-Y9Z" id="3Vo-hQ-Rth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jic-EN-CDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
