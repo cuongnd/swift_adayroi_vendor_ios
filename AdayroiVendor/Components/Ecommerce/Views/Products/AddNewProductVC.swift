@@ -924,9 +924,9 @@ class AddNewProductVC: UIViewController {
        @objc func editTotalProductWarehouse(_ sender: UIButton){
            
            let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
-           //editWareHouseVC.delegate = self
-           //editWareHouseVC.warehouse = WarehouseModel()
-           //editWareHouseVC.warehouse_index = -1
+           editProductInWareHouseVC.delegate = self
+           editProductInWareHouseVC.productInWarehouse = ProductInWarehouseModel()
+           editProductInWareHouseVC.productInWarehouseIndex = -1
            self.present(editProductInWareHouseVC, animated: true, completion: nil)
        }
 }
@@ -1348,7 +1348,17 @@ extension AddNewProductVC: QLKhoHangVCDelegate {
     
 }
 
-
+extension AddNewProductVC: EditProductInWareHouseVCEditDelegate {
+    func refreshData(productInWarehouseIndex: Int, productInWarehouse: ProductInWarehouseModel) {
+        
+    }
+    
+    
+    
+   
+    
+    
+}
 
 extension AddNewProductVC: OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex: Int, otherAttributeHead: [CellOrtherHeadAttribute]) {

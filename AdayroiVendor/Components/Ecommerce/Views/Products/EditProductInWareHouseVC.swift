@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 protocol EditProductInWareHouseVCEditDelegate {
-    func refreshData(warehouse_index:Int,warehouseModel:WarehouseModel)
+    func refreshData(productInWarehouseIndex:Int,productInWarehouse:ProductInWarehouseModel)
 }
 
 class EditProductInWareHouseVC: UIViewController {
@@ -20,11 +20,11 @@ class EditProductInWareHouseVC: UIViewController {
     var delegate: EditProductInWareHouseVCEditDelegate!
     var userAffiliateInfoModel:UserAffiliateInfoModel=UserAffiliateInfoModel()
     var customMask = TLCustomMask()
-    var warehouse:WarehouseModel = WarehouseModel()
-    var warehouse_index:Int = -1
+    var productInWarehouse:ProductInWarehouseModel = ProductInWarehouseModel()
+    var productInWarehouseIndex:Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.UITextFieldTotalProduct.text=warehouse.warehouse_name
+        self.UITextFieldTotalProduct.text=String(productInWarehouse.total_product)
         /*
          let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
          print(" ")
@@ -82,11 +82,15 @@ class EditProductInWareHouseVC: UIViewController {
                 
                 return
             }
+            self.productInWarehouse.total_product=Int(UITextFieldTotalProduct.text!) ?? 0
+            self.productInWarehouse.unlimit=0
         }else{
-            
+            self.productInWarehouse.unlimit=1
         }
-        
-        
+        self.dismiss(animated: true) {
+            self.delegate.refreshData(productInWarehouseIndex:self.productInWarehouseIndex,productInWarehouse: self.productInWarehouse)
+           }
+
         
         
     }
@@ -101,40 +105,7 @@ class EditProductInWareHouseVC: UIViewController {
 }
 
 extension EditProductInWareHouseVC {
-    func Webservice_getUpdateWareHouse(url:String, params:NSDictionary) -> Void {
-        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-            if strErrorMessage.count != 0 {
-                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-            }
-            else {
-                print(jsonResponse!)
-                do {
-                    let jsonDecoder = JSONDecoder()
-                    let getApiResponseUpdateWarehousesModel = try jsonDecoder.decode(GetApiResponseUpdateWarehousesModel.self, from: jsonResponse!)
-                    print("getApiResponseUpdateWarehousesModel \(getApiResponseUpdateWarehousesModel)")
-                    if(getApiResponseUpdateWarehousesModel.result=="success"){
-                        let warehouseModel=getApiResponseUpdateWarehousesModel.warehouse
-                        self.dismiss(animated: true) {
-                            self.delegate.refreshData(warehouse_index:self.warehouse_index,warehouseModel: warehouseModel)
-                        }
-                        
-                        
-                        
-                        
-                        
-                    }
-                    
-                } catch let error as NSError  {
-                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
-                    
-                }
-                
-                
-                //print("userModel:\(userModel)")
-                
-            }
-        }
-    }
+   
     
     
 }

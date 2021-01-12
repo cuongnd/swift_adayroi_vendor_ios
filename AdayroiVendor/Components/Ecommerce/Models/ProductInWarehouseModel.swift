@@ -14,8 +14,9 @@ struct ProductInWarehouseModel: Codable {
     let warehouse_phonenumber: String
     let create_date: String
     let modify_date: String
-    let product_id: String
-    let total_product: Int
+    var product_id: String
+    var total_product: Int
+    var unlimit: Int
    
     
     enum CodingKeys: String, CodingKey {
@@ -28,6 +29,7 @@ struct ProductInWarehouseModel: Codable {
         case modify_date = "modify_date"
         case product_id = "product_id"
         case total_product = "total_product"
+        case unlimit = "unlimit"
     }
     init() {
         _id = ""
@@ -39,5 +41,6 @@ struct ProductInWarehouseModel: Codable {
         modify_date=""
         product_id=""
         total_product=0
+        unlimit=1
     }
 }
