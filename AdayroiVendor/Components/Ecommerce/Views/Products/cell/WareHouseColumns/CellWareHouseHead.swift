@@ -18,11 +18,13 @@ struct CellWareHouseHead {
     var is_head:Bool
     var columnType:String
     var columnName:String
-    init(title:String,is_head:Bool,columnType:String,columnName:String) {
+     var action:Selector
+    init(title:String,is_head:Bool,columnType:String,columnName:String,action: Selector) {
         self.title=title
         self.is_head=is_head
         self.columnType=columnType
         self.columnName=columnName
+        self.action=action
     }
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
@@ -37,7 +39,7 @@ struct CellWareHouseHead {
             return cell!
         }else if(!self.is_head && self.columnName == "stt"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseLabelCollectionViewCell
-            //cell!.contentLabel.text=String(indexPath.section)
+            cell!.contentLabel.text=String(indexPath.section)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -52,6 +54,7 @@ struct CellWareHouseHead {
                 cell!.backgroundColor = UIColor.white
             }
             cell?.UIButtonEdit.tag = indexPath.section
+            cell?.UIButtonEdit.addTarget(self, action: self.action, for: .touchUpInside)
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseDeleteCollectionViewCell.reuseID, for: indexPath) as? WareHouseDeleteCollectionViewCell
@@ -61,6 +64,7 @@ struct CellWareHouseHead {
                 cell!.backgroundColor = UIColor.white
             }
             cell?.UIButtonDelete.tag = indexPath.section
+            cell?.UIButtonDelete.addTarget(self, action: self.action, for: .touchUpInside)
             return cell!
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseLabelCollectionViewCell

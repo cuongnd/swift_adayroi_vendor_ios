@@ -401,13 +401,13 @@ class AddNewProductVC: UIViewController {
      
         self.UICollectionViewWareHouses.delegate = self
         self.UICollectionViewWareHouses.dataSource = self
-        
+        let selector = #selector(self.nothing(_:))
         self.wareHouseheadFisrtRow=[
-        CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHead(title: "Kho hàng",is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHead(title: "Số lượng sản phẩm",is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: ""),
-        CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: ""),
+        CellWareHouseHead(title: "Stt",is_head: true,columnType: "", columnName: "stt",action: selector),
+        CellWareHouseHead(title: "Kho hàng",is_head: true,columnType: "", columnName: "",action: selector),
+        CellWareHouseHead(title: "Số lượng sản phẩm",is_head: true,columnType: "", columnName: "",action: selector),
+        CellWareHouseHead(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action: selector),
+        CellWareHouseHead(title: "Xóa",is_head: true,columnType: "",columnName: "delete",action: selector),
         
         
         ]
@@ -910,6 +910,18 @@ class AddNewProductVC: UIViewController {
         
         
     }
+    @objc func nothing(_ sender: UIButton){
+          
+           
+       }
+       @objc func deleteWarehouse(_ sender: UIButton){
+          
+           
+       }
+       @objc func editWarehouse(_ sender: UIButton){
+           
+           
+       }
 }
 
 
@@ -1074,11 +1086,11 @@ extension AddNewProductVC {
                            {
                                let warehouse:WarehouseModel=self.list_warehouse[i];
                                self.wareHousehead.append([
-                                   CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt"),
-                                   CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: ""),
-                                   CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: ""),
-                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit"),
-                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete"),                               ])
+                                   CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.nothing(_:))),
+                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete",action:  #selector(self.nothing(_:))),                               ])
                                
                            }
                            
