@@ -16,13 +16,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Jj-y4g">
-                        <rect key="frame" x="0.0" y="10" width="46" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Jj-y4g">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <state key="normal" title="Sửa"/>
                     </button>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="Tbo-Jj-y4g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5On-bH-roo"/>
+                <constraint firstAttribute="bottom" secondItem="Tbo-Jj-y4g" secondAttribute="bottom" id="JMy-os-TUv"/>
+                <constraint firstAttribute="trailing" secondItem="Tbo-Jj-y4g" secondAttribute="trailing" id="LmD-vw-pdo"/>
+                <constraint firstItem="Tbo-Jj-y4g" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oxU-1e-wys"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="UIButtonEdit" destination="Tbo-Jj-y4g" id="pWj-Au-S7Y"/>

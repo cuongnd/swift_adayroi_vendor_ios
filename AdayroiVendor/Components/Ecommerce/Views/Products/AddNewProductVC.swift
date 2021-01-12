@@ -1077,8 +1077,8 @@ extension AddNewProductVC {
                                    CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt"),
                                    CellWareHouseHead(title: warehouse.warehouse_name,is_head: false,columnType: "", columnName: ""),
                                    CellWareHouseHead(title: "0",is_head: false,columnType: "", columnName: ""),
-                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: ""),
-                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: ""),                               ])
+                                   CellWareHouseHead(title: "Sửa",is_head: false,columnType: "", columnName: "edit"),
+                                   CellWareHouseHead(title: "Xóa",is_head: false,columnType: "",columnName: "delete"),                               ])
                                
                            }
                            
