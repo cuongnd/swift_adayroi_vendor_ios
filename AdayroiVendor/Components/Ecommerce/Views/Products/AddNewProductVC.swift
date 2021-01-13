@@ -35,8 +35,9 @@ struct ImageColorModel {
     }
     var dictionary: [String: Any] {
         return ["color_name": color_name,
-                "color_value": color_value.hexValue()
-                ]
+                "color_value": color_value.hexValue(),
+                "has_image":has_image
+        ]
     }
     var nsDictionary: NSDictionary {
         return dictionary as NSDictionary
@@ -787,7 +788,7 @@ class AddNewProductVC: UIViewController {
     }
     
     
-  
+    
     
     @IBAction func UIButtonDeleteImage(_ sender: UIButton) {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
@@ -1074,14 +1075,14 @@ class AddNewProductVC: UIViewController {
             return
         }
         if(!product_weight.isNumber){
-             UITextFieldProductWeight.becomeFirstResponder()
-             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-             self.present(alert, animated: true)
-             
-             return
-         }
-               
+            UITextFieldProductWeight.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
         
         var product_unit=String(self.UITextFieldProductUnit.text!)
         product_unit = String(product_unit.filter { !" \n\t\r".contains($0) })
@@ -1111,22 +1112,22 @@ class AddNewProductVC: UIViewController {
         var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
         product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
         if(product_orignal_price==""){
-           UITextFieldProductOrignalPrice.text="";
-           UITextFieldProductOrignalPrice.becomeFirstResponder()
-           let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập giá thường bán ngoài thị trường", preferredStyle: .alert)
-           alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-           self.present(alert, animated: true)
-           
-           return
-       }
+            UITextFieldProductOrignalPrice.text="";
+            UITextFieldProductOrignalPrice.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập giá thường bán ngoài thị trường", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         if(!product_orignal_price.isNumber){
-              UITextFieldProductOrignalPrice.becomeFirstResponder()
-              let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-              alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-              self.present(alert, animated: true)
-              
-              return
-          }
+            UITextFieldProductOrignalPrice.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
@@ -1139,15 +1140,15 @@ class AddNewProductVC: UIViewController {
             
             return
         }
-       
+        
         if(!product_unit_price.isNumber){
-              UITextFieldProductUnitPrice.becomeFirstResponder()
-              let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-              alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-              self.present(alert, animated: true)
-              
-              return
-          }
+            UITextFieldProductUnitPrice.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         
         var product_short_description=String(self.UITextViewProductShortDescription.text!)
@@ -1178,25 +1179,34 @@ class AddNewProductVC: UIViewController {
         }
         
         if(self.curentSubCategory._id==""){
-               DropDownSubCategories.text="";
-               DropDownSubCategories.becomeFirstResponder()
-               let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm con", preferredStyle: .alert)
-               alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-               self.present(alert, animated: true)
-               
-               return
-           }
+            DropDownSubCategories.text="";
+            DropDownSubCategories.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm con", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         
         //product image
         var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-        
+        var jsonStringImageProduct:String=""
         if(self.list_product_image.count>0){
             for index in 0...self.list_product_image.count-1 {
                 let currentItem=self.list_product_image[index]
                 listImageProductCodableDict.append(currentItem.nsDictionary)
                 
             }
+            let jsonData: NSData
+            do {
+                jsonData = try JSONSerialization.data(withJSONObject: listImageProductCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringImageProduct = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
+            
         }else{
             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1208,81 +1218,128 @@ class AddNewProductVC: UIViewController {
         
         //video product
         var listVideoLinkCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        var jsonStringVideoLink:String=""
         if(self.list_video_link.count>0){
             for index in 0...self.list_video_link.count-1 {
                 let currentItem=self.list_video_link[index]
                 listVideoLinkCodableDict.append(currentItem.nsDictionary)
                 
             }
+            let jsonDataVideoLink: NSData
+            do {
+                jsonDataVideoLink = try JSONSerialization.data(withJSONObject: listVideoLinkCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringImageProduct = NSString(data: jsonDataVideoLink as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
         }
         //product in ware house
         var listTotalProductInWarehouseCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        var jsonStringjsonDataTotalProductInWarehouse:String=""
         if(self.list_total_product_in_warehouse.count>0){
             for index in 0...self.list_total_product_in_warehouse.count-1 {
                 let currentItem=self.list_total_product_in_warehouse[index]
                 listTotalProductInWarehouseCodableDict.append(currentItem.nsDictionary)
                 
             }
+            let jsonDataTotalProductInWarehouse: NSData
+            do {
+                jsonDataTotalProductInWarehouse = try JSONSerialization.data(withJSONObject: listTotalProductInWarehouseCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringjsonDataTotalProductInWarehouse = NSString(data: jsonDataTotalProductInWarehouse as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
         }else{
             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số lượng sản phẩm trong các kho hàng", preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                       self.present(alert, animated: true)
-                       
-                       return
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
         }
         //
         var listHeaderAttributeTitleCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-       if(self.list_header_attribute_title.count>0){
-           for index in 0...self.list_header_attribute_title.count-1 {
-               let currentItem=self.list_header_attribute_title[index]
-               listHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
-               
-           }
-       }
+        var jsonStringHeaderAttributeTitle:String=""
+        if(self.list_header_attribute_title.count>0){
+            for index in 0...self.list_header_attribute_title.count-1 {
+                let currentItem=self.list_header_attribute_title[index]
+                listHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
+                
+            }
+            let jsonDataHeaderAttributeTitle: NSData
+            do {
+                jsonDataHeaderAttributeTitle = try JSONSerialization.data(withJSONObject: listHeaderAttributeTitleCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringHeaderAttributeTitle = NSString(data: jsonDataHeaderAttributeTitle as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
+        }
         //list_other_header_attribute_title
         
         var listOtherHeaderAttributeTitleCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        var jsonStringOtherHeaderAttributeTitle:String=""
         if(self.list_other_header_attribute_title.count>0){
             for index in 0...self.list_other_header_attribute_title.count-1 {
                 let currentItem=self.list_other_header_attribute_title[index]
                 listOtherHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
                 
             }
+            let jsonDataOtherHeaderAttributeTitle: NSData
+            do {
+                jsonDataOtherHeaderAttributeTitle = try JSONSerialization.data(withJSONObject: listOtherHeaderAttributeTitleCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringOtherHeaderAttributeTitle = NSString(data: jsonDataOtherHeaderAttributeTitle as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
         }
         
         //list image color product
-               
-       var listImageColorCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-       if(self.list_image_color.count>0){
-           for index in 0...self.list_image_color.count-1 {
-               let currentItem=self.list_image_color[index]
-               listImageColorCodableDict.append(currentItem.nsDictionary)
-               
-           }
-       }
-               
+        
+        var listImageColorCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        var jsonStringImageColor:String=""
+        if(self.list_image_color.count>0){
+            for index in 0...self.list_image_color.count-1 {
+                let currentItem=self.list_image_color[index]
+                listImageColorCodableDict.append(currentItem.nsDictionary)
+                
+            }
+            let jsonDataImageColor: NSData
+            do {
+                jsonDataImageColor = try JSONSerialization.data(withJSONObject: listImageColorCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringImageColor = NSString(data: jsonDataImageColor as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
+        }
+        
         
         let parameters: [String : Any] = [
-            "product_name": product_name,
+            "productTitle": product_name,
             "cat_id":self.curentCategory._id,
             "sub_cat_id":self.curentSubCategory._id,
-            "product_code": product_code,
-            "product_length": product_length,
-            "product_height": product_height,
-            "product_width": product_width,
-            "product_weight": product_weight,
+            "shop_category_id":"",
+            "shop_sub_category_id":"",
+            "code": product_code,
+            "length": product_length,
+            "height": product_height,
+            "width": product_width,
+            "weight": product_weight,
             "product_unit": product_unit,
-            "product_alias": product_alias,
-            "product_orignal_price": product_orignal_price,
-            "product_unit_price": product_unit_price,
-            "product_short_description": product_short_description,
-            "product_full_description": product_full_description,
-            "list_product_image":listImageProductCodableDict,
-            "list_video_link":listVideoLinkCodableDict,
-            "list_total_product_in_warehouse":listTotalProductInWarehouseCodableDict,
-            "list_header_attribute_title":listHeaderAttributeTitleCodableDict,
-            "list_other_header_attribute_title":listOtherHeaderAttributeTitleCodableDict,
-            "list_image_color":listImageColorCodableDict
+            "alias": product_alias,
+            "original_price": product_orignal_price,
+            "unit_price": product_unit_price,
+            "productShortDescription": product_short_description,
+            "productFullDescription": product_full_description,
+            "list_product_image":jsonStringImageProduct,
+            "list_video_link":jsonStringVideoLink,
+            "list_total_product_in_warehouse":jsonStringjsonDataTotalProductInWarehouse,
+            "list_header_attribute_title":jsonStringHeaderAttributeTitle,
+            "list_other_header_attribute_title":jsonStringOtherHeaderAttributeTitle,
+            "list_image_color":jsonStringImageColor
         ]
         let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
         
@@ -1308,34 +1365,19 @@ class AddNewProductVC: UIViewController {
             
         }
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn lưu sản phẩm này không ?".localiz(), preferredStyle: .alert)
-               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-                   let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
-                   WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
-                       
-                       MBProgressHUD.hide(for: self.view, animated: false)
-                       if error != nil {
-                           showAlertMessage(titleStr: "", messageStr: error!.localizedDescription)
-                       }
-                       else {
-                           print(response!)
-                           let responseData = response as! NSDictionary
-                           let responseCode = responseData.value(forKey: "status") as! NSNumber
-                           let responseMsg = responseData.value(forKey: "message") as! String
-                           if responseCode == 1 {
-                               self.navigationController?.popViewController(animated: true)
-                           }
-                           else {
-                               showAlertMessage(titleStr: "", messageStr: responseMsg)
-                           }
-                       }
-                   }
-                   
-                   
-               }
-               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
-               alertVC.addAction(yesAction)
-               alertVC.addAction(noAction)
-               self.present(alertVC,animated: true,completion: nil)
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
+            WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
+                
+                
+            }
+            
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
         
         
         
@@ -1363,14 +1405,14 @@ class AddNewProductVC: UIViewController {
         self.present(alertVC,animated: true,completion: nil)
     }
     @objc @IBAction private func logSelectedButton(radioButton : DLRadioButton) {
-           if (radioButton.isMultipleSelectionEnabled) {
-               for button in radioButton.selectedButtons() {
-                   print(String(format: "%@ is selected.\n", button.titleLabel!.text!));
-               }
-           } else {
-               print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
-           }
-       }
+        if (radioButton.isMultipleSelectionEnabled) {
+            for button in radioButton.selectedButtons() {
+                print(String(format: "%@ is selected.\n", button.titleLabel!.text!));
+            }
+        } else {
+            print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
+        }
+    }
     
     
     
@@ -1489,20 +1531,20 @@ extension AddNewProductVC {
     
     
     func Webservice_getUnitsProduct(url:String, params:NSDictionary) -> Void {
-           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-               if strErrorMessage.count != 0 {
-                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-               }
-               else {
-                   print(jsonResponse!)
-                   do {
-                       let jsonDecoder = JSONDecoder()
-                       let getApiResponseUnitsProductModel = try jsonDecoder.decode(GetApiResponseUnitsProductModel.self, from: jsonResponse!)
-                       if(getApiResponseUnitsProductModel.result=="success"){
-                           
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseUnitsProductModel = try jsonDecoder.decode(GetApiResponseUnitsProductModel.self, from: jsonResponse!)
+                    if(getApiResponseUnitsProductModel.result=="success"){
+                        
                         self.list_unit=getApiResponseUnitsProductModel.list_unit
-                           self.UITextFieldProductUnit.text=""
-                           self.UITextFieldProductUnit.optionArray.removeAll();
+                        self.UITextFieldProductUnit.text=""
+                        self.UITextFieldProductUnit.optionArray.removeAll();
                         if(self.list_unit.count>0){
                             for index in 0...self.list_unit.count-1 {
                                 let currentItem=self.list_unit[index]
@@ -1510,19 +1552,19 @@ extension AddNewProductVC {
                                 self.UITextFieldProductUnit.optionIds?.insert(index, at: index)
                             }
                         }
-                       }
-                       
-                   } catch let error as NSError  {
-                       showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
-                       
-                   }
-                   
-                   
-                   //print("userModel:\(userModel)")
-                   
-               }
-           }
-       }
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     
     func Webservice_getListTotalProductInWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in

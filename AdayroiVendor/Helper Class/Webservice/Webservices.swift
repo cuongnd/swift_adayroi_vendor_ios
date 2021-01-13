@@ -297,11 +297,13 @@ class WebServices: NSObject
                 }
         }
     }
-    func multipartWebServiceUploadProduct(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String:Any], fileData:[DataUpload], fileUrl:URL?, headers:HTTPHeaders,  completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){
+    func multipartWebServiceUploadProduct(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String:Any], fileData:[DataUpload], fileUrl:URL?, headers:HTTPHeaders,progressView:Bool, uiView:UIView, networkAlert:Bool,  responseDict:@escaping (_ jsonResponce:Data?, _ strErrorMessage:String) -> Void){
         
         print("Fetching WS : \(URLString)")
         print("With parameters : \(parameters)")
-        
+        if progressView == true {
+            self.ProgressViewShow(uiView:uiView)
+        }
         if  !NetworkReachabilityManager()!.isReachable {
             showAlertMessage(titleStr: "Error!", messageStr: MESSAGE_ERR_NETWORK)
             return
@@ -315,30 +317,43 @@ class WebServices: NSObject
                 MultipartFormData.append(item_file.data, withName: item_file.key_name, fileName: item_file.file_name, mimeType: item_file.mime_type)
             }
         }, to: URLString, method: .post, headers: headers)
-            .responseJSON { (response) in
-                if let statusCode = response.response?.statusCode {
-                    if  statusCode == HttpResponseStatusCode.noAuthorization.rawValue {
-                        showAlertMessage(titleStr: "Error!", messageStr: "Something went wrong.. Try again.")
-                        return
+            .responseData { response in
+            switch (response.result)
+            {
+            case .success:
+                if((response.value) != nil) {
+                    let jsonResponce = Data(response.value!)
+                    print("Responce: \n\(jsonResponce)")
+                    DispatchQueue.main.async {
+                        self.ProgressViewHide(uiView: uiView)
+                        responseDict(jsonResponce,"")
                     }
                 }
-                if let error = response.error {
-                    completion(nil, error as NSError?)
+                break
+            case .failure(let error):
+                let message : String
+                if let httpStatusCode = response.response?.statusCode {
+                    switch(httpStatusCode) {
+                    case 400:
+                        message = "Có lỗi phát sinh, xin vui lòng thử lại"
+                    case 401:
+                        message = "Có lỗi phát sinh, xin vui lòng thử lại"
+                        DispatchQueue.main.async {
+                            self.ProgressViewHide(uiView: uiView)
+                            responseDict(response.value,message)
+                        }
+                    default: break
+                    }
+                } else {
+                    message = error.localizedDescription
+                    let jsonError = Data(response.value!)
+                    DispatchQueue.main.async {
+                        self.ProgressViewHide(uiView: uiView)
+                        responseDict(jsonError,"")
+                    }
                 }
-                else {
-                    guard let data = response.data
-                        else {
-                            showAlertMessage(titleStr: "Error!", messageStr: "Something went wrong.. Try again.")
-                            return
-                    }
-                    do {
-                        let unparsedObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as AnyObject
-                        completion(unparsedObject, nil)
-                    }
-                    catch let exception as NSError {
-                        completion(nil, exception)
-                    }
-                }
+                break
+            }
         }
     }
     
