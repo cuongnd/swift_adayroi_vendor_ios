@@ -2963,6 +2963,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="2996"/>
                     <connections>
+                        <outlet property="DLRadioButtonProductType" destination="XxT-dL-T0n" id="882-aJ-5Or"/>
                         <outlet property="DropDownCategoriesProduct" destination="RYH-uS-SD7" id="W3g-Dr-zD2"/>
                         <outlet property="DropDownProductCatId" destination="RYH-uS-SD7" id="7rJ-IX-adP"/>
                         <outlet property="DropDownProductSubCatId" destination="1Vo-fZ-O1L" id="1g1-Sq-qft"/>
@@ -2994,7 +2995,6 @@
                         <outlet property="UITextFieldProductWidth" destination="wDW-RT-IM9" id="ZI3-Fa-MWl"/>
                         <outlet property="UITextViewProductFullDescription" destination="sPl-MD-VIf" id="3C1-Hs-jKc"/>
                         <outlet property="UITextViewProductShortDescription" destination="Yrf-q8-Y9Z" id="3Vo-hQ-Rth"/>
-                        <outlet property="waterButton" destination="XxT-dL-T0n" id="882-aJ-5Or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jic-EN-CDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
