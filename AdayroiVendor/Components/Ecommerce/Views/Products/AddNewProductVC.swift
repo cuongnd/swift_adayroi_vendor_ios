@@ -26,14 +26,16 @@ struct ImageColorModel {
     var color_name: String
     var image: UIImage
     var color_value: UIColor
-    init(color_name:String,image:UIImage,color_value:UIColor) {
+    var has_image:Int
+    init(color_name:String,image:UIImage,color_value:UIColor,has_image:Int) {
         self.color_name=color_name
         self.image=image
         self.color_value=color_value
+        self.has_image=has_image
     }
     var dictionary: [String: Any] {
         return ["color_name": color_name,
-                "color_value": color_value
+                "color_value": color_value.hexValue()
                 ]
     }
     var nsDictionary: NSDictionary {
@@ -63,10 +65,8 @@ struct ImageProductModel {
         self.image=image
     }
     var dictionary: [String: Any] {
-        var imageData = image.jpegData(compressionQuality: 0.5)?.base64EncodedData()
         return [
-            "image_description": image_description,
-            "image": imageData
+            "image_description": image_description
         ]
     }
     var nsDictionary: NSDictionary {
@@ -1264,6 +1264,8 @@ class AddNewProductVC: UIViewController {
         
         let parameters: [String : Any] = [
             "product_name": product_name,
+            "cat_id":self.curentCategory._id,
+            "sub_cat_id":self.curentSubCategory._id,
             "product_code": product_code,
             "product_length": product_length,
             "product_height": product_height,
@@ -1787,7 +1789,7 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: assets[i], color_value: UIColor.brown)
+                let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: assets[i], color_value: UIColor.brown,has_image: 1)
                 self.list_image_color.append(imageColorModel)
             }
             
@@ -1897,7 +1899,7 @@ extension AddNewProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!
-            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image:no_image, color_value: color)
+            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image:no_image, color_value: color,has_image: 0)
             self.list_image_color.append(imageColorModel)
         }else{
             self.list_image_color[colorIndex].color_value=color
