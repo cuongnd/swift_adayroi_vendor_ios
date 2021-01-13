@@ -782,76 +782,7 @@ class AddNewProductVC: UIViewController {
     }
     
     
-    @IBAction func btnTap_Ok(_ sender: UIButton) {
-        var amount=String(self.UITextFieldSoTien.text!)
-        amount = String(amount.filter { !" \n\t\r".contains($0) })
-        
-        
-        
-        if(amount==""){
-            UITextFieldSoTien.text="";
-            UITextFieldSoTien.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số Số tiền", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        if(!amount.isNumber){
-            UITextFieldSoTien.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        if((amount as NSString).floatValue < 200000){
-            
-            UITextFieldSoTien.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số Số tiền lớn hơn 200 000 ngàn", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        
-        
-        let allowWithdrawal=self.userAffiliateInfoModel.total-self.userAffiliateInfoModel.total_processing;
-        
-        if((amount as NSString).floatValue > allowWithdrawal){
-            
-            UITextFieldSoTien.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số Số tiền không lớn hơn \(allowWithdrawal)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        
-        
-        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn lập lệnh này không ?".localiz(), preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-            let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-            
-            let params: NSDictionary = [
-                "user_id":user_id,
-                "amount": amount
-            ]
-            let url_send_withdrawal_now = API_URL + "/api_task/withdrawals.send_withdrawal_now"
-            //self.Webservice_PostLapLenhRutTien(url: url_send_withdrawal_now, params:params)
-            
-            
-        }
-        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
-        alertVC.addAction(yesAction)
-        alertVC.addAction(noAction)
-        self.present(alertVC,animated: true,completion: nil)
-        
-        
-        
-        
-        
-    }
+  
     
     @IBAction func UIButtonDeleteImage(_ sender: UIButton) {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
@@ -1096,12 +1027,35 @@ class AddNewProductVC: UIViewController {
         
         var product_length=String(self.UITextFieldProductLength.text!)
         product_length = String(product_length.filter { !" \n\t\r".contains($0) })
+        if(product_length != "" && !product_length.isNumber){
+            UITextFieldProductLength.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_height=String(self.UITextFieldProductHeight.text!)
         product_height = String(product_height.filter { !" \n\t\r".contains($0) })
-        
+        if(product_height != "" &&  !product_height.isNumber){
+            UITextFieldProductHeight.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         var product_width=String(self.UITextFieldProductWidth.text!)
         product_width = String(product_width.filter { !" \n\t\r".contains($0) })
+        if(product_width != "" &&   !product_width.isNumber){
+            UITextFieldProductWidth.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_weight=String(self.UITextFieldProductWeight.text!)
         product_weight = String(product_weight.filter { !" \n\t\r".contains($0) })
@@ -1114,6 +1068,15 @@ class AddNewProductVC: UIViewController {
             
             return
         }
+        if(!product_weight.isNumber){
+             UITextFieldProductWeight.becomeFirstResponder()
+             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+             self.present(alert, animated: true)
+             
+             return
+         }
+               
         
         var product_unit=String(self.UITextFieldProductUnit.text!)
         product_unit = String(product_unit.filter { !" \n\t\r".contains($0) })
@@ -1151,6 +1114,14 @@ class AddNewProductVC: UIViewController {
            
            return
        }
+        if(!product_orignal_price.isNumber){
+              UITextFieldProductOrignalPrice.becomeFirstResponder()
+              let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+              alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+              self.present(alert, animated: true)
+              
+              return
+          }
         
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
@@ -1163,6 +1134,15 @@ class AddNewProductVC: UIViewController {
             
             return
         }
+       
+        if(!product_unit_price.isNumber){
+              UITextFieldProductUnitPrice.becomeFirstResponder()
+              let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+              alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+              self.present(alert, animated: true)
+              
+              return
+          }
         
         
         var product_short_description=String(self.UITextViewProductShortDescription.text!)
@@ -1213,6 +1193,7 @@ class AddNewProductVC: UIViewController {
                 
             }
         }else{
+            self.UICollectionViewListProductImage.becomeFirstResponder()
             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -1320,26 +1301,37 @@ class AddNewProductVC: UIViewController {
             }
             
         }
-        let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
-        WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
-            
-            MBProgressHUD.hide(for: self.view, animated: false)
-            if error != nil {
-                showAlertMessage(titleStr: "", messageStr: error!.localizedDescription)
-            }
-            else {
-                print(response!)
-                let responseData = response as! NSDictionary
-                let responseCode = responseData.value(forKey: "status") as! NSNumber
-                let responseMsg = responseData.value(forKey: "message") as! String
-                if responseCode == 1 {
-                    self.navigationController?.popViewController(animated: true)
-                }
-                else {
-                    showAlertMessage(titleStr: "", messageStr: responseMsg)
-                }
-            }
-        }
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn lưu sản phẩm này không ?".localiz(), preferredStyle: .alert)
+               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                   let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
+                   WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
+                       
+                       MBProgressHUD.hide(for: self.view, animated: false)
+                       if error != nil {
+                           showAlertMessage(titleStr: "", messageStr: error!.localizedDescription)
+                       }
+                       else {
+                           print(response!)
+                           let responseData = response as! NSDictionary
+                           let responseCode = responseData.value(forKey: "status") as! NSNumber
+                           let responseMsg = responseData.value(forKey: "message") as! String
+                           if responseCode == 1 {
+                               self.navigationController?.popViewController(animated: true)
+                           }
+                           else {
+                               showAlertMessage(titleStr: "", messageStr: responseMsg)
+                           }
+                       }
+                   }
+                   
+                   
+               }
+               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+               alertVC.addAction(yesAction)
+               alertVC.addAction(noAction)
+               self.present(alertVC,animated: true,completion: nil)
+        
+        
         
         
         
