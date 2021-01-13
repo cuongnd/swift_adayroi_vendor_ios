@@ -378,6 +378,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var DropDownCategoriesProduct: DropDown!
     var customMask = TLCustomMask()
     var customMaskUnitPrice = TLCustomMask()
+    var curentCategory:CategoryModel=CategoryModel()
     var list_category:[CategoryModel]=[CategoryModel]()
     var list_total_product_in_warehouse:[ProductInWarehouseModel]=[ProductInWarehouseModel]()
     
@@ -481,8 +482,8 @@ class AddNewProductVC: UIViewController {
         //self.UITextFieldSoTien.delegate = self
         
         DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
-            var curentCategory:CategoryModel=self.list_category[index]
-            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(curentCategory._id)"
+            self.curentCategory=self.list_category[index]
+            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(self.curentCategory._id)"
             self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
             
         }
@@ -1180,6 +1181,28 @@ class AddNewProductVC: UIViewController {
         product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+        
+        if(self.curentCategory._id==""){
+            DropDownCategoriesProduct.text="";
+            DropDownCategoriesProduct.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        if(self.curentSubCategory._id==""){
+               DropDownSubCategories.text="";
+               DropDownSubCategories.becomeFirstResponder()
+               let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm con", preferredStyle: .alert)
+               alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+               self.present(alert, animated: true)
+               
+               return
+           }
+        
+        
         //product image
         var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
         

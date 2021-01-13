@@ -12,7 +12,7 @@ struct CategoryModel: Codable {
     let status: Bool
     let added_date: String
     let added_user_id: String
-    let updated_date: String?=""
+    var updated_date: String?=""
     let updated_user_id: String
     let ordering: Int
     let alias: String
@@ -34,5 +34,20 @@ struct CategoryModel: Codable {
         case description = "description"
         case default_photo =  "default_photo"
         case default_icon = "default_icon"
+    }
+    init() {
+        _id = ""
+        name = ""
+        status = true
+        added_date = ""
+        added_user_id = ""
+        updated_date=""
+        updated_user_id=""
+        ordering=0
+        alias=""
+        description=""
+        default_photo=ImageModel()
+        default_icon=ImageModel()
+      
     }
 }
