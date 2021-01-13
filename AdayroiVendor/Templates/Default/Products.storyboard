@@ -2727,7 +2727,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-Ah-kUh">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-Ah-kUh" customClass="DropDown" customModule="iOSDropDown">
                                                 <rect key="frame" x="298" y="0.0" width="100" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="0VK-Cr-Dj6"/>
@@ -2941,6 +2941,7 @@
                         <outlet property="UICollectionViewListProductImage" destination="xO4-DA-Gjl" id="WDy-to-L0J"/>
                         <outlet property="UICollectionViewOtherHeadAttribute" destination="8pi-YN-mPb" id="wIQ-C2-Kq4"/>
                         <outlet property="UICollectionViewWareHouses" destination="gkJ-aF-WgI" id="e3a-D8-S4O"/>
+                        <outlet property="UILabelmageProduct" destination="h0I-DO-niv" id="09x-wo-OM9"/>
                         <outlet property="UITextFieldAlias" destination="6dw-NO-JW5" id="SnM-yQ-LoT"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldProductCode" destination="qru-Ol-XLG" id="ADU-39-pJn"/>

@@ -380,6 +380,8 @@ class AddNewProductVC: UIViewController {
     var customMaskUnitPrice = TLCustomMask()
     var curentCategory:CategoryModel=CategoryModel()
     var list_category:[CategoryModel]=[CategoryModel]()
+    var list_unit:[UnitModel]=[UnitModel]()
+    
     var list_total_product_in_warehouse:[ProductInWarehouseModel]=[ProductInWarehouseModel]()
     
     var list_sub_category:[SubCategoryModel]=[SubCategoryModel]()
@@ -447,7 +449,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldProductWidth: UITextField!
     @IBOutlet weak var UITextFieldProductHeight: UITextField!
     @IBOutlet weak var UITextFieldProductWeight: UITextField!
-    @IBOutlet weak var UITextFieldProductUnit: UITextField!
+    @IBOutlet weak var UITextFieldProductUnit: DropDown!
     @IBOutlet weak var UITextFieldAlias: UITextField!
     @IBOutlet weak var DropDownProductCatId: DropDown!
     @IBOutlet weak var DropDownProductSubCatId: DropDown!
@@ -455,6 +457,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextFieldProductUnitPrice: UITextField!
     @IBOutlet weak var UITextViewProductShortDescription: UITextView!
     @IBOutlet weak var UITextViewProductFullDescription: UITextView!
+    @IBOutlet weak var UILabelmageProduct: UILabel!
     
     
     override func viewDidLoad() {
@@ -492,8 +495,9 @@ class AddNewProductVC: UIViewController {
             
             
         }
-        customMask.formattingPattern = "$$$ $$$ $$$ $$$ đ"
-        customMaskUnitPrice.formattingPattern = "$$$ $$$ $$$ $$$ đ"
+        let urlGetUnitsProduct = API_URL + "/api/units?user_id=\(user_id)"
+        self.Webservice_getUnitsProduct(url: urlGetUnitsProduct, params:[:])
+        
         
         /*
          let tapAddImage = UITapGestureRecognizer(target: self, action: #selector(btnTapAddImage))
@@ -1193,7 +1197,6 @@ class AddNewProductVC: UIViewController {
                 
             }
         }else{
-            self.UICollectionViewListProductImage.becomeFirstResponder()
             let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -1364,7 +1367,6 @@ class AddNewProductVC: UIViewController {
 extension AddNewProductVC {
     
     
-    
     func Webservice_getSubCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -1468,32 +1470,42 @@ extension AddNewProductVC {
     }
     
     
-    func Webservice_GetAffiliateInfo(url:String, params:NSDictionary) -> Void {
-        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-            if strErrorMessage.count != 0 {
-                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-            }
-            else {
-                print(jsonResponse!)
-                do {
-                    let jsonDecoder = JSONDecoder()
-                    let getLichSuRutTienResponseModel = try jsonDecoder.decode(GetAffiliateInfoModel.self, from: jsonResponse!)
-                    self.userAffiliateInfoModel=getLichSuRutTienResponseModel.userAffiliateInfoModel
-                    self.UILabelSoTienToiDa.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.userAffiliateInfoModel.total-self.userAffiliateInfoModel.total_processing),decimalCount: 0)
-                    
-                    
-                    
-                    
-                } catch let error as NSError  {
-                    print("error: \(error)")
-                }
-                
-                
-                //print("userModel:\(userModel)")
-                
-            }
-        }
-    }
+    func Webservice_getUnitsProduct(url:String, params:NSDictionary) -> Void {
+           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+               if strErrorMessage.count != 0 {
+                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+               }
+               else {
+                   print(jsonResponse!)
+                   do {
+                       let jsonDecoder = JSONDecoder()
+                       let getApiResponseUnitsProductModel = try jsonDecoder.decode(GetApiResponseUnitsProductModel.self, from: jsonResponse!)
+                       if(getApiResponseUnitsProductModel.result=="success"){
+                           
+                        self.list_unit=getApiResponseUnitsProductModel.list_unit
+                           self.UITextFieldProductUnit.text=""
+                           self.UITextFieldProductUnit.optionArray.removeAll();
+                        if(self.list_unit.count>0){
+                            for index in 0...self.list_unit.count-1 {
+                                let currentItem=self.list_unit[index]
+                                self.UITextFieldProductUnit.optionArray.append(currentItem.name)
+                                self.UITextFieldProductUnit.optionIds?.insert(index, at: index)
+                            }
+                        }
+                       }
+                       
+                   } catch let error as NSError  {
+                       showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                       
+                   }
+                   
+                   
+                   //print("userModel:\(userModel)")
+                   
+               }
+           }
+       }
+    
     func Webservice_getListTotalProductInWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
