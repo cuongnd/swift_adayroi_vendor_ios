@@ -1070,9 +1070,28 @@ class AddNewProductVC: UIViewController {
          */
         var product_name=String(self.UITextFieldProductName.text!)
         product_name = String(product_name.filter { !" \n\t\r".contains($0) })
+        if(product_name==""){
+            UITextFieldProductName.text="";
+            UITextFieldProductName.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập tên sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_code=String(self.UITextFieldProductCode.text!)
         product_code = String(product_code.filter { !" \n\t\r".contains($0) })
+        
+        if(product_code==""){
+            UITextFieldProductCode.text="";
+            UITextFieldProductCode.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập mã sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_length=String(self.UITextFieldProductLength.text!)
         product_length = String(product_length.filter { !" \n\t\r".contains($0) })
@@ -1085,21 +1104,77 @@ class AddNewProductVC: UIViewController {
         
         var product_weight=String(self.UITextFieldProductWeight.text!)
         product_weight = String(product_weight.filter { !" \n\t\r".contains($0) })
+        if(product_weight==""){
+            UITextFieldProductWeight.text="";
+            UITextFieldProductWeight.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập trọng lượng sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_unit=String(self.UITextFieldProductUnit.text!)
         product_unit = String(product_unit.filter { !" \n\t\r".contains($0) })
         
+        if(product_unit==""){
+            UITextFieldProductUnit.text="";
+            UITextFieldProductUnit.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập đơn vị đo sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
         var product_alias=String(self.UITextFieldAlias.text!)
         product_alias = String(product_alias.filter { !" \n\t\r".contains($0) })
+        if(product_alias==""){
+            UITextFieldAlias.text="";
+            UITextFieldAlias.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập link seo sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
         product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
+        if(product_orignal_price==""){
+           UITextFieldProductOrignalPrice.text="";
+           UITextFieldProductOrignalPrice.becomeFirstResponder()
+           let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập giá thường bán ngoài thị trường", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+           self.present(alert, animated: true)
+           
+           return
+       }
         
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
+        if(product_unit_price==""){
+            UITextFieldProductUnitPrice.text="";
+            UITextFieldProductUnitPrice.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập giá giá bán của bạn", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
         
         var product_short_description=String(self.UITextViewProductShortDescription.text!)
         product_short_description = String(product_short_description.filter { !" \n\t\r".contains($0) })
+        if(product_short_description==""){
+            UITextViewProductShortDescription.text="";
+            UITextViewProductShortDescription.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập mô tả ngắn về sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_full_description=String(self.UITextViewProductFullDescription.text!)
         product_full_description = String(product_full_description.filter { !" \n\t\r".contains($0) })
@@ -1114,6 +1189,12 @@ class AddNewProductVC: UIViewController {
                 listImageProductCodableDict.append(currentItem.nsDictionary)
                 
             }
+        }else{
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
         }
         
         
@@ -1134,6 +1215,12 @@ class AddNewProductVC: UIViewController {
                 listTotalProductInWarehouseCodableDict.append(currentItem.nsDictionary)
                 
             }
+        }else{
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập số lượng sản phẩm trong các kho hàng", preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                       self.present(alert, animated: true)
+                       
+                       return
         }
         //
         var listHeaderAttributeTitleCodableDict = [NSDictionary]() // or [String:AnyCodable]()
