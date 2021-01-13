@@ -38,4 +38,12 @@ extension String  {
     var isNumber: Bool {
         return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
+    func condenseWhitespace() -> String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+    func condenseWhitespaceToAlias() -> String {
+           let components = self.components(separatedBy: .whitespacesAndNewlines)
+           return components.filter { !$0.isEmpty }.joined(separator: "-")
+       }
 }

@@ -256,12 +256,6 @@ class WebServices: NSObject
         
         print("Fetching WS : \(URLString)")
         print("With parameters : \(parameters)")
-        
-        if  !NetworkReachabilityManager()!.isReachable {
-            showAlertMessage(titleStr: "Error!", messageStr: MESSAGE_ERR_NETWORK)
-            return
-        }
-        
         AF.upload(multipartFormData: { MultipartFormData in
             for (key, value) in parameters {
                 MultipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)

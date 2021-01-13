@@ -1108,7 +1108,7 @@ class AddNewProductVC: UIViewController {
             
             return
         }
-        
+        product_alias=product_alias.condenseWhitespaceToAlias()
         var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
         product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
         if(product_orignal_price==""){
@@ -1367,9 +1367,36 @@ class AddNewProductVC: UIViewController {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn lưu sản phẩm này không ?".localiz(), preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
             let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
-            WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers) { (response, error) in
-                
-                
+            
+            
+            
+            
+            WebServices().multipartWebServiceUploadProduct(method:.post, URLString:urlStringPostAddNewProduct, encoding:JSONEncoding.default, parameters:parameters, fileData:list_DataUpload, fileUrl:nil, headers:headers,progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+                if strErrorMessage.count != 0 {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+                }
+                else {
+                    print(jsonResponse!)
+                    do {
+                        let jsonDecoder = JSONDecoder()
+                        let getApiResponseAddNewProductModel = try jsonDecoder.decode(GetApiResponseAddNewProductModel.self, from: jsonResponse!)
+                        if(getApiResponseAddNewProductModel.result=="success"){
+                            
+                            let product=getApiResponseAddNewProductModel.product
+                            print("product response \(product)")
+                        }else{
+                            showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: getApiResponseAddNewProductModel.errorMessage)
+                        }
+                        
+                    } catch let error as NSError  {
+                        showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                        
+                    }
+                    
+                    
+                    //print("userModel:\(userModel)")
+                    
+                }
             }
             
             
