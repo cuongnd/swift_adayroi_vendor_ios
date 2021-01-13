@@ -2751,6 +2751,8 @@
                                                 <state key="normal" title="Sản phẩm vật lý"/>
                                                 <connections>
                                                     <action selector="logSelectedButtonWithRadioButton:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="mM6-o2-czz"/>
+                                                    <outletCollection property="otherButtons" destination="ipF-eS-SJs" id="eye-9c-67o"/>
+                                                    <outletCollection property="otherButtons" destination="b1O-QA-3kg" id="qrR-1J-XVd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipF-eS-SJs" customClass="DLRadioButton">
@@ -2992,6 +2994,7 @@
                         <outlet property="UITextFieldProductWidth" destination="wDW-RT-IM9" id="ZI3-Fa-MWl"/>
                         <outlet property="UITextViewProductFullDescription" destination="sPl-MD-VIf" id="3C1-Hs-jKc"/>
                         <outlet property="UITextViewProductShortDescription" destination="Yrf-q8-Y9Z" id="3Vo-hQ-Rth"/>
+                        <outlet property="waterButton" destination="XxT-dL-T0n" id="882-aJ-5Or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jic-EN-CDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

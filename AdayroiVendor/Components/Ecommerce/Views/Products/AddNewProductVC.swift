@@ -459,7 +459,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextViewProductShortDescription: UITextView!
     @IBOutlet weak var UITextViewProductFullDescription: UITextView!
     @IBOutlet weak var UILabelmageProduct: UILabel!
-    
+    @IBOutlet var waterButton : DLRadioButton!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
