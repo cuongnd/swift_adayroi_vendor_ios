@@ -17,6 +17,7 @@ import Foundation
 import SystemConfiguration
 import Alamofire
 import MBProgressHUD
+import DLRadioButton
 
 protocol AddNewProductDelegate {
     func refreshData()
@@ -1359,6 +1360,21 @@ class AddNewProductVC: UIViewController {
         alertVC.addAction(noAction)
         self.present(alertVC,animated: true,completion: nil)
     }
+    @objc @IBAction private func logSelectedButton(radioButton : DLRadioButton) {
+           if (radioButton.isMultipleSelectionEnabled) {
+               for button in radioButton.selectedButtons() {
+                   print(String(format: "%@ is selected.\n", button.titleLabel!.text!));
+               }
+           } else {
+               print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
+           }
+       }
+    
+    
+    
+    
+    
+    
 }
 
 
