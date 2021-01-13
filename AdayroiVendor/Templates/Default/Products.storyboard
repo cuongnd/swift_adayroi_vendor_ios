@@ -2484,6 +2484,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5d-g7-DQi">
                                                             <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                             <state key="normal" title="Delete"/>
+                                                            <connections>
+                                                                <action selector="UIButtonDeleteOtherAttribute:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="Rg6-6L-JRz"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>

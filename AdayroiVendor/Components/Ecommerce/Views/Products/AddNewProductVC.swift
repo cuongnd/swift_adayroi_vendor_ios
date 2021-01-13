@@ -30,6 +30,14 @@ struct ImageColorModel {
         self.image=image
         self.color_value=color_value
     }
+    var dictionary: [String: Any] {
+        return ["color_name": color_name,
+                "color_value": color_value
+                ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 }
 struct DataUpload {
     var key_name:String
@@ -273,19 +281,19 @@ struct HeaderAttributeModel {
 
 struct OtherHeaderAttributeTitleModel {
     var title: String
-    var note:String
     var description:String
-    init(title:String,note:String,description:String) {
+    var note:String
+    init(title:String,description:String,note:String) {
         self.title=title
-        self.note=note
         self.description=description
+        self.note=note
     }
     
     var dictionary: [String: Any] {
         return [
             "title": title,
+            "description":description,
             "note": note,
-            "description":description
         ]
     }
     var nsDictionary: NSDictionary {
@@ -1136,6 +1144,29 @@ class AddNewProductVC: UIViewController {
                
            }
        }
+        //list_other_header_attribute_title
+        
+        var listOtherHeaderAttributeTitleCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        if(self.list_other_header_attribute_title.count>0){
+            for index in 0...self.list_other_header_attribute_title.count-1 {
+                let currentItem=self.list_other_header_attribute_title[index]
+                listOtherHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
+                
+            }
+        }
+        
+        //list image color product
+               
+       var listImageColorCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+       if(self.list_image_color.count>0){
+           for index in 0...self.list_image_color.count-1 {
+               let currentItem=self.list_image_color[index]
+               listImageColorCodableDict.append(currentItem.nsDictionary)
+               
+           }
+       }
+               
+        
         let parameters: [String : Any] = [
             "product_name": product_name,
             "product_code": product_code,
@@ -1152,7 +1183,9 @@ class AddNewProductVC: UIViewController {
             "list_product_image":listImageProductCodableDict,
             "list_video_link":listVideoLinkCodableDict,
             "list_total_product_in_warehouse":listTotalProductInWarehouseCodableDict,
-            "list_header_attribute_title":listHeaderAttributeTitleCodableDict
+            "list_header_attribute_title":listHeaderAttributeTitleCodableDict,
+            "list_other_header_attribute_title":listOtherHeaderAttributeTitleCodableDict,
+            "list_image_color":listImageColorCodableDict
         ]
         let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
         
@@ -1203,6 +1236,23 @@ class AddNewProductVC: UIViewController {
         
         
         
+    }
+    @IBAction func UIButtonDeleteOtherAttribute(_ sender: UIButton) {
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            
+            self.orderheaderAttributeTitleProduct.remove(at: sender.tag)
+            self.UICollectionViewOtherHeadAttribute.delegate = self
+            self.UICollectionViewOtherHeadAttribute.dataSource = self
+            self.UICollectionViewOtherHeadAttribute.reloadData()
+            self.list_other_header_attribute_title.remove(at: sender.tag-1)
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
     }
 }
 
@@ -1697,11 +1747,11 @@ extension AddNewProductVC: OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex: Int,otherAttributeTitleHeadIndex:Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
         if(otherAttributeHeadIndex == -1){
             self.orderheaderAttributeTitleProduct.append(otherAttributeHead);
-            self.list_other_header_attribute_title.append(OtherHeaderAttributeTitleModel(title:"title1" , note: "note1", description: "description"))
+            self.list_other_header_attribute_title.append(OtherHeaderAttributeTitleModel(title:otherAttributeHead[1].title ,description: otherAttributeHead[2].title, note: ""))
         }else{
             self.orderheaderAttributeTitleProduct[otherAttributeHeadIndex]=otherAttributeHead
-            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].title="title1"
-            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].description="description"
+            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].title=otherAttributeHead[1].title
+            self.list_other_header_attribute_title[otherAttributeTitleHeadIndex].description=otherAttributeHead[2].title
         }
         
         self.UICollectionViewOtherHeadAttribute.delegate = self
