@@ -1711,10 +1711,10 @@
             </objects>
             <point key="canvasLocation" x="-2558" y="-670"/>
         </scene>
-        <!--Add New ProductVC-->
+        <!--Edit ProductVC-->
         <scene sceneID="o1s-wN-pzW">
             <objects>
-                <viewController storyboardIdentifier="AddNewProductVC" id="Hiw-6r-tKI" customClass="AddNewProductVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProductVC" id="Hiw-6r-tKI" customClass="EditProductVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4oH-II-j9t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2996"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

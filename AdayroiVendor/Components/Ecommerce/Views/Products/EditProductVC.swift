@@ -368,13 +368,15 @@ class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
 
-class AddNewProductVC: UIViewController {
+class EditProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     var productImageColorChanging:Int=0
     var productImageColorNameChanging:Int=0
     var productImageDescriptionChanging:Int=0
     var productHeaderAttributeChanging:Int=0
+    var ProductId:String=""
+    var product:ProductModel=ProductModel()
     var delegate: AddNewProductDelegate!
     @IBOutlet weak var UILabelSoTienToiDa: UILabel!
     @IBOutlet weak var UITextFieldSoTien: UITextField!
@@ -485,8 +487,7 @@ class AddNewProductVC: UIViewController {
          phoneFormatter.format("+123456789012") /
          */
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlGetCategories = API_URL + "/api/categories"
-        self.Webservice_getCategories(url: urlGetCategories, params:[:])
+        
         //self.UITextFieldSoTien.delegate = self
         
         DropDownCategoriesProduct.didSelect{(selectedText , index ,id) in
@@ -500,8 +501,6 @@ class AddNewProductVC: UIViewController {
             
             
         }
-        let urlGetUnitsProduct = API_URL + "/api/units?user_id=\(user_id)"
-        self.Webservice_getUnitsProduct(url: urlGetUnitsProduct, params:[:])
         
         
         /*
@@ -538,12 +537,14 @@ class AddNewProductVC: UIViewController {
             
             
         ]
-        self.wareHousehead.append(self.wareHouseheadFisrtRow)
-        let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
-        let params: NSDictionary = [
-            "product_id": ""
-        ]
-        self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
+        
+        
+        if(self.ProductId != ""){
+            let urlStringGetDetailProduct = API_URL + "/api/vendorproducts/\(self.ProductId)/\(user_id)"
+            self.Webservice_getDetailProduct(url: urlStringGetDetailProduct, params: [:])
+        }
+        
+        
         
         
     }
@@ -1179,7 +1180,7 @@ class AddNewProductVC: UIViewController {
             
             return
         }
-       
+        
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
         if(product_unit_price==""){
@@ -1407,8 +1408,8 @@ class AddNewProductVC: UIViewController {
                         print("getApiResponseAddNewProductModel response \(getApiResponseAddNewProductModel)")
                         if(getApiResponseAddNewProductModel.result=="success"){
                             self.dismiss(animated: true) {
-                                       self.delegate.refreshData()
-                                   }
+                                self.delegate.refreshData()
+                            }
                         }else{
                             let alert = UIAlertController(title: "Có lỗi phát sinh", message: getApiResponseAddNewProductModel.errorMessage, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1484,8 +1485,65 @@ class AddNewProductVC: UIViewController {
 
 
 //MARK: WithdrawalList
-extension AddNewProductVC {
+extension EditProductVC {
     
+    func Webservice_getDetailProduct(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                let alert = UIAlertController(title: "NSError", message: strErrorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiRespondeProductDetailModel = try jsonDecoder.decode(GetApiRespondeProductDetailModel.self, from: jsonResponse!)
+                    if(getApiRespondeProductDetailModel.result=="success"){
+                        self.product=getApiRespondeProductDetailModel.product
+                        print("self.product \(self.product)")
+                        self.UITextFieldProductName.text=self.product.name
+                        self.UITextFieldProductCode.text=self.product.code
+                        self.UITextFieldProductLength.text="10"
+                        self.UITextFieldProductWidth.text="10"
+                        self.UITextFieldProductHeight.text="10"
+                        self.UITextFieldProductWeight.text="10"
+                        self.UITextFieldAlias.text=self.product.alias
+                        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+                        
+                        let urlGetUnitsProduct = API_URL + "/api/units?user_id=\(user_id)"
+                        self.Webservice_getUnitsProduct(url: urlGetUnitsProduct, params:[:])
+                        
+                        
+                        let urlGetCategories = API_URL + "/api/categories"
+                        self.Webservice_getCategories(url: urlGetCategories, params:[:])
+                        
+                        
+                        self.wareHousehead.append(self.wareHouseheadFisrtRow)
+                        let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
+                        let params: NSDictionary = [
+                            "product_id": ""
+                        ]
+                        self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
+                        
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    print("error:\(error)")
+                    let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     
     func Webservice_getSubCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -1685,7 +1743,7 @@ extension AddNewProductVC {
         }
     }
 }
-extension AddNewProductVC: UITextFieldDelegate{
+extension EditProductVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -1696,7 +1754,7 @@ extension AddNewProductVC: UITextFieldDelegate{
         return false
     }
 }
-extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -1714,7 +1772,7 @@ extension AddNewProductVC: UIImagePickerControllerDelegate, UINavigationControll
         self.dismiss(animated: true, completion: nil)
     }
 }
-extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
@@ -1868,7 +1926,7 @@ extension AddNewProductVC: UICollectionViewDelegate,UICollectionViewDataSource,U
         
     }
 }
-extension AddNewProductVC: OpalImagePickerControllerDelegate {
+extension EditProductVC: OpalImagePickerControllerDelegate {
     func imagePickerDidCancel(_ picker: OpalImagePickerController) {
         //Cancel action?
     }
@@ -1919,7 +1977,7 @@ extension AddNewProductVC: OpalImagePickerControllerDelegate {
     }
 }
 
-extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
+extension EditProductVC: ModalAttributeHeadIndexDelegate {
     func refreshData(AttributeHeadIndex: Int,attributeTitleHeadIndex:Int, CellAttributeList: [[CellAttribute]]) {
         var list_attribute:[String]=[String]()
         for i in 0..<CellAttributeList.count
@@ -1942,7 +2000,7 @@ extension AddNewProductVC: ModalAttributeHeadIndexDelegate {
     
 }
 
-extension AddNewProductVC: QLKhoHangVCDelegate {
+extension EditProductVC: QLKhoHangVCDelegate {
     func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellWareHouseHeadManager]]) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -1958,7 +2016,7 @@ extension AddNewProductVC: QLKhoHangVCDelegate {
     
 }
 
-extension AddNewProductVC: EditProductInWareHouseVCEditDelegate {
+extension EditProductVC: EditProductInWareHouseVCEditDelegate {
     func refreshData(productInWarehouseIndex: Int, productInWarehouse: ProductInWarehouseModel) {
         self.list_total_product_in_warehouse[productInWarehouseIndex]=productInWarehouse
         let text_total:String=productInWarehouse.unlimit == 1 ? "không giới hạn":String(productInWarehouse.total_product)
@@ -1980,7 +2038,7 @@ extension AddNewProductVC: EditProductInWareHouseVCEditDelegate {
     
 }
 
-extension AddNewProductVC: OtherAttributeEditDelegate {
+extension EditProductVC: OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex: Int,otherAttributeTitleHeadIndex:Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
         if(otherAttributeHeadIndex == -1){
             self.orderheaderAttributeTitleProduct.append(otherAttributeHead);
@@ -2000,7 +2058,7 @@ extension AddNewProductVC: OtherAttributeEditDelegate {
     
     
 }
-extension AddNewProductVC: ModalSelectColorRutDelegate {
+extension EditProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!

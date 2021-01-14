@@ -40,10 +40,11 @@
     @IBOutlet weak var UIButtonLapLenhRutTien: UIButton!
     
     @IBAction func TouchUpInsideLapLenhRutTien(_ sender: UIButton) {
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewProductVC") as! AddNewProductVC
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "EditProductVC") as! EditProductVC
         VC.modalPresentationStyle = .overFullScreen
         VC.modalTransitionStyle = .crossDissolve
         VC.delegate = self
+        
         self.present(VC,animated: true,completion: nil)
     }
     @IBAction func TouchUpInSideCaiDatTKNganHang(_ sender: UIButton) {
@@ -142,7 +143,12 @@
     }
     @objc func editProduct(_ sender: UIButton){
         
-        
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "EditProductVC") as! EditProductVC
+        VC.modalPresentationStyle = .overFullScreen
+        VC.modalTransitionStyle = .crossDissolve
+        VC.delegate = self
+        VC.ProductId=self.list_product[sender.tag-1]._id
+        self.present(VC,animated: true,completion: nil)
     }
     
     
