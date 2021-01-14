@@ -1,35 +1,35 @@
  //
-//  OrderHistoryVC.swift
-//  AdayroiVendor
-//
-//  Created by Mitesh's MAC on 07/06/20.
-//  Copyright © 2020 Mitesh's MAC. All rights reserved.
-//
-
-import UIKit
-import SwiftyJSON
-import Foundation
-import AnyFormatKit
+ //  OrderHistoryVC.swift
+ //  AdayroiVendor
+ //
+ //  Created by Mitesh's MAC on 07/06/20.
+ //  Copyright © 2020 Mitesh's MAC. All rights reserved.
+ //
+ 
+ import UIKit
+ import SwiftyJSON
+ import Foundation
+ import AnyFormatKit
  
  
-class ProductLabelCollectionViewCell: UICollectionViewCell {
+ class ProductLabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UILabelText: UILabel!
     static let reuseID = "ProductLabelCollectionViewCell"
-}
-
-class ProductButtonCollectionViewCell: UICollectionViewCell {
+ }
+ 
+ class ProductButtonCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var UIButtonWithDrawal: UIButton!
     static let reuseID = "ProductButtonCollectionViewCell"
-}
-
-//MARK: - Properties
-private enum Properties {
+ }
+ 
+ //MARK: - Properties
+ private enum Properties {
     static let verticalMargin: CGFloat = 5
     static let horizontalMargin: CGFloat = 15
     static let widthConstant: CGFloat = 20
-}
-class MyProductListVC: UIViewController {
+ }
+ class MyProductListVC: UIViewController {
     var OrderHistoryData = [JSON]()
     var selected = String()
     var list_product:[ProductModel]=[ProductModel]();
@@ -58,7 +58,7 @@ class MyProductListVC: UIViewController {
         }
     }
     
-   
+    
     var headerTitles:[CellProduct]=[CellProduct]()
     var list_cell_product:[[CellProduct]]=[[CellProduct]]()
     
@@ -83,19 +83,22 @@ class MyProductListVC: UIViewController {
         gridCollectionView.dataSource=self
         self.list_cell_product.append(self.headerTitles)
         
-          var nibCell = UINib(nibName:ProductEditCollectionViewCell.reuseID, bundle: nil)
-             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductEditCollectionViewCell.reuseID)
-             
-             nibCell = UINib(nibName:ProductShowContentCollectionViewCell.reuseID, bundle: nil)
-             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductShowContentCollectionViewCell.reuseID)
-             
-             nibCell = UINib(nibName:ProductDeleteCollectionViewCell.reuseID, bundle: nil)
-             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductDeleteCollectionViewCell.reuseID)
+        var nibCell = UINib(nibName:ProductEditCollectionViewCell.reuseID, bundle: nil)
+        self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductEditCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:ProductShowContentCollectionViewCell.reuseID, bundle: nil)
+        self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductShowContentCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:ProductDeleteCollectionViewCell.reuseID, bundle: nil)
+        self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductDeleteCollectionViewCell.reuseID)
+        
+        nibCell = UINib(nibName:ProductImageCollectionViewCell.reuseID, bundle: nil)
+        self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductImageCollectionViewCell.reuseID)
         
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-       let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
-       self.Webservice_GetMyProducts(url: urlString, params:[:])
+        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
+        self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         
         
@@ -134,7 +137,7 @@ class MyProductListVC: UIViewController {
         
     }
     @objc func deleteProduct(_ sender: UIButton){
-       
+        
         
     }
     @objc func editProduct(_ sender: UIButton){
@@ -144,9 +147,9 @@ class MyProductListVC: UIViewController {
     
     
     
-}
-
-extension MyProductListVC: AddNewProductDelegate {
+ }
+ 
+ extension MyProductListVC: AddNewProductDelegate {
     
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
@@ -157,10 +160,10 @@ extension MyProductListVC: AddNewProductDelegate {
         self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
         
     }
-}
-
-//MARK: WithdrawalList
-extension MyProductListVC {
+ }
+ 
+ //MARK: WithdrawalList
+ extension MyProductListVC {
     
     
     func Webservice_GetMyProducts(url:String, params:NSDictionary) -> Void {
@@ -195,7 +198,7 @@ extension MyProductListVC {
                             CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.code,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "ảnh 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: product.default_photo!.img_path,is_head: false,columnType: "", columnName: "image",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "danh mục con",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "danh mục con 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: String(product.original_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
@@ -309,9 +312,9 @@ extension MyProductListVC {
         
         
     }
-}
-
-extension MyProductListVC: UICollectionViewDataSource {
+ }
+ 
+ extension MyProductListVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.list_cell_product.count
@@ -322,21 +325,21 @@ extension MyProductListVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         // swiftlint:disable force_cast
-           let CellProduct:CellProduct=self.list_cell_product[indexPath.section][indexPath.row]
-           let cell  = CellProduct.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
-           return cell
+        // swiftlint:disable force_cast
+        let CellProduct:CellProduct=self.list_cell_product[indexPath.section][indexPath.row]
+        let cell  = CellProduct.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
+        return cell
         
         
         
         
         
     }
-}
-
-extension MyProductListVC: UICollectionViewDelegateFlowLayout {
+ }
+ 
+ extension MyProductListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width:300, height: 40)
     }
-}
+ }

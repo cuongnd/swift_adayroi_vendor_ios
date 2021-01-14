@@ -68,6 +68,19 @@ struct CellProduct {
             cell?.UIButtonDeleteProduct.addTarget(self, action: self.action, for: .touchUpInside)
 
             return cell!
+        }else if(!self.is_head && self.columnName == "image"){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductImageCollectionViewCell.reuseID, for: indexPath) as? ProductImageCollectionViewCell
+            if indexPath.section % 2 != 0 {
+                cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
+            } else {
+                cell!.backgroundColor = UIColor.white
+            }
+            cell?.UIImageViewProductImage.sd_setImage(with: URL(string: self.title), placeholderImage: UIImage(named: "placeholder_image"))
+
+            //cell?.UIImageViewProductImage.addTarget(self, action: self.action, for: .touchUpInside)
+
+            return cell!
+
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductShowContentCollectionViewCell.reuseID, for: indexPath) as? ProductShowContentCollectionViewCell
             cell!.UILabelContent.text=String(self.title)
