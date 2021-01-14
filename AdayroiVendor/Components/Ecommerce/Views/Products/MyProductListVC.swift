@@ -193,16 +193,16 @@ extension MyProductListVC {
                     for product in self.list_product {
                         self.list_cell_product.append([
                             CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Tên 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Mã 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: product.name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: product.code,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "ảnh 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "dich mục 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "danh mục con",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "danh mục con 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "4000",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "10%",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "300",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: String(product.original_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: String(product.commistion),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: String(product.unit_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:))),
-                            CellProduct(title: "Xóa",is_head: false,columnType: "", columnName: "delete",action:  #selector(self.editProduct(_:)))
+                            CellProduct(title: "Xóa",is_head: false,columnType: "", columnName: "delete",action:  #selector(self.deleteProduct(_:)))
                         ])
                         i += 1
                     }
