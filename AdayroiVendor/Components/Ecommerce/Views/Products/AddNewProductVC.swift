@@ -1380,16 +1380,21 @@ class AddNewProductVC: UIViewController {
                     do {
                         let jsonDecoder = JSONDecoder()
                         let getApiResponseAddNewProductModel = try jsonDecoder.decode(GetApiResponseAddNewProductModel.self, from: jsonResponse!)
+                        print("getApiResponseAddNewProductModel response \(getApiResponseAddNewProductModel)")
                         if(getApiResponseAddNewProductModel.result=="success"){
                             
                             let product=getApiResponseAddNewProductModel.product
                             print("product response \(product)")
                         }else{
-                            showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: getApiResponseAddNewProductModel.errorMessage)
+                            let alert = UIAlertController(title: "Có lỗi phát sinh", message: getApiResponseAddNewProductModel.errorMessage, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                         
                     } catch let error as NSError  {
-                        showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                        let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                        self.present(alert, animated: true)
                         
                     }
                     

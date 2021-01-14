@@ -339,11 +339,10 @@ class WebServices: NSObject
                     default: break
                     }
                 } else {
+                    self.ProgressViewHide(uiView: uiView)
                     message = error.localizedDescription
-                    let jsonError = Data(response.value!)
                     DispatchQueue.main.async {
-                        self.ProgressViewHide(uiView: uiView)
-                        responseDict(jsonError,"")
+                        responseDict(response.value!,message)
                     }
                 }
                 break

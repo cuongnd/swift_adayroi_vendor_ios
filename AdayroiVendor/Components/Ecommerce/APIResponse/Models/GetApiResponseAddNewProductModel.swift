@@ -10,7 +10,7 @@ struct GetApiResponseAddNewProductModel: Codable {
     let result: String
     let errorMessage: String
     let code: Int
-    let product: ProductModel
+    let product: ProductModel?
     enum CodingKeys: String, CodingKey {
         case result = "result"
         case code = "code"
