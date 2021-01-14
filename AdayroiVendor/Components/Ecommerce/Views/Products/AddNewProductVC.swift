@@ -1179,7 +1179,7 @@ class AddNewProductVC: UIViewController {
             
             return
         }
-        
+       
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
         if(product_unit_price==""){
