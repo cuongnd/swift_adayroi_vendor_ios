@@ -1660,58 +1660,7 @@
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductLabelCollectionViewCell" id="hyQ-zh-Hxc" customClass="ProductLabelCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1.5" width="168" height="39"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="168" height="39"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLt-At-QJC">
-                                                                    <rect key="frame" x="8" y="8" width="152" height="23"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </view>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="tLt-At-QJC" secondAttribute="trailing" id="1L4-lm-8gA"/>
-                                                            <constraint firstItem="tLt-At-QJC" firstAttribute="leading" secondItem="hyQ-zh-Hxc" secondAttribute="leadingMargin" id="Uje-1I-gXJ"/>
-                                                            <constraint firstAttribute="bottomMargin" secondItem="tLt-At-QJC" secondAttribute="bottom" id="byx-6I-8LA"/>
-                                                            <constraint firstItem="tLt-At-QJC" firstAttribute="top" secondItem="hyQ-zh-Hxc" secondAttribute="topMargin" id="hX6-Yo-SgQ"/>
-                                                        </constraints>
-                                                        <size key="customSize" width="168" height="39"/>
-                                                        <connections>
-                                                            <outlet property="UILabelText" destination="tLt-At-QJC" id="GJL-aY-CD5"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductButtonCollectionViewCell" id="qiY-X1-ohC" customClass="ProductButtonCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
-                                                        <rect key="frame" x="178" y="0.0" width="168" height="42"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="168" height="42"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sc0-TR-Ub3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="42"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                </button>
-                                                            </subviews>
-                                                        </view>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Sc0-TR-Ub3" secondAttribute="trailing" id="EZS-hj-Ax6"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Sc0-TR-Ub3" secondAttribute="bottom" id="JfL-5V-RcS"/>
-                                                            <constraint firstItem="Sc0-TR-Ub3" firstAttribute="top" secondItem="qiY-X1-ohC" secondAttribute="top" id="YJy-br-u1a"/>
-                                                            <constraint firstItem="Sc0-TR-Ub3" firstAttribute="leading" secondItem="qiY-X1-ohC" secondAttribute="leading" id="vVk-hC-xDd"/>
-                                                        </constraints>
-                                                        <size key="customSize" width="168" height="42"/>
-                                                        <connections>
-                                                            <outlet property="UIButtonWithDrawal" destination="Sc0-TR-Ub3" id="2oi-Xd-pym"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                </cells>
+                                                <cells/>
                                             </collectionView>
                                         </subviews>
                                         <constraints>
@@ -1756,7 +1705,6 @@
                         <outlet property="UILabelSoTIenDangSuLy" destination="d4z-br-yBo" id="40I-ez-j8K"/>
                         <outlet property="UILabelSoTienCoTheRut" destination="epD-S5-Hlh" id="59I-Zb-4EG"/>
                         <outlet property="gridCollectionView" destination="c6d-vR-spC" id="oQK-uw-diC"/>
-                        <outlet property="gridLayout" destination="6oT-MD-3z8" id="b5h-XD-18J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z19-vs-YGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

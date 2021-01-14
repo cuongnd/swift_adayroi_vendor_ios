@@ -30,8 +30,8 @@ struct CellProduct {
     
     func getUICollectionViewCell(collectionView: UICollectionView,indexPath:IndexPath)->UICollectionViewCell {
         if(self.is_head){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
-            cell!.contentLabel.text=String(self.title)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductShowContentCollectionViewCell.reuseID, for: indexPath) as? ProductShowContentCollectionViewCell
+            cell!.UILabelContent.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -39,8 +39,8 @@ struct CellProduct {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "stt"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
-            cell!.contentLabel.text=String(indexPath.section)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductShowContentCollectionViewCell.reuseID, for: indexPath) as? ProductShowContentCollectionViewCell
+            cell!.UILabelContent.text=String(indexPath.section)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
@@ -48,29 +48,29 @@ struct CellProduct {
             }
             return cell!
         }else if(!self.is_head && self.columnName == "edit"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseManagerEditCollectionViewCell.reuseID, for: indexPath) as? WareHouseManagerEditCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductEditCollectionViewCell.reuseID, for: indexPath) as? ProductEditCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
                 cell!.backgroundColor = UIColor.white
             }
-            cell?.UIButtonEdit.tag = indexPath.section
-            cell?.UIButtonEdit.addTarget(self, action: self.action, for: .touchUpInside)
+            cell?.UIButtonEditProduct.tag = indexPath.section
+            cell?.UIButtonEditProduct.addTarget(self, action: self.action, for: .touchUpInside)
             return cell!
         }else if(!self.is_head && self.columnName == "delete"){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WareHouseManagerDeleteCollectionViewCell.reuseID, for: indexPath) as? WareHouseManagerDeleteCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductDeleteCollectionViewCell.reuseID, for: indexPath) as? ProductDeleteCollectionViewCell
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {
                 cell!.backgroundColor = UIColor.white
             }
-            cell?.UIButtonDelete.tag = indexPath.section
-            cell?.UIButtonDelete.addTarget(self, action: self.action, for: .touchUpInside)
+            cell?.UIButtonDeleteProduct.tag = indexPath.section
+            cell?.UIButtonDeleteProduct.addTarget(self, action: self.action, for: .touchUpInside)
 
             return cell!
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WarehouseManagerLabelCollectionViewCell.reuseID, for: indexPath) as? WarehouseManagerLabelCollectionViewCell
-            cell!.contentLabel.text=String(self.title)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductShowContentCollectionViewCell.reuseID, for: indexPath) as? ProductShowContentCollectionViewCell
+            cell!.UILabelContent.text=String(self.title)
             if indexPath.section % 2 != 0 {
                 cell!.backgroundColor = UIColor(white: 242/255.0, alpha: 1.0)
             } else {

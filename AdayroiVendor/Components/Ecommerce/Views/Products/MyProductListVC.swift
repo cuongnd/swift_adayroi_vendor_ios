@@ -58,12 +58,7 @@ class MyProductListVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var gridLayout: WithdrawalStickyGridCollectionViewLayout! {
-        didSet {
-            gridLayout.stickyRowsCount = 1
-            gridLayout.stickyColumnsCount = 1
-        }
-    }
+   
     var headerTitles:[CellProduct]=[CellProduct]()
     var list_cell_product:[[CellProduct]]=[[CellProduct]]()
     
@@ -80,6 +75,17 @@ class MyProductListVC: UIViewController {
         gridCollectionView.delegate=self
         gridCollectionView.dataSource=self
         self.list_cell_product.append(self.headerTitles)
+        
+          var nibCell = UINib(nibName:ProductEditCollectionViewCell.reuseID, bundle: nil)
+             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductEditCollectionViewCell.reuseID)
+             
+             nibCell = UINib(nibName:ProductShowContentCollectionViewCell.reuseID, bundle: nil)
+             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductShowContentCollectionViewCell.reuseID)
+             
+             nibCell = UINib(nibName:ProductDeleteCollectionViewCell.reuseID, bundle: nil)
+             self.gridCollectionView.register(nibCell, forCellWithReuseIdentifier: ProductDeleteCollectionViewCell.reuseID)
+        
+        
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
        self.Webservice_GetMyProducts(url: urlString, params:[:])
