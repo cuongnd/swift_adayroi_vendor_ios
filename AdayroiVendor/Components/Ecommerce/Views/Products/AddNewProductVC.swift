@@ -1406,9 +1406,9 @@ class AddNewProductVC: UIViewController {
                         let getApiResponseAddNewProductModel = try jsonDecoder.decode(GetApiResponseAddNewProductModel.self, from: jsonResponse!)
                         print("getApiResponseAddNewProductModel response \(getApiResponseAddNewProductModel)")
                         if(getApiResponseAddNewProductModel.result=="success"){
-                            
-                            let product=getApiResponseAddNewProductModel.product
-                            print("product response \(product)")
+                            self.dismiss(animated: true) {
+                                       self.delegate.refreshData()
+                                   }
                         }else{
                             let alert = UIAlertController(title: "Có lỗi phát sinh", message: getApiResponseAddNewProductModel.errorMessage, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1469,6 +1469,9 @@ class AddNewProductVC: UIViewController {
         } else {
             print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
         }
+    }
+    @IBAction func UIButtonCacelSaveProduct(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

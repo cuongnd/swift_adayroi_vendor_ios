@@ -64,9 +64,13 @@ class MyProductListVC: UIViewController {
     }
    let headerTitles = [
        DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
-       DataRowModel(type:.Text, text:DataTableValueType.string("Số tiền"),key_column: "",column_width: 100,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Ngày"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Trạng thái"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type:.Text, text:DataTableValueType.string("Tên sản phẩm"),key_column: "",column_width: 100,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Ảnh sản phẩm"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Nhóm sản phẩm cha"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Nhóm sản phẩm con"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Giá thị trường"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Giá bán của shop"),key_column: "",column_width: 150,column_height: 50),
+       DataRowModel(type: .Text, text:DataTableValueType.string("Đơn vị"),key_column: "",column_width: 150,column_height: 50),
        DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "",column_width: 100,column_height: 50)
        
    ]
@@ -78,7 +82,9 @@ class MyProductListVC: UIViewController {
         gridCollectionView.delegate=self
         gridCollectionView.dataSource=self
         self.dataSource.append(self.headerTitles)
-        
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+       let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
+       self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         
         
@@ -86,7 +92,7 @@ class MyProductListVC: UIViewController {
     @objc private func refreshData(_ sender: Any) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
-        self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
+        self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
         self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
@@ -96,7 +102,7 @@ class MyProductListVC: UIViewController {
         print("hello viewWillAppear")
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
-        self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
+        self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
         self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
@@ -123,7 +129,7 @@ extension MyProductListVC: AddNewProductDelegate {
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
-        self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
+        self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
         self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
@@ -135,7 +141,7 @@ extension MyProductListVC: AddNewProductDelegate {
 extension MyProductListVC {
     
     
-    func Webservice_GetLichSuRutTien(url:String, params:NSDictionary) -> Void {
+    func Webservice_GetMyProducts(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
                 showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
@@ -213,7 +219,7 @@ extension MyProductListVC {
                     let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
                     
                     let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
-                    self.Webservice_GetLichSuRutTien(url: urlString, params:[:])
+                    self.Webservice_GetMyProducts(url: urlString, params:[:])
                     
                     
                     

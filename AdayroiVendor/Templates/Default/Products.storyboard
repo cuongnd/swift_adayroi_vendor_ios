@@ -2930,6 +2930,9 @@
                                                 <state key="normal" title="Hủy">
                                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="UIButtonCacelSaveProduct:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="qte-9u-3eW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
