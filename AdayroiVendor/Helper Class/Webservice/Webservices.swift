@@ -347,7 +347,7 @@ class WebServices: NSObject
                 }
                 break
             }
-        }
+        }.cURLDescription()
     }
     
     func multipartWebServiceArray(method:HTTPMethod, URLString:String, encoding:Alamofire.ParameterEncoding, parameters:[String: Any], fileData:[Data], fileUrl:URL?, headers:HTTPHeaders, keyName:String, completion: @escaping (_ response:AnyObject?, _ error: NSError?) -> ()){

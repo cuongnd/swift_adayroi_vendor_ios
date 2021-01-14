@@ -92,7 +92,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
         let commistionValue=(productItem.commistion*productItem.unit_price)/100
         let commistionValue1=LibraryUtilitiesUtility.format_currency(amount: UInt64(commistionValue), decimalCount: 0)
         cell.UILabelCommistion.text="Hoa hồng:\(String(productItem.commistion))%(\(commistionValue1))"
-        cell.img_search_product.sd_setImage(with: URL(string: productItem.default_photo.img_path), placeholderImage: UIImage(named: "placeholder_image"))
+        cell.img_search_product.sd_setImage(with: URL(string: productItem.default_photo!.img_path), placeholderImage: UIImage(named: "placeholder_image"))
         
         cell.UIImageViewShared.tag = indexPath.row
         let tap = UITapGestureRecognizer(target: self, action: #selector(btnTap_ShareProduct))
@@ -112,7 +112,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
          let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let productItem=self.list_product[sender.view!.tag];
         let link_product_detail:String = "https://adayroi.online/landingpage/\(productItem._id)/\(user_id)/default/\(productItem.alias).html";
-        let sharelinktext = "https://vantinviet1.page.link/?link=\(link_product_detail)&apn=vantinviet.banhangonline88&st=\(productItem.name)&sd=\(productItem.name)&utm_source=app_affiliate&product_id=\(productItem._id)&user_affiliate_id=\(user_id)&si=\(productItem.default_photo.img_path)&ibi=com.vantinviet.banhangonlineapp"
+        let sharelinktext = "https://vantinviet1.page.link/?link=\(link_product_detail)&apn=vantinviet.banhangonline88&st=\(productItem.name)&sd=\(productItem.name)&utm_source=app_affiliate&product_id=\(productItem._id)&user_affiliate_id=\(user_id)&si=\(productItem.default_photo?.img_path)&ibi=com.vantinviet.banhangonlineapp"
         
         
         

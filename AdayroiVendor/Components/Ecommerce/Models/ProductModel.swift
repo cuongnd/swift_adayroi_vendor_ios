@@ -10,7 +10,7 @@ struct ProductModel: Codable {
     let _id: String
     let cat_id: String
     let sub_cat_id: String
-    var is_discount: Bool
+    var is_discount: Int
     let is_featured: Int
     let code: String
     let name: String
@@ -22,7 +22,7 @@ struct ProductModel: Codable {
     let discount_value: Double
     let commistion: Double
     let subCategory: SubCategoryModel?
-    let default_photo: ImageModel
+    let default_photo: ImageModel?
     let colors:[ColorModel]?
     let attributesHeader:[AttributesHeaderModel]?
     enum CodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ struct ProductModel: Codable {
         _id = ""
         cat_id = ""
         sub_cat_id = ""
-        is_discount = false
+        is_discount = 1
         is_featured = 0
         code = ""
         name = ""

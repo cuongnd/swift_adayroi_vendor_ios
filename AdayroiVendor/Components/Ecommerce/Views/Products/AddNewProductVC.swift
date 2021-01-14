@@ -1416,6 +1416,7 @@ class AddNewProductVC: UIViewController {
                         }
                         
                     } catch let error as NSError  {
+                        print("error:\(error)")
                         let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
                         self.present(alert, animated: true)
@@ -1498,11 +1499,14 @@ extension AddNewProductVC {
                         self.list_sub_category=getApiResponseSubCategoryModel.list_sub_category
                         self.DropDownSubCategories.text=""
                         self.DropDownSubCategories.optionArray.removeAll();
-                        for index in 0...self.list_sub_category.count-1 {
-                            let currentItem=self.list_sub_category[index]
-                            self.DropDownSubCategories.optionArray.append(currentItem.name)
-                            self.DropDownSubCategories.optionIds?.insert(index, at: index)
+                        if(self.list_sub_category.count>0){
+                            for index in 0...self.list_sub_category.count-1 {
+                                let currentItem=self.list_sub_category[index]
+                                self.DropDownSubCategories.optionArray.append(currentItem.name)
+                                self.DropDownSubCategories.optionIds?.insert(index, at: index)
+                            }
                         }
+                        
                     }
                     
                 } catch let error as NSError  {
