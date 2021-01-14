@@ -2982,6 +2982,7 @@
                         <outlet property="UICollectionViewOtherHeadAttribute" destination="8pi-YN-mPb" id="wIQ-C2-Kq4"/>
                         <outlet property="UICollectionViewWareHouses" destination="gkJ-aF-WgI" id="e3a-D8-S4O"/>
                         <outlet property="UILabelmageProduct" destination="h0I-DO-niv" id="09x-wo-OM9"/>
+                        <outlet property="UIScrollViewMain" destination="1G1-6G-EHN" id="69g-3S-mdE"/>
                         <outlet property="UITextFieldAlias" destination="6dw-NO-JW5" id="SnM-yQ-LoT"/>
                         <outlet property="UITextFieldOriginPrice" destination="YLl-Ak-hUp" id="r70-ZH-hJa"/>
                         <outlet property="UITextFieldProductCode" destination="qru-Ol-XLG" id="ADU-39-pJn"/>

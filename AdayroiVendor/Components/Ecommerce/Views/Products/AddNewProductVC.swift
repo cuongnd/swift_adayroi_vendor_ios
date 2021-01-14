@@ -34,8 +34,10 @@ struct ImageColorModel {
         self.has_image=has_image
     }
     var dictionary: [String: Any] {
+        let color_value_text:String=has_image == 1 ? color_name : "#\(color_value.hexValue())"
+        
         return ["color_name": color_name,
-                "color_value": color_value.hexValue(),
+                "color_value": color_value_text,
                 "has_image":has_image
         ]
     }
@@ -461,6 +463,7 @@ class AddNewProductVC: UIViewController {
     @IBOutlet weak var UITextViewProductFullDescription: UITextView!
     @IBOutlet weak var UILabelmageProduct: UILabel!
     @IBOutlet var DLRadioButtonProductType : DLRadioButton!;
+    @IBOutlet weak var UIScrollViewMain: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1017,6 +1020,32 @@ class AddNewProductVC: UIViewController {
             
             return
         }
+        //product image
+        var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
+        var jsonStringImageProduct:String=""
+        if(self.list_product_image.count>0){
+            for index in 0...self.list_product_image.count-1 {
+                let currentItem=self.list_product_image[index]
+                listImageProductCodableDict.append(currentItem.nsDictionary)
+                
+            }
+            let jsonData: NSData
+            do {
+                jsonData = try JSONSerialization.data(withJSONObject: listImageProductCodableDict, options: JSONSerialization.WritingOptions()) as NSData
+                jsonStringImageProduct = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                
+            } catch _ {
+                print ("JSON Failure")
+            }
+            
+        }else{
+            self.UIScrollViewMain.scrollToView(view: self.UICollectionViewListProductImage, animated:true)
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
         
         var product_code=String(self.UITextFieldProductCode.text!)
         product_code = String(product_code.filter { !" \n\t\r".contains($0) })
@@ -1109,6 +1138,28 @@ class AddNewProductVC: UIViewController {
             return
         }
         product_alias=product_alias.condenseWhitespaceToAlias()
+        if(self.curentCategory._id==""){
+            DropDownCategoriesProduct.text="";
+            DropDownCategoriesProduct.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        if(self.curentSubCategory._id==""){
+            DropDownSubCategories.text="";
+            DropDownSubCategories.becomeFirstResponder()
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm con", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        
+        
         var product_orignal_price=String(self.UITextFieldProductOrignalPrice.text!)
         product_orignal_price = String(product_orignal_price.filter { !" \n\t\r".contains($0) })
         if(product_orignal_price==""){
@@ -1168,52 +1219,8 @@ class AddNewProductVC: UIViewController {
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
         
-        if(self.curentCategory._id==""){
-            DropDownCategoriesProduct.text="";
-            DropDownCategoriesProduct.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
-        
-        if(self.curentSubCategory._id==""){
-            DropDownSubCategories.text="";
-            DropDownSubCategories.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng chọn nhóm sản phẩm con", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
         
         
-        //product image
-        var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
-        var jsonStringImageProduct:String=""
-        if(self.list_product_image.count>0){
-            for index in 0...self.list_product_image.count-1 {
-                let currentItem=self.list_product_image[index]
-                listImageProductCodableDict.append(currentItem.nsDictionary)
-                
-            }
-            let jsonData: NSData
-            do {
-                jsonData = try JSONSerialization.data(withJSONObject: listImageProductCodableDict, options: JSONSerialization.WritingOptions()) as NSData
-                jsonStringImageProduct = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
-                
-            } catch _ {
-                print ("JSON Failure")
-            }
-            
-        }else{
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập ảnh sản phẩm", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
-        }
         
         
         //video product
@@ -1264,6 +1271,14 @@ class AddNewProductVC: UIViewController {
         if(self.list_header_attribute_title.count>0){
             for index in 0...self.list_header_attribute_title.count-1 {
                 let currentItem=self.list_header_attribute_title[index]
+                if(currentItem.list_attribute.count == 0){
+                    self.UIScrollViewMain.scrollToView(view: self.UICollectionViewOtherHeadAttribute, animated:true)
+                    let alert = UIAlertController(title: "Thông báo", message: "Bạn vui lòng nhập thêm thuộc tính con và nhập giá cho chúng, bằng nhấn vào \"Ql thuộc tính\"", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                    return
+                }
                 listHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
                 
             }
@@ -1283,6 +1298,7 @@ class AddNewProductVC: UIViewController {
         if(self.list_other_header_attribute_title.count>0){
             for index in 0...self.list_other_header_attribute_title.count-1 {
                 let currentItem=self.list_other_header_attribute_title[index]
+                
                 listOtherHeaderAttributeTitleCodableDict.append(currentItem.nsDictionary)
                 
             }
@@ -1303,6 +1319,14 @@ class AddNewProductVC: UIViewController {
         if(self.list_image_color.count>0){
             for index in 0...self.list_image_color.count-1 {
                 let currentItem=self.list_image_color[index]
+                if(currentItem.has_image==1 && currentItem.color_name == ""){
+                    self.UIScrollViewMain.scrollToView(view: self.UICollectionViewColorProducts, animated:true)
+                    let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập tên màu sắc cho các ảnh", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                    return
+                }
                 listImageColorCodableDict.append(currentItem.nsDictionary)
                 
             }
@@ -2001,4 +2025,17 @@ extension String {
         return (self as NSString).substring(with: result.range)
     }
 }
-
+extension UIScrollView {
+    
+    func scrollToView(view:UIView, animated: Bool) {
+        if let superview = view.superview {
+            let child = superview.convert(view.frame, to: self)
+            let visible = CGRect(origin: contentOffset, size: visibleSize)
+            let newOffsetY = child.minY < visible.minY ? child.minY : child.maxY > visible.maxY ? child.maxY - visible.height : nil
+            if let y = newOffsetY {
+                setContentOffset(CGPoint(x:0, y: y), animated: animated)
+            }
+        }
+    }
+    
+}
