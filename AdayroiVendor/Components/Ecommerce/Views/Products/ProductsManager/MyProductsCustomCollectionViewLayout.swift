@@ -18,8 +18,8 @@ class MyProductsCustomCollectionViewLayout: UICollectionViewLayout {
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var itemsSize = [CGSize]()
     var contentSize: CGSize = .zero
-    var cellWidthHeight:CellWidthHeightMyProduct=CellWidthHeightMyProduct(width: [40,200,300,100,100], headHeight: 30,bodyHeight: 30)
-    var numberOfColumns = 5
+    var cellWidthHeight:CellWidthHeightMyProduct=CellWidthHeightMyProduct(width: [40,200,300,100,100,100], headHeight: 30,bodyHeight: 30)
+    var numberOfColumns = 6
     override func prepare() {
         self.numberOfColumns = self.cellWidthHeight.width.count
         guard let collectionView = collectionView else {

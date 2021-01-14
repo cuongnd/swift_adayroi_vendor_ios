@@ -69,7 +69,8 @@ class MyProductListVC: UIViewController {
             CellProduct(title: "Stt",is_head: true,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Tên sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Mã sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-            CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:)))
+            CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Xóa",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:)))
             
         ]
         gridCollectionView.delegate=self
@@ -185,10 +186,11 @@ extension MyProductListVC {
                     
                     for product in self.list_product {
                         self.list_cell_product.append([
-                            CellProduct(title: "Stt",is_head: true,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Tên sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Mã sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:)))
+                            CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Tên sản phẩm",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Mã sản phẩm",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:))),
+                            CellProduct(title: "Xóa",is_head: false,columnType: "", columnName: "delete",action:  #selector(self.editProduct(_:)))
                         ])
                         i += 1
                     }
