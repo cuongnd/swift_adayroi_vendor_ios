@@ -69,6 +69,12 @@ class MyProductListVC: UIViewController {
             CellProduct(title: "Stt",is_head: true,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Tên sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Mã sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Ảnh sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Danh mục cha sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Danh mục con sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Giá thường bán",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Phần trăm giảm giá",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Giá bán của shop",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
             CellProduct(title: "Xóa",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:)))
             
@@ -187,8 +193,14 @@ extension MyProductListVC {
                     for product in self.list_product {
                         self.list_cell_product.append([
                             CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Tên sản phẩm",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "Mã sản phẩm",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Tên 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Mã 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "ảnh 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "dich mục 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "danh mục con 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "4000",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "10%",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "300",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:))),
                             CellProduct(title: "Xóa",is_head: false,columnType: "", columnName: "delete",action:  #selector(self.editProduct(_:)))
                         ])
