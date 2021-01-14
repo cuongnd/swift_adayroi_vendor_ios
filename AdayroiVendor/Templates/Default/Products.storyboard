@@ -1654,7 +1654,7 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c6d-vR-spC">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="654"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6oT-MD-3z8" customClass="WithdrawalStickyGridCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6oT-MD-3z8" customClass="MyProductsCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
                                                     <size key="itemSize" width="168" height="158"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

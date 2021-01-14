@@ -10,6 +10,8 @@ import UIKit
 import SwiftyJSON
 import Foundation
 import AnyFormatKit
+ 
+ 
 class ProductLabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UILabelText: UILabel!
     static let reuseID = "ProductLabelCollectionViewCell"
@@ -30,7 +32,7 @@ private enum Properties {
 class MyProductListVC: UIViewController {
     var OrderHistoryData = [JSON]()
     var selected = String()
-    var rutTienList:[RutTienModel]=[RutTienModel]();
+    var list_product:[ProductModel]=[ProductModel]();
     @IBOutlet weak var UIViewLichSuRutTien: UIView!
     @IBOutlet weak var UILabelSoTienCoTheRut: UILabel!
     @IBOutlet weak var UILabelSoTIenDangSuLy: UILabel!
@@ -62,26 +64,22 @@ class MyProductListVC: UIViewController {
             gridLayout.stickyColumnsCount = 1
         }
     }
-   let headerTitles = [
-       DataRowModel(type: .Text, text:DataTableValueType.string("STT"),key_column: "stt",column_width: 50,column_height: 50),
-       DataRowModel(type:.Text, text:DataTableValueType.string("Tên sản phẩm"),key_column: "",column_width: 100,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Ảnh sản phẩm"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Nhóm sản phẩm cha"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Nhóm sản phẩm con"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Giá thị trường"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Giá bán của shop"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Đơn vị"),key_column: "",column_width: 150,column_height: 50),
-       DataRowModel(type: .Text, text:DataTableValueType.string("Action"),key_column: "",column_width: 100,column_height: 50)
-       
-   ]
-    var dataSource:[[DataRowModel]]=[[DataRowModel]]()
+    var headerTitles:[CellProduct]=[CellProduct]()
+    var list_cell_product:[[CellProduct]]=[[CellProduct]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.selected = ""
+        self.headerTitles = [
+            CellProduct(title: "Stt",is_head: true,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Tên sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Mã sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+            CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:)))
+            
+        ]
         gridCollectionView.delegate=self
         gridCollectionView.dataSource=self
-        self.dataSource.append(self.headerTitles)
+        self.list_cell_product.append(self.headerTitles)
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
        self.Webservice_GetMyProducts(url: urlString, params:[:])
@@ -118,7 +116,18 @@ class MyProductListVC: UIViewController {
             self.slideMenuController()?.openRight()
         }
     }
-    
+    @objc func nothing(_ sender: UIButton){
+        print("hello34343")
+        
+    }
+    @objc func deleteProduct(_ sender: UIButton){
+       
+        
+    }
+    @objc func editProduct(_ sender: UIButton){
+        
+        
+    }
     
     
     
@@ -150,11 +159,11 @@ extension MyProductListVC {
                 print(jsonResponse!)
                 do {
                     let jsonDecoder = JSONDecoder()
-                    let getLichSuRutTienResponseModel = try jsonDecoder.decode(GetLichSuRutTienResponseModel.self, from: jsonResponse!)
-                    self.rutTienList=getLichSuRutTienResponseModel.rutTienList
-                    self.dataSource=[[DataRowModel]]()
+                    let getApiRespondeMyProductsModel = try jsonDecoder.decode(GetApiRespondeMyProductsModel.self, from: jsonResponse!)
+                    self.list_product=getApiRespondeMyProductsModel.list_product
+                    self.list_cell_product=[[CellProduct]]()
                     var i=0;
-                    self.dataSource.append(self.headerTitles)
+                    self.list_cell_product.append(self.headerTitles)
                     let dataButton = UIButton()
                     dataButton.backgroundColor = UIColor( red: CGFloat(92/255.0), green: CGFloat(203/255.0), blue: CGFloat(207/255.0), alpha: CGFloat(1.0) )
                     dataButton.layer.cornerRadius = 5
@@ -168,13 +177,12 @@ extension MyProductListVC {
                     
                     
                     
-                    for rut_tien in self.rutTienList {
-                        self.dataSource.append([
-                            DataRowModel(type: .Text, text:DataTableValueType.init(i+1),key_column: "stt",column_width: 50,column_height: 50),
-                            DataRowModel(type: .Text, text:DataTableValueType.string(LibraryUtilitiesUtility.format_currency(amount: UInt64(rut_tien.amount)!,decimalCount: 0)  ),key_column: "amount",column_width: 100,column_height: 50),
-                            DataRowModel(type: .Text, text:DataTableValueType.string("20/20/2010"),key_column: "created_date",column_width: 150,column_height: 50),
-                            DataRowModel(type: .Text, text:DataTableValueType.string(rut_tien.withdrawalstatus.name),key_column: "withdrawalstatus",column_width: 150,column_height: 50),
-                            DataRowModel(type: .Buttom, text:DataTableValueType.string("Xóa"),key_column: "withdrawalstatus",column_width: 100,column_height: 50,UiView: dataButton)
+                    for product in self.list_product {
+                        self.list_cell_product.append([
+                            CellProduct(title: "Stt",is_head: true,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Tên sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Mã sản phẩm",is_head: true,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: "Sửa",is_head: true,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:)))
                         ])
                         i += 1
                     }
@@ -275,21 +283,7 @@ extension MyProductListVC {
     }
     @objc func btnTapMines(sender:UIButton)
     {
-        let tag=sender.tag
-        let rutTien=self.rutTienList[tag]
         
-        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa không ?".localiz(), preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-            
-            let urlDeleteWithdrawal = API_URL + "//api_task/withdrawals.send_delete_withdrawal_now?id=\(rutTien._id)"
-            self.Webservice_GetDeleteWithdrawal(url: urlDeleteWithdrawal, params:[:])
-            
-            
-        }
-        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
-        alertVC.addAction(yesAction)
-        alertVC.addAction(noAction)
-        self.present(alertVC,animated: true,completion: nil)
         
         
         
@@ -300,55 +294,18 @@ extension MyProductListVC {
 extension MyProductListVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.rutTienList.count+1
+        return self.list_cell_product.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.headerTitles.count
+        return self.list_cell_product[0].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let row_index=indexPath[0]
-        let column_index=indexPath[1]
-        
-        let current_rut_tien:DataRowModel=self.dataSource[row_index][column_index]
-        //if header
-        if(row_index==0){
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductLabelCollectionViewCell.reuseID, for: indexPath) as? ProductLabelCollectionViewCell else {
-                      return UICollectionViewCell()
-                  }
-            cell.UILabelText.text=current_rut_tien.text.stringRepresentation
-             cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-            return cell
-        }else{
-            if(current_rut_tien.type==RowType.Text){
-                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductLabelCollectionViewCell.reuseID, for: indexPath) as? ProductLabelCollectionViewCell else {
-                                      return UICollectionViewCell()
-                                  }
-                            cell.UILabelText.text=current_rut_tien.text.stringRepresentation
-                             cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-                            return cell
-                
-             } else if(current_rut_tien.type==RowType.Buttom){
-                 let data_row=self.rutTienList[row_index-1]
-                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductButtonCollectionViewCell.reuseID, for: indexPath) as? ProductButtonCollectionViewCell else {
-                                      return UICollectionViewCell()
-                                  }
-                cell.UIButtonWithDrawal.tag=row_index-1
-                 cell.UIButtonWithDrawal.setTitle(current_rut_tien.text.stringRepresentation, for: .normal)
-                  cell.UIButtonWithDrawal.addTarget(self, action: #selector(self.btnTapMines), for: .touchUpInside)
-                 print("data_row.withdrawalstatus \(data_row.withdrawalstatus)")
-                 if(data_row.withdrawalstatus.can_delete==1){
-                     cell.UIButtonWithDrawal.isHidden=false
-                 }else{
-                      cell.UIButtonWithDrawal.isHidden=true
-                 }
-                  cell.backgroundColor = gridLayout.isItemSticky(at: indexPath) ? .groupTableViewBackground : .white
-                 return cell
-             }
-            return UICollectionViewCell()
-            
-        }
+         // swiftlint:disable force_cast
+           let CellProduct:CellProduct=self.list_cell_product[indexPath.section][indexPath.row]
+           let cell  = CellProduct.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
+           return cell
         
         
         
@@ -360,9 +317,6 @@ extension MyProductListVC: UICollectionViewDataSource {
 extension MyProductListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let row_index=indexPath[0]
-        let column_index=indexPath[1]
-        let item=self.dataSource[row_index][column_index]
-        return CGSize(width: item.column_width, height: item.column_height)
+        return CGSize(width:300, height: 40)
     }
 }
