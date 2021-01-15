@@ -19,9 +19,15 @@ struct ProductModel: Codable {
     let search_tag: String
     let original_price: Double
     let unit_price: Double
+    let length: Double?
+    let height: Double?
+    let width: Double?
+    let weight: Double?
     let discount_percent: Int
     let discount_value: Double
     let commistion: Double
+    let productShortDescription: String?
+    let productFullDescription: String?
     let subCategory: SubCategoryModel?
     let default_photo: ImageModel?
     let colors:[ColorModel]?
@@ -35,6 +41,12 @@ struct ProductModel: Codable {
         case code = "code"
         case name = "name"
         case alias = "alias"
+        case length = "length"
+        case height = "height"
+        case width = "width"
+        case weight = "weight"
+        case productShortDescription = "productShortDescription"
+        case productFullDescription = "productFullDescription"
         case product_unit = "product_unit"
         case search_tag = "search_tag"
         case original_price = "original_price"
@@ -56,8 +68,14 @@ struct ProductModel: Codable {
         code = ""
         name = ""
         alias = ""
+        length = 0.0
+        height = 0.0
+        width = 0.0
+        weight = 0.0
         product_unit = ""
         search_tag = ""
+        productShortDescription = ""
+        productFullDescription = ""
         original_price = 0.0
         unit_price = 0.0
         discount_percent = 0

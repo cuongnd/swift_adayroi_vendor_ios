@@ -1534,11 +1534,16 @@ extension EditProductVC {
                         print("self.product \(self.product)")
                         self.UITextFieldProductName.text=self.product.name
                         self.UITextFieldProductCode.text=self.product.code
-                        self.UITextFieldProductLength.text="10"
-                        self.UITextFieldProductWidth.text="10"
-                        self.UITextFieldProductHeight.text="10"
-                        self.UITextFieldProductWeight.text="10"
+                        self.UITextFieldProductLength.text=String(self.product.length!)
+                        self.UITextFieldProductWidth.text=String(self.product.width!)
+                        self.UITextFieldProductHeight.text=String(self.product.height!)
+                        self.UITextFieldProductWeight.text=String(self.product.weight!)
+                        self.UITextViewProductFullDescription.text=String(self.product.productFullDescription!)
+                        self.UITextViewProductShortDescription.text=String(self.product.productShortDescription!)
                         self.UITextFieldAlias.text=self.product.alias
+                        self.UITextFieldOriginPrice.text=String(self.product.original_price)
+                        //self.UITextFieldUnitPrice.text=String(self.product.unit_price)
+                        
                         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
                         
                         let urlGetUnitsProduct = API_URL + "/api/units?user_id=\(user_id)"
@@ -1678,7 +1683,8 @@ extension EditProductVC {
                         if(list_image_color.count>0){
                             for index in 0...list_image_color.count-1 {
                                 let attributeColorModel:AttributeColorModel=list_image_color[index]
-                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
+                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path
+                                    , has_image: 1))
                                 self.UICollectionViewColorProducts.delegate = self
                                 self.UICollectionViewColorProducts.dataSource = self
                                 self.UICollectionViewColorProducts.reloadData()
