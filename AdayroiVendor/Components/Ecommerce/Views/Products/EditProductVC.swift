@@ -542,6 +542,22 @@ class EditProductVC: UIViewController {
         if(self.ProductId != ""){
             let urlStringGetDetailProduct = API_URL + "/api/vendorproducts/\(self.ProductId)/\(user_id)"
             self.Webservice_getDetailProduct(url: urlStringGetDetailProduct, params: [:])
+        }else{
+            let urlGetUnitsProduct = API_URL + "/api/units?user_id=\(user_id)"
+            self.Webservice_getUnitsProduct(url: urlGetUnitsProduct, params:[:])
+            
+            
+            let urlGetCategories = API_URL + "/api/categories"
+            self.Webservice_getCategories(url: urlGetCategories, params:[:])
+            
+            
+            self.wareHousehead.append(self.wareHouseheadFisrtRow)
+            let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
+            let params: NSDictionary = [
+                "product_id": ""
+            ]
+            self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
+            
         }
         
         
@@ -1556,16 +1572,25 @@ extension EditProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiResponseSubCategoryModel = try jsonDecoder.decode(GetApiResponseSubCategoryModel.self, from: jsonResponse!)
                     if(getApiResponseSubCategoryModel.result=="success"){
-                        
+                         
                         self.list_sub_category=getApiResponseSubCategoryModel.list_sub_category
                         self.DropDownSubCategories.text=""
                         self.DropDownSubCategories.optionArray.removeAll();
                         if(self.list_sub_category.count>0){
+                            var selectedIndex:Int = -1
                             for index in 0...self.list_sub_category.count-1 {
                                 let currentItem=self.list_sub_category[index]
                                 self.DropDownSubCategories.optionArray.append(currentItem.name)
                                 self.DropDownSubCategories.optionIds?.insert(index, at: index)
+                                if(self.ProductId != "" && currentItem._id == self.product.sub_cat_id){
+                                    self.curentSubCategory=currentItem
+                                     selectedIndex=index
+                                }
                             }
+                            if(selectedIndex != -1){
+                                self.DropDownSubCategories.selectedIndex=selectedIndex
+                                self.DropDownSubCategories.text=self.curentSubCategory.name
+                             }
                         }
                         
                     }
@@ -1624,15 +1649,23 @@ extension EditProductVC {
                         
                         self.list_category=getApiResponseCategoryModel.list_category
                         
-                        
+                        var selectedIndex:Int = -1
                         for index in 0...self.list_category.count-1 {
                             let currentItem=self.list_category[index]
                             self.DropDownCategoriesProduct.optionArray.append(currentItem.name)
                             self.DropDownCategoriesProduct.optionIds?.insert(index, at: index)
-                            
+                            if(self.ProductId != "" && currentItem._id == self.product.cat_id){
+                                self.curentCategory=currentItem
+                                 selectedIndex=index
+                            }
                             
                         }
-                        
+                        if(selectedIndex != -1){
+                            self.DropDownCategoriesProduct.selectedIndex=selectedIndex
+                            self.DropDownCategoriesProduct.text=self.curentCategory.name
+                            let urlGetSubCategories = API_URL + "/api/subcategories/list?cat_id=\(self.curentCategory._id)"
+                            self.Webservice_getSubCategories(url: urlGetSubCategories, params:[:])
+                        }
                         
                         
                         
@@ -1665,13 +1698,24 @@ extension EditProductVC {
                         
                         self.list_unit=getApiResponseUnitsProductModel.list_unit
                         self.UITextFieldProductUnit.text=""
+                        //self.UITextFieldProductUnit.set
                         self.UITextFieldProductUnit.optionArray.removeAll();
                         if(self.list_unit.count>0){
+                            var selectedIndex:Int = -1
                             for index in 0...self.list_unit.count-1 {
                                 let currentItem=self.list_unit[index]
                                 self.UITextFieldProductUnit.optionArray.append(currentItem.name)
                                 self.UITextFieldProductUnit.optionIds?.insert(index, at: index)
+                                if(self.ProductId != "" && currentItem.name == self.product.product_unit){
+                                    selectedIndex=index
+                                }
                             }
+                            if(selectedIndex != -1){
+                                self.UITextFieldProductUnit.selectedIndex=selectedIndex
+                                self.UITextFieldProductUnit.text=self.product.product_unit
+                            }
+                            
+                            //self.UITextFieldProductUnit.sele
                         }
                     }
                     

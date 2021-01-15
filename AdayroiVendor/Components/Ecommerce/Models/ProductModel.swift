@@ -15,6 +15,7 @@ struct ProductModel: Codable {
     let code: String
     let name: String
     let alias: String
+    let product_unit: String
     let search_tag: String
     let original_price: Double
     let unit_price: Double
@@ -34,6 +35,7 @@ struct ProductModel: Codable {
         case code = "code"
         case name = "name"
         case alias = "alias"
+        case product_unit = "product_unit"
         case search_tag = "search_tag"
         case original_price = "original_price"
         case unit_price = "unit_price"
@@ -54,6 +56,7 @@ struct ProductModel: Codable {
         code = ""
         name = ""
         alias = ""
+        product_unit = ""
         search_tag = ""
         original_price = 0.0
         unit_price = 0.0
