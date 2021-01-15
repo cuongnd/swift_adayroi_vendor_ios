@@ -1555,6 +1555,9 @@ extension EditProductVC {
                         let urlGetImagesColorByProductId = API_URL + "/api/images/list_image_color_product/product_id/\(self.ProductId)?os=ios"
                         self.Webservice_getImagesColorByProductId(url: urlGetImagesColorByProductId, params:[:])
 
+                        let urlGetHeaderAttributesByProductId = API_URL + "/api/attributes_header/list/product_id/\(self.ProductId)?os=ios"
+                        //self.Webservice_getHeaderAttributesByProductId(url: urlGetHeaderAttributesByProductId, params:[:])
+
                         
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -1704,6 +1707,56 @@ extension EditProductVC {
             }
         }
     }
+    func Webservice_getHeaderAttributesByProductId(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponeHeadAttributeByProductIdModel = try jsonDecoder.decode(GetApiResponeHeadAttributeByProductIdModel.self, from: jsonResponse!)
+                    if(getApiResponeHeadAttributeByProductIdModel.result=="success"){
+                        /*
+                        var list_image_color:[AttributeColorModel]=getApiRespondeImagesColorByProductId.list_image_color
+                        if(list_image_color.count>0){
+                            for index in 0...list_image_color.count-1 {
+                           let attributeColorModel:AttributeColorModel=list_image_color[index]
+                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
+                           self.UICollectionViewColorProducts.delegate = self
+                           self.UICollectionViewColorProducts.dataSource = self
+                           self.UICollectionViewColorProducts.reloadData()
+                           
+                       }
+                          
+                        }
+                       */
+                        
+                        
+                    }else{
+                        let alert = UIAlertController(title: "Error", message: getApiResponeHeadAttributeByProductIdModel.errorMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                } catch let error as NSError  {
+                     print("error:\(error)")
+                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                       self.present(alert, animated: true)
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
+    
     func Webservice_getImagesByProductId(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
