@@ -61,15 +61,22 @@ struct DataUpload {
 
 
 struct ImageProductModel {
+    var image_id:String
     var image_description: String
     var image: UIImage
-    init(image_description:String,image:UIImage) {
+    var img_path: String
+    
+    init(image_id:String,image_description:String,image:UIImage,img_path:String) {
+        self.image_id=image_id
         self.image_description=image_description
         self.image=image
+        self.img_path=img_path
     }
     var dictionary: [String: Any] {
         return [
-            "image_description": image_description
+            "image_id":image_id,
+            "image_description": image_description,
+            "img_path":img_path
         ]
     }
     var nsDictionary: NSDictionary {
@@ -897,7 +904,7 @@ class EditProductVC: UIViewController {
             let alertButton = alertController.actions[0]
             let video_link = e.trimmingCharacters(in: .whitespacesAndNewlines)
             print("video_link \(video_link)")
-            print("video_link.youtubeID \(video_link.youtubeID)")
+            print("video_link.youtubeID \(String(describing: video_link.youtubeID))")
             
             if(video_link.youtubeID != nil){
                 alertButton.isEnabled=true
@@ -1653,7 +1660,14 @@ extension EditProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiRespondeImagesByParentModel = try jsonDecoder.decode(GetApiRespondeImagesByParentModel.self, from: jsonResponse!)
                     if(getApiRespondeImagesByParentModel.result=="success"){
-                        
+                        for index in 0...getApiRespondeImagesByParentModel.list_image.count-1 {
+                            let currentItem:ImageModel=getApiRespondeImagesByParentModel.list_image[index]
+                            self.list_product_image.append(ImageProductModel(image_id: currentItem._id,image_description:"", image:UIImage(),img_path: currentItem.img_path))
+                            self.UICollectionViewListProductImage.delegate = self
+                            self.UICollectionViewListProductImage.dataSource = self
+                            self.UICollectionViewListProductImage.reloadData()
+                            
+                        }
                         print("getApiRespondeImagesByParentModel.list_image \(getApiRespondeImagesByParentModel.list_image)")
                         
                         
@@ -1901,12 +1915,18 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(collectionView==self.UICollectionViewListProductImage){
             let uIimage:UIImage=self.list_product_image[indexPath.row].image
-            
+            let img_path:String=self.list_product_image[indexPath.row].img_path
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseID, for: indexPath) as? ImageCollectionViewCell else {
                 
                 return UICollectionViewCell()
             }
-            cell.UIImageViewImageUpload.image=uIimage
+            if(img_path != ""){
+                cell.UIImageViewImageUpload.sd_setImage(with: URL(string: img_path), placeholderImage: UIImage(named: "placeholder_image"))
+
+            }else{
+                 cell.UIImageViewImageUpload.image=uIimage
+            }
+           
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UILabelDescription.text=self.list_product_image[indexPath.row].image_description
             cell.UIButtonProductImageDescription.tag=indexPath.row
@@ -2023,7 +2043,7 @@ extension EditProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                let imageProductModel:ImageProductModel=ImageProductModel(image_description: "", image: assets[i])
+                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: assets[i],img_path: "")
                 self.list_product_image.append(imageProductModel)
             }
             
