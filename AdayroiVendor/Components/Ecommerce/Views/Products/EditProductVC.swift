@@ -41,11 +41,11 @@ struct ImageColorModel {
         let color_value_text:String=has_image == 1 ? color_name : "#\(color_value.hexValue())"
         
         return [
-                "attribute_header_id": attribute_header_id,
-                "color_name": color_name,
-                "color_value": color_value_text,
-                "has_image":has_image,
-                "img_path":img_path
+            "attribute_header_id": attribute_header_id,
+            "color_name": color_name,
+            "color_value": color_value_text,
+            "has_image":has_image,
+            "img_path":img_path
         ]
     }
     var nsDictionary: NSDictionary {
@@ -1554,10 +1554,10 @@ extension EditProductVC {
                         
                         let urlGetImagesColorByProductId = API_URL + "/api/images/list_image_color_product/product_id/\(self.ProductId)?os=ios"
                         self.Webservice_getImagesColorByProductId(url: urlGetImagesColorByProductId, params:[:])
-
+                        
                         let urlGetHeaderAttributesByProductId = API_URL + "/api/attributes_header/list/product_id/\(self.ProductId)?os=ios"
                         self.Webservice_getHeaderAttributesByProductId(url: urlGetHeaderAttributesByProductId, params:[:])
-
+                        
                         
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -1596,7 +1596,7 @@ extension EditProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiResponseSubCategoryModel = try jsonDecoder.decode(GetApiResponseSubCategoryModel.self, from: jsonResponse!)
                     if(getApiResponseSubCategoryModel.result=="success"){
-                         
+                        
                         self.list_sub_category=getApiResponseSubCategoryModel.list_sub_category
                         self.DropDownSubCategories.text=""
                         self.DropDownSubCategories.optionArray.removeAll();
@@ -1608,13 +1608,13 @@ extension EditProductVC {
                                 self.DropDownSubCategories.optionIds?.insert(index, at: index)
                                 if(self.ProductId != "" && currentItem._id == self.product.sub_cat_id){
                                     self.curentSubCategory=currentItem
-                                     selectedIndex=index
+                                    selectedIndex=index
                                 }
                             }
                             if(selectedIndex != -1){
                                 self.DropDownSubCategories.selectedIndex=selectedIndex
                                 self.DropDownSubCategories.text=self.curentSubCategory.name
-                             }
+                            }
                         }
                         
                     }
@@ -1675,16 +1675,16 @@ extension EditProductVC {
                         var list_image_color:[AttributeColorModel]=getApiRespondeImagesColorByProductId.list_image_color
                         if(list_image_color.count>0){
                             for index in 0...list_image_color.count-1 {
-                           let attributeColorModel:AttributeColorModel=list_image_color[index]
+                                let attributeColorModel:AttributeColorModel=list_image_color[index]
                                 self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
-                           self.UICollectionViewColorProducts.delegate = self
-                           self.UICollectionViewColorProducts.dataSource = self
-                           self.UICollectionViewColorProducts.reloadData()
-                           
-                       }
-                                                   
+                                self.UICollectionViewColorProducts.delegate = self
+                                self.UICollectionViewColorProducts.dataSource = self
+                                self.UICollectionViewColorProducts.reloadData()
+                                
+                            }
+                            
                         }
-                       
+                        
                         
                         
                     }else{
@@ -1694,10 +1694,10 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
-                     print("error:\(error)")
-                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                       self.present(alert, animated: true)
+                    print("error:\(error)")
+                    let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                     
                 }
                 
@@ -1724,16 +1724,34 @@ extension EditProductVC {
                         var list_head_attribute:[HeadAttributeModel]=getApiResponeHeadAttributeByProductIdModel.list_head_attribute
                         if(list_head_attribute.count>0){
                             for index in 0...list_head_attribute.count-1 {
-                           let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
-                                //self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
-                           //self.UICollectionViewColorProducts.delegate = self
-                           //self.UICollectionViewColorProducts.dataSource = self
-                           //self.UICollectionViewColorProducts.reloadData()
-                           
-                       }
-                          
+                                
+                                let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
+                                let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
+                                var listHeaderAttributeModel:[HeaderAttributeModel]=[HeaderAttributeModel]();
+                                for index_attribute in 0...list_attribute.count-1 {
+                                    let attributeModel:AttributeModel=list_attribute[index_attribute]
+                                    listHeaderAttributeModel.append(HeaderAttributeModel(title: attributeModel.name, price: attributeModel.price, note: ""))
+                                }
+                                self.list_header_attribute_title.append(HeaderAttributeTitleModel(title: "sdgfdgd", note: "fdgfd", list_attribute: listHeaderAttributeModel));
+                                self.headerAttributeTitleProduct.append([
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                                    CellHeaderAttribute(title: headAttributeModel.name,is_head: false,columnType: "content", columnName: "title"),
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                                    CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                                    
+                                    
+                                ]);
+                                
+                                
+                            }
+                            self.UICollectionViewHeaderAttributes.delegate = self
+                            self.UICollectionViewHeaderAttributes.dataSource = self
+                            self.UICollectionViewHeaderAttributes.reloadData()
                         }
-                       
+                        
                         
                         
                     }else{
@@ -1743,10 +1761,10 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
-                     print("error:\(error)")
-                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                       self.present(alert, animated: true)
+                    print("error:\(error)")
+                    let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                     
                 }
                 
@@ -1789,10 +1807,10 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
-                     print("error:\(error)")
-                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                       self.present(alert, animated: true)
+                    print("error:\(error)")
+                    let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                     
                 }
                 
@@ -1823,7 +1841,7 @@ extension EditProductVC {
                             self.DropDownCategoriesProduct.optionIds?.insert(index, at: index)
                             if(self.ProductId != "" && currentItem._id == self.product.cat_id){
                                 self.curentCategory=currentItem
-                                 selectedIndex=index
+                                selectedIndex=index
                             }
                             
                         }
@@ -2032,11 +2050,11 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
             }
             if(img_path != ""){
                 cell.UIImageViewImageUpload.sd_setImage(with: URL(string: img_path), placeholderImage: UIImage(named: "placeholder_image"))
-
+                
             }else{
-                 cell.UIImageViewImageUpload.image=uIimage
+                cell.UIImageViewImageUpload.image=uIimage
             }
-           
+            
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UILabelDescription.text=self.list_product_image[indexPath.row].image_description
             cell.UIButtonProductImageDescription.tag=indexPath.row
@@ -2070,8 +2088,6 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
             return cell
         }else if(collectionView==self.UICollectionViewHeaderAttributes){
             // swiftlint:disable force_cast
-            
-            
             let cellHeaderAttribute:CellHeaderAttribute=self.headerAttributeTitleProduct[indexPath.section][indexPath.row]
             let cell  = cellHeaderAttribute.getUICollectionViewCell(collectionView: collectionView,indexPath: indexPath)
             return cell
@@ -2088,7 +2104,7 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
             }
             if(img_path != ""){
                 cell.UIImageViewImageUpload.sd_setImage(with: URL(string: img_path), placeholderImage: UIImage(named: "placeholder_image"))
-
+                
             }else{
                 cell.UIImageViewImageUpload.image=uIimage
             }
