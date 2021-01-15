@@ -1723,17 +1723,10 @@ extension EditProductVC {
                         
                         var list_head_attribute:[HeadAttributeModel]=getApiResponeHeadAttributeByProductIdModel.list_head_attribute
                         if(list_head_attribute.count>0){
-                            for index in 0...list_head_attribute.count-1 {
-                                
+                            for index in 0..<list_head_attribute.count{
                                 let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
-                                let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
-                                var listHeaderAttributeModel:[HeaderAttributeModel]=[HeaderAttributeModel]();
-                                for index_attribute in 0...list_attribute.count-1 {
-                                    let attributeModel:AttributeModel=list_attribute[index_attribute]
-                                    listHeaderAttributeModel.append(HeaderAttributeModel(title: attributeModel.name, price: attributeModel.price, note: ""))
-                                }
-                                self.list_header_attribute_title.append(HeaderAttributeTitleModel(title: "sdgfdgd", note: "fdgfd", list_attribute: listHeaderAttributeModel));
-                                self.headerAttributeTitleProduct.append([
+                                var row:[CellHeaderAttribute]=[CellHeaderAttribute]()
+                                row=[
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
                                     CellHeaderAttribute(title: headAttributeModel.name,is_head: false,columnType: "content", columnName: "title"),
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
@@ -1741,16 +1734,39 @@ extension EditProductVC {
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
-                                    
-                                    
-                                ]);
-                                
-                                
+                                ]
+                                var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
+                                let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
+                                 var list_string_attribute:[String]=[String]()
+                                for index_attribute in 0...list_attribute.count-1 {
+                                    let attributeModel:AttributeModel=list_attribute[index_attribute]
+                                    CellAttributeList.append([
+                                        CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
+                                        CellAttribute(title: attributeModel.value, is_head: false,columnType: "content", columnName: "title"),
+                                        CellAttribute(title: String(attributeModel.price), is_head: false,columnType: "content", columnName: "note"),
+                                        CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
+                                        CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
+                                        
+                                        
+                                    ]);
+                                   
+                                    let title:String=attributeModel.value
+                                    let price:String=String(attributeModel.price)
+                                    list_string_attribute.append("\(title)(\(price))");
+                                   
+                                }
+                                 let joined2 = list_string_attribute.joined(separator: ", ")
+                                row[3].title=joined2
+                                row[3].list_attribute=CellAttributeList
+                                self.headerAttributeTitleProduct.append(row);
                             }
-                            self.UICollectionViewHeaderAttributes.delegate = self
-                            self.UICollectionViewHeaderAttributes.dataSource = self
-                            self.UICollectionViewHeaderAttributes.reloadData()
+                            
+                            
                         }
+                        self.UICollectionViewHeaderAttributes.delegate = self
+                        self.UICollectionViewHeaderAttributes.dataSource = self
+                        self.UICollectionViewHeaderAttributes.reloadData()
+                        
                         
                         
                         
