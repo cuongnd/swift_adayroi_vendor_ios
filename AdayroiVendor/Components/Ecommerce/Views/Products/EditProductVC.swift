@@ -1535,6 +1535,11 @@ extension EditProductVC {
                         self.Webservice_getCategories(url: urlGetCategories, params:[:])
                         
                         
+                        let urlGetImagesByProductId = API_URL + "//api/images/list/img_parent_id/\(self.ProductId)/img_type/product?os=ios"
+                        self.Webservice_getImagesByProductId(url: urlGetImagesByProductId, params:[:])
+                        
+                        
+                        
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
                         let params: NSDictionary = [
@@ -1635,6 +1640,44 @@ extension EditProductVC {
     
     
     
+    func Webservice_getImagesByProductId(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiRespondeImagesByParentModel = try jsonDecoder.decode(GetApiRespondeImagesByParentModel.self, from: jsonResponse!)
+                    if(getApiRespondeImagesByParentModel.result=="success"){
+                        
+                        print("getApiRespondeImagesByParentModel.list_image \(getApiRespondeImagesByParentModel.list_image)")
+                        
+                        
+                        
+                    }else{
+                        let alert = UIAlertController(title: "Error", message: getApiRespondeImagesByParentModel.errorMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                } catch let error as NSError  {
+                     print("error:\(error)")
+                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                       self.present(alert, animated: true)
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     func Webservice_getCategories(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
