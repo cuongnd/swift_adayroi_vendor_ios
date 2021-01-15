@@ -1738,6 +1738,7 @@ extension EditProductVC {
                                 var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
                                 let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
                                  var list_string_attribute:[String]=[String]()
+                                var list_attributeModel: [HeaderAttributeModel]=[HeaderAttributeModel]()
                                 for index_attribute in 0...list_attribute.count-1 {
                                     let attributeModel:AttributeModel=list_attribute[index_attribute]
                                     CellAttributeList.append([
@@ -1753,12 +1754,16 @@ extension EditProductVC {
                                     let title:String=attributeModel.value
                                     let price:String=String(attributeModel.price)
                                     list_string_attribute.append("\(title)(\(price))");
+                                    list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
                                    
                                 }
                                  let joined2 = list_string_attribute.joined(separator: ", ")
                                 row[3].title=joined2
                                 row[3].list_attribute=CellAttributeList
                                 self.headerAttributeTitleProduct.append(row);
+                                
+                                let headerAttributeTitleModel:HeaderAttributeTitleModel=HeaderAttributeTitleModel(title: headAttributeModel.name, note: "", list_attribute: list_attributeModel)
+                                self.list_header_attribute_title.append(headerAttributeTitleModel)
                             }
                             
                             
