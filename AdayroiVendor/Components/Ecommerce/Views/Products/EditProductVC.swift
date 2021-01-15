@@ -1673,7 +1673,7 @@ extension EditProductVC {
                         if(list_image_color.count>0){
                             for index in 0...list_image_color.count-1 {
                            let attributeColorModel:AttributeColorModel=list_image_color[index]
-                           self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.name, image: UIImage(), color_value: UIColor(),img_path: attributeColorModel.img_path, has_image: 1))
+                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
                            self.UICollectionViewColorProducts.delegate = self
                            self.UICollectionViewColorProducts.dataSource = self
                            self.UICollectionViewColorProducts.reloadData()
