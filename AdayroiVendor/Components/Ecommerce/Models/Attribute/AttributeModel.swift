@@ -82,7 +82,7 @@ struct HeadAttributeModel: Codable {
         _id = ""
         type = ""
         product_id = ""
-        value = ""
+        name = ""
         list_attribute=[AttributeModel]()
     }
 }
