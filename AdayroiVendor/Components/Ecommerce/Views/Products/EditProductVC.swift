@@ -1808,13 +1808,13 @@ extension EditProductVC {
                    print(jsonResponse!)
                    do {
                        let jsonDecoder = JSONDecoder()
-                       let getApiResponeHeadAttributeByProductIdModel = try jsonDecoder.decode(GetApiResponeHeadAttributeByProductIdModel.self, from: jsonResponse!)
-                       if(getApiResponeHeadAttributeByProductIdModel.result=="success"){
+                    let getApiRespondeSpecialsModel:GetApiRespondeSpecialsModel = try jsonDecoder.decode(GetApiRespondeSpecialsModel.self, from: jsonResponse!)
+                       if(getApiRespondeSpecialsModel.result=="success"){
                            
-                           var list_head_attribute:[HeadAttributeModel]=getApiResponeHeadAttributeByProductIdModel.list_head_attribute
+                        var list_head_attribute=getApiRespondeSpecialsModel.list_special
                            if(list_head_attribute.count>0){
                                for index in 0..<list_head_attribute.count{
-                                   let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
+                                   let specialsModel:SpecialsModel=list_head_attribute[index]
                                    var row:[CellHeaderAttribute]=[CellHeaderAttribute]()
                                    row=[
                                        CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
@@ -1866,7 +1866,7 @@ extension EditProductVC {
                            
                            
                        }else{
-                           let alert = UIAlertController(title: "Error", message: getApiResponeHeadAttributeByProductIdModel.errorMessage, preferredStyle: .alert)
+                           let alert = UIAlertController(title: "Error", message: getApiRespondeSpecialsModel.errorMessage, preferredStyle: .alert)
                            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
                            self.present(alert, animated: true)
                        }
