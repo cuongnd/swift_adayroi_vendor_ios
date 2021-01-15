@@ -23,22 +23,29 @@ protocol AddNewProductDelegate {
     func refreshData()
 }
 struct ImageColorModel {
+    var attribute_header_id: String
     var color_name: String
     var image: UIImage
     var color_value: UIColor
+    var img_path: String
     var has_image:Int
-    init(color_name:String,image:UIImage,color_value:UIColor,has_image:Int) {
+    init(attribute_header_id:String,color_name:String,image:UIImage,color_value:UIColor,img_path:String,has_image:Int) {
+        self.attribute_header_id=attribute_header_id
         self.color_name=color_name
         self.image=image
         self.color_value=color_value
+        self.img_path=img_path
         self.has_image=has_image
     }
     var dictionary: [String: Any] {
         let color_value_text:String=has_image == 1 ? color_name : "#\(color_value.hexValue())"
         
-        return ["color_name": color_name,
+        return [
+                "attribute_header_id": attribute_header_id,
+                "color_name": color_name,
                 "color_value": color_value_text,
-                "has_image":has_image
+                "has_image":has_image,
+                "img_path":img_path
         ]
     }
     var nsDictionary: NSDictionary {
@@ -1542,10 +1549,12 @@ extension EditProductVC {
                         self.Webservice_getCategories(url: urlGetCategories, params:[:])
                         
                         
-                        let urlGetImagesByProductId = API_URL + "//api/images/list/img_parent_id/\(self.ProductId)/img_type/product?os=ios"
+                        let urlGetImagesByProductId = API_URL + "/api/images/list/img_parent_id/\(self.ProductId)/img_type/product?os=ios"
                         self.Webservice_getImagesByProductId(url: urlGetImagesByProductId, params:[:])
                         
-                        
+                        let urlGetImagesColorByProductId = API_URL + "/api/images/list_image_color_product/product_id/\(self.ProductId)?os=ios"
+                        self.Webservice_getImagesColorByProductId(url: urlGetImagesColorByProductId, params:[:])
+
                         
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -1647,6 +1656,54 @@ extension EditProductVC {
     
     
     
+    func Webservice_getImagesColorByProductId(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiRespondeImagesColorByProductId = try jsonDecoder.decode(GetApiRespondeImagesColorByProductId.self, from: jsonResponse!)
+                    if(getApiRespondeImagesColorByProductId.result=="success"){
+                        var list_image_color:[AttributeColorModel]=getApiRespondeImagesColorByProductId.list_image_color
+                        if(list_image_color.count>0){
+                            for index in 0...list_image_color.count-1 {
+                           let attributeColorModel:AttributeColorModel=list_image_color[index]
+                           self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.name, image: UIImage(), color_value: UIColor(),img_path: attributeColorModel.img_path, has_image: 1))
+                           self.UICollectionViewColorProducts.delegate = self
+                           self.UICollectionViewColorProducts.dataSource = self
+                           self.UICollectionViewColorProducts.reloadData()
+                           
+                       }
+                                                   
+                        }
+                       
+                        
+                        
+                    }else{
+                        let alert = UIAlertController(title: "Error", message: getApiRespondeImagesColorByProductId.errorMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                } catch let error as NSError  {
+                     print("error:\(error)")
+                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                       self.present(alert, animated: true)
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     func Webservice_getImagesByProductId(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -1971,12 +2028,18 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
             return cell
         }else{
             let uIimage:UIImage=self.list_image_color[indexPath.row].image
-            
+            let img_path:String=self.list_image_color[indexPath.row].img_path
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.reuseID, for: indexPath) as? ColorCollectionViewCell else {
                 
                 return UICollectionViewCell()
             }
-            cell.UIImageViewImageUpload.image=uIimage
+            if(img_path != ""){
+                cell.UIImageViewImageUpload.sd_setImage(with: URL(string: img_path), placeholderImage: UIImage(named: "placeholder_image"))
+
+            }else{
+                cell.UIImageViewImageUpload.image=uIimage
+            }
+            
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UIButtonColor.tag=indexPath.row
             cell.UIButtonChangeImageInCell.tag=indexPath.row
@@ -2059,7 +2122,7 @@ extension EditProductVC: OpalImagePickerControllerDelegate {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image: assets[i], color_value: UIColor.brown,has_image: 1)
+                let imageColorModel:ImageColorModel=ImageColorModel(attribute_header_id: "",color_name: "", image: assets[i], color_value: UIColor.brown,img_path: "",has_image: 1)
                 self.list_image_color.append(imageColorModel)
             }
             
@@ -2169,7 +2232,7 @@ extension EditProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!
-            let imageColorModel:ImageColorModel=ImageColorModel(color_name: "", image:no_image, color_value: color,has_image: 0)
+            let imageColorModel:ImageColorModel=ImageColorModel(attribute_header_id: "",color_name: "", image:no_image, color_value: color,img_path: "",has_image: 0)
             self.list_image_color.append(imageColorModel)
         }else{
             self.list_image_color[colorIndex].color_value=color
