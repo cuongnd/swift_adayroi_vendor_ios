@@ -1558,6 +1558,8 @@ extension EditProductVC {
                         let urlGetHeaderAttributesByProductId = API_URL + "/api/attributes_header/list/product_id/\(self.ProductId)?os=ios"
                         self.Webservice_getHeaderAttributesByProductId(url: urlGetHeaderAttributesByProductId, params:[:])
                         
+                        let urlGetOtherHeaderAttributesByProductId = API_URL + "/api/specials/list/product_id/\(self.ProductId)?os=ios"
+                        self.Webservice_getOtherHeaderAttributesByProductId(url: urlGetOtherHeaderAttributesByProductId, params:[:])
                         
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
                         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -1795,6 +1797,95 @@ extension EditProductVC {
             }
         }
     }
+    func Webservice_getOtherHeaderAttributesByProductId(url:String, params:NSDictionary) -> Void {
+           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+               if strErrorMessage.count != 0 {
+                   let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
+                   alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                   self.present(alert, animated: true)
+               }
+               else {
+                   print(jsonResponse!)
+                   do {
+                       let jsonDecoder = JSONDecoder()
+                       let getApiResponeHeadAttributeByProductIdModel = try jsonDecoder.decode(GetApiResponeHeadAttributeByProductIdModel.self, from: jsonResponse!)
+                       if(getApiResponeHeadAttributeByProductIdModel.result=="success"){
+                           
+                           var list_head_attribute:[HeadAttributeModel]=getApiResponeHeadAttributeByProductIdModel.list_head_attribute
+                           if(list_head_attribute.count>0){
+                               for index in 0..<list_head_attribute.count{
+                                   let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
+                                   var row:[CellHeaderAttribute]=[CellHeaderAttribute]()
+                                   row=[
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                                       CellHeaderAttribute(title: headAttributeModel.name,is_head: false,columnType: "content", columnName: "title"),
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                                   ]
+                                   var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
+                                   let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
+                                    var list_string_attribute:[String]=[String]()
+                                   var list_attributeModel: [HeaderAttributeModel]=[HeaderAttributeModel]()
+                                   for index_attribute in 0...list_attribute.count-1 {
+                                       let attributeModel:AttributeModel=list_attribute[index_attribute]
+                                       CellAttributeList.append([
+                                           CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
+                                           CellAttribute(title: attributeModel.value, is_head: false,columnType: "content", columnName: "title"),
+                                           CellAttribute(title: String(attributeModel.price), is_head: false,columnType: "content", columnName: "note"),
+                                           CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
+                                           CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
+                                           
+                                           
+                                       ]);
+                                      
+                                       let title:String=attributeModel.value
+                                       let price:String=String(attributeModel.price)
+                                       list_string_attribute.append("\(title)(\(price))");
+                                       list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
+                                      
+                                   }
+                                    let joined2 = list_string_attribute.joined(separator: ", ")
+                                   row[3].title=joined2
+                                   row[3].list_attribute=CellAttributeList
+                                   self.headerAttributeTitleProduct.append(row);
+                                   
+                                   let headerAttributeTitleModel:HeaderAttributeTitleModel=HeaderAttributeTitleModel(title: headAttributeModel.name, note: "", list_attribute: list_attributeModel)
+                                   self.list_header_attribute_title.append(headerAttributeTitleModel)
+                               }
+                               
+                               
+                           }
+                           self.UICollectionViewHeaderAttributes.delegate = self
+                           self.UICollectionViewHeaderAttributes.dataSource = self
+                           self.UICollectionViewHeaderAttributes.reloadData()
+                           
+                           
+                           
+                           
+                       }else{
+                           let alert = UIAlertController(title: "Error", message: getApiResponeHeadAttributeByProductIdModel.errorMessage, preferredStyle: .alert)
+                           alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                           self.present(alert, animated: true)
+                       }
+                       
+                   } catch let error as NSError  {
+                       print("error:\(error)")
+                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                       self.present(alert, animated: true)
+                       
+                   }
+                   
+                   
+                   //print("userModel:\(userModel)")
+                   
+               }
+           }
+       }
+    
     
     func Webservice_getImagesByProductId(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
