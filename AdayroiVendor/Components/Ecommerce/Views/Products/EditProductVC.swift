@@ -1556,7 +1556,7 @@ extension EditProductVC {
                         self.Webservice_getImagesColorByProductId(url: urlGetImagesColorByProductId, params:[:])
 
                         let urlGetHeaderAttributesByProductId = API_URL + "/api/attributes_header/list/product_id/\(self.ProductId)?os=ios"
-                        //self.Webservice_getHeaderAttributesByProductId(url: urlGetHeaderAttributesByProductId, params:[:])
+                        self.Webservice_getHeaderAttributesByProductId(url: urlGetHeaderAttributesByProductId, params:[:])
 
                         
                         self.wareHousehead.append(self.wareHouseheadFisrtRow)
@@ -1720,20 +1720,20 @@ extension EditProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiResponeHeadAttributeByProductIdModel = try jsonDecoder.decode(GetApiResponeHeadAttributeByProductIdModel.self, from: jsonResponse!)
                     if(getApiResponeHeadAttributeByProductIdModel.result=="success"){
-                        /*
-                        var list_image_color:[AttributeColorModel]=getApiRespondeImagesColorByProductId.list_image_color
-                        if(list_image_color.count>0){
-                            for index in 0...list_image_color.count-1 {
-                           let attributeColorModel:AttributeColorModel=list_image_color[index]
-                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
-                           self.UICollectionViewColorProducts.delegate = self
-                           self.UICollectionViewColorProducts.dataSource = self
-                           self.UICollectionViewColorProducts.reloadData()
+                        
+                        var list_head_attribute:[HeadAttributeModel]=getApiResponeHeadAttributeByProductIdModel.list_head_attribute
+                        if(list_head_attribute.count>0){
+                            for index in 0...list_head_attribute.count-1 {
+                           let headAttributeModel:HeadAttributeModel=list_head_attribute[index]
+                                //self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path, has_image: 1))
+                           //self.UICollectionViewColorProducts.delegate = self
+                           //self.UICollectionViewColorProducts.dataSource = self
+                           //self.UICollectionViewColorProducts.reloadData()
                            
                        }
                           
                         }
-                       */
+                       
                         
                         
                     }else{
