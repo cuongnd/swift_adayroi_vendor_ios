@@ -1815,52 +1815,26 @@ extension EditProductVC {
                            if(list_head_attribute.count>0){
                                for index in 0..<list_head_attribute.count{
                                    let specialsModel:SpecialsModel=list_head_attribute[index]
-                                   var row:[CellHeaderAttribute]=[CellHeaderAttribute]()
+                                   var row:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
                                    row=[
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
-                                       CellHeaderAttribute(title: headAttributeModel.name,is_head: false,columnType: "content", columnName: "title"),
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "note"),
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "content", columnName: "attributes"),
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit_attributes"),
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
-                                       CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                                       CellOrtherHeadAttribute(title: specialsModel.title,is_head: false,columnType: "content", columnName: "title"),
+                                       CellOrtherHeadAttribute(title: specialsModel.value,is_head: false,columnType: "content", columnName: "attributes"),
+                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
                                    ]
-                                   var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
-                                   let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
-                                    var list_string_attribute:[String]=[String]()
-                                   var list_attributeModel: [HeaderAttributeModel]=[HeaderAttributeModel]()
-                                   for index_attribute in 0...list_attribute.count-1 {
-                                       let attributeModel:AttributeModel=list_attribute[index_attribute]
-                                       CellAttributeList.append([
-                                           CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                                           CellAttribute(title: attributeModel.value, is_head: false,columnType: "content", columnName: "title"),
-                                           CellAttribute(title: String(attributeModel.price), is_head: false,columnType: "content", columnName: "note"),
-                                           CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
-                                           CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
-                                           
-                                           
-                                       ]);
-                                      
-                                       let title:String=attributeModel.value
-                                       let price:String=String(attributeModel.price)
-                                       list_string_attribute.append("\(title)(\(price))");
-                                       list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
-                                      
-                                   }
-                                    let joined2 = list_string_attribute.joined(separator: ", ")
-                                   row[3].title=joined2
-                                   row[3].list_attribute=CellAttributeList
-                                   self.headerAttributeTitleProduct.append(row);
                                    
-                                   let headerAttributeTitleModel:HeaderAttributeTitleModel=HeaderAttributeTitleModel(title: headAttributeModel.name, note: "", list_attribute: list_attributeModel)
-                                   self.list_header_attribute_title.append(headerAttributeTitleModel)
+                                   self.orderheaderAttributeTitleProduct.append(row);
+                                   
+                                let otherHeaderAttributeTitleModel:OtherHeaderAttributeTitleModel=OtherHeaderAttributeTitleModel(title: specialsModel.title, description:specialsModel.value, note:"")
+                                   self.list_other_header_attribute_title.append(otherHeaderAttributeTitleModel)
                                }
                                
                                
                            }
-                           self.UICollectionViewHeaderAttributes.delegate = self
-                           self.UICollectionViewHeaderAttributes.dataSource = self
-                           self.UICollectionViewHeaderAttributes.reloadData()
+                           self.UICollectionViewOtherHeadAttribute.delegate = self
+                           self.UICollectionViewOtherHeadAttribute.dataSource = self
+                           self.UICollectionViewOtherHeadAttribute.reloadData()
                            
                            
                            
