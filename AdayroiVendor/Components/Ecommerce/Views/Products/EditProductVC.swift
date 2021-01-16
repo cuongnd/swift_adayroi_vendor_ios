@@ -1541,8 +1541,8 @@ extension EditProductVC {
                         self.UITextViewProductFullDescription.text=String(self.product.productFullDescription!)
                         self.UITextViewProductShortDescription.text=String(self.product.productShortDescription!)
                         self.UITextFieldAlias.text=self.product.alias
-                        self.UITextFieldOriginPrice.text=String(self.product.original_price)
-                        //self.UITextFieldUnitPrice.text=String(self.product.unit_price)
+                        self.UITextFieldProductOrignalPrice.text=String(self.product.original_price)
+                        self.UITextFieldProductUnitPrice.text=String(self.product.unit_price)
                         
                         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
                         
