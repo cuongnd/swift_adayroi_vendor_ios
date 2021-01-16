@@ -200,11 +200,12 @@
                     
                     
                     for product in self.list_product {
+                    
                         self.list_cell_product.append([
                             CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.code,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: product.default_photo!.img_path,is_head: false,columnType: "", columnName: "image",action:  #selector(self.nothing(_:))),
+                            CellProduct(title:  product.default_photo?.img_path ??  "",is_head: false,columnType: "", columnName: "image",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "danh mục con",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "danh mục con 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: String(product.original_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),

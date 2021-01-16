@@ -480,9 +480,16 @@ class EditProductVC: UIViewController {
     @IBOutlet weak var UILabelmageProduct: UILabel!
     @IBOutlet var DLRadioButtonProductType : DLRadioButton!;
     @IBOutlet weak var UIScrollViewMain: UIScrollView!
+    @IBOutlet weak var UILabelPageHeader: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(self.ProductId != ""){
+            UILabelPageHeader.text="Chỉnh sửa sản phẩm"
+        }else{
+            UILabelPageHeader.text="Thêm sản phẩm mới"
+        }
+        
         var nibCell = UINib(nibName:WarehouseLabelCollectionViewCell.reuseID, bundle: nil)
         self.UICollectionViewWareHouses.register(nibCell, forCellWithReuseIdentifier: WarehouseLabelCollectionViewCell.reuseID)
         
@@ -1091,36 +1098,49 @@ class EditProductVC: UIViewController {
             return
         }
         
+        
         var product_length=String(self.UITextFieldProductLength.text!)
         product_length = String(product_length.filter { !" \n\t\r".contains($0) })
-        if(product_length != "" && !product_length.isNumber){
-            UITextFieldProductLength.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
+        if(product_length != ""){
+            if let check_length = Double(self.UITextFieldProductLength.text!) {
+                
+            } else {
+                let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                UITextFieldProductLength.becomeFirstResponder()
+                return
+            }
             
-            return
+            
+           
         }
         
         var product_height=String(self.UITextFieldProductHeight.text!)
         product_height = String(product_height.filter { !" \n\t\r".contains($0) })
-        if(product_height != "" &&  !product_height.isNumber){
-            UITextFieldProductHeight.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
+        if(product_height != ""){
+            if let check_height = Double(self.UITextFieldProductHeight.text!) {
+                
+            } else {
+                let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                UITextFieldProductHeight.becomeFirstResponder()
+                return
+            }
         }
         var product_width=String(self.UITextFieldProductWidth.text!)
         product_width = String(product_width.filter { !" \n\t\r".contains($0) })
-        if(product_width != "" &&   !product_width.isNumber){
-            UITextFieldProductWidth.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-            return
+        if(product_width != ""){
+           if let check_width = Double(self.UITextFieldProductWidth.text!) {
+                
+            } else {
+                let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                UITextFieldProductWidth.becomeFirstResponder()
+                return
+            }
         }
         
         var product_weight=String(self.UITextFieldProductWeight.text!)
@@ -1134,12 +1154,13 @@ class EditProductVC: UIViewController {
             
             return
         }
-        if(!product_weight.isNumber){
-            UITextFieldProductWeight.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+        if let check_weight = Double(self.UITextFieldProductWeight.text!) {
+            
+        } else {
+            let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
+            UITextFieldProductWeight.becomeFirstResponder()
             return
         }
         
@@ -1202,14 +1223,17 @@ class EditProductVC: UIViewController {
             
             return
         }
-        if(!product_orignal_price.isNumber){
-            UITextFieldProductOrignalPrice.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+        if let check_orignal_price = Double(self.UITextFieldProductOrignalPrice.text!) {
+            
+        } else {
+            let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
+            UITextFieldProductOrignalPrice.becomeFirstResponder()
             return
         }
+        
+        
         
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
@@ -1223,14 +1247,17 @@ class EditProductVC: UIViewController {
             return
         }
         
-        if(!product_unit_price.isNumber){
-            UITextFieldProductUnitPrice.becomeFirstResponder()
-            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các số không bao gồm chữ", preferredStyle: .alert)
+        if let check_unit_price = Double(self.UITextFieldProductUnitPrice.text!) {
+            
+        } else {
+            let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
+            UITextFieldProductUnitPrice.becomeFirstResponder()
             return
         }
+        
+        
         
         
         var product_short_description=String(self.UITextViewProductShortDescription.text!)
@@ -1373,6 +1400,7 @@ class EditProductVC: UIViewController {
         
         
         let parameters: [String : Any] = [
+            "product_id":self.ProductId,
             "productTitle": product_name,
             "cat_id":self.curentCategory._id,
             "sub_cat_id":self.curentSubCategory._id,
@@ -1402,9 +1430,12 @@ class EditProductVC: UIViewController {
         if(self.list_product_image.count>0){
             for index in 0...self.list_product_image.count-1 {
                 let currentItem=self.list_product_image[index]
-                let image_name = randomString(length: 8)
-                let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
-                list_DataUpload.append(datUpload)
+                if(currentItem.img_path == ""){
+                    let image_name = randomString(length: 8)
+                    let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                    list_DataUpload.append(datUpload)
+                }
+                
                 
             }
             
@@ -1412,9 +1443,12 @@ class EditProductVC: UIViewController {
         if(self.list_image_color.count>0){
             for index in 0...self.list_image_color.count-1 {
                 let currentItem=self.list_image_color[index]
-                let image_name = randomString(length: 8)
-                let datUpload:DataUpload=DataUpload(key_name: "image_product_color", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
-                list_DataUpload.append(datUpload)
+                if(currentItem.img_path == ""){
+                    let image_name = randomString(length: 8)
+                    let datUpload:DataUpload=DataUpload(key_name: "image_product_color", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                    list_DataUpload.append(datUpload)
+                }
+                
                 
             }
             
@@ -1438,6 +1472,13 @@ class EditProductVC: UIViewController {
                         print("getApiResponseAddNewProductModel response \(getApiResponseAddNewProductModel)")
                         if(getApiResponseAddNewProductModel.result=="success"){
                             self.dismiss(animated: true) {
+                                var msg="lưu sản phẩm thành công";
+                                if(self.ProductId != ""){
+                                    msg="Cập nhật sản phẩm thành công"
+                                }
+                                let alert = UIAlertController(title: "Thông báo", message: msg, preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                                 self.delegate.refreshData()
                             }
                         }else{
@@ -1664,6 +1705,27 @@ extension EditProductVC {
         }
     }
     
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
     
     func Webservice_getImagesColorByProductId(url:String, params:NSDictionary) -> Void {
@@ -1683,8 +1745,16 @@ extension EditProductVC {
                         if(list_image_color.count>0){
                             for index in 0...list_image_color.count-1 {
                                 let attributeColorModel:AttributeColorModel=list_image_color[index]
-                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: attributeColorModel.value, image: UIImage(), color_value: UIColor.brown,img_path: attributeColorModel.img_path
-                                    , has_image: 1))
+                                let no_image  = UIImage(named: "placeholder_image")!
+                                var color_name = attributeColorModel.value
+                                var color_value = UIColor.brown
+                                var has_image=1
+                                if(attributeColorModel.img_path == ""){
+                                    color_name = ""
+                                    color_value = self.hexStringToUIColor(hex: attributeColorModel.value)
+                                    has_image=0
+                                }
+                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: color_name, image: no_image, color_value: color_value,img_path: attributeColorModel.img_path, has_image: has_image))
                                 self.UICollectionViewColorProducts.delegate = self
                                 self.UICollectionViewColorProducts.dataSource = self
                                 self.UICollectionViewColorProducts.reloadData()
@@ -1880,18 +1950,17 @@ extension EditProductVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiRespondeImagesByParentModel = try jsonDecoder.decode(GetApiRespondeImagesByParentModel.self, from: jsonResponse!)
                     if(getApiRespondeImagesByParentModel.result=="success"){
-                        for index in 0...getApiRespondeImagesByParentModel.list_image.count-1 {
-                            let currentItem:ImageModel=getApiRespondeImagesByParentModel.list_image[index]
-                            self.list_product_image.append(ImageProductModel(image_id: currentItem._id,image_description:"", image:UIImage(),img_path: currentItem.img_path))
-                            self.UICollectionViewListProductImage.delegate = self
-                            self.UICollectionViewListProductImage.dataSource = self
-                            self.UICollectionViewListProductImage.reloadData()
-                            
+                        if(getApiRespondeImagesByParentModel.list_image.count>0){
+                            for index in 0...getApiRespondeImagesByParentModel.list_image.count-1 {
+                                let currentItem:ImageModel=getApiRespondeImagesByParentModel.list_image[index]
+                                self.list_product_image.append(ImageProductModel(image_id: currentItem._id,image_description:"", image:UIImage(),img_path: currentItem.img_path))
+                                self.UICollectionViewListProductImage.delegate = self
+                                self.UICollectionViewListProductImage.dataSource = self
+                                self.UICollectionViewListProductImage.reloadData()
+                                
+                            }
+                            print("getApiRespondeImagesByParentModel.list_image \(getApiRespondeImagesByParentModel.list_image)")
                         }
-                        print("getApiRespondeImagesByParentModel.list_image \(getApiRespondeImagesByParentModel.list_image)")
-                        
-                        
-                        
                     }else{
                         let alert = UIAlertController(title: "Error", message: getApiRespondeImagesByParentModel.errorMessage, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
