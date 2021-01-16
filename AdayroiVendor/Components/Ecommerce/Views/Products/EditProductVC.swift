@@ -29,6 +29,7 @@ struct ImageColorModel {
     var color_value: UIColor
     var img_path: String
     var has_image:Int
+    var index_upload:Int = -1
     init(attribute_header_id:String,color_name:String,image:UIImage,color_value:UIColor,img_path:String,has_image:Int) {
         self.attribute_header_id=attribute_header_id
         self.color_name=color_name
@@ -45,7 +46,8 @@ struct ImageColorModel {
             "color_name": color_name,
             "color_value": color_value_text,
             "has_image":has_image,
-            "img_path":img_path
+            "img_path":img_path,
+            "index_upload":index_upload
         ]
     }
     var nsDictionary: NSDictionary {
@@ -1369,6 +1371,39 @@ class EditProductVC: UIViewController {
                 print ("JSON Failure")
             }
         }
+        var list_DataUpload:[DataUpload]=[DataUpload]()
+        if(self.list_product_image.count>0){
+            for index in 0...self.list_product_image.count-1 {
+                let currentItem=self.list_product_image[index]
+                if(currentItem.img_path == ""){
+                    let image_name = randomString(length: 8)
+                    let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                    list_DataUpload.append(datUpload)
+                }
+                
+                
+            }
+            
+        }
+        if(self.list_image_color.count>0){
+            var index_upload:Int=0
+            for index in 0...self.list_image_color.count-1 {
+                let currentItem=self.list_image_color[index]
+                if(currentItem.img_path == ""){
+                    let image_name = randomString(length: 8)
+                    let datUpload:DataUpload=DataUpload(key_name: "image_product_color", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
+                    list_DataUpload.append(datUpload)
+                    self.list_image_color[index].index_upload=index_upload
+                    index_upload = index_upload + 1
+                }
+                
+                
+            }
+            
+        }
+        
+        
+        
         
         //list image color product
         
@@ -1426,33 +1461,7 @@ class EditProductVC: UIViewController {
         ]
         let urlStringPostAddNewProduct = API_URL + "/api_task/product.add_product?user_id=\(user_id)"
         
-        var list_DataUpload:[DataUpload]=[DataUpload]()
-        if(self.list_product_image.count>0){
-            for index in 0...self.list_product_image.count-1 {
-                let currentItem=self.list_product_image[index]
-                if(currentItem.img_path == ""){
-                    let image_name = randomString(length: 8)
-                    let datUpload:DataUpload=DataUpload(key_name: "image_product", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
-                    list_DataUpload.append(datUpload)
-                }
-                
-                
-            }
-            
-        }
-        if(self.list_image_color.count>0){
-            for index in 0...self.list_image_color.count-1 {
-                let currentItem=self.list_image_color[index]
-                if(currentItem.img_path == ""){
-                    let image_name = randomString(length: 8)
-                    let datUpload:DataUpload=DataUpload(key_name: "image_product_color", file_name: image_name, data: currentItem.image.jpegData(compressionQuality: 0.8)!, mime_type: "image/jpeg")
-                    list_DataUpload.append(datUpload)
-                }
-                
-                
-            }
-            
-        }
+        
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn lưu sản phẩm này không ?".localiz(), preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
             let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
