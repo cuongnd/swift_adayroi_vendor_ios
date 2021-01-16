@@ -1754,7 +1754,7 @@ extension EditProductVC {
                                     color_value = self.hexStringToUIColor(hex: attributeColorModel.value)
                                     has_image=0
                                 }
-                                self.list_image_color.append(ImageColorModel(attribute_header_id: "",color_name: color_name, image: no_image, color_value: color_value,img_path: attributeColorModel.img_path, has_image: has_image))
+                                self.list_image_color.append(ImageColorModel(attribute_header_id: attributeColorModel._id,color_name: color_name, image: no_image, color_value: color_value,img_path: attributeColorModel.img_path, has_image: has_image))
                                 self.UICollectionViewColorProducts.delegate = self
                                 self.UICollectionViewColorProducts.dataSource = self
                                 self.UICollectionViewColorProducts.reloadData()
