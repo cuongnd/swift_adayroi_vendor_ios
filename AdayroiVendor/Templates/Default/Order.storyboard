@@ -988,8 +988,8 @@
                         <outlet property="UILabelTaxPercent" destination="vs4-6h-H7M" id="rYP-Ac-mXT"/>
                         <outlet property="UILabelTotalCostAfterDiscountAndBeforTax" destination="bku-Rg-ShA" id="0lb-Fa-PU7"/>
                         <outlet property="UILabelTotalCostBeforTax" destination="oJE-NY-U42" id="Cfo-yW-v9L"/>
+                        <outlet property="UILabelTotalCountProduct" destination="k0a-Qb-pdX" id="vQE-wC-Rp9"/>
                         <outlet property="UILabelTotalCoustAfterTax" destination="WxP-sh-v9I" id="gxq-ew-R3E"/>
-                        <outlet property="UILabelTotalItemCount" destination="k0a-Qb-pdX" id="Is5-2R-lyK"/>
                         <outlet property="btn_cancel" destination="bSb-O9-Ve9" id="4lO-Qu-L4l"/>
                         <outlet property="btn_cancelHeight" destination="lUL-Zh-dYP" id="13Z-dM-xt7"/>
                         <outlet property="lbl_titleLabel" destination="mlH-n3-dgq" id="VMN-U4-w01"/>

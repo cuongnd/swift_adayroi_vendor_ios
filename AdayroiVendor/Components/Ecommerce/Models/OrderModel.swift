@@ -116,7 +116,7 @@ struct OrderModel: Codable {
         case shiping_tax_amount = "shiping_tax_amount"
         case total_cost_final = "total_cost_final"
         case shipping_tax_percent = "shipping_tax_percent"
-        case trans_status_id = ""
+        case trans_status_id = "trans_status_id"
         case list_product = "list_product"
         case user = "user"
         case orderStatus = "order_status"
