@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -19,7 +19,7 @@
         <!--Order HistoryVC-->
         <scene sceneID="Q87-kj-zH6">
             <objects>
-                <viewController storyboardIdentifier="OrderHistoryVC" id="YGX-IX-FwL" customClass="OrderHistoryVC" customModule="adayroi_online" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderHistoryVC" id="YGX-IX-FwL" customClass="OrderHistoryVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DvI-HB-zjE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,14 +63,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderHistoryCell" rowHeight="133" id="t8A-LB-hQq" customClass="OrderHistoryCell" customModule="adayroi_online" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderHistoryCell" rowHeight="133" id="t8A-LB-hQq" customClass="OrderHistoryCell" customModule="AdayroiVendor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t8A-LB-hQq" id="3Gg-ag-B3T">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-4R-dTF" customClass="CardViewMaster" customModule="adayroi_online" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-4R-dTF" customClass="CardViewMaster" customModule="AdayroiVendor" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="398" height="117"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7c-tO-c2s">
@@ -227,7 +227,7 @@
         <!--Order History DetailsVC-->
         <scene sceneID="jig-46-2CS">
             <objects>
-                <viewController storyboardIdentifier="OrderHistoryDetailsVC" id="mTT-hg-HII" customClass="OrderHistoryDetailsVC" customModule="adayroi_online" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderHistoryDetailsVC" id="mTT-hg-HII" customClass="OrderHistoryDetailsVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FOi-aI-hCj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1516"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="historyOrderProductCell" reuseIdentifier="historyOrderProductCell" id="mO4-op-YNt" customClass="historyOrderProductCell" customModule="adayroi_online" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="historyOrderProductCell" reuseIdentifier="historyOrderProductCell" id="mO4-op-YNt" customClass="historyOrderProductCell" customModule="AdayroiVendor" customModuleProvider="target">
                                                         <rect key="frame" x="8.5" y="0.0" width="567" height="220"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JsC-fQ-bzY">
@@ -989,7 +989,7 @@
                         <outlet property="UILabelTotalCostAfterDiscount" destination="bku-Rg-ShA" id="0lb-Fa-PU7"/>
                         <outlet property="UILabelTotalCostBeforTax" destination="oJE-NY-U42" id="Cfo-yW-v9L"/>
                         <outlet property="UILabelTotalCoustAfterTax" destination="WxP-sh-v9I" id="gxq-ew-R3E"/>
-                        <outlet property="UILabelTotalNumber" destination="k0a-Qb-pdX" id="Is5-2R-lyK"/>
+                        <outlet property="UILabelTotalItemCount" destination="k0a-Qb-pdX" id="Is5-2R-lyK"/>
                         <outlet property="btn_cancel" destination="bSb-O9-Ve9" id="4lO-Qu-L4l"/>
                         <outlet property="btn_cancelHeight" destination="lUL-Zh-dYP" id="13Z-dM-xt7"/>
                         <outlet property="lbl_titleLabel" destination="mlH-n3-dgq" id="VMN-U4-w01"/>

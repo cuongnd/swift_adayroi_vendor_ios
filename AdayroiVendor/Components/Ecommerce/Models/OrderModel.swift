@@ -8,7 +8,6 @@
 import Foundation
 struct OrderModel: Codable {
     let order_id: String
-    var total: Float=0
     let trans_status_title: String
     let payment_method_name: String
     let created_date: String
@@ -34,7 +33,6 @@ struct OrderModel: Codable {
     let coupon_discount_amount: Double
     let currency_short_form: String
     let currency_symbol: String
-    let discount_amount: Double
     let is_bank: Int
     let memo: String
     let payment_method_amount: Int
@@ -42,7 +40,6 @@ struct OrderModel: Codable {
     let shipping_full_name: String
     let shipping_address_1: String
     let shipping_address_2: String
-    let shipping_amount: String
     let shipping_city: String
     let shipping_company: String
     let shipping_email: String
@@ -50,20 +47,25 @@ struct OrderModel: Codable {
     let shipping_method_name: String
     let shipping_phone: String
     let shipping_postal_code: String
-    let shipping_tax_percent: String
-    let sub_total_amount: Int
-    let tax_amount: Float
-    let tax_percent: Int
-    let total_item_count: Int
-    let total_item_amount: Int
+    var total_amount_product:Int
+    var total_cost_befor_tax:Double
+    var discount_amount:Double
+    var toal_cost_after_discount_and_befor_tax:Double
+    var tax_percent:Int
+    var tax_amount:Double
+    var shipping_amount:Double
+    var shiping_tax_percent:Int
+    var shiping_tax_amount:Double
+    var total_cost_final: Double
+    let shipping_tax_percent: Int
     let trans_status_id: String
     let user: OrderUserModel?
+    let orderStatus: OrderStatusModel
     let list_product: [OrderProductModel]
     
     
     enum CodingKeys: String, CodingKey {
         case order_id = "_id"
-        case total = "total"
         case trans_status_title = "trans_status_title"
         case payment_method_name = "payment_method_name"
         case created_date = "created_date"
@@ -89,7 +91,6 @@ struct OrderModel: Codable {
         case coupon_discount_amount = "coupon_discount_amount"
         case currency_short_form = "currency_short_form"
         case currency_symbol = "currency_symbol"
-        case discount_amount = "discount_amount"
         case is_bank = "is_bank"
         case memo = "memo"
         case payment_method_amount = "payment_method_amount"
@@ -97,7 +98,6 @@ struct OrderModel: Codable {
         case shipping_full_name = "shipping_full_name"
         case shipping_address_1 = "shipping_address_1"
         case shipping_address_2 = "shipping_address_2"
-        case shipping_amount = "shipping_amount"
         case shipping_city = "shipping_city"
         case shipping_company = "shipping_company"
         case shipping_email = "shipping_email"
@@ -105,16 +105,20 @@ struct OrderModel: Codable {
         case shipping_method_name = "shipping_method_name"
         case shipping_phone = "shipping_phone"
         case shipping_postal_code = "shipping_postal_code"
-        case shipping_tax_percent = "shipping_tax_percent"
-        case sub_total_amount = "sub_total_amount"
-        case tax_amount = "tax_amount"
+        case total_amount_product = "total_amount_product"
+        case total_cost_befor_tax = "total_cost_befor_tax"
+        case discount_amount = "discount_amount"
+        case toal_cost_after_discount_and_befor_tax = "toal_cost_after_discount_and_befor_tax"
         case tax_percent = "tax_percent"
-        case total_item_count = "total_item_count"
-        case total_item_amount = "total_item_amount"
-        case trans_status_id = "trans_status_id"
+        case tax_amount = "tax_amount"
+        case shipping_amount = "shipping_amount"
+        case shiping_tax_percent = "shiping_tax_percent"
+        case shiping_tax_amount = "shiping_tax_amount"
+        case total_cost_final = "total_cost_final"
+        case shipping_tax_percent = "shipping_tax_percent"
+        case trans_status_id = ""
         case list_product = "list_product"
         case user = "user"
-        
-        
+        case orderStatus = "order_status"
     }
 }
