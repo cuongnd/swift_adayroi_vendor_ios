@@ -44,10 +44,10 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UILabelOrderNumber: UILabel!
     @IBOutlet weak var UILabelCopyOrderNUmber: UILabel!
     @IBOutlet weak var UILabelOrderStatus: UILabel!
-    @IBOutlet weak var UILabelTotalItemCount: UILabel!
+    @IBOutlet weak var UILabelTotalCountProduct: UILabel!
     @IBOutlet weak var UILabelTotalCostBeforTax: UILabel!
     @IBOutlet weak var UILabelDiscountAmount: UILabel!
-    @IBOutlet weak var UILabelTotalCostAfterDiscount: UILabel!
+    @IBOutlet weak var UILabelTotalCostAfterDiscountAndBeforTax: UILabel!
     @IBOutlet weak var UILabelTax: UILabel!
     @IBOutlet weak var UILabelShippingAmout: UILabel!
     @IBOutlet weak var UILabelTaxPercent: UILabel!
@@ -155,7 +155,7 @@ extension OrderHistoryDetailsVC {
                        let orderModel:OrderModel=getOrderResponseModel.order
                        self.list_product=orderModel.list_product;
                        self.UILabelOrderNumber.text=orderModel.order_number
-                       self.UILabelTotalItemCount.text=String(orderModel.total_amount_product)
+                       self.UILabelTotalCountProduct.text=String(orderModel.total_amount_product)
                        self.UILabelBillingAddress1.text=orderModel.billing_address_1
                        self.UILabelBillingAddress2.text=orderModel.billing_address_2
                        self.UILabelBillingEmail.text=orderModel.billing_email
@@ -168,9 +168,9 @@ extension OrderHistoryDetailsVC {
                        self.UILabelShippingAmout.text="0.0"
                        self.UILabelTaxPercent.text="0.0"
                        self.UILabelOrderStatus.text=orderModel.orderStatus.name
-                       self.UILabelTotalCostAfterDiscount.text=String(orderModel.total_cost_befor_tax)
-                       self.UILabelTotalCostAfterDiscount.text=String(orderModel.total)
-                       self.UILabelTotalCostAfterDiscount.text=String(orderModel.total_item_amount)
+                       self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_cost_befor_tax)
+                       self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total)
+                       self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_item_amount)
                        self.UICollectionViewOrderProducts.delegate=self
                        self.UICollectionViewOrderProducts.dataSource = self
                        self.UICollectionViewOrderProducts.reloadData()
