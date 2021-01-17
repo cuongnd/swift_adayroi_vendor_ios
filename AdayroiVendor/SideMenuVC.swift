@@ -35,17 +35,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var lblUsername: UILabel!
     
     //MARK: Variables
-    var menuArray = [String]()
-    var menuImgeArray = [String]()
-    var homeViewController = UINavigationController()
-    var historyViewController = UINavigationController()
-    var LoginViewController = UINavigationController()
-    var SettingsViewController = UINavigationController()
-    var RatingsViewController = UINavigationController()
-    var FavoriteViewController = UINavigationController()
-    var CategoryListViewController = UINavigationController()
-    var BlogsViewController = UINavigationController()
-    var MyProductViewController = UINavigationController()
+   
     var list_item_menu:[MenuModel] = [MenuModel]()
     
     //MARK: Viewcontroller lifecycle
@@ -89,88 +79,6 @@ class SideMenuVC: UIViewController {
         viewController = UINavigationController(rootViewController: loginVC)
         viewController.setNavigationBarHidden(true, animated: true)
         self.list_item_menu.append(MenuModel(title: "Đăng xuất", icon: "ic_logout",viewController: viewController,is_logout: true))
-
-        
-     
-        
-        
-        /*
-         
-         if UserDefaultManager.getStringFromUserDefaults(key: UD_isSkip) == "1"
-         {
-         if UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "en" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "N/A"
-         {
-         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-         let viewController=UINavigationController(rootViewController: homeVC)
-         viewController.setNavigationBarHidden(true, animated: true)
-         self.list_item_menu.append(MenuModel(title: "Trang chủ", icon: "ic_Home",viewController: viewController, controler: homeVC))
-         menuArray = ["Trang chủ","Rút tiền","Chia sẻ sản phẩm","sfs","Cài đặt"]
-         menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
-         }
-         else{
-         //                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات"]
-         //                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
-         menuArray = ["Home","Order History","Favorite List","Ratings","Settings"]
-         menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings"]
-         }
-         }
-         else{
-         
-         if UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "en" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "" || UserDefaultManager.getStringFromUserDefaults(key: UD_isSelectLng) == "N/A"
-         {
-         menuArray = ["Trang chủ","Rút tiền","Sản phẩm của tôi","Hướng dẫn","Thông tin tài khoản","Đăng xuất"]
-         menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
-         }
-         else{
-         //                menuArray = ["الصفحة الرئيسية","تاريخ الطلب","قائمة المفضلة","التقييمات","الإعدادات","تسجيل خروج"]
-         //                menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
-         menuArray = ["Home","Order History","Favorite List","Ratings","Settings","Logout"]
-         menuImgeArray = ["ic_Home","ic_OrderHistory","ic_heart","ic_rate","ic_settings","ic_logout"]
-         }
-         
-         
-         }
-         cornerRadius(viewName: self.imgProfile, radius: self.imgProfile.frame.height / 2)
-         
-         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-         self.homeViewController = UINavigationController(rootViewController: homeVC)
-         self.homeViewController.setNavigationBarHidden(true, animated: true)
-         
-         let withdrawalListVC = UIStoryboard(name: "Withdrawal", bundle: nil).instantiateViewController(withIdentifier: "WithdrawalListVC") as! WithdrawalListVC
-         self.historyViewController = UINavigationController(rootViewController: withdrawalListVC)
-         self.historyViewController.setNavigationBarHidden(true, animated: true)
-         
-         let LoginsVC = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-         self.LoginViewController = UINavigationController(rootViewController: LoginsVC)
-         self.LoginViewController.setNavigationBarHidden(true,animated:true)
-         
-         
-         let SettingVC = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
-         self.SettingsViewController = UINavigationController(rootViewController: SettingVC)
-         self.SettingsViewController.setNavigationBarHidden(true,animated:true)
-         
-         let rateVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "RatingsVC") as! RatingsVC
-         self.RatingsViewController = UINavigationController(rootViewController: rateVC)
-         self.RatingsViewController.setNavigationBarHidden(true,animated:true)
-         
-         let FavoritesVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "FavoriteListVC") as! FavoriteListVC
-         self.FavoriteViewController = UINavigationController(rootViewController: FavoritesVC)
-         self.FavoriteViewController.setNavigationBarHidden(true,animated:true)
-         
-         let CategoryListVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "CategoryListVC") as! CategoryListVC
-         self.CategoryListViewController = UINavigationController(rootViewController: CategoryListVC)
-         self.CategoryListViewController.setNavigationBarHidden(true,animated:true)
-         
-         let BlogsVC = UIStoryboard(name: "Blogs", bundle: nil).instantiateViewController(withIdentifier: "BlogsVC") as! BlogsVC
-         self.BlogsViewController = UINavigationController(rootViewController: BlogsVC)
-         self.BlogsViewController.setNavigationBarHidden(true,animated:true)
-         
-         let myProductListVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "MyProductListVC") as! MyProductListVC
-         self.MyProductViewController = UINavigationController(rootViewController: myProductListVC)
-         self.MyProductViewController.setNavigationBarHidden(true,animated:true)
-         */
-        
-        
         
     }
     override func viewWillAppear(_ animated: Bool) {
