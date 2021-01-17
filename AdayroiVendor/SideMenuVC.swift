@@ -74,7 +74,7 @@ class SideMenuVC: UIViewController {
         viewController.setNavigationBarHidden(true, animated: true)
         self.list_item_menu.append(MenuModel(title: "Cài đặt", icon: "ic_settings",viewController: viewController,is_logout: false))
         
-
+       
         let loginVC = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         viewController = UINavigationController(rootViewController: loginVC)
         viewController.setNavigationBarHidden(true, animated: true)

@@ -40,12 +40,12 @@ class OrderHistoryVC: UIViewController {
     @objc private func refreshData(_ sender: Any) {
         self.refreshControl.endRefreshing()
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlString = API_URL + "/api/orders/my_list_order/limit/30/start/0?user_id=\(user_id)"
+        let urlString = API_URL + "/api/vendororders/my_list_order/limit/30/start/0?user_id=\(user_id)"
         self.Webservice_GetHistory(url: urlString, params:[:])
     }
     override func viewWillAppear(_ animated: Bool) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlString = API_URL + "/api/orders/my_list_order/limit/30/start/0?user_id=\(user_id)"
+        let urlString = API_URL + "/api/vendororders/my_list_order/limit/30/start/0?user_id=\(user_id)"
         self.Webservice_GetHistory(url: urlString, params:[:])
     }
     @IBAction func btnTap_Menu(_ sender: UIButton) {
