@@ -169,6 +169,11 @@ extension OrderHistoryDetailsVC {
                        self.UILabelTaxPercent.text=String(orderModel.shiping_tax_percent)
                        self.UILabelOrderStatus.text=orderModel.orderStatus.name
                        self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_cost_befor_tax)
+                       self.UILabelTotalCostBeforTax.text=String(orderModel.total_cost_befor_tax)
+                       self.UILabelDiscountAmount.text=String(orderModel.discount_amount)
+                       self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
+                       self.UILabelTax.text=String(orderModel.tax_amount)
+                       //self.UI.text=String(orderModel.tax_amount)
                        self.UICollectionViewOrderProducts.delegate=self
                        self.UICollectionViewOrderProducts.dataSource = self
                        self.UICollectionViewOrderProducts.reloadData()
