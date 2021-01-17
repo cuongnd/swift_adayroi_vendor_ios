@@ -21,13 +21,13 @@ class historyOrderProductCell: UICollectionViewCell {
     @IBOutlet weak var UILabelTotal: UILabel!
     /*
      @IBOutlet weak var UILabelPrice: UILabel!
-       @IBOutlet weak var UILabelquality: UILabel!
-       @IBOutlet weak var UILabelTotal: UILabel!
-       @IBOutlet weak var UILabelProductName: UILabel!
-      
-       @IBOutlet weak var UICollectionViewAttributeNameValue: UICollectionView!
-    */
-  
+     @IBOutlet weak var UILabelquality: UILabel!
+     @IBOutlet weak var UILabelTotal: UILabel!
+     @IBOutlet weak var UILabelProductName: UILabel!
+     
+     @IBOutlet weak var UICollectionViewAttributeNameValue: UICollectionView!
+     */
+    
 }
 
 class OrderHistoryDetailsVC: UIViewController {
@@ -63,6 +63,8 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UIImageViewColorImage: UIImageView!
     @IBOutlet weak var UIImageViewProductImage: UIImageView!
     @IBOutlet weak var UICollectionViewOrderProducts: UICollectionView!
+    @IBOutlet weak var UILabelTaxtPercent: UILabel!
+    @IBOutlet weak var UILabelTaxShippingPercent: UILabel!
     var driver_mobile = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +88,11 @@ class OrderHistoryDetailsVC: UIViewController {
     }
     func callNumber(phoneNumber: String) {
         guard let url = URL(string: "telprompt://\(phoneNumber)"),
-               UIApplication.shared.canOpenURL(url) else {
-                   return
-           }
-           UIApplication.shared.open(url, options: [:], completionHandler: nil)
-       }
+            UIApplication.shared.canOpenURL(url) else {
+                return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
     
 }
 extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -142,55 +144,57 @@ extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSo
 
 //MARK: Webservices
 extension OrderHistoryDetailsVC {
-     func Webservice_getOrderInfo(url:String, params:NSDictionary) -> Void {
-           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-               if strErrorMessage.count != 0 {
-                   showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-               }
-               else {
-                   print(jsonResponse!)
-                   do {
-                       let jsonDecoder = JSONDecoder()
-                       let getOrderResponseModel = try jsonDecoder.decode(GetOrderResponseModel.self, from: jsonResponse!)
-                       let orderModel:OrderModel=getOrderResponseModel.order
-                       self.list_product=orderModel.list_product;
-                       self.UILabelOrderNumber.text=orderModel.order_number
-                       self.UILabelTotalCountProduct.text=String(orderModel.total_amount_product)
-                       self.UILabelBillingAddress1.text=orderModel.billing_address_1
-                       self.UILabelBillingAddress2.text=orderModel.billing_address_2
-                       self.UILabelBillingEmail.text=orderModel.billing_email
-                       self.UILabelBillingPhoneNumber.text=orderModel.billing_phone
-                       self.UILabelShippingAddress2.text=orderModel.shipping_address_2
-                       self.UILabelShippingAddress1.text=orderModel.shipping_address_1
-                       self.UILabelShippingEmail.text=orderModel.shipping_email
-                       self.UILabelShippingPhoneNumber.text=orderModel.shipping_phone
-                       self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
-                       self.UILabelShippingAmout.text=String(orderModel.shipping_amount)
-                       self.UILabelTaxPercent.text=String(orderModel.shiping_tax_percent)
-                       self.UILabelOrderStatus.text=orderModel.orderStatus.name
-                       self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_cost_befor_tax)
-                       self.UILabelTotalCostBeforTax.text=String(orderModel.total_cost_befor_tax)
-                       self.UILabelDiscountAmount.text=String(orderModel.discount_amount)
-                       self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
-                       self.UILabelTax.text=String(orderModel.tax_amount)
-                       //self.UI.text=String(orderModel.tax_amount)
-                       self.UICollectionViewOrderProducts.delegate=self
-                       self.UICollectionViewOrderProducts.dataSource = self
-                       self.UICollectionViewOrderProducts.reloadData()
-                       print("orderModel:\(orderModel)")
-                   } catch let error as NSError  {
-                       print("error: \(error)")
-                   }
-                   
-                   
-                   //print("userModel:\(userModel)")
-                   
-               }
-           }
-           
-           
-           
-       }
+    func Webservice_getOrderInfo(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getOrderResponseModel = try jsonDecoder.decode(GetOrderResponseModel.self, from: jsonResponse!)
+                    let orderModel:OrderModel=getOrderResponseModel.order
+                    self.list_product=orderModel.list_product;
+                    self.UILabelOrderNumber.text=orderModel.order_number
+                    self.UILabelTotalCountProduct.text=String(orderModel.total_amount_product)
+                    self.UILabelBillingAddress1.text=orderModel.billing_address_1
+                    self.UILabelBillingAddress2.text=orderModel.billing_address_2
+                    self.UILabelBillingEmail.text=orderModel.billing_email
+                    self.UILabelBillingPhoneNumber.text=orderModel.billing_phone
+                    self.UILabelShippingAddress2.text=orderModel.shipping_address_2
+                    self.UILabelShippingAddress1.text=orderModel.shipping_address_1
+                    self.UILabelShippingEmail.text=orderModel.shipping_email
+                    self.UILabelShippingPhoneNumber.text=orderModel.shipping_phone
+                    self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
+                    self.UILabelShippingAmout.text=String(orderModel.shipping_amount)
+                    self.UILabelTaxPercent.text=String(orderModel.shiping_tax_percent)
+                    self.UILabelOrderStatus.text=orderModel.orderStatus.name
+                    self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_cost_befor_tax)
+                    self.UILabelTotalCostBeforTax.text=String(orderModel.total_cost_befor_tax)
+                    self.UILabelDiscountAmount.text=String(orderModel.discount_amount)
+                    self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
+                    self.UILabelTax.text=String(orderModel.tax_amount)
+                    //self.UI.text=String(orderModel.tax_amount)
+                    self.UILabelTaxtPercent.text="Thuế (\(orderModel.tax_percent)%)"
+                    self.UILabelTaxShippingPercent.text="Thuế giao hàng(\(orderModel.shiping_tax_percent)%)"
+                    self.UICollectionViewOrderProducts.delegate=self
+                    self.UICollectionViewOrderProducts.dataSource = self
+                    self.UICollectionViewOrderProducts.reloadData()
+                    print("orderModel:\(orderModel)")
+                } catch let error as NSError  {
+                    print("error: \(error)")
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+        
+        
+        
+    }
     func Webservice_CancelOrder(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
             

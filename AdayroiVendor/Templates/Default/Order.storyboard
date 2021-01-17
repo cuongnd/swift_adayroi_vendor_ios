@@ -1002,6 +1002,8 @@
                         <outlet property="UILabelShippingPhoneNumber" destination="hkB-5e-Qtk" id="gXh-F1-beI"/>
                         <outlet property="UILabelTax" destination="faO-xE-dPV" id="5d0-Y4-xVm"/>
                         <outlet property="UILabelTaxPercent" destination="vs4-6h-H7M" id="rYP-Ac-mXT"/>
+                        <outlet property="UILabelTaxShippingPercent" destination="u2C-4I-00f" id="Oee-bp-W7R"/>
+                        <outlet property="UILabelTaxtPercent" destination="euJ-mk-ohC" id="X3X-IM-Inr"/>
                         <outlet property="UILabelTotalCostAfterDiscountAndBeforTax" destination="bku-Rg-ShA" id="0lb-Fa-PU7"/>
                         <outlet property="UILabelTotalCostBeforTax" destination="oJE-NY-U42" id="Cfo-yW-v9L"/>
                         <outlet property="UILabelTotalCountProduct" destination="k0a-Qb-pdX" id="vQE-wC-Rp9"/>
