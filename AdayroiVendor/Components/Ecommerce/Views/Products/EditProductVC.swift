@@ -2394,7 +2394,8 @@ extension EditProductVC: ModalAttributeHeadIndexDelegate {
             let title:String=CellAttributeList[i][1].title!
             let price:String=CellAttributeList[i][2].title!
             list_attribute.append("\(title)(\(price))");
-            self.list_header_attribute_title[attributeTitleHeadIndex].list_attribute.append(HeaderAttributeModel(title: title, price: 2.2, note: ""))
+            guard let price1=Double(price) else { return   }
+            self.list_header_attribute_title[attributeTitleHeadIndex].list_attribute.append(HeaderAttributeModel(title: title, price: price1, note: ""))
         }
         let joined2 = list_attribute.joined(separator: ", ")
         self.headerAttributeTitleProduct[AttributeHeadIndex][3].title=joined2
