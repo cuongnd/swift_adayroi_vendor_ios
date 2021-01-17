@@ -20,7 +20,7 @@ struct OrderModel: Codable {
     let payment_method_id: String
     let order_status_id: String
     let order_number: String
-    let balance_amount: Int
+    let balance_amount: Double
     let payment_type: String
     let billing_address_1: String
     let billing_address_2: String
@@ -31,14 +31,11 @@ struct OrderModel: Codable {
     let billing_phone: String
     let billing_postal_code: String
     let contact_name: String
-    let coupon_discount_amount: Int
+    let coupon_discount_amount: Double
     let currency_short_form: String
     let currency_symbol: String
-    let discount_amount: Int
+    let discount_amount: Double
     let is_bank: Int
-    let is_cod: Int
-    let is_paypal: Int
-    let is_stripe: Int
     let memo: String
     let payment_method_amount: Int
     let payment_discount_percent: Int
@@ -60,7 +57,7 @@ struct OrderModel: Codable {
     let total_item_count: Int
     let total_item_amount: Int
     let trans_status_id: String
-    let user: OrderUserModel
+    let user: OrderUserModel?
     let list_product: [OrderProductModel]
     
     
@@ -94,9 +91,6 @@ struct OrderModel: Codable {
         case currency_symbol = "currency_symbol"
         case discount_amount = "discount_amount"
         case is_bank = "is_bank"
-        case is_cod = "is_cod"
-        case is_paypal = "is_paypal"
-        case is_stripe = "is_stripe"
         case memo = "memo"
         case payment_method_amount = "payment_method_amount"
         case payment_discount_percent = "payment_discount_percent"

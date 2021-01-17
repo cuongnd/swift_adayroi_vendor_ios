@@ -106,8 +106,8 @@ extension ADRFrontEndViewCheckoutThankyouVC
                     let jsonDecoder = JSONDecoder()
                     let getOrderResponseModel = try jsonDecoder.decode(GetOrderResponseModel.self, from: jsonResponse!)
                     let orderModel:OrderModel=getOrderResponseModel.order
-                    self.list_product=orderModel.list_product;
-                    self.UILabelThanhyouName.text="Cám ơn bạn \(orderModel.user.fullname)"
+                    self.list_product=orderModel.list_product ?? [OrderProductModel]();
+                    self.UILabelThanhyouName.text="Cám ơn bạn \(orderModel.user!.fullname)"
                     self.UILabelOrderNumber.text=orderModel.order_number
                     self.UILabelBillingAddress2.text=orderModel.billing_address_2
                     self.UILabelBillingAddress1.text=orderModel.billing_address_1

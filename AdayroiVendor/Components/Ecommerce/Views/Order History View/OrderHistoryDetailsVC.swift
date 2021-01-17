@@ -68,7 +68,7 @@ class OrderHistoryDetailsVC: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "historyOrderProductCell", bundle: nil)
         self.UICollectionViewOrderProducts.register(nib, forCellWithReuseIdentifier: "cell")
-        let urlString = API_URL + "/api/orders/\(self.OrderId)"
+        let urlString = API_URL + "/api/vendororders/\(self.OrderId)"
         self.Webservice_getOrderInfo(url: urlString, params:[:])
         
     }
