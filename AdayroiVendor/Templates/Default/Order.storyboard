@@ -990,6 +990,7 @@
                         <outlet property="UILabelBillingAddress1" destination="fzJ-hY-GA6" id="AbA-hn-tih"/>
                         <outlet property="UILabelBillingAddress2" destination="Cda-ze-LgG" id="RUx-mF-zpC"/>
                         <outlet property="UILabelBillingEmail" destination="kCi-es-NHc" id="QYU-qh-eNF"/>
+                        <outlet property="UILabelBillingFullName" destination="vzD-oi-tNf" id="ldk-Xc-ONd"/>
                         <outlet property="UILabelBillingPhoneNumber" destination="MpS-pM-iR5" id="HBm-Eh-nme"/>
                         <outlet property="UILabelCopyOrderNUmber" destination="sPS-YV-VqB" id="UUt-lR-dB4"/>
                         <outlet property="UILabelDiscountAmount" destination="ZG1-UI-Fpf" id="8RD-Nz-6xx"/>
@@ -999,6 +1000,7 @@
                         <outlet property="UILabelShippingAddress2" destination="ezY-G7-lik" id="Xbl-f2-gmz"/>
                         <outlet property="UILabelShippingAmout" destination="0g0-7S-33f" id="nDZ-mF-YSx"/>
                         <outlet property="UILabelShippingEmail" destination="cd5-yU-n5W" id="RJy-gb-UMr"/>
+                        <outlet property="UILabelShippingFullName" destination="NqQ-iQ-gA7" id="Gvy-Pn-cgs"/>
                         <outlet property="UILabelShippingPhoneNumber" destination="hkB-5e-Qtk" id="gXh-F1-beI"/>
                         <outlet property="UILabelTax" destination="faO-xE-dPV" id="5d0-Y4-xVm"/>
                         <outlet property="UILabelTaxPercent" destination="vs4-6h-H7M" id="rYP-Ac-mXT"/>

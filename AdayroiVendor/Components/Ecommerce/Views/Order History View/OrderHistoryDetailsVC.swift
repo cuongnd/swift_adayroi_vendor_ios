@@ -65,6 +65,8 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UICollectionViewOrderProducts: UICollectionView!
     @IBOutlet weak var UILabelTaxtPercent: UILabel!
     @IBOutlet weak var UILabelTaxShippingPercent: UILabel!
+    @IBOutlet weak var UILabelShippingFullName: UILabel!
+    @IBOutlet weak var UILabelBillingFullName: UILabel!
     var driver_mobile = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,10 +163,12 @@ extension OrderHistoryDetailsVC {
                     self.UILabelBillingAddress1.text=orderModel.billing_address_1
                     self.UILabelBillingAddress2.text=orderModel.billing_address_2
                     self.UILabelBillingEmail.text=orderModel.billing_email
+                    self.UILabelBillingFullName.text=orderModel.billing_full_name
                     self.UILabelBillingPhoneNumber.text=orderModel.billing_phone
                     self.UILabelShippingAddress2.text=orderModel.shipping_address_2
                     self.UILabelShippingAddress1.text=orderModel.shipping_address_1
                     self.UILabelShippingEmail.text=orderModel.shipping_email
+                    self.UILabelShippingFullName.text=orderModel.shipping_full_name
                     self.UILabelShippingPhoneNumber.text=orderModel.shipping_phone
                     self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
                     self.UILabelShippingAmout.text=String(orderModel.shipping_amount)
