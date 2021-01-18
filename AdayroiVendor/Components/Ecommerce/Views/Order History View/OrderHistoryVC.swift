@@ -92,9 +92,9 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         
         let cell = self.Tableview_OrderHistory.dequeueReusableCell(withIdentifier: "OrderHistoryCell") as! OrderHistoryCell
         let order = self.list_my_order[indexPath.row]
-        cell.lbl_QtyLabel.text = "QTY :".localiz()
-        cell.lbl_OrderNoLabel.text = "ORDER ID :".localiz()
-        cell.lbl_orderStatusLabel.text = "STATUS :".localiz()
+        cell.lbl_QtyLabel.text = "Số lượng sản phẩm :".localiz()
+        cell.lbl_OrderNoLabel.text = "Số đơn hàn :".localiz()
+        cell.lbl_orderStatusLabel.text = "Trạng thái đơn hàng :".localiz()
         cell.lbl_itemQty.text = String(order.total_amount_product)
         cell.lbl_Date.text = order.created_date
         //let setdate = DateFormater.getBirthDateStringFromDateString(givenDate:data["created_date"].stringValue)
