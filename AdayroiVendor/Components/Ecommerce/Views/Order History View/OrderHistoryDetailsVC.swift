@@ -41,6 +41,7 @@ class OrderHistoryDetailsVC: UIViewController {
     var OrderDetailsData = [JSON]()
     var list_product:[OrderProductModel]=[OrderProductModel]()
     var taxStr = "Tax".localiz()
+    var orderModel:OrderModel?
     @IBOutlet weak var UILabelOrderNumber: UILabel!
     @IBOutlet weak var UILabelCopyOrderNUmber: UILabel!
     @IBOutlet weak var UILabelOrderStatus: UILabel!
@@ -155,34 +156,34 @@ extension OrderHistoryDetailsVC {
                 do {
                     let jsonDecoder = JSONDecoder()
                     let getOrderResponseModel = try jsonDecoder.decode(GetOrderResponseModel.self, from: jsonResponse!)
-                    let orderModel:OrderModel=getOrderResponseModel.order
-                    self.list_product=orderModel.list_product;
-                    self.UILabelOrderNumber.text=orderModel.order_number
-                    self.UILabelTotalCountProduct.text=String(orderModel.total_amount_product)
-                    self.UILabelBillingAddress1.text=orderModel.billing_address_1
-                    self.UILabelBillingAddress2.text=orderModel.billing_address_2
-                    self.UILabelBillingEmail.text=orderModel.billing_email
-                    self.UILabelBillingFullName.text=orderModel.billing_full_name
-                    self.UILabelBillingPhoneNumber.text=orderModel.billing_phone
-                    self.UILabelShippingAddress2.text=orderModel.shipping_address_2
-                    self.UILabelShippingAddress1.text=orderModel.shipping_address_1
-                    self.UILabelShippingEmail.text=orderModel.shipping_email
-                    self.UILabelShippingFullName.text=orderModel.shipping_full_name
-                    self.UILabelShippingPhoneNumber.text=orderModel.shipping_phone
-                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
-                    self.UILabelShippingAmout.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.shipping_amount), decimalCount: 0)
-                    self.UILabelOrderStatus.text=orderModel.orderStatus.name
-                    self.UILabelTotalCostAfterDiscountAndBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
-                    self.UILabelTotalCostBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.total_cost_befor_tax), decimalCount: 0)
-                    self.UILabelDiscountAmount.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.discount_amount), decimalCount: 0)
-                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.total_cost_final), decimalCount: 0)
-                    self.UILabelTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.tax_amount), decimalCount: 0)
+                    self.orderModel=getOrderResponseModel.order
+                    self.list_product=self.orderModel!.list_product;
+                    self.UILabelOrderNumber.text=self.orderModel!.order_number
+                    self.UILabelTotalCountProduct.text=String(self.orderModel!.total_amount_product)
+                    self.UILabelBillingAddress1.text=self.orderModel!.billing_address_1
+                    self.UILabelBillingAddress2.text=self.orderModel!.billing_address_2
+                    self.UILabelBillingEmail.text=self.orderModel!.billing_email
+                    self.UILabelBillingFullName.text=self.orderModel!.billing_full_name
+                    self.UILabelBillingPhoneNumber.text=self.orderModel!.billing_phone
+                    self.UILabelShippingAddress2.text=self.orderModel!.shipping_address_2
+                    self.UILabelShippingAddress1.text=self.orderModel!.shipping_address_1
+                    self.UILabelShippingEmail.text=self.orderModel!.shipping_email
+                    self.UILabelShippingFullName.text=self.orderModel!.shipping_full_name
+                    self.UILabelShippingPhoneNumber.text=self.orderModel!.shipping_phone
+                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
+                    self.UILabelShippingAmout.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.shipping_amount), decimalCount: 0)
+                    self.UILabelOrderStatus.text=self.orderModel!.orderStatus.name
+                    self.UILabelTotalCostAfterDiscountAndBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
+                    self.UILabelTotalCostBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.total_cost_befor_tax), decimalCount: 0)
+                    self.UILabelDiscountAmount.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.discount_amount), decimalCount: 0)
+                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.total_cost_final), decimalCount: 0)
+                    self.UILabelTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.tax_amount), decimalCount: 0)
                     //self.UI.text=String(orderModel.tax_amount)
-                    self.UILabelTaxtPercent.text="Thuế (\(orderModel.tax_percent)%)"
+                    self.UILabelTaxtPercent.text="Thuế (\(self.orderModel!.tax_percent)%)"
                     self.UICollectionViewOrderProducts.delegate=self
                     self.UICollectionViewOrderProducts.dataSource = self
                     self.UICollectionViewOrderProducts.reloadData()
-                    print("orderModel:\(orderModel)")
+                    print("orderModel:\(self.orderModel!)")
                 } catch let error as NSError  {
                     print("error: \(error)")
                 }
