@@ -967,6 +967,8 @@ class EditProductVC: UIViewController {
         qlKhoHangVC.Delegate = self
         //qlKhoHangVC.attributeHeadIndex = sender.tag
         //qlKhoHangVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        qlKhoHangVC.modalPresentationStyle = .overFullScreen
+        qlKhoHangVC.modalTransitionStyle = .crossDissolve
         self.present(qlKhoHangVC, animated: true, completion: nil)
     }
     @IBAction func UIButtonTouchUpInsideEditLinkVideoCaption(_ sender: UIButton) {

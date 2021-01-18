@@ -114,6 +114,8 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         vc.OrderId = data["_id"].stringValue
         vc.status = data["status"].stringValue
         vc.orderHistoryDetailsDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
         self.present(vc,animated: true,completion: nil)
     }
     
