@@ -8,9 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-protocol OrderHistoryDelegate {
-    func refreshData()
-}
+
 
 class OrderHistoryCell: UITableViewCell {
     
@@ -33,12 +31,13 @@ class OrderHistoryVC: UIViewController {
     var refreshControl = UIRefreshControl()
     var OrderHistoryData = [JSON]()
     var selected = String()
+     var orderHistoryDetailsDelegate: OrderHistoryDetailsDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.selected = ""
         self.Tableview_OrderHistory.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
-        self.lbl_titleLabel.text = "Order History".localiz()
+        self.lbl_titleLabel.text = "Order History".localiz();
     }
     @objc private func refreshData(_ sender: Any) {
         self.refreshControl.endRefreshing()
@@ -114,6 +113,7 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         let vc = self.storyboard?.instantiateViewController(identifier: "OrderHistoryDetailsVC") as! OrderHistoryDetailsVC
         vc.OrderId = data["_id"].stringValue
         vc.status = data["status"].stringValue
+        vc.orderHistoryDetailsDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

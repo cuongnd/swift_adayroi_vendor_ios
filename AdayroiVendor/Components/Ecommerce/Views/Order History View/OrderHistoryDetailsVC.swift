@@ -40,7 +40,7 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var btn_cancelHeight: NSLayoutConstraint!
     @IBOutlet weak var btn_cancel: UIButton!
     @IBOutlet weak var lbl_titleLabel: UILabel!
-    var delegate: OrderHistoryDetailsDelegate!
+    var orderHistoryDetailsDelegate: OrderHistoryDetailsDelegate!
     var OrderNumber = String()
     var status = String()
     var OrderId:String=""
@@ -88,8 +88,6 @@ class OrderHistoryDetailsVC: UIViewController {
         DropDownOrderStatus.didSelect{(selectedText , index ,id) in
               self.orderStatusOfOrder=self.list_order_status[index]
         }
-        
-        
     }
     @IBAction func btnTap_Back(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -248,14 +246,14 @@ extension OrderHistoryDetailsVC {
                     let jsonDecoder = JSONDecoder()
                     let getApiResponeUpdateOrderModel = try jsonDecoder.decode(GetApiResponeUpdateOrderModel.self, from: jsonResponse!)
                     if(getApiResponeUpdateOrderModel.result=="success"){
-                        
+                        self.orderHistoryDetailsDelegate.refreshData()
                         self.dismiss(animated: true) {
                             var msg="cập nhật đơn hàng thành công";
                             
                             let alert = UIAlertController(title: "Thông báo", message: msg, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
                             self.present(alert, animated: true)
-                            self.delegate.refreshData()
+                            
                         }
                         
                         
