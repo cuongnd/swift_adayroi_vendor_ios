@@ -114,7 +114,7 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         vc.OrderId = data["_id"].stringValue
         vc.status = data["status"].stringValue
         vc.orderHistoryDetailsDelegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc,animated: true,completion: nil)
     }
     
 }

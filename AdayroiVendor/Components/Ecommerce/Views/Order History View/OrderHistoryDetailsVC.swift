@@ -114,6 +114,7 @@ class OrderHistoryDetailsVC: UIViewController {
         
     }
     @IBAction func UIButtonCacel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnTapCallReceiver(_ sender: UIButton) {
         callNumber(phoneNumber: (self.orderModel?.shipping_phone)! ?? "09123445")
