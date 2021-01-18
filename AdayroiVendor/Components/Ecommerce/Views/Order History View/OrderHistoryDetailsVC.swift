@@ -87,9 +87,12 @@ class OrderHistoryDetailsVC: UIViewController {
         self.Webservice_CancelOrder(url: urlString, params:params)
     }
     
-    @IBAction func btnTap_Call(_ sender: UIButton) {
-        callNumber(phoneNumber: self.driver_mobile)
+    @IBAction func btnTapCallReceiver(_ sender: UIButton) {
+        callNumber(phoneNumber: (self.orderModel?.shipping_phone)! ?? "09123445")
     }
+    @IBAction func btnTapCallBilling(_ sender: UIButton) {
+           callNumber(phoneNumber: (self.orderModel?.billing_phone)! ?? "09123445")
+       }
     func callNumber(phoneNumber: String) {
         guard let url = URL(string: "telprompt://\(phoneNumber)"),
             UIApplication.shared.canOpenURL(url) else {

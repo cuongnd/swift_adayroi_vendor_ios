@@ -790,10 +790,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-oB-eIF">
                                                 <rect key="frame" x="520" y="374.5" width="72" height="30"/>
                                                 <state key="normal" title="09123456"/>
+                                                <connections>
+                                                    <action selector="btnTapCallReceiver:" destination="mTT-hg-HII" eventType="touchUpInside" id="6H0-kb-nDw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doh-Md-JRZ">
                                                 <rect key="frame" x="512" y="614.5" width="80" height="30"/>
                                                 <state key="normal" title="091234567"/>
+                                                <connections>
+                                                    <action selector="btnTapCallBilling:" destination="mTT-hg-HII" eventType="touchUpInside" id="ws7-8y-iBV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
