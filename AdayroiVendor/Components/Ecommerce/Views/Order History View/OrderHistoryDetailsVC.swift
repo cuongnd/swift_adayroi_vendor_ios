@@ -67,6 +67,8 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UILabelTaxtPercent: UILabel!
     @IBOutlet weak var UILabelShippingFullName: UILabel!
     @IBOutlet weak var UILabelBillingFullName: UILabel!
+    @IBOutlet weak var UIButtonShippingPhoneNumber: UIButton!
+    @IBOutlet weak var UIButtonBillingPhoneNumber: UIButton!
     var driver_mobile = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,12 +166,12 @@ extension OrderHistoryDetailsVC {
                     self.UILabelBillingAddress2.text=self.orderModel!.billing_address_2
                     self.UILabelBillingEmail.text=self.orderModel!.billing_email
                     self.UILabelBillingFullName.text=self.orderModel!.billing_full_name
-                    self.UILabelBillingPhoneNumber.text=self.orderModel!.billing_phone
+                    self.UIButtonBillingPhoneNumber.setTitle(self.orderModel!.billing_phone, for: .normal)
                     self.UILabelShippingAddress2.text=self.orderModel!.shipping_address_2
                     self.UILabelShippingAddress1.text=self.orderModel!.shipping_address_1
                     self.UILabelShippingEmail.text=self.orderModel!.shipping_email
                     self.UILabelShippingFullName.text=self.orderModel!.shipping_full_name
-                    self.UILabelShippingPhoneNumber.text=self.orderModel!.shipping_phone
+                    self.UIButtonShippingPhoneNumber.setTitle(self.orderModel!.shipping_phone, for: .normal)
                     self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
                     self.UILabelShippingAmout.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.shipping_amount), decimalCount: 0)
                     self.UILabelOrderStatus.text=self.orderModel!.orderStatus.name
