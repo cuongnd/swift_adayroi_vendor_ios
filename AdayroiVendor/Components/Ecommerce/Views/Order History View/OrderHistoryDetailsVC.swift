@@ -64,7 +64,6 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UIImageViewProductImage: UIImageView!
     @IBOutlet weak var UICollectionViewOrderProducts: UICollectionView!
     @IBOutlet weak var UILabelTaxtPercent: UILabel!
-    @IBOutlet weak var UILabelTaxShippingPercent: UILabel!
     @IBOutlet weak var UILabelShippingFullName: UILabel!
     @IBOutlet weak var UILabelBillingFullName: UILabel!
     var driver_mobile = String()
@@ -170,18 +169,16 @@ extension OrderHistoryDetailsVC {
                     self.UILabelShippingEmail.text=orderModel.shipping_email
                     self.UILabelShippingFullName.text=orderModel.shipping_full_name
                     self.UILabelShippingPhoneNumber.text=orderModel.shipping_phone
-                    self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
-                    self.UILabelShippingAmout.text=String(orderModel.shipping_amount)
-                    self.UILabelTaxPercent.text=String(orderModel.shiping_tax_percent)
+                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
+                    self.UILabelShippingAmout.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.shipping_amount), decimalCount: 0)
                     self.UILabelOrderStatus.text=orderModel.orderStatus.name
-                    self.UILabelTotalCostAfterDiscountAndBeforTax.text=String(orderModel.total_cost_befor_tax)
-                    self.UILabelTotalCostBeforTax.text=String(orderModel.total_cost_befor_tax)
-                    self.UILabelDiscountAmount.text=String(orderModel.discount_amount)
-                    self.UILabelTotalCoustAfterTax.text=String(orderModel.toal_cost_after_discount_and_befor_tax)
-                    self.UILabelTax.text=String(orderModel.tax_amount)
+                    self.UILabelTotalCostAfterDiscountAndBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
+                    self.UILabelTotalCostBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.total_cost_befor_tax), decimalCount: 0)
+                    self.UILabelDiscountAmount.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.discount_amount), decimalCount: 0)
+                    self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.total_cost_final), decimalCount: 0)
+                    self.UILabelTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(orderModel.tax_amount), decimalCount: 0)
                     //self.UI.text=String(orderModel.tax_amount)
                     self.UILabelTaxtPercent.text="Thuế (\(orderModel.tax_percent)%)"
-                    self.UILabelTaxShippingPercent.text="Thuế giao hàng(\(orderModel.shiping_tax_percent)%)"
                     self.UICollectionViewOrderProducts.delegate=self
                     self.UICollectionViewOrderProducts.dataSource = self
                     self.UICollectionViewOrderProducts.reloadData()
