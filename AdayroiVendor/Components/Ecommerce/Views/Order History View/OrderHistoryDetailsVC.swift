@@ -111,7 +111,7 @@ extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSo
         let element=self.list_product[indexPath.row]
         cell.UILabelPrice.text=String(element.unit_price)
         cell.UILabelProductName.text=element.product_name
-        cell.UILabelTotal.text=String(element.total)
+        cell.UILabelTotal.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(element.total), decimalCount: 0)
         
         cell.UILabelColorValue.text=element.color_value
         cell.UIImageViewColor.sd_setImage(with: URL(string: element.color_image), placeholderImage: UIImage(named: "placeholder_image"))
