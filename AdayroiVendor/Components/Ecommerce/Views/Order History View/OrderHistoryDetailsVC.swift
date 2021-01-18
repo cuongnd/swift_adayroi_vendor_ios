@@ -92,6 +92,20 @@ class OrderHistoryDetailsVC: UIViewController {
         self.Webservice_CancelOrder(url: urlString, params:params)
     }
     
+    @IBAction func UIButtonSave(_ sender: UIButton) {
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn cập nhật không ?".localiz(), preferredStyle: .alert)
+               let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                   let urlStringUpdateVendorOrder = API_URL + "/api/vendororders/\(self.OrderId)"
+                   self.Webservice_getOrderInfo(url: urlString, params:[:])
+               }
+               let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+               alertVC.addAction(yesAction)
+               alertVC.addAction(noAction)
+               self.present(alertVC,animated: true,completion: nil)
+        
+    }
+    @IBAction func UIButtonCacel(_ sender: UIButton) {
+    }
     @IBAction func btnTapCallReceiver(_ sender: UIButton) {
         callNumber(phoneNumber: (self.orderModel?.shipping_phone)! ?? "09123445")
     }
