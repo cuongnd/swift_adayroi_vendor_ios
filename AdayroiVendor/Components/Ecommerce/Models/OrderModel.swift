@@ -19,7 +19,6 @@ struct OrderModel: Codable {
     let payment_method_id: String
     let order_status_id: String
     let order_number: String
-    let balance_amount: Double
     let payment_type: String
     let billing_address_1: String
     let billing_address_2: String
@@ -60,8 +59,8 @@ struct OrderModel: Codable {
     let shipping_tax_percent: Int
     let trans_status_id: String
     let user: OrderUserModel?
-    let orderStatus: OrderStatusModel
-    let list_product: [OrderProductModel]
+    let orderStatus: OrderStatusModel?
+    let list_product: [OrderProductModel]?
     
     
     enum CodingKeys: String, CodingKey {
@@ -77,7 +76,6 @@ struct OrderModel: Codable {
         case payment_method_id = "payment_method_id"
         case order_status_id = "order_status_id"
         case order_number = "order_number"
-        case balance_amount = "balance_amount"
         case payment_type = "payment_type"
         case billing_address_1 = "billing_address_1"
         case billing_address_2 = "billing_address_2"

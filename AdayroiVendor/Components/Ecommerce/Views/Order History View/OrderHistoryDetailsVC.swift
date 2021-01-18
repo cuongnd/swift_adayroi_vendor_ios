@@ -191,7 +191,7 @@ extension OrderHistoryDetailsVC {
                     let jsonDecoder = JSONDecoder()
                     let getOrderResponseModel = try jsonDecoder.decode(GetOrderResponseModel.self, from: jsonResponse!)
                     self.orderModel=getOrderResponseModel.order
-                    self.list_product=self.orderModel!.list_product;
+                    self.list_product=(self.orderModel!.list_product)!;
                     self.UILabelOrderNumber.text=self.orderModel!.order_number
                     self.UILabelTotalCountProduct.text=String(self.orderModel!.total_amount_product)
                     self.UILabelBillingAddress1.text=self.orderModel!.billing_address_1

@@ -16,3 +16,15 @@ struct GetApiResponeUpdateOrderModel: Codable {
         case errorMessage = "errorMessage"
     }
 }
+struct ApiResponeGetListMyOrders: Codable {
+    let result: String
+    let code: Int
+    let errorMessage:String
+    let list_my_orders:[OrderModel]
+    enum CodingKeys: String, CodingKey {
+        case result = "result"
+        case code = "code"
+        case errorMessage = "errorMessage"
+        case list_my_orders = "list_order"
+    }
+}

@@ -29,7 +29,7 @@ class OrderHistoryVC: UIViewController {
     @IBOutlet weak var Tableview_OrderHistory: UITableView!
     @IBOutlet weak var lbl_titleLabel: UILabel!
     var refreshControl = UIRefreshControl()
-    var OrderHistoryData = [JSON]()
+    var list_my_order:[OrderModel] = [OrderModel]()
     var selected = String()
      var orderHistoryDetailsDelegate: OrderHistoryDetailsDelegate!
     override func viewDidLoad() {
@@ -70,13 +70,13 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         //messageLabel.font = UIFont(name: "POPPINS-REGULAR", size: 15)!
         messageLabel.sizeToFit()
         self.Tableview_OrderHistory.backgroundView = messageLabel;
-        if self.OrderHistoryData.count == 0 {
+        if self.list_my_order.count == 0 {
             messageLabel.text = "NO ORDER HISTORY"
         }
         else {
             messageLabel.text = ""
         }
-        return OrderHistoryData.count
+        return self.list_my_order.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,35 +84,33 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        _ = self.OrderHistoryData[indexPath.row]
+        _ = self.list_my_order[indexPath.row]
         return 135
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.Tableview_OrderHistory.dequeueReusableCell(withIdentifier: "OrderHistoryCell") as! OrderHistoryCell
-        let data = self.OrderHistoryData[indexPath.row]
+        let order = self.list_my_order[indexPath.row]
         cell.lbl_QtyLabel.text = "QTY :".localiz()
         cell.lbl_OrderNoLabel.text = "ORDER ID :".localiz()
         cell.lbl_orderStatusLabel.text = "STATUS :".localiz()
-        cell.lbl_itemQty.text = data["qty"].stringValue
-        cell.lbl_Date.text = data["date"].stringValue
+        cell.lbl_itemQty.text = String(order.total_amount_product)
+        cell.lbl_Date.text = order.created_date
         //let setdate = DateFormater.getBirthDateStringFromDateString(givenDate:data["created_date"].stringValue)
         //cell.lbl_Date.text = setdate
-        _ = data["order_status_id"].stringValue
+        //_ = data["order_status_id"].stringValue
         
-        cell.lbl_OrderNumber.text = data["order_number"].stringValue
-        let ItemPrice = formatter.string(for: data["total"].stringValue.toDouble)
-        cell.lbl_itemPrice.text = "\(UserDefaultManager.getStringFromUserDefaults(key: UD_currency))\(ItemPrice!)"
-        cell.lbl_PaymentType.text =  data["payment_method_name"].stringValue
+        cell.lbl_OrderNumber.text = order.order_number
+        cell.lbl_itemPrice.text = LibraryUtilitiesUtility.format_currency(amount: UInt64(order.total_cost_final), decimalCount: 0)
+        cell.lbl_PaymentType.text =  order.payment_method_name
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = self.OrderHistoryData[indexPath.row]
+        let order = self.list_my_order[indexPath.row]
         let vc = self.storyboard?.instantiateViewController(identifier: "OrderHistoryDetailsVC") as! OrderHistoryDetailsVC
-        vc.OrderId = data["_id"].stringValue
-        vc.status = data["status"].stringValue
+        vc.OrderId = order.order_id
         vc.orderHistoryDetailsDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
@@ -122,6 +120,38 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
 }
 //MARK: Webservices
 extension OrderHistoryVC {
+    func Webservice_GetHistory(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let apiResponeGetListMyOrders = try jsonDecoder.decode(ApiResponeGetListMyOrders.self, from: jsonResponse!)
+                    
+                    self.list_my_order=apiResponeGetListMyOrders.list_my_orders
+                    print("self.list_my_order \(self.list_my_order)")
+                    self.Tableview_OrderHistory.delegate = self
+                    self.Tableview_OrderHistory.dataSource = self
+                    self.Tableview_OrderHistory.reloadData()
+                    
+                } catch let error as NSError  {
+                    print("error: \(error)")
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+        
+        
+        
+    }
+    
+    /*
     func Webservice_GetHistory(url:String, params:NSDictionary) -> Void {
         
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
@@ -145,6 +175,7 @@ extension OrderHistoryVC {
             }
         }
     }
+ */
 }
 extension OrderHistoryVC: OrderHistoryDetailsDelegate {
     
