@@ -22,7 +22,11 @@ class TutorialVC: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     //MARK: Variables
-    var tutorialArr = [["image":"ic_First","title":"FRESH FOOD","description":"Get the freshly prepared food any time you want at your place"],["image":"ic_cart","title":"FAST DELIVERY","description":"Have your food delivered instantly with our rapid delivery system"],["image":"ic_Second","title":"EASY PAYMENT","description":"Pay us easily with online or cash on delivery options"]]
+    var tutorialArr = [
+        ["image":"qlykhohang","title":"Quản lý hàng hóa cực kỳ dễ dàng","description":"Biết ngay sản phẩm nào còn hay hết vì hàng hóa trong kho được quản lý chi tiết từng mẫu mã theo màu sắc, kích thước, chất liệu"],
+        ["image":"qldonhang","title":"Quản lý đơn hàng chuyên nghiệp","description":"Quy trình khép kín từ tạo đơn đến xử lý đơn hàng, có thể tùy biến phù hợp theo quy mô từng cửa hàng lớn nhỏ khác nhau"],
+        ["image":"baocao","title":"Báo cáo chuyên nghiệp","description":"Hệ thống báo cáo được thể hiện dưới dạng biểu đồ trực quan dễ hiểu giúp chủ shop theo dõi doanh thu, lợi nhuận tức thì của cửa hàng"]
+    ]
     //MARK: Viewcontroller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
