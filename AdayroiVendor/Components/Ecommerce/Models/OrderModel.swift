@@ -58,6 +58,7 @@ struct OrderModel: Codable {
     var total_cost_final: Double
     let shipping_tax_percent: Int
     let trans_status_id: String
+    let order_status_title: String
     let user: OrderUserModel?
     let orderStatus: OrderStatusModel?
     let list_product: [OrderProductModel]?
@@ -115,6 +116,7 @@ struct OrderModel: Codable {
         case total_cost_final = "total_cost_final"
         case shipping_tax_percent = "shipping_tax_percent"
         case trans_status_id = "trans_status_id"
+        case order_status_title = "order_status_title"
         case list_product = "list_product"
         case user = "user"
         case orderStatus = "order_status"

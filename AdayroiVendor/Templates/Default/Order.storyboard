@@ -189,12 +189,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="UILabelOrderStatus" destination="iok-6a-sbT" id="T9y-kG-EVF"/>
                                             <outlet property="lbl_Date" destination="prq-fe-qox" id="hYI-dh-71y"/>
                                             <outlet property="lbl_OrderNoLabel" destination="wJz-we-BAX" id="U9E-NH-XHV"/>
                                             <outlet property="lbl_OrderNumber" destination="aC7-OJ-hIm" id="OJk-hH-d5g"/>
                                             <outlet property="lbl_PaymentType" destination="3xs-4A-mCa" id="qx0-wZ-kBv"/>
                                             <outlet property="lbl_QtyLabel" destination="O2V-F8-xlY" id="WxB-7K-X6g"/>
-                                            <outlet property="lbl_itemAddress" destination="iok-6a-sbT" id="T9y-kG-EVF"/>
                                             <outlet property="lbl_itemPrice" destination="OXe-5G-lSY" id="mkb-ZC-CEB"/>
                                             <outlet property="lbl_itemQty" destination="U7c-tO-c2s" id="SLR-nB-JrU"/>
                                             <outlet property="lbl_orderStatusLabel" destination="E0L-Y9-wK7" id="9wp-qb-lt1"/>

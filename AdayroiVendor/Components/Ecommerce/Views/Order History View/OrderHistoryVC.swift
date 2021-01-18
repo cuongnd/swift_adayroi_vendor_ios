@@ -20,7 +20,7 @@ class OrderHistoryCell: UITableViewCell {
     @IBOutlet weak var lbl_PaymentType: UILabel!
     @IBOutlet weak var lbl_OrderNumber: UILabel!
     @IBOutlet weak var lbl_itemPrice: UILabel!
-    @IBOutlet weak var lbl_itemAddress: UILabel!
+    @IBOutlet weak var UILabelOrderStatus: UILabel!
     @IBOutlet weak var lbl_itemQty: UILabel!
 }
 
@@ -104,6 +104,7 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         cell.lbl_OrderNumber.text = order.order_number
         cell.lbl_itemPrice.text = LibraryUtilitiesUtility.format_currency(amount: UInt64(order.total_cost_final), decimalCount: 0)
         cell.lbl_PaymentType.text =  order.payment_method_name
+        cell.UILabelOrderStatus.text=order.orderStatus?.name
         return cell
         
     }
