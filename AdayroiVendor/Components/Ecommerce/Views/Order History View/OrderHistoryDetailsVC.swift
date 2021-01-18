@@ -10,6 +10,10 @@ import UIKit
 import SwiftyJSON
 import iOSDropDown
 import TagListView
+protocol OrderHistoryDetailsDelegate {
+    func refreshData()
+}
+
 class historyOrderProductCell: UICollectionViewCell {
     
     @IBOutlet weak var UILabelColorValue: UILabel!
@@ -36,6 +40,7 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var btn_cancelHeight: NSLayoutConstraint!
     @IBOutlet weak var btn_cancel: UIButton!
     @IBOutlet weak var lbl_titleLabel: UILabel!
+    var delegate: OrderHistoryDetailsDelegate!
     var OrderNumber = String()
     var status = String()
     var OrderId:String=""
@@ -80,6 +85,9 @@ class OrderHistoryDetailsVC: UIViewController {
         self.UICollectionViewOrderProducts.register(nib, forCellWithReuseIdentifier: "cell")
         let urlString = API_URL + "/api/vendororders/\(self.OrderId)"
         self.Webservice_getOrderInfo(url: urlString, params:[:])
+        DropDownOrderStatus.didSelect{(selectedText , index ,id) in
+              self.orderStatusOfOrder=self.list_order_status[index]
+        }
         
         
     }
@@ -95,8 +103,11 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBAction func UIButtonSave(_ sender: UIButton) {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn cập nhật không ?".localiz(), preferredStyle: .alert)
                let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-                   let urlStringUpdateVendorOrder = API_URL + "/api/vendororders/\(self.OrderId)"
-                   self.Webservice_getOrderInfo(url: urlString, params:[:])
+                   let urlStringUpdateVendorOrder = API_URL + "/api_task/vendororder.update_ordervendor?order_id=\(self.OrderId)"
+                 let parameters: [String : Any] = [
+                    "order_status_id":self.orderStatusOfOrder?._id
+                    ]
+                self.Webservice_getUpdateVendorOrder(url: urlStringUpdateVendorOrder, params:parameters as NSDictionary)
                }
                let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
                alertVC.addAction(yesAction)
@@ -225,6 +236,46 @@ extension OrderHistoryDetailsVC {
         
         
     }
+    
+    func Webservice_getUpdateVendorOrder(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponeUpdateOrderModel = try jsonDecoder.decode(GetApiResponeUpdateOrderModel.self, from: jsonResponse!)
+                    if(getApiResponeUpdateOrderModel.result=="success"){
+                        
+                        self.dismiss(animated: true) {
+                            var msg="cập nhật đơn hàng thành công";
+                            
+                            let alert = UIAlertController(title: "Thông báo", message: msg, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                            self.delegate.refreshData()
+                        }
+                        
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    print("error: \(error)")
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
+    
+    
     func Webservice_getOrderStatus(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {

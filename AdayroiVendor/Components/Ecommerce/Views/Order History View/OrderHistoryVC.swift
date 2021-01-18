@@ -8,6 +8,9 @@
 
 import UIKit
 import SwiftyJSON
+protocol OrderHistoryDelegate {
+    func refreshData()
+}
 
 class OrderHistoryCell: UITableViewCell {
     
@@ -139,5 +142,14 @@ extension OrderHistoryVC {
                 }
             }
         }
+    }
+}
+extension OrderHistoryVC: OrderHistoryDetailsDelegate {
+    
+    func refreshData() {
+        
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+        let urlString = API_URL + "/api/vendororders/my_list_order/limit/30/start/0?user_id=\(user_id)"
+        self.Webservice_GetHistory(url: urlString, params:[:])
     }
 }
