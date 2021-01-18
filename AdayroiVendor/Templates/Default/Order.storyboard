@@ -795,7 +795,7 @@
                                                     <action selector="btnTapCallBilling:" destination="mTT-hg-HII" eventType="touchUpInside" id="ws7-8y-iBV"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-l5-m2a">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-l5-m2a" customClass="DropDown" customModule="iOSDropDown">
                                                 <rect key="frame" x="424" y="66" width="168" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="168" id="RYp-Z2-Ruv"/>
@@ -990,6 +990,7 @@
                     </view>
                     <size key="freeformSize" width="600" height="1516"/>
                     <connections>
+                        <outlet property="DropDownOrderStatus" destination="zgh-l5-m2a" id="3bf-6a-HWb"/>
                         <outlet property="UIButtonBillingPhoneNumber" destination="Doh-Md-JRZ" id="fSW-xK-DTz"/>
                         <outlet property="UIButtonShippingPhoneNumber" destination="IVB-oB-eIF" id="LIL-Lg-fKE"/>
                         <outlet property="UICollectionViewOrderProducts" destination="U6f-mK-fym" id="tYd-Zv-cES"/>

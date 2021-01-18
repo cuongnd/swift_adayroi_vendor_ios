@@ -105,6 +105,7 @@
 		0469049825B1EFEE0022EBEF /* GetApiRespondeSpecials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469049725B1EFEE0022EBEF /* GetApiRespondeSpecials.swift */; };
 		0469049B25B1F0470022EBEF /* SpecialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469049A25B1F0470022EBEF /* SpecialModel.swift */; };
 		0469049D25B45B210022EBEF /* OrderStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469049C25B45B200022EBEF /* OrderStatusModel.swift */; };
+		0469049F25B546CC0022EBEF /* GetApiResponseOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469049E25B546CC0022EBEF /* GetApiResponseOrderStatus.swift */; };
 		0493654B25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */; };
 		04971249259A366A0024883E /* CategoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971248259A366A0024883E /* CategoryListVC.swift */; };
 		0497124B259A96B70024883E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124A259A96B70024883E /* CategoryModel.swift */; };
@@ -373,6 +374,7 @@
 		0469049725B1EFEE0022EBEF /* GetApiRespondeSpecials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiRespondeSpecials.swift; sourceTree = "<group>"; };
 		0469049A25B1F0470022EBEF /* SpecialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialModel.swift; sourceTree = "<group>"; };
 		0469049C25B45B200022EBEF /* OrderStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStatusModel.swift; sourceTree = "<group>"; };
+		0469049E25B546CC0022EBEF /* GetApiResponseOrderStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseOrderStatus.swift; sourceTree = "<group>"; };
 		0493654A25963897007431AB /* WithdrawalStickyGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalStickyGridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		04971248259A366A0024883E /* CategoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListVC.swift; sourceTree = "<group>"; };
 		0497124A259A96B70024883E /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 				04E6CFC625A0A46300C13FA6 /* GetApiRespondeBlogsModel.swift */,
 				0469049025B13C3B0022EBEF /* GetApiRespondeImages.swift */,
 				0469049725B1EFEE0022EBEF /* GetApiRespondeSpecials.swift */,
+				0469049E25B546CC0022EBEF /* GetApiResponseOrderStatus.swift */,
 				0469049525B17BCF0022EBEF /* GetApiResponseAttributes.swift */,
 				0469046925B032930022EBEF /* GetApiRespondeMyProductsModel.swift */,
 				04E6CFD425A21D9C00C13FA6 /* GetApiResponseVendorProductModel.swift */,
@@ -1932,6 +1935,7 @@
 				0C42DC12257BD7A4007009E4 /* ADRFrontEndController.swift in Sources */,
 				0469049425B156120022EBEF /* AttributeModel.swift in Sources */,
 				0469045C25ACF3B50022EBEF /* GetApiResponseDeleteWarehousesModel.swift in Sources */,
+				0469049F25B546CC0022EBEF /* GetApiResponseOrderStatus.swift in Sources */,
 				880BDE9224D55F870085FC1D /* NoteVC.swift in Sources */,
 				0443F6AC2590F370005D5637 /* DoanhThuThangModel.swift in Sources */,
 				C8F07A2B248F879700665143 /* OrderHistoryDetailsVC.swift in Sources */,

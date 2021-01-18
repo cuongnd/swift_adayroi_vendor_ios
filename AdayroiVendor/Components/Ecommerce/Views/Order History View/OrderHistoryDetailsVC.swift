@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import iOSDropDown
 import TagListView
 class historyOrderProductCell: UICollectionViewCell {
     
@@ -69,6 +70,9 @@ class OrderHistoryDetailsVC: UIViewController {
     @IBOutlet weak var UILabelBillingFullName: UILabel!
     @IBOutlet weak var UIButtonShippingPhoneNumber: UIButton!
     @IBOutlet weak var UIButtonBillingPhoneNumber: UIButton!
+    @IBOutlet weak var DropDownOrderStatus: DropDown!
+    var orderStatusOfOrder:OrderStatusModel?
+    var list_order_status:[OrderStatusModel]=[OrderStatusModel]()
     var driver_mobile = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +80,7 @@ class OrderHistoryDetailsVC: UIViewController {
         self.UICollectionViewOrderProducts.register(nib, forCellWithReuseIdentifier: "cell")
         let urlString = API_URL + "/api/vendororders/\(self.OrderId)"
         self.Webservice_getOrderInfo(url: urlString, params:[:])
+        
         
     }
     @IBAction func btnTap_Back(_ sender: UIButton) {
@@ -177,7 +182,6 @@ extension OrderHistoryDetailsVC {
                     self.UIButtonShippingPhoneNumber.setTitle(self.orderModel!.shipping_phone, for: .normal)
                     self.UILabelTotalCoustAfterTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
                     self.UILabelShippingAmout.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.shipping_amount), decimalCount: 0)
-                    self.UILabelOrderStatus.text=self.orderModel!.orderStatus.name
                     self.UILabelTotalCostAfterDiscountAndBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.toal_cost_after_discount_and_befor_tax), decimalCount: 0)
                     self.UILabelTotalCostBeforTax.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.total_cost_befor_tax), decimalCount: 0)
                     self.UILabelDiscountAmount.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(self.orderModel!.discount_amount), decimalCount: 0)
@@ -188,6 +192,11 @@ extension OrderHistoryDetailsVC {
                     self.UICollectionViewOrderProducts.delegate=self
                     self.UICollectionViewOrderProducts.dataSource = self
                     self.UICollectionViewOrderProducts.reloadData()
+                    self.orderStatusOfOrder = (self.orderModel?.orderStatus)!
+                    let urlStringGettOrderStatus = API_URL + "/api/orderstatus/list"
+                    self.Webservice_getOrderStatus(url: urlStringGettOrderStatus, params:[:])
+                    
+                    
                     print("orderModel:\(self.orderModel!)")
                 } catch let error as NSError  {
                     print("error: \(error)")
@@ -202,6 +211,55 @@ extension OrderHistoryDetailsVC {
         
         
     }
+    func Webservice_getOrderStatus(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponeOrderStatusModel = try jsonDecoder.decode(GetApiResponeOrderStatusModel.self, from: jsonResponse!)
+                    if(getApiResponeOrderStatusModel.result=="success"){
+                        
+                        self.list_order_status=getApiResponeOrderStatusModel.list_order_status
+                        
+                        var selectedIndex:Int = -1
+                        for index in 0...self.list_order_status.count-1 {
+                            let currentItem=self.list_order_status[index]
+                            self.DropDownOrderStatus.optionArray.append(currentItem.name)
+                            self.DropDownOrderStatus.optionIds?.insert(index, at: index)
+                            
+                            if(self.orderStatusOfOrder!._id != "" && self.orderStatusOfOrder!._id ==  currentItem._id){
+                                selectedIndex=index
+                            }
+                            
+                        }
+                        if(selectedIndex != -1){
+                            self.DropDownOrderStatus.selectedIndex=selectedIndex
+                            self.DropDownOrderStatus.text=self.orderStatusOfOrder!.name
+                        }
+                        
+                        
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    print("error: \(error)")
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
+    
+    
+    
     func Webservice_CancelOrder(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
             

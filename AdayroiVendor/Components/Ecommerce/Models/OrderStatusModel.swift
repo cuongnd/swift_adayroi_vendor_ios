@@ -9,9 +9,9 @@ import Foundation
 struct OrderStatusModel: Codable {
     let _id: String
     let name: String
-    let description: String
-    let payment_type: String
-    let note_payment_offline: String
+    let description: String?
+    let payment_type: String?
+    let note_payment_offline: String?
     
     enum CodingKeys: String, CodingKey {
         case _id = "_id"
