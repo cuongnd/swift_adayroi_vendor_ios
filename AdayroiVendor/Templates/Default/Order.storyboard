@@ -335,10 +335,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-mK-fym">
-                                                <rect key="frame" x="8" y="850" width="584" height="253"/>
+                                                <rect key="frame" x="8" y="850" width="584" height="521"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="253" id="EBB-eu-60D"/>
+                                                    <constraint firstAttribute="height" constant="521" id="EBB-eu-60D"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WDs-dw-IHD">
                                                     <size key="itemSize" width="567" height="220"/>
