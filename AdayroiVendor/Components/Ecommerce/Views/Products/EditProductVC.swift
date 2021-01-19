@@ -1030,6 +1030,7 @@ class EditProductVC: UIViewController {
         
         let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
         editProductInWareHouseVC.delegate = self
+        print("sender.tag-1 \(sender.tag-1)")
         editProductInWareHouseVC.productInWarehouse = self.list_total_product_in_warehouse[sender.tag-1]
         editProductInWareHouseVC.productInWarehouseIndex = sender.tag-1
         self.present(editProductInWareHouseVC, animated: true, completion: nil)
@@ -2432,7 +2433,7 @@ extension EditProductVC: EditProductInWareHouseVCEditDelegate {
     func refreshData(productInWarehouseIndex: Int, productInWarehouse: ProductInWarehouseModel) {
         self.list_total_product_in_warehouse[productInWarehouseIndex]=productInWarehouse
         let text_total:String=productInWarehouse.unlimit == 1 ? "không giới hạn":String(productInWarehouse.total_product)
-        self.wareHousehead[productInWarehouseIndex]=[
+        self.wareHousehead[productInWarehouseIndex+1]=[
             CellWareHouseHead(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
             CellWareHouseHead(title: productInWarehouse.warehouse_name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
             CellWareHouseHead(title: text_total,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),

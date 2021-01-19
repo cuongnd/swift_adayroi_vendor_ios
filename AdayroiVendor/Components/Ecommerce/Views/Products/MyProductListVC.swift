@@ -155,7 +155,7 @@
     
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
-        let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
+        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetMyProducts(url: urlString, params:[:])
         
         
