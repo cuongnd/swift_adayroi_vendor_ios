@@ -109,8 +109,6 @@
         let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetMyProducts(url: urlString, params:[:])
         
-        let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -119,8 +117,6 @@
         let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetMyProducts(url: urlString, params:[:])
         
-        let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
         
         
     }
@@ -162,8 +158,6 @@
         let urlString = API_URL + "/api/withdrawals/list?user_id=\(user_id)&limit=30&offset=0"
         self.Webservice_GetMyProducts(url: urlString, params:[:])
         
-        let urlAffiliateInfo = API_URL + "/api_task/users.get_user_affiliate_info_by_id?user_id=\(user_id)"
-        self.Webservice_GetAffiliateInfo(url: urlAffiliateInfo, params:[:])
         
     }
  }
@@ -278,39 +272,7 @@
         
     }
     
-    func Webservice_GetAffiliateInfo(url:String, params:NSDictionary) -> Void {
-        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-            if strErrorMessage.count != 0 {
-                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
-            }
-            else {
-                print(jsonResponse!)
-                do {
-                    let jsonDecoder = JSONDecoder()
-                    let getAffiliateInfoModel = try jsonDecoder.decode(GetAffiliateInfoModel.self, from: jsonResponse!)
-                    let UserAffiliateInfoModel=getAffiliateInfoModel.userAffiliateInfoModel
-                    self.UILabelSoTienCoTheRut.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(UserAffiliateInfoModel.total),decimalCount: 0)
-                    self.UILabelSoTIenDangSuLy.text=LibraryUtilitiesUtility.format_currency(amount: UInt64(UserAffiliateInfoModel.total_processing),decimalCount: 0) 
-                    
-                    
-                    
-                    
-                } catch let error as NSError  {
-                    print("error: \(error)")
-                }
-                
-                
-                //print("userModel:\(userModel)")
-                
-            }
-        }
-        
-        
-        
-        
-        
-        
-    }
+    
     @objc func btnTapMines(sender:UIButton)
     {
         

@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.4.1)
-  - AnyFormatKit (2.0.6)
+  - AnyFormatKit (2.2.0)
   - AXRatingView (1.0.3)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
@@ -113,6 +113,7 @@ PODS:
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
   - SwiftyJSON (5.0.0)
+  - SwipeMenuViewController (4.1.0)
   - TagListView (1.4.1)
   - TLCustomMask (2.0.0)
   - XLForm (4.2.0)
@@ -144,6 +145,7 @@ DEPENDENCIES:
   - SlideMenuControllerSwift
   - SQLite.swift (~> 0.12.0)
   - SwiftyJSON
+  - SwipeMenuViewController
   - TagListView (~> 1.0)
   - TLCustomMask
   - XLForm
@@ -187,13 +189,14 @@ SPEC REPOS:
     - SlideMenuControllerSwift
     - SQLite.swift
     - SwiftyJSON
+    - SwipeMenuViewController
     - TagListView
     - TLCustomMask
     - XLForm
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AnyFormatKit: 3401a4e46db072447a4c7656fa5dc06b12b6678c
+  AnyFormatKit: 89823b15a569319c3ae4cb1211e550f877504645
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
@@ -229,10 +232,11 @@ SPEC CHECKSUMS:
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: a8cb63efe54670eaf1e828a8a75cbd1e217a023e
+PODFILE CHECKSUM: a5f9631cec3205e0f0d96b2547a7a0e761940eed
 
 COCOAPODS: 1.10.0

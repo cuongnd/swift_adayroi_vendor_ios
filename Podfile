@@ -37,6 +37,7 @@ target 'AdayroiVendor' do
     pod 'JVFloatLabeledTextField', '1.0.2', :inhibit_warnings => true
     pod 'AXRatingView', '1.0.3', :inhibit_warnings => true
     pod 'DLRadioButton', '~> 1.4'
+    pod 'SwipeMenuViewController'
 
   target 'AdayroiVendorTests' do
     inherit! :search_paths
