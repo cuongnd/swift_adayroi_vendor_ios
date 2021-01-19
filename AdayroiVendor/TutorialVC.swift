@@ -73,10 +73,10 @@ extension TutorialVC {
         guard let indexPath = self.collection_tutorial.indexPathForItem(at: visiblePoint) else { return }
         self.pageControl.currentPage = indexPath.item
         if indexPath.item == 2 {
-            self.btnSkip.setTitle("START", for: .normal)
+            self.btnSkip.setTitle("Bắt đầu", for: .normal)
         }
         else {
-            self.btnSkip.setTitle("SKIP", for: .normal)
+            self.btnSkip.setTitle("Bỏ qua", for: .normal)
         }
     }
 }
