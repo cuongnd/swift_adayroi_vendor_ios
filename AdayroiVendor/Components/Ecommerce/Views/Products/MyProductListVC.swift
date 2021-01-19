@@ -200,11 +200,11 @@
                             CellProduct(title: product.name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.code,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title:  product.default_photo?.img_path ??  "",is_head: false,columnType: "", columnName: "image",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "danh mục con",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: "danh mục con 1",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: String(product.original_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: product.category?.name ?? "",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: product.subCategory?.name ?? "",is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title: LibraryUtilitiesUtility.format_currency(amount: UInt64(product.original_price),decimalCount: 0),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: String(product.commistion),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
-                            CellProduct(title: String(product.unit_price),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
+                            CellProduct(title:LibraryUtilitiesUtility.format_currency(amount: UInt64(product.unit_price),decimalCount: 0),is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
                             CellProduct(title: "Sửa",is_head: false,columnType: "", columnName: "edit",action:  #selector(self.editProduct(_:))),
                             CellProduct(title: "Xóa",is_head: false,columnType: "", columnName: "delete",action:  #selector(self.deleteProduct(_:)))
                         ])

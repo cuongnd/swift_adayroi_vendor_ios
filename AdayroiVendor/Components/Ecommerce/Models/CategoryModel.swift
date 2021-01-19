@@ -17,8 +17,8 @@ struct CategoryModel: Codable {
     let ordering: Int
     let alias: String
     let description: String
-    let default_photo: ImageModel
-    let default_icon: ImageModel
+    let default_photo: ImageModel?
+    let default_icon: ImageModel?
    
     
     enum CodingKeys: String, CodingKey {

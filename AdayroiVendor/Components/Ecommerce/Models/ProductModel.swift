@@ -29,6 +29,7 @@ struct ProductModel: Codable {
     let productShortDescription: String?
     let productFullDescription: String?
     let subCategory: SubCategoryModel?
+    let category: CategoryModel?
     let default_photo: ImageModel?
     let colors:[ColorModel]?
     let attributesHeader:[AttributesHeaderModel]?
@@ -56,6 +57,7 @@ struct ProductModel: Codable {
         case commistion = "commistion"
         case default_photo = "default_photo"
         case subCategory = "subcategory"
+        case category = "category"
         case colors = "colors"
         case attributesHeader = "attributes_header"
     }
@@ -82,6 +84,7 @@ struct ProductModel: Codable {
         discount_value = 0.0
         commistion=0.0
         default_photo=ImageModel()
+        category=CategoryModel()
         subCategory=SubCategoryModel()
         colors=[ColorModel]()
         attributesHeader=[AttributesHeaderModel]()
