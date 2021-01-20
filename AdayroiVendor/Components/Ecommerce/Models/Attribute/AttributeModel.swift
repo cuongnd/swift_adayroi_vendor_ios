@@ -67,7 +67,7 @@ struct HeadAttributeModel: Codable {
     let type: String
     let name: String
     let product_id:String
-    let list_attribute: [AttributeModel]
+    let list_attribute: [AttributeModel]?
    
     
     enum CodingKeys: String, CodingKey {

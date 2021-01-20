@@ -22,11 +22,30 @@
                                     <constraint firstAttribute="width" constant="120" id="D9g-II-muB"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adayroi Vendor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5v-dj-Ovh">
+                                <rect key="frame" x="117" y="533" width="180" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.79142194990000003" green="0.2086961269" blue="0.21171271799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng dụng dành cho nhà cung cấp quản lý bán hàng trên Adayroi Online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKZ-Ey-jxY">
+                                <rect key="frame" x="54.5" y="578" width="305" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="305" id="fgh-IX-jG4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="O5v-dj-Ovh" firstAttribute="centerX" secondItem="rhI-Mh-J62" secondAttribute="centerX" id="5H4-qW-5Gt"/>
+                            <constraint firstItem="O5v-dj-Ovh" firstAttribute="top" secondItem="rhI-Mh-J62" secondAttribute="bottom" constant="20" id="Xrb-Lz-l7p"/>
                             <constraint firstItem="rhI-Mh-J62" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YWt-H5-jpN"/>
+                            <constraint firstItem="qKZ-Ey-jxY" firstAttribute="top" secondItem="O5v-dj-Ovh" secondAttribute="bottom" constant="15" id="bec-fW-QCL"/>
                             <constraint firstItem="rhI-Mh-J62" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="kCg-Jm-8HM"/>
+                            <constraint firstItem="qKZ-Ey-jxY" firstAttribute="centerX" secondItem="rhI-Mh-J62" secondAttribute="centerX" id="pH0-4Q-4s1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

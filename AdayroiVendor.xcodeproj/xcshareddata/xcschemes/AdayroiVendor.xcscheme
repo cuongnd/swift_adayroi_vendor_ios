@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C8C99DC12488D77E00B5C187"
-               BuildableName = "AdayroiVendor.app"
+               BuildableName = "Adayroi Vendor.app"
                BlueprintName = "AdayroiVendor"
                ReferencedContainer = "container:AdayroiVendor.xcodeproj">
             </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8C99DC12488D77E00B5C187"
-            BuildableName = "AdayroiVendor.app"
+            BuildableName = "Adayroi Vendor.app"
             BlueprintName = "AdayroiVendor"
             ReferencedContainer = "container:AdayroiVendor.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8C99DC12488D77E00B5C187"
-            BuildableName = "AdayroiVendor.app"
+            BuildableName = "Adayroi Vendor.app"
             BlueprintName = "AdayroiVendor"
             ReferencedContainer = "container:AdayroiVendor.xcodeproj">
          </BuildableReference>

@@ -1500,6 +1500,7 @@ class EditProductVC: UIViewController {
                         }
                         
                     } catch let error as NSError  {
+                         print("url:\(urlStringPostAddNewProduct)")
                         print("error:\(error)")
                         let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1631,6 +1632,7 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
+                    print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1784,6 +1786,7 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
+                     print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1826,27 +1829,30 @@ extension EditProductVC {
                                     CellHeaderAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
                                 ]
                                 var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
-                                let list_attribute:[AttributeModel]=headAttributeModel.list_attribute
+                                let list_attribute:[AttributeModel]=headAttributeModel.list_attribute ?? [AttributeModel]()
                                  var list_string_attribute:[String]=[String]()
                                 var list_attributeModel: [HeaderAttributeModel]=[HeaderAttributeModel]()
-                                for index_attribute in 0...list_attribute.count-1 {
-                                    let attributeModel:AttributeModel=list_attribute[index_attribute]
-                                    CellAttributeList.append([
-                                        CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
-                                        CellAttribute(title: attributeModel.value, is_head: false,columnType: "content", columnName: "title"),
-                                        CellAttribute(title: String(attributeModel.price), is_head: false,columnType: "content", columnName: "note"),
-                                        CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
-                                        CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
-                                        
-                                        
-                                    ]);
-                                   
-                                    let title:String=attributeModel.value
-                                    let price:String=String(attributeModel.price)
-                                    list_string_attribute.append("\(title)(\(price))");
-                                    list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
-                                   
+                                if(list_attribute.count>0){
+                                    for index_attribute in 0...list_attribute.count-1 {
+                                        let attributeModel:AttributeModel=list_attribute[index_attribute]
+                                        CellAttributeList.append([
+                                            CellAttribute(title: "", is_head: false,columnType: "content", columnName: "stt"),
+                                            CellAttribute(title: attributeModel.value, is_head: false,columnType: "content", columnName: "title"),
+                                            CellAttribute(title: String(attributeModel.price), is_head: false,columnType: "content", columnName: "note"),
+                                            CellAttribute(title: "", is_head: false,columnType: "button",columnName: "edit"),
+                                            CellAttribute(title: "", is_head: false,columnType: "button",columnName: "delete"),
+                                            
+                                            
+                                        ]);
+                                       
+                                        let title:String=attributeModel.value
+                                        let price:String=String(attributeModel.price)
+                                        list_string_attribute.append("\(title)(\(price))");
+                                        list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
+                                       
+                                    }
                                 }
+                                
                                  let joined2 = list_string_attribute.joined(separator: ", ")
                                 row[3].title=joined2
                                 row[3].list_attribute=CellAttributeList
@@ -1872,6 +1878,7 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
+                     print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1934,6 +1941,7 @@ extension EditProductVC {
                        }
                        
                    } catch let error as NSError  {
+                       print("url:\(url)")
                        print("error:\(error)")
                        let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1980,6 +1988,7 @@ extension EditProductVC {
                     }
                     
                 } catch let error as NSError  {
+                     print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
