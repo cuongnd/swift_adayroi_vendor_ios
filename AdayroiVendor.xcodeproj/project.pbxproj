@@ -58,6 +58,7 @@
 		0443F7842594CC7A005D5637 /* TaiKhoanNganHangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7832594CC7A005D5637 /* TaiKhoanNganHangModel.swift */; };
 		0443F7862594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */; };
 		0443F7882594E8C7005D5637 /* PostLapLenhRutTienModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */; };
+		04536B2725B7DDEA00DC7397 /* GetApiResponeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */; };
 		0469042825ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */; };
 		0469042925ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */; };
 		0469042D25ABB5750022EBEF /* WareHouseEditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469042B25ABB5750022EBEF /* WareHouseEditCollectionViewCell.swift */; };
@@ -328,6 +329,7 @@
 		0443F7832594CC7A005D5637 /* TaiKhoanNganHangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiKhoanNganHangModel.swift; sourceTree = "<group>"; };
 		0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTaiKhoanNganHangModel.swift; sourceTree = "<group>"; };
 		0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLapLenhRutTienModel.swift; sourceTree = "<group>"; };
+		04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponeProducts.swift; sourceTree = "<group>"; };
 		0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseDeleteCollectionViewCell.xib; sourceTree = "<group>"; };
 		0469042B25ABB5750022EBEF /* WareHouseEditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseEditCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				0443F77725947F4A005D5637 /* GetAffiliateInfoModel.swift */,
 				04E6CFC625A0A46300C13FA6 /* GetApiRespondeBlogsModel.swift */,
 				0469049025B13C3B0022EBEF /* GetApiRespondeImages.swift */,
+				04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */,
 				0469049725B1EFEE0022EBEF /* GetApiRespondeSpecials.swift */,
 				0469049E25B546CC0022EBEF /* GetApiResponseOrderStatus.swift */,
 				046904A025B599070022EBEF /* GetApiResponseOrder.swift */,
@@ -1833,6 +1836,7 @@
 				C8C99E082488D93C00B5C187 /* CardViewMaster.swift in Sources */,
 				0469045E25AD47010022EBEF /* EditProductInWareHouseVC.swift in Sources */,
 				0C42DC2E257CD061007009E4 /* ObjectMapperFrontendImage.swift in Sources */,
+				04536B2725B7DDEA00DC7397 /* GetApiResponeProducts.swift in Sources */,
 				0443F7572592E109005D5637 /* DataTableSortable.swift in Sources */,
 				0C3C2E51256ABF2D000B21C5 /* HomeHeader.swift in Sources */,
 				C8C99DC62488D77E00B5C187 /* AppDelegate.swift in Sources */,

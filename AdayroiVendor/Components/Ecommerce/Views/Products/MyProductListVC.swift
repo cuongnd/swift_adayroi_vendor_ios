@@ -134,7 +134,19 @@
         
     }
     @objc func deleteProduct(_ sender: UIButton){
+        let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn xóa sản phẩm này không không ?".localiz(), preferredStyle: .alert)
         
+        let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+            var productId=self.list_product[sender.tag-1]._id
+            let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+            let urlString = API_URL + "/api_task/vendorproduct.delete_product?user_id=\(user_id)&product_id=\(productId)"
+            self.Webservice_GetDeleteProduct(url: urlString, params:[:])
+            
+        }
+        let noAction = UIAlertAction(title: "No".localiz(), style: .destructive)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC,animated: true,completion: nil)
         
     }
     @objc func editProduct(_ sender: UIButton){
@@ -165,6 +177,34 @@
  //MARK: WithdrawalList
  extension MyProductListVC {
     
+    func Webservice_GetDeleteProduct(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponeDeleteProductById = try jsonDecoder.decode(GetApiResponeDeleteProductById.self, from: jsonResponse!)
+                    if(getApiResponeDeleteProductById.result=="success"){
+                        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
+                        let urlString = API_URL + "/api/vendorproducts?user_id=\(user_id)&limit=30&offset=0"
+                        self.Webservice_GetMyProducts(url: urlString, params:[:])
+                        
+                    }
+                    
+                    
+                } catch let error as NSError  {
+                    print("error: \(error)")
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     
     func Webservice_GetMyProducts(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -194,7 +234,7 @@
                     
                     
                     for product in self.list_product {
-                    
+                        
                         self.list_cell_product.append([
                             CellProduct(title: "Stt",is_head: false,columnType: "", columnName: "stt",action:  #selector(self.nothing(_:))),
                             CellProduct(title: product.name,is_head: false,columnType: "", columnName: "",action:  #selector(self.nothing(_:))),
