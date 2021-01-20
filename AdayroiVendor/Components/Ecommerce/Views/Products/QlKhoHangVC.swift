@@ -167,6 +167,8 @@ class QlKhoHangVC: UIViewController {
         editWareHouseVC.delegate = self
         editWareHouseVC.warehouse = WarehouseModel()
         editWareHouseVC.warehouse_index = -1
+        editWareHouseVC.modalPresentationStyle = .overFullScreen
+        editWareHouseVC.modalTransitionStyle = .crossDissolve
         self.present(editWareHouseVC, animated: true, completion: nil)
         
     }

@@ -599,6 +599,8 @@ class EditProductVC: UIViewController {
         qlCacThuocTinhVC.attributeHeadIndex = sender.tag
         qlCacThuocTinhVC.attributeTitleHeadIndex = sender.tag-1
         qlCacThuocTinhVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
+        qlCacThuocTinhVC.modalPresentationStyle = .overFullScreen
+        qlCacThuocTinhVC.modalTransitionStyle = .crossDissolve
         self.present(qlCacThuocTinhVC, animated: true, completion: nil)
     }
     
