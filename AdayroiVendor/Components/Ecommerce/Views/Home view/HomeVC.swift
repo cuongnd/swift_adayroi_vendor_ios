@@ -54,9 +54,9 @@ class HomeVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
-        let urlStringDoanhThuTheoThang = API_URL + "/api/affiliates/get_doanh_thu_theo_thang?user_id=\(user_id)"
+        let urlStringDoanhThuTheoThang = API_URL + "/api/vendors/get_doanh_thu_theo_thang?user_id=\(user_id)"
         self.Webservice_getDoanhThuTheoThang(url: urlStringDoanhThuTheoThang, params: [:])
-        let urlStringHieuQuaDonHang = API_URL + "//api/affiliates/get_hieu_qua_don_hang?user_id=\(user_id)"
+        let urlStringHieuQuaDonHang = API_URL + "//api/vendors/get_hieu_qua_don_hang?user_id=\(user_id)"
         self.Webservice_getHieuQuaDonHang(url: urlStringHieuQuaDonHang, params: [:])
         
         
@@ -88,9 +88,9 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
-        let urlStringDoanhThuTheoThang = API_URL + "/api/affiliates/get_doanh_thu_theo_thang?user_id=\(user_id)"
+        let urlStringDoanhThuTheoThang = API_URL + "/api/vendors/get_doanh_thu_theo_thang?user_id=\(user_id)"
         self.Webservice_getDoanhThuTheoThang(url: urlStringDoanhThuTheoThang, params: [:])
-        let urlStringHieuQuaDonHang = API_URL + "//api/affiliates/get_hieu_qua_don_hang?user_id=\(user_id)"
+        let urlStringHieuQuaDonHang = API_URL + "//api/vendors/get_hieu_qua_don_hang?user_id=\(user_id)"
         self.Webservice_getHieuQuaDonHang(url: urlStringHieuQuaDonHang, params: [:])
         
     }
