@@ -90,14 +90,9 @@ class OrderHistoryDetailsVC: UIViewController {
         }
     }
     @IBAction func btnTap_Back(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func btnTap_Cancel(_ sender: UIButton) {
-        let urlString = API_URL + "ordercancel"
-        let params: NSDictionary = ["order_id":self.OrderId]
-        self.Webservice_CancelOrder(url: urlString, params:params)
-    }
-    
+   
     @IBAction func UIButtonSave(_ sender: UIButton) {
         let alertVC = UIAlertController(title: Bundle.main.displayName!, message: "Bạn có chắc chắn muốn cập nhật không ?".localiz(), preferredStyle: .alert)
                let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in

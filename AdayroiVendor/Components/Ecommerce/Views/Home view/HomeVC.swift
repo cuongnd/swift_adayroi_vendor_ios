@@ -87,7 +87,11 @@ class HomeVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         
-        
+        let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
+        let urlStringDoanhThuTheoThang = API_URL + "/api/affiliates/get_doanh_thu_theo_thang?user_id=\(user_id)"
+        self.Webservice_getDoanhThuTheoThang(url: urlStringDoanhThuTheoThang, params: [:])
+        let urlStringHieuQuaDonHang = API_URL + "//api/affiliates/get_hieu_qua_don_hang?user_id=\(user_id)"
+        self.Webservice_getHieuQuaDonHang(url: urlStringHieuQuaDonHang, params: [:])
         
     }
     
