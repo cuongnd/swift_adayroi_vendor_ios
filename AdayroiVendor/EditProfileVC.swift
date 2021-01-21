@@ -47,7 +47,7 @@ class EditProfileVC: UIViewController {
     @IBAction func btnTap_Save(_ sender: UIButton) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let imageData = self.img_Profile.image!.jpegData(compressionQuality: 0.5)
-        let urlString = API_URL + "editprofile"
+        let urlString = API_URL + "/api_task/user.update"
         let params = ["name":self.txt_Name.text!,
                       "user_id":UserDefaultManager.getStringFromUserDefaults(key: UD_userId),
                       "image":imageData!] as [String : Any]
@@ -107,6 +107,32 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
 //MARK: Webservices
 extension EditProfileVC {
     func Webservice_GetProfile(url:String, params:NSDictionary) -> Void {
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: strErrorMessage)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
+                    if(getApiResponseWarehousesModel.result=="success"){
+                       
+                        
+                    }
+                    
+                } catch let error as NSError  {
+                    showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+        
+        
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
             
             if strErrorMessage.count != 0 {

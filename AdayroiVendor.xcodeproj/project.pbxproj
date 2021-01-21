@@ -114,6 +114,7 @@
 		0497124D259A9CE70024883E /* GetApiResponseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124C259A9CE70024883E /* GetApiResponseCategoryModel.swift */; };
 		0497124F259AE71A0024883E /* GetApiResponseProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497124E259AE7190024883E /* GetApiResponseProductModel.swift */; };
 		04971251259AE74D0024883E /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04971250259AE74D0024883E /* ProductModel.swift */; };
+		04CC8FA725B9576500C12914 /* GetApiResponUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC8FA625B9576500C12914 /* GetApiResponUsers.swift */; };
 		04D47EB025A3DE290038AF3D /* GetApiResponseSubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D47EAF25A3DE290038AF3D /* GetApiResponseSubCategoryModel.swift */; };
 		04E6CFC225A0A0D100C13FA6 /* BlogsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6CFC125A0A0D100C13FA6 /* BlogsVC.swift */; };
 		04E6CFC525A0A13E00C13FA6 /* Blogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E6CFC425A0A13E00C13FA6 /* Blogs.storyboard */; };
@@ -384,6 +385,7 @@
 		0497124C259A9CE70024883E /* GetApiResponseCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseCategoryModel.swift; sourceTree = "<group>"; };
 		0497124E259AE7190024883E /* GetApiResponseProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseProductModel.swift; sourceTree = "<group>"; };
 		04971250259AE74D0024883E /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		04CC8FA625B9576500C12914 /* GetApiResponUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponUsers.swift; sourceTree = "<group>"; };
 		04D47EAF25A3DE290038AF3D /* GetApiResponseSubCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponseSubCategoryModel.swift; sourceTree = "<group>"; };
 		04E6CFC125A0A0D100C13FA6 /* BlogsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsVC.swift; sourceTree = "<group>"; };
 		04E6CFC425A0A13E00C13FA6 /* Blogs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Blogs.storyboard; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				0443F77725947F4A005D5637 /* GetAffiliateInfoModel.swift */,
 				04E6CFC625A0A46300C13FA6 /* GetApiRespondeBlogsModel.swift */,
 				0469049025B13C3B0022EBEF /* GetApiRespondeImages.swift */,
+				04CC8FA625B9576500C12914 /* GetApiResponUsers.swift */,
 				04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */,
 				0469049725B1EFEE0022EBEF /* GetApiRespondeSpecials.swift */,
 				0469049E25B546CC0022EBEF /* GetApiResponseOrderStatus.swift */,
@@ -1924,6 +1927,7 @@
 				041393A425A89D89002D4149 /* OtherAttributeCustomCollectionViewLayout.swift in Sources */,
 				0C42DC3E257F8E8C007009E4 /* ADRTableSetting.swift in Sources */,
 				0C8A566725846C4400CAD7F1 /* GetOrderResponseModel.swift in Sources */,
+				04CC8FA725B9576500C12914 /* GetApiResponUsers.swift in Sources */,
 				0469048325B049F50022EBEF /* ProductShowContentCollectionViewCell.swift in Sources */,
 				0469046425AD924D0022EBEF /* GetApiResponseAddNewProductModel.swift in Sources */,
 				0469043025ABB72C0022EBEF /* GetApiResponseWarehousesModel.swift in Sources */,
@@ -2170,7 +2174,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AdayroiVendor/AdayroiVendor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5Y52UW26J;
 				INFOPLIST_FILE = "$(SRCROOT)/AdayroiVendor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
@@ -2193,7 +2197,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AdayroiVendor/AdayroiVendor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5Y52UW26J;
 				INFOPLIST_FILE = "$(SRCROOT)/AdayroiVendor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
