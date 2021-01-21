@@ -10,7 +10,7 @@ struct GetApiRespondeUser: Codable {
     let result: String
     let code: Int
     let errorMessage:String
-    let user: [UserModel]
+    let user: UserModel
     enum CodingKeys: String, CodingKey {
         case result = "result"
         case code = "code"

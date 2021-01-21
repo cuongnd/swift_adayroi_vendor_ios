@@ -21,7 +21,7 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var txt_Name: UITextField!
     
     @IBOutlet weak var lbl_titleLabel: UILabel!
-    
+    var user:UserModel=UserModel()
     
     
     let imagePicker = UIImagePickerController()
@@ -47,6 +47,7 @@ class EditProfileVC: UIViewController {
     @IBAction func btnTap_Save(_ sender: UIButton) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let imageData = self.img_Profile.image!.jpegData(compressionQuality: 0.5)
+        
         let urlString = API_URL + "/api_task/user.update"
         let params = ["name":self.txt_Name.text!,
                       "user_id":UserDefaultManager.getStringFromUserDefaults(key: UD_userId),
@@ -115,13 +116,20 @@ extension EditProfileVC {
                 print(jsonResponse!)
                 do {
                     let jsonDecoder = JSONDecoder()
-                    let getApiResponseWarehousesModel = try jsonDecoder.decode(GetApiResponseWarehousesModel.self, from: jsonResponse!)
-                    if(getApiResponseWarehousesModel.result=="success"){
-                       
-                        
+                    let getApiRespondeUser = try jsonDecoder.decode(GetApiRespondeUser.self, from: jsonResponse!)
+                    if(getApiRespondeUser.result=="success"){
+                        self.user = getApiRespondeUser.user
+                        self.txt_Name.text = self.user.fullname
+                        self.txt_Email.text = self.user.email
+                        self.txt_Mobile.text = self.user.phonenumber
+                        if self.user.default_photo?.img_path != "" {
+                            self.img_Profile.sd_setImage(with: URL(string: self.user.default_photo!.img_path), placeholderImage: UIImage(named: "placeholder_image"))
+                        }
                     }
                     
                 } catch let error as NSError  {
+                    print("url \(url)")
+                    print("error : \(error)")
                     showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: "Có lỗi phát sinh")
                     
                 }
