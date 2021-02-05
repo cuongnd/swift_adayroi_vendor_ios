@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+@available(iOS 13.0, *)
 class ChangePassswordVC: UIViewController {
     @IBOutlet weak var btn_Reset: UIButton!
     @IBOutlet weak var txt_confirmPassword: UITextField!
@@ -41,6 +42,7 @@ class ChangePassswordVC: UIViewController {
     }
 }
 //MARK: Webservices
+@available(iOS 13.0, *)
 extension ChangePassswordVC
 {
     func Webservice_ChangePassword(url:String, params:NSDictionary) -> Void {

@@ -58,6 +58,7 @@
 		0443F7842594CC7A005D5637 /* TaiKhoanNganHangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7832594CC7A005D5637 /* TaiKhoanNganHangModel.swift */; };
 		0443F7862594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */; };
 		0443F7882594E8C7005D5637 /* PostLapLenhRutTienModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */; };
+		0447E53D25CDAC8400A8E5DE /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */; };
 		04536B2725B7DDEA00DC7397 /* GetApiResponeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */; };
 		0469042825ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */; };
 		0469042925ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */; };
@@ -211,7 +212,8 @@
 		0CDCD68525807B8C000B7F44 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDCD68225807B8B000B7F44 /* Font Awesome 5 Brands-Regular-400.otf */; };
 		0CDCD68625807B8C000B7F44 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDCD68325807B8B000B7F44 /* Font Awesome 5 Free-Regular-400.otf */; };
 		0CDCD68725807B8C000B7F44 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDCD68425807B8B000B7F44 /* Font Awesome 5 Free-Solid-900.otf */; };
-		7AED1910F86B5D2412923767 /* Pods_AdayroiVendorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F207707E7ADFB5B5AAF452B /* Pods_AdayroiVendorTests.framework */; };
+		0DDA8942EC391C3163E410CD /* Pods_AdayroiVendor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6201FCD769BB13F1FB461059 /* Pods_AdayroiVendor.framework */; };
+		2C41B1714C02AD49B101F38B /* Pods_AdayroiVendorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B791C6A9E0C86701FA792A84 /* Pods_AdayroiVendorTests.framework */; };
 		880BDE8E24D552310085FC1D /* AddOnsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BDE8D24D552310085FC1D /* AddOnsVC.swift */; };
 		880BDE9024D5524F0085FC1D /* AddonceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BDE8F24D5524F0085FC1D /* AddonceListVC.swift */; };
 		880BDE9224D55F870085FC1D /* NoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BDE9124D55F870085FC1D /* NoteVC.swift */; };
@@ -220,7 +222,6 @@
 		88D6F6EB24A63246005F1439 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D6F6EA24A63245005F1439 /* GoogleService-Info.plist */; };
 		88F6721E24A4ADE5000061FB /* PromoCodeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6721D24A4ADE5000061FB /* PromoCodeListVC.swift */; };
 		88F7445124A5C2D300800568 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7445024A5C2D300800568 /* FavoriteListVC.swift */; };
-		8BF9EF6D46317AE353376FAA /* Pods_AdayroiVendorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4FB69AEE146EA6A228FEC3 /* Pods_AdayroiVendorUITests.framework */; };
 		C80208CC248A72B3001D8864 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80208CB248A72B2001D8864 /* SideMenuVC.swift */; };
 		C811991D2495F58000F9CF6F /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C811991C2495F57F00F9CF6F /* TutorialVC.swift */; };
 		C82AF9E32491FD2A00464115 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AF9E22491FD2A00464115 /* SettingsVC.swift */; };
@@ -257,7 +258,7 @@
 		C8C99E092488D93C00B5C187 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C99E012488D93C00B5C187 /* CornerView.swift */; };
 		C8F07A2B248F879700665143 /* OrderHistoryDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F07A2A248F879700665143 /* OrderHistoryDetailsVC.swift */; };
 		C8F882D2248CB79F0064D74F /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F882D1248CB79F0064D74F /* OrderHistoryVC.swift */; };
-		CF79E4C425E274EBCFBAEE7B /* Pods_AdayroiVendor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14DCDB97CAEB0467992310A /* Pods_AdayroiVendor.framework */; };
+		FF4CD40C8F3C97227B85845C /* Pods_AdayroiVendorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B78B950B7A5895A1F4A8AD /* Pods_AdayroiVendorUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +279,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011706040AC458B1025B031E /* Pods-AdayroiVendorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorUITests.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorUITests/Pods-AdayroiVendorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0413939925A575C2002D4149 /* ModalSelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectColorViewController.swift; sourceTree = "<group>"; };
 		0413939B25A60EEA002D4149 /* HeaderAttributeCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAttributeCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0413939D25A70533002D4149 /* QlCacThuocTinhVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QlCacThuocTinhVC.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		0443F7832594CC7A005D5637 /* TaiKhoanNganHangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiKhoanNganHangModel.swift; sourceTree = "<group>"; };
 		0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTaiKhoanNganHangModel.swift; sourceTree = "<group>"; };
 		0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLapLenhRutTienModel.swift; sourceTree = "<group>"; };
+		0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponeProducts.swift; sourceTree = "<group>"; };
 		0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseDeleteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -404,7 +407,6 @@
 		04F4993D25A0417C001A0FAE /* ColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		04F4993F25A044C1001A0FAE /* AttributesHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesHeaderModel.swift; sourceTree = "<group>"; };
 		04F4994125A04560001A0FAE /* AttributesDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesDetailModel.swift; sourceTree = "<group>"; };
-		07439B3E8DECD736D5F463F2 /* Pods-AdayroiVendor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendor.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor.debug.xcconfig"; sourceTree = "<group>"; };
 		0C172C5A256ED43D005DA537 /* test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2.swift; sourceTree = "<group>"; };
 		0C172C5C256ED44C005DA537 /* test2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = test2.xib; sourceTree = "<group>"; };
 		0C172C5E256F49A6005DA537 /* homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = homepage.storyboard; sourceTree = "<group>"; };
@@ -488,10 +490,9 @@
 		0CDCD68225807B8B000B7F44 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		0CDCD68325807B8B000B7F44 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		0CDCD68425807B8B000B7F44 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
-		39FF956B6CCF45F5C5824EAA /* Pods-AdayroiVendorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorTests.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorTests/Pods-AdayroiVendorTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4E4FB69AEE146EA6A228FEC3 /* Pods_AdayroiVendorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F207707E7ADFB5B5AAF452B /* Pods_AdayroiVendorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F30C0DCE9093DF408119D1B /* Pods-AdayroiVendorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorUITests.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorUITests/Pods-AdayroiVendorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6201FCD769BB13F1FB461059 /* Pods_AdayroiVendor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		647C80F86324B07F6A302E73 /* Pods-AdayroiVendor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendor.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor.release.xcconfig"; sourceTree = "<group>"; };
+		7B97CCF7E9F8CF35321617B0 /* Pods-AdayroiVendor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendor.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor.debug.xcconfig"; sourceTree = "<group>"; };
 		880BDE8D24D552310085FC1D /* AddOnsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsVC.swift; sourceTree = "<group>"; };
 		880BDE8F24D5524F0085FC1D /* AddonceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddonceListVC.swift; sourceTree = "<group>"; };
 		880BDE9124D55F870085FC1D /* NoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVC.swift; sourceTree = "<group>"; };
@@ -502,7 +503,9 @@
 		88D6F6EA24A63245005F1439 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88F6721D24A4ADE5000061FB /* PromoCodeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeListVC.swift; sourceTree = "<group>"; };
 		88F7445024A5C2D300800568 /* FavoriteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListVC.swift; sourceTree = "<group>"; };
-		B14DCDB97CAEB0467992310A /* Pods_AdayroiVendor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9505E6C7E45E8B68BF006A5B /* Pods-AdayroiVendorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorTests.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorTests/Pods-AdayroiVendorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4B78B950B7A5895A1F4A8AD /* Pods_AdayroiVendorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B791C6A9E0C86701FA792A84 /* Pods_AdayroiVendorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdayroiVendorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80208CB248A72B2001D8864 /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		C811991C2495F57F00F9CF6F /* TutorialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		C82AF9E22491FD2A00464115 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -544,9 +547,8 @@
 		C8C99E012488D93C00B5C187 /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
 		C8F07A2A248F879700665143 /* OrderHistoryDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryDetailsVC.swift; sourceTree = "<group>"; };
 		C8F882D1248CB79F0064D74F /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
-		D9ECBE7C7038E906B1260423 /* Pods-AdayroiVendor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendor.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor.release.xcconfig"; sourceTree = "<group>"; };
-		E1AD72D4AB36863241CA806A /* Pods-AdayroiVendorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorTests.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorTests/Pods-AdayroiVendorTests.release.xcconfig"; sourceTree = "<group>"; };
-		FD1B23EAF4A48713322A7AEC /* Pods-AdayroiVendorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorUITests.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorUITests/Pods-AdayroiVendorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD74F4ECD188FDCE3DCCFB71 /* Pods-AdayroiVendorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorUITests.debug.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorUITests/Pods-AdayroiVendorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD8489999A11323D37E378BC /* Pods-AdayroiVendorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdayroiVendorTests.release.xcconfig"; path = "Target Support Files/Pods-AdayroiVendorTests/Pods-AdayroiVendorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,7 +556,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF79E4C425E274EBCFBAEE7B /* Pods_AdayroiVendor.framework in Frameworks */,
+				0DDA8942EC391C3163E410CD /* Pods_AdayroiVendor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +564,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AED1910F86B5D2412923767 /* Pods_AdayroiVendorTests.framework in Frameworks */,
+				2C41B1714C02AD49B101F38B /* Pods_AdayroiVendorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +572,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BF9EF6D46317AE353376FAA /* Pods_AdayroiVendorUITests.framework in Frameworks */,
+				FF4CD40C8F3C97227B85845C /* Pods_AdayroiVendorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1200,7 @@
 			isa = PBXGroup;
 			children = (
 				0C42DC36257F1F98007009E4 /* LibraryUtilitiesUtility.swift */,
+				0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1296,6 +1299,16 @@
 			path = Fronts;
 			sourceTree = "<group>";
 		};
+		4E2EE3BC4FE959BCD8FF7A6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6201FCD769BB13F1FB461059 /* Pods_AdayroiVendor.framework */,
+				B791C6A9E0C86701FA792A84 /* Pods_AdayroiVendorTests.framework */,
+				A4B78B950B7A5895A1F4A8AD /* Pods_AdayroiVendorUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		885D103B24D92FA300342F93 /* Home view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1391,16 +1404,6 @@
 			path = "Review Rating View";
 			sourceTree = "<group>";
 		};
-		88C0D063BFA67332CEAA917A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B14DCDB97CAEB0467992310A /* Pods_AdayroiVendor.framework */,
-				4F207707E7ADFB5B5AAF452B /* Pods_AdayroiVendorTests.framework */,
-				4E4FB69AEE146EA6A228FEC3 /* Pods_AdayroiVendorUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C89F47F8248A646900694308 /* Webservice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1430,7 +1433,7 @@
 				C8C99DE92488D77F00B5C187 /* AdayroiVendorUITests */,
 				C8C99DC32488D77E00B5C187 /* Products */,
 				EE9A72D6B2945F7873CDD215 /* Pods */,
-				88C0D063BFA67332CEAA917A /* Frameworks */,
+				4E2EE3BC4FE959BCD8FF7A6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1509,12 +1512,12 @@
 		EE9A72D6B2945F7873CDD215 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				07439B3E8DECD736D5F463F2 /* Pods-AdayroiVendor.debug.xcconfig */,
-				D9ECBE7C7038E906B1260423 /* Pods-AdayroiVendor.release.xcconfig */,
-				39FF956B6CCF45F5C5824EAA /* Pods-AdayroiVendorTests.debug.xcconfig */,
-				E1AD72D4AB36863241CA806A /* Pods-AdayroiVendorTests.release.xcconfig */,
-				FD1B23EAF4A48713322A7AEC /* Pods-AdayroiVendorUITests.debug.xcconfig */,
-				5F30C0DCE9093DF408119D1B /* Pods-AdayroiVendorUITests.release.xcconfig */,
+				7B97CCF7E9F8CF35321617B0 /* Pods-AdayroiVendor.debug.xcconfig */,
+				647C80F86324B07F6A302E73 /* Pods-AdayroiVendor.release.xcconfig */,
+				9505E6C7E45E8B68BF006A5B /* Pods-AdayroiVendorTests.debug.xcconfig */,
+				FD8489999A11323D37E378BC /* Pods-AdayroiVendorTests.release.xcconfig */,
+				DD74F4ECD188FDCE3DCCFB71 /* Pods-AdayroiVendorUITests.debug.xcconfig */,
+				011706040AC458B1025B031E /* Pods-AdayroiVendorUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1526,11 +1529,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8C99DEF2488D77F00B5C187 /* Build configuration list for PBXNativeTarget "AdayroiVendor" */;
 			buildPhases = (
-				A073877A3195F258CB8062A0 /* [CP] Check Pods Manifest.lock */,
+				37B419C2B2468EE20CC39D31 /* [CP] Check Pods Manifest.lock */,
 				C8C99DBE2488D77E00B5C187 /* Sources */,
 				C8C99DBF2488D77E00B5C187 /* Frameworks */,
 				C8C99DC02488D77E00B5C187 /* Resources */,
-				5396CD6E9EF3AD02E97349D6 /* [CP] Embed Pods Frameworks */,
+				271A56A6BD6A0E27EF59B886 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1545,7 +1548,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8C99DF22488D77F00B5C187 /* Build configuration list for PBXNativeTarget "AdayroiVendorTests" */;
 			buildPhases = (
-				1C8CCC124D2C3FADAFA05A6B /* [CP] Check Pods Manifest.lock */,
+				675DD025EB839B7856BE1DA9 /* [CP] Check Pods Manifest.lock */,
 				C8C99DD72488D77F00B5C187 /* Sources */,
 				C8C99DD82488D77F00B5C187 /* Frameworks */,
 				C8C99DD92488D77F00B5C187 /* Resources */,
@@ -1564,7 +1567,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8C99DF52488D77F00B5C187 /* Build configuration list for PBXNativeTarget "AdayroiVendorUITests" */;
 			buildPhases = (
-				3A44BDE1F8B2C42854502325 /* [CP] Check Pods Manifest.lock */,
+				B78608DE07233B5F8BEE9785 /* [CP] Check Pods Manifest.lock */,
 				C8C99DE22488D77F00B5C187 /* Sources */,
 				C8C99DE32488D77F00B5C187 /* Frameworks */,
 				C8C99DE42488D77F00B5C187 /* Resources */,
@@ -1685,7 +1688,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C8CCC124D2C3FADAFA05A6B /* [CP] Check Pods Manifest.lock */ = {
+		271A56A6BD6A0E27EF59B886 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37B419C2B2468EE20CC39D31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AdayroiVendor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		675DD025EB839B7856BE1DA9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1707,7 +1749,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3A44BDE1F8B2C42854502325 /* [CP] Check Pods Manifest.lock */ = {
+		B78608DE07233B5F8BEE9785 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1723,45 +1765,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AdayroiVendorUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5396CD6E9EF3AD02E97349D6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdayroiVendor/Pods-AdayroiVendor-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A073877A3195F258CB8062A0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdayroiVendor-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1881,6 +1884,7 @@
 				0C8A56462581352700CAD7F1 /* APISession.swift in Sources */,
 				C8C99E032488D93C00B5C187 /* commonFunction.swift in Sources */,
 				0443F6B3259101BD005D5637 /* WithdrawalListVC.swift in Sources */,
+				0447E53D25CDAC8400A8E5DE /* SlideMenuController.swift in Sources */,
 				0469046A25B032940022EBEF /* GetApiRespondeMyProductsModel.swift in Sources */,
 				0CD77A5F257A2E530083BC09 /* ADRTemp.swift in Sources */,
 				0C3C2E5D256B3A22000B21C5 /* LoginView.swift in Sources */,
@@ -2102,7 +2106,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2157,7 +2161,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2169,7 +2173,7 @@
 		};
 		C8C99DF02488D77F00B5C187 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07439B3E8DECD736D5F463F2 /* Pods-AdayroiVendor.debug.xcconfig */;
+			baseConfigurationReference = 7B97CCF7E9F8CF35321617B0 /* Pods-AdayroiVendor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AdayroiVendor/AdayroiVendor.entitlements;
@@ -2177,7 +2181,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5Y52UW26J;
 				INFOPLIST_FILE = "$(SRCROOT)/AdayroiVendor/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2192,7 +2196,7 @@
 		};
 		C8C99DF12488D77F00B5C187 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9ECBE7C7038E906B1260423 /* Pods-AdayroiVendor.release.xcconfig */;
+			baseConfigurationReference = 647C80F86324B07F6A302E73 /* Pods-AdayroiVendor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AdayroiVendor/AdayroiVendor.entitlements;
@@ -2200,7 +2204,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5Y52UW26J;
 				INFOPLIST_FILE = "$(SRCROOT)/AdayroiVendor/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2215,7 +2219,7 @@
 		};
 		C8C99DF32488D77F00B5C187 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39FF956B6CCF45F5C5824EAA /* Pods-AdayroiVendorTests.debug.xcconfig */;
+			baseConfigurationReference = 9505E6C7E45E8B68BF006A5B /* Pods-AdayroiVendorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2237,7 +2241,7 @@
 		};
 		C8C99DF42488D77F00B5C187 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1AD72D4AB36863241CA806A /* Pods-AdayroiVendorTests.release.xcconfig */;
+			baseConfigurationReference = FD8489999A11323D37E378BC /* Pods-AdayroiVendorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2259,7 +2263,7 @@
 		};
 		C8C99DF62488D77F00B5C187 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD1B23EAF4A48713322A7AEC /* Pods-AdayroiVendorUITests.debug.xcconfig */;
+			baseConfigurationReference = DD74F4ECD188FDCE3DCCFB71 /* Pods-AdayroiVendorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2279,7 +2283,7 @@
 		};
 		C8C99DF72488D77F00B5C187 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F30C0DCE9093DF408119D1B /* Pods-AdayroiVendorUITests.release.xcconfig */;
+			baseConfigurationReference = 011706040AC458B1025B031E /* Pods-AdayroiVendorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

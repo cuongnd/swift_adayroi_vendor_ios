@@ -13,7 +13,7 @@ import iOSDropDown
 import OpalImagePicker
 import Photos
 import FlexColorPicker
-struct CellWareHouseHead {
+@available(iOS 13.0, *) struct CellWareHouseHead {
     var title:String
     var is_head:Bool
     var columnType:String

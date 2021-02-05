@@ -16,6 +16,7 @@ class RatingCell: UITableViewCell {
     @IBOutlet weak var lbl_name: UILabel!
     @IBOutlet weak var img_rate: UIImageView!
 }
+@available(iOS 13.0, *)
 class RatingsVC: UIViewController {
     @IBOutlet weak var Tableview_RatingsList: UITableView!
     @IBOutlet weak var lbl_titleLabel: UILabel!
@@ -63,14 +64,14 @@ class RatingsVC: UIViewController {
         
     }
 }
-extension RatingsVC: WriteReviewVCDelegate {
+@available(iOS 13.0, *) extension RatingsVC: WriteReviewVCDelegate {
     func refreshData() {
         print("yes")
         let urlString = API_URL + "rattinglist"
         self.Webservice_RatingsData(url: urlString, params:[:])
     }
 }
-extension RatingsVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension RatingsVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Tableview_RatingsList.bounds.size.width, height: self.Tableview_RatingsList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -107,7 +108,7 @@ extension RatingsVC: UITableViewDelegate,UITableViewDataSource {
     }
 }
 //MARK: Webservices
-extension RatingsVC {
+@available(iOS 13.0, *) extension RatingsVC {
     func Webservice_RatingsData(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
             

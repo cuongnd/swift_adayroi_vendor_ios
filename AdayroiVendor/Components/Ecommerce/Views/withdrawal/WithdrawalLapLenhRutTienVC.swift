@@ -9,10 +9,10 @@ import TLCustomMask
 import UIKit
 import SwiftyJSON
 
-protocol WithdrawalLapLenhRutDelegate {
+@available(iOS 13.0, *) protocol WithdrawalLapLenhRutDelegate {
     func refreshData()
 }
-
+@available(iOS 13.0, *)
 class WithdrawalLapLenhRutTienVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
@@ -125,7 +125,7 @@ class WithdrawalLapLenhRutTienVC: UIViewController {
 
 
 //MARK: WithdrawalList
-extension WithdrawalLapLenhRutTienVC {
+@available(iOS 13.0, *) extension WithdrawalLapLenhRutTienVC {
     
     
     
@@ -187,7 +187,7 @@ extension WithdrawalLapLenhRutTienVC {
     }
     
 }
-extension WithdrawalLapLenhRutTienVC: UITextFieldDelegate{
+@available(iOS 13.0, *) extension WithdrawalLapLenhRutTienVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

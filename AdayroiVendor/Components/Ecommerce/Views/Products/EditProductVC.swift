@@ -19,10 +19,10 @@ import Alamofire
 import MBProgressHUD
 import DLRadioButton
 
-protocol AddNewProductDelegate {
+@available(iOS 13.0, *) protocol AddNewProductDelegate {
     func refreshData()
 }
-struct ImageColorModel {
+@available(iOS 13.0, *) struct ImageColorModel {
     var attribute_header_id: String
     var color_name: String
     var image: UIImage
@@ -54,7 +54,7 @@ struct ImageColorModel {
         return dictionary as NSDictionary
     }
 }
-struct DataUpload {
+@available(iOS 13.0, *) struct DataUpload {
     var key_name:String
     var file_name: String
     var data:Data
@@ -69,7 +69,7 @@ struct DataUpload {
 
 
 
-struct ImageProductModel {
+@available(iOS 13.0, *) struct ImageProductModel {
     var image_id:String
     var image_description: String
     var image: UIImage
@@ -93,7 +93,7 @@ struct ImageProductModel {
     }
 }
 
-struct VideoProductModel {
+@available(iOS 13.0, *) struct VideoProductModel {
     var video_link: String
     var video_caption: String
     var video_image: String
@@ -114,7 +114,7 @@ struct VideoProductModel {
 
 
 
-struct CellHeaderAttribute {
+@available(iOS 13.0, *) struct CellHeaderAttribute {
     var title:String!
     var is_head:Bool!
     var columnType:String!
@@ -185,7 +185,7 @@ struct CellHeaderAttribute {
         }
     }
 }
-struct CellOrtherHeadAttribute {
+@available(iOS 13.0, *) struct CellOrtherHeadAttribute {
     var title:String!
     var is_head:Bool!
     var columnType:String!
@@ -248,7 +248,7 @@ struct CellOrtherHeadAttribute {
     }
 }
 
-struct HeaderAttributeTitleModel {
+@available(iOS 13.0, *) struct HeaderAttributeTitleModel {
     var title: String
     var note:String
     var list_attribute:[HeaderAttributeModel]=[HeaderAttributeModel]()
@@ -277,7 +277,7 @@ struct HeaderAttributeTitleModel {
         return dictionary as NSDictionary
     }
 }
-struct HeaderAttributeModel {
+@available(iOS 13.0, *) struct HeaderAttributeModel {
     var title: String
     var price: Double
     var note:String
@@ -299,7 +299,7 @@ struct HeaderAttributeModel {
 }
 
 
-struct OtherHeaderAttributeTitleModel {
+@available(iOS 13.0, *) struct OtherHeaderAttributeTitleModel {
     var title: String
     var description:String
     var note:String
@@ -321,7 +321,7 @@ struct OtherHeaderAttributeTitleModel {
     }
 }
 
-
+@available(iOS 13.0, *)
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
@@ -329,6 +329,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonProductImageDescription: UIButton!
     static let reuseID = "ImageCollectionViewCell"
 }
+@available(iOS 13.0, *)
 class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewImageUpload: UIImageView!
     @IBOutlet weak var UIButtonDeleteImage: UIButton!
@@ -338,6 +339,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonEditColorName: UIButton!
     static let reuseID = "ColorCollectionViewCell"
 }
+@available(iOS 13.0, *)
 class HeaderAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     static let reuseID = "HeaderAttributeCollectionViewCell"
@@ -383,7 +385,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
 class TextCollectionViewCell: UICollectionViewCell {
     static let reuseID = "TextCollectionViewCell"
 }
-
+@available(iOS 13.0, *)
 class EditProductVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
@@ -594,7 +596,8 @@ class EditProductVC: UIViewController {
         
     }
     @IBAction func UIButtonQLCacThuocTinh(_ sender: UIButton) {
-        let qlCacThuocTinhVC = self.storyboard?.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
+        let storyBoardProduct = UIStoryboard(name: "Products", bundle: nil)
+        let qlCacThuocTinhVC = storyBoardProduct.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
         qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
         qlCacThuocTinhVC.attributeHeadIndex = sender.tag
         qlCacThuocTinhVC.attributeTitleHeadIndex = sender.tag-1
@@ -1571,7 +1574,7 @@ class EditProductVC: UIViewController {
 
 
 //MARK: WithdrawalList
-extension EditProductVC {
+@available(iOS 13.0, *) extension EditProductVC {
     
     func Webservice_getDetailProduct(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -2156,7 +2159,7 @@ extension EditProductVC {
         }
     }
 }
-extension EditProductVC: UITextFieldDelegate{
+@available(iOS 13.0, *) extension EditProductVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -2167,7 +2170,7 @@ extension EditProductVC: UITextFieldDelegate{
         return false
     }
 }
-extension EditProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+@available(iOS 13.0, *) extension EditProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -2185,7 +2188,7 @@ extension EditProductVC: UIImagePickerControllerDelegate, UINavigationController
         self.dismiss(animated: true, completion: nil)
     }
 }
-extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
@@ -2349,7 +2352,7 @@ extension EditProductVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
         
     }
 }
-extension EditProductVC: OpalImagePickerControllerDelegate {
+@available(iOS 13.0, *) extension EditProductVC: OpalImagePickerControllerDelegate {
     func imagePickerDidCancel(_ picker: OpalImagePickerController) {
         //Cancel action?
     }
@@ -2400,7 +2403,7 @@ extension EditProductVC: OpalImagePickerControllerDelegate {
     }
 }
 
-extension EditProductVC: ModalAttributeHeadIndexDelegate {
+@available(iOS 13.0, *) extension EditProductVC: ModalAttributeHeadIndexDelegate {
     func refreshData(AttributeHeadIndex: Int,attributeTitleHeadIndex:Int, CellAttributeList: [[CellAttribute]]) {
         var list_attribute:[String]=[String]()
         for i in 0..<CellAttributeList.count
@@ -2424,7 +2427,7 @@ extension EditProductVC: ModalAttributeHeadIndexDelegate {
     
 }
 
-extension EditProductVC: QLKhoHangVCDelegate {
+@available(iOS 13.0, *) extension EditProductVC: QLKhoHangVCDelegate {
     func refreshData(AttributeHeadIndex: Int, CellKhoHangList: [[CellWareHouseHeadManager]]) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
         let urlStringGetListWarehouse = API_URL + "/api/warehouses/get_total_product_in_warehouse_by_user_id/\(user_id)"
@@ -2440,7 +2443,7 @@ extension EditProductVC: QLKhoHangVCDelegate {
     
 }
 
-extension EditProductVC: EditProductInWareHouseVCEditDelegate {
+@available(iOS 13.0, *) extension EditProductVC: EditProductInWareHouseVCEditDelegate {
     func refreshData(productInWarehouseIndex: Int, productInWarehouse: ProductInWarehouseModel) {
         self.list_total_product_in_warehouse[productInWarehouseIndex]=productInWarehouse
         let text_total:String=productInWarehouse.unlimit == 1 ? "không giới hạn":String(productInWarehouse.total_product)
@@ -2462,7 +2465,7 @@ extension EditProductVC: EditProductInWareHouseVCEditDelegate {
     
 }
 
-extension EditProductVC: OtherAttributeEditDelegate {
+@available(iOS 13.0, *) extension EditProductVC: OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex: Int,otherAttributeTitleHeadIndex:Int, otherAttributeHead: [CellOrtherHeadAttribute]) {
         if(otherAttributeHeadIndex == -1){
             self.orderheaderAttributeTitleProduct.append(otherAttributeHead);
@@ -2482,7 +2485,7 @@ extension EditProductVC: OtherAttributeEditDelegate {
     
     
 }
-extension EditProductVC: ModalSelectColorRutDelegate {
+@available(iOS 13.0, *) extension EditProductVC: ModalSelectColorRutDelegate {
     func refreshData(colorIndex:Int,color: UIColor) {
         if(colorIndex == -1){
             let no_image  = UIImage(named: "placeholder_image")!
@@ -2500,7 +2503,7 @@ extension EditProductVC: ModalSelectColorRutDelegate {
     
     
 }
-extension String {
+@available(iOS 13.0, *) extension String {
     var youtubeID: String? {
         let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
         
@@ -2514,7 +2517,7 @@ extension String {
         return (self as NSString).substring(with: result.range)
     }
 }
-extension UIScrollView {
+@available(iOS 13.0, *) extension UIScrollView {
     
     func scrollToView(view:UIView, animated: Bool) {
         if let superview = view.superview {

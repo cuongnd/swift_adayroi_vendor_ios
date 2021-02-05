@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import LanguageManager_iOS
-import SlideMenuControllerSwift
+
 import CoreLocation
 import MapKit
 import Charts
@@ -21,7 +21,7 @@ class HomeCategoryCell: UICollectionViewCell {
     
     
 }
-
+@available(iOS 13.0, *)
 class HomeVC: UIViewController {
     
     
@@ -67,7 +67,7 @@ class HomeVC: UIViewController {
     
     
     @IBAction func GoToSearch(_ sender: UIButton) {
-        let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "SearchVC") as! SearchVC
+        let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
     @IBAction func ShowMenu(_ sender: UIButton) {
@@ -82,7 +82,7 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func GoToCart(_ sender: UIButton) {
-        let addtoCartVC = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(identifier: "AddtoCartVC") as! AddtoCartVC
+        let addtoCartVC = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "AddtoCartVC") as! AddtoCartVC
         self.navigationController?.pushViewController(addtoCartVC, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +99,7 @@ class HomeVC: UIViewController {
 }
 
 
-extension HomeVC
+@available(iOS 13.0, *) extension HomeVC
 {
     func Webservice_getDoanhThuTheoThang(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in

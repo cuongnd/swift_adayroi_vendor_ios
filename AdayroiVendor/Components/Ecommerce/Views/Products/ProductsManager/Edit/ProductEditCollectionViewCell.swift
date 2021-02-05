@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class ProductEditCollectionViewCell: UICollectionViewCell {
     static let reuseID = "ProductEditCollectionViewCell"
     @IBOutlet weak var UIButtonEditProduct: UIButton!

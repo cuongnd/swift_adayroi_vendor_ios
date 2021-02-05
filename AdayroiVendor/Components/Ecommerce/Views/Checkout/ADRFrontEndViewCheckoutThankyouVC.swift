@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import Foundation
 import Alamofire
-import SlideMenuControllerSwift
+
 import TagListView
 class orderProductCell: UICollectionViewCell {
     
@@ -25,7 +25,7 @@ class orderProductCell: UICollectionViewCell {
     @IBOutlet weak var UILabelColorValue: UILabel!
     @IBOutlet weak var tagListView: TagListView!
 }
-
+@available(iOS 13.0, *)
 class ADRFrontEndViewCheckoutThankyouVC: UIViewController {
     
     @IBOutlet weak var UIButtonHomePage: UIButton!
@@ -83,16 +83,16 @@ class ADRFrontEndViewCheckoutThankyouVC: UIViewController {
           UIApplication.shared.windows[0].rootViewController = slideMenuController
     }
     @IBAction func UIButtonTouchUpInsideNext(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ADRFrontEndViewCheckoutPaymentVC") as! ADRFrontEndViewCheckoutPaymentVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutPaymentVC") as! ADRFrontEndViewCheckoutPaymentVC
         self.navigationController?.pushViewController(vc, animated:true)
     }
     @IBAction func UIButtonTouchUpInsideBack(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ADRFrontEndViewCheckoutVC") as! ADRFrontEndViewCheckoutVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutVC") as! ADRFrontEndViewCheckoutVC
         self.navigationController?.pushViewController(vc, animated:true)
     }
     
 }
-extension ADRFrontEndViewCheckoutThankyouVC
+@available(iOS 13.0, *) extension ADRFrontEndViewCheckoutThankyouVC
 {
     
     func Webservice_getOrderInfo(url:String, params:NSDictionary) -> Void {
@@ -129,7 +129,7 @@ extension ADRFrontEndViewCheckoutThankyouVC
                 let responseCode = jsonResponse!["result"].stringValue
                 if responseCode == "success" {
                     let data = jsonResponse!["data"].dictionaryValue
-                    let vc = self.storyboard?.instantiateViewController(identifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
                     self.navigationController?.pushViewController(vc, animated:true)
                     
                     
@@ -144,7 +144,7 @@ extension ADRFrontEndViewCheckoutThankyouVC
     
 }
 
-extension ADRFrontEndViewCheckoutThankyouVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension ADRFrontEndViewCheckoutThankyouVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if(collectionView==self.UICollectionViewOrderProducts){

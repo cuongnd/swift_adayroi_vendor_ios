@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class WareHouseManagerDeleteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UIButtonDelete: UIButton!
     static let reuseID = "WareHouseManagerDeleteCollectionViewCell"

@@ -23,6 +23,7 @@ class OrderSummaryCell : UITableViewCell
     @IBOutlet weak var btn_Note: UIButton!
     
 }
+@available(iOS 13.0, *)
 class OrderDetails: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var Tableview_Height: NSLayoutConstraint!
@@ -269,7 +270,7 @@ class OrderDetails: UIViewController,UITextViewDelegate {
         }
     }
     @IBAction func btnTap_SelectPromoCode(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "PromoCodeListVC") as! PromoCodeListVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PromoCodeListVC") as! PromoCodeListVC
         self.present(vc, animated: true, completion: nil)
     }
     @IBAction func btnTap_Apply(_ sender: UIButton) {
@@ -339,7 +340,7 @@ class OrderDetails: UIViewController,UITextViewDelegate {
                 {
                     self.text_ViewNotes.text! = ""
                 }
-                let vc = self.storyboard?.instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
                 vc.Address = self.lbl_DeliveryAddress.text!
                 vc.Totalamount = self.TotalAmount
                 vc.DiscountAmount = self.DiscountAmount
@@ -362,7 +363,7 @@ class OrderDetails: UIViewController,UITextViewDelegate {
                 self.text_ViewNotes.text! = ""
             }
             
-            let vc = self.storyboard?.instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
             vc.Address = ""
             vc.Totalamount = self.TotalAmount
             vc.DiscountAmount = self.DiscountAmount
@@ -485,7 +486,7 @@ class OrderDetails: UIViewController,UITextViewDelegate {
     }
     
 }
-extension OrderDetails: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension OrderDetails: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getsummaryData.count
     }
@@ -533,7 +534,7 @@ extension OrderDetails: UITableViewDelegate,UITableViewDataSource {
         let data = getsummaryData[sender.tag]
         let addonceData = data["addons"].arrayValue
         print(addonceData)
-        let vc = self.storyboard?.instantiateViewController(identifier: "AddonceListVC") as! AddonceListVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddonceListVC") as! AddonceListVC
         vc.SelectedAddons = addonceData
         self.present(vc, animated: true, completion: nil)
     }
@@ -549,7 +550,7 @@ extension OrderDetails: UITableViewDelegate,UITableViewDataSource {
     }
 }
 //MARK: Webservices
-extension OrderDetails {
+@available(iOS 13.0, *) extension OrderDetails {
     func Webservice_GetSummary(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
             
@@ -658,7 +659,7 @@ extension OrderDetails {
     }
     
 }
-extension Double {
+@available(iOS 13.0, *) extension Double {
     /// Rounds the double to decimal places value
     func rounded(toPlaces places:Int) -> Double {
         let divisor = pow(10.0, Double(places))

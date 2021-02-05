@@ -14,8 +14,8 @@ import Photos
 import FlexColorPicker
 
 
-
-protocol QLKhoHangVCDelegate {
+@available(iOS 13.0, *)
+@available(iOS 13.0, *) protocol QLKhoHangVCDelegate {
     func refreshData(AttributeHeadIndex:Int,CellKhoHangList:[[CellWareHouseHeadManager]])
 }
 
@@ -26,7 +26,7 @@ class EditKhoHangCollectionViewCell: UICollectionViewCell {
     static let reuseID = "EditKhoHangCollectionViewCell"
 }
 
-
+@available(iOS 13.0, *)
 class QlKhoHangVC: UIViewController {
     
     
@@ -130,7 +130,7 @@ class QlKhoHangVC: UIViewController {
     
     @IBAction func UIButtonEditHeadAttribute(_ sender: UIButton) {
         
-        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        let editWareHouseVC = self.storyboard?.instantiateViewController(withIdentifier: "EditWareHouseVC") as! EditWareHouseVC
         editWareHouseVC.delegate = self
         //editWareHouseVC.attributeHeadIndex = sender.tag
         //editWareHouseVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
@@ -163,7 +163,7 @@ class QlKhoHangVC: UIViewController {
     
     
     @IBAction func UIButtonTouchUpInsideAddWarehouse(_ sender: UIButton) {
-        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        let editWareHouseVC = self.storyboard?.instantiateViewController(withIdentifier: "EditWareHouseVC") as! EditWareHouseVC
         editWareHouseVC.delegate = self
         editWareHouseVC.warehouse = WarehouseModel()
         editWareHouseVC.warehouse_index = -1
@@ -205,7 +205,7 @@ class QlKhoHangVC: UIViewController {
         
     }
     @objc func editWarehouse(_ sender: UIButton){
-        let editWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditWareHouseVC") as! EditWareHouseVC
+        let editWareHouseVC = self.storyboard?.instantiateViewController(withIdentifier: "EditWareHouseVC") as! EditWareHouseVC
         editWareHouseVC.delegate = self
         editWareHouseVC.warehouse = self.listWarehouse[sender.tag-1]
         editWareHouseVC.warehouse_index=sender.tag-1
@@ -214,7 +214,7 @@ class QlKhoHangVC: UIViewController {
     }
 }
 //MARK: WithdrawalList
-extension QlKhoHangVC {
+@available(iOS 13.0, *) extension QlKhoHangVC {
     
     func Webservice_getListWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -291,7 +291,7 @@ extension QlKhoHangVC {
 }
 
 
-extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
+@available(iOS 13.0, *) extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
@@ -325,7 +325,7 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         /*
-         let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+         let vc = storyBoardProduct.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
          vc.itemsId = data["_id"].stringValue
          vc.SubCategoryId = data["sub_cat_id"].stringValue
          self.navigationController?.pushViewController(vc, animated: true)
@@ -337,7 +337,7 @@ extension QlKhoHangVC: UICollectionViewDelegate,UICollectionViewDataSource {
     }
 }
 
-extension QlKhoHangVC: EditWareHouseVCEditDelegate {
+@available(iOS 13.0, *) extension QlKhoHangVC: EditWareHouseVCEditDelegate {
     func refreshData(warehouse_index:Int,warehouseModel: WarehouseModel) {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId)
         let urlStringGetListWarehouse = API_URL + "/api/warehouses?user_id=\(user_id)"

@@ -15,11 +15,11 @@ import FlexColorPicker
 
 
 
-protocol ModalAttributeHeadIndexDelegate {
+@available(iOS 13.0, *) protocol ModalAttributeHeadIndexDelegate {
     func refreshData(AttributeHeadIndex:Int,attributeTitleHeadIndex:Int,CellAttributeList:[[CellAttribute]])
 }
 
-struct CellAttribute {
+@available(iOS 13.0, *) struct CellAttribute {
     var title:String!
     var is_head:Bool!
     var columnType:String!
@@ -88,7 +88,7 @@ class EditAttributeCollectionViewCell: UICollectionViewCell {
     static let reuseID = "EditAttributesCollectionViewCell"
 }
 
-
+@available(iOS 13.0, *)
 class QlCacThuocTinhVC: UIViewController {
     
     
@@ -299,7 +299,7 @@ class QlCacThuocTinhVC: UIViewController {
 
 
 //MARK: WithdrawalList
-extension QlCacThuocTinhVC {
+@available(iOS 13.0, *) extension QlCacThuocTinhVC {
     
     
     
@@ -340,7 +340,7 @@ extension QlCacThuocTinhVC {
 }
 
 
-extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource {
+@available(iOS 13.0, *) extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(collectionView==self.UICollectionViewListProductImage){
@@ -374,7 +374,7 @@ extension QlCacThuocTinhVC: UICollectionViewDelegate,UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         /*
-         let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+         let vc = storyBoardProduct.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
          vc.itemsId = data["_id"].stringValue
          vc.SubCategoryId = data["sub_cat_id"].stringValue
          self.navigationController?.pushViewController(vc, animated: true)

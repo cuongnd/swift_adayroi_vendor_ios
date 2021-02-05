@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+@available(iOS 13.0, *)
 class MyProductsCustomCollectionViewLayout: UICollectionViewLayout {
 
     
@@ -86,6 +86,7 @@ class MyProductsCustomCollectionViewLayout: UICollectionViewLayout {
 }
 
 // MARK: - Helpers
+@available(iOS 13.0, *)
 extension MyProductsCustomCollectionViewLayout {
 
     func generateItemAttributes(collectionView: UICollectionView) {

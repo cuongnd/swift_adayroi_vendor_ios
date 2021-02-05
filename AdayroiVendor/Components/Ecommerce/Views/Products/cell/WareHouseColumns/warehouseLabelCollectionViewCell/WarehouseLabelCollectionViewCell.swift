@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class WarehouseLabelCollectionViewCell: UICollectionViewCell {
     static let reuseID = "WarehouseLabelCollectionViewCell"
     @IBOutlet weak var contentLabel: UILabel!

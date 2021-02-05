@@ -9,10 +9,10 @@
 import UIKit
 import SwiftyJSON
 
-protocol WriteReviewVCDelegate {
+@available(iOS 13.0, *) protocol WriteReviewVCDelegate {
     func refreshData()
 }
-
+@available(iOS 13.0, *)
 class WriteReviewVC: UIViewController {
     
     @IBOutlet weak var text_view: UITextView!
@@ -50,7 +50,7 @@ class WriteReviewVC: UIViewController {
         }
     }
 }
-extension WriteReviewVC: UITextViewDelegate {
+@available(iOS 13.0, *) extension WriteReviewVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.text_view.text! == "Enter your review".localiz() {
             self.text_view.text = ""
@@ -58,7 +58,7 @@ extension WriteReviewVC: UITextViewDelegate {
     }
 }
 // MARK Rating Views
-extension WriteReviewVC: FloatRatingViewDelegate {
+@available(iOS 13.0, *) extension WriteReviewVC: FloatRatingViewDelegate {
     // MARK: FloatRatingViewDelegate
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
         liveStr = String(format: "%.f", self.view_ratings.rating)
@@ -70,7 +70,7 @@ extension WriteReviewVC: FloatRatingViewDelegate {
     }
 }
 //MARK: Webservices
-extension WriteReviewVC
+@available(iOS 13.0, *) extension WriteReviewVC
 {
     func Webservice_WriteReview(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

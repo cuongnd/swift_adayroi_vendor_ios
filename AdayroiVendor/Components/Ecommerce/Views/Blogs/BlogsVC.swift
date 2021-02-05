@@ -16,7 +16,7 @@ class BlogCell: UICollectionViewCell {
     @IBOutlet weak var UIImageViewSharingBlogItem: UIImageView!
     @IBOutlet weak var UILabelBlogTitle: UILabel!
 }
-
+@available(iOS 13.0, *)
 class BlogsVC: UIViewController {
     @IBOutlet weak var Collectioview_SearchList: UICollectionView!
     var pageIndex = 1
@@ -61,7 +61,7 @@ class BlogsVC: UIViewController {
         }
     }
 }
-extension BlogsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension BlogsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Collectioview_SearchList.bounds.size.width, height: self.Collectioview_SearchList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -143,7 +143,7 @@ extension BlogsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let blogItem = self.list_blog[indexPath.row]
-        let vc = self.storyboard?.instantiateViewController(identifier: "BlogDetailsVC") as! BlogDetailsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BlogDetailsVC") as! BlogDetailsVC
         //vc.itemsId = data["id"]!
         vc.blog_id = blogItem._id
         vc.sub_cat_id = blogItem.sub_cat_id
@@ -163,7 +163,7 @@ extension BlogsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     }
     
 }
-extension BlogsVC
+@available(iOS 13.0, *) extension BlogsVC
 {
     func Webservice_getBlogs(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in

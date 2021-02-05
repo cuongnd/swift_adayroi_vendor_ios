@@ -7,7 +7,7 @@
 //
 
 import UIKit
-struct CellWidthHeight {
+@available(iOS 13.0, *) struct CellWidthHeight {
     var width:[Int]
     var headHeight:Int
     var bodyHeight:Int
@@ -17,7 +17,7 @@ struct CellWidthHeight {
         self.bodyHeight=bodyHeight
        }
 }
-
+@available(iOS 13.0, *)
 class HeaderAttributeCustomCollectionViewLayout: UICollectionViewLayout {
 
     
@@ -95,7 +95,7 @@ class HeaderAttributeCustomCollectionViewLayout: UICollectionViewLayout {
 }
 
 // MARK: - Helpers
-extension HeaderAttributeCustomCollectionViewLayout {
+@available(iOS 13.0, *) extension HeaderAttributeCustomCollectionViewLayout {
 
     func generateItemAttributes(collectionView: UICollectionView) {
         if itemsSize.count != numberOfColumns {

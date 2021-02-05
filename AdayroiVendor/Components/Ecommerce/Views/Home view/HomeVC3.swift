@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import LanguageManager_iOS
-import SlideMenuControllerSwift
+
 import CoreLocation
 import MapKit
 class PromotionBannerCell : UICollectionViewCell
@@ -35,7 +35,7 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var img_Product: UIImageView!
     @IBOutlet weak var btn_Favorite: UIButton!
 }
-
+@available(iOS 13.0, *)
 class HomeVC3: UIViewController {
     
     @IBOutlet weak var collectionview_BannerHeight: NSLayoutConstraint!
@@ -131,7 +131,7 @@ class HomeVC3: UIViewController {
         self.Webservice_getrestaurantslocation(url: urlString, params: [:])
     }
     @IBAction func btnTap_Search(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "SearchVC") as! SearchVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func btnTap_Grid(_ sender: UIButton) {
@@ -159,7 +159,7 @@ class HomeVC3: UIViewController {
             nav.navigationBar.isHidden = true
             UIApplication.shared.windows[0].rootViewController = nav
         }else{
-            let vc = self.storyboard?.instantiateViewController(identifier: "AddtoCartVC") as! AddtoCartVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddtoCartVC") as! AddtoCartVC
             self.navigationController?.pushViewController(vc, animated:true)
         }
         
@@ -183,7 +183,7 @@ class HomeVC3: UIViewController {
         mapItem.openInMaps(launchOptions: options)
     }
 }
-extension HomeVC3: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension HomeVC3: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectioView_GirdList
         {
@@ -294,7 +294,7 @@ extension HomeVC3: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
         {
             
             let data = self.categoryWiseItemsArray[indexPath.row]
-            let vc = self.storyboard?.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"]!
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -346,7 +346,7 @@ extension HomeVC3: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
         }
     }
 }
-extension HomeVC3: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension HomeVC3: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Tableview_ProductList.bounds.size.width, height: self.Tableview_ProductList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -394,7 +394,7 @@ extension HomeVC3: UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = self.categoryWiseItemsArray[indexPath.row]
-        let vc = self.storyboard?.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
         vc.itemsId = data["_id"]!
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -435,7 +435,7 @@ extension HomeVC3: UITableViewDelegate,UITableViewDataSource {
         }
     }
 }
-extension HomeVC3
+@available(iOS 13.0, *) extension HomeVC3
 {
     func Webservice_getCategory(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
@@ -629,7 +629,7 @@ extension HomeVC3
         }
     }
 }
-extension HomeVC3 {
+@available(iOS 13.0, *) extension HomeVC3 {
     func addViewDynamically(subview : UIView)
     {
         subview.translatesAutoresizingMaskIntoConstraints = false;
@@ -642,7 +642,7 @@ extension HomeVC3 {
         self.Main_View.layoutIfNeeded()
     }
 }
-extension String {
+@available(iOS 13.0, *) extension String {
     var toDouble: Double {
         return Double(self) ?? 0.00
     }

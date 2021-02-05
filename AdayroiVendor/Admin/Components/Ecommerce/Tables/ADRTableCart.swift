@@ -8,6 +8,7 @@
 import SQLite
 import SwiftyJSON
 import Foundation
+@available(iOS 13.0, *)
 class ADRTableCart: ADRTable{
     static let shared: ADRTableCart = {
         let instance = ADRTableCart()

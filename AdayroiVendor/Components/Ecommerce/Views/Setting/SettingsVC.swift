@@ -8,7 +8,8 @@
 
 import UIKit
 import LanguageManager_iOS
-import SlideMenuControllerSwift
+
+@available(iOS 13.0, *)
 class SettingsVC: UIViewController {
     @IBOutlet weak var lbl_Version: UILabel!
     @IBOutlet weak var lbl_titleLabel: UILabel!
@@ -47,7 +48,7 @@ class SettingsVC: UIViewController {
             UIApplication.shared.windows[0].rootViewController = nav
         }else{
             let storyBoard = UIStoryboard(name: "User", bundle: nil)
-            let vc = storyBoard.instantiateViewController(identifier: "EditProfileVC") as! EditProfileVC
+            let vc = storyBoard.instantiateViewController(withIdentifier: "EditProfileVC") as! EditProfileVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -62,7 +63,7 @@ class SettingsVC: UIViewController {
         }
         else{
             let storyBoard = UIStoryboard(name: "User", bundle: nil)
-            let vc = storyBoard.instantiateViewController(identifier: "ChangePassswordVC") as! ChangePassswordVC
+            let vc = storyBoard.instantiateViewController(withIdentifier: "ChangePassswordVC") as! ChangePassswordVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

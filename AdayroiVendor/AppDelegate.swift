@@ -16,8 +16,9 @@ import CoreLocation
 import SQLite
 import ETBinding
 @UIApplicationMain
+@available(iOS 13.0, *)
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
-    
+    var window: UIWindow?
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
     

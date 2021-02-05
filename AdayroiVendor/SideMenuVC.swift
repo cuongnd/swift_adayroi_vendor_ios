@@ -26,7 +26,7 @@ class MenuTableCell: UITableViewCell {
     @IBOutlet weak var lbl_menu: UILabel!
     @IBOutlet weak var img_menu: UIImageView!
 }
-
+@available(iOS 13.0, *)
 class SideMenuVC: UIViewController {
     
     //MARK: Outlets
@@ -94,6 +94,7 @@ class SideMenuVC: UIViewController {
 }
 
 //MARK: Tableview methods
+@available(iOS 13.0, *)
 extension SideMenuVC : UITableViewDataSource,UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,6 +121,7 @@ extension SideMenuVC : UITableViewDataSource,UITableViewDelegate
     }
 }
 //MARK: Webservices
+@available(iOS 13.0, *)
 extension SideMenuVC {
     func Webservice_GetProfile(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

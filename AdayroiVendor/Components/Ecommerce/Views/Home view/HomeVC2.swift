@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import LanguageManager_iOS
-import SlideMenuControllerSwift
+
 import CoreLocation
 import MapKit
 
@@ -21,7 +21,7 @@ class HomeCategoryCell2: UICollectionViewCell {
   
 
 }
-
+@available(iOS 13.0, *)
 class HomeVC2: UIViewController {
    
     
@@ -79,7 +79,7 @@ class HomeVC2: UIViewController {
    }
     
     @IBAction func GoToSearch(_ sender: UIButton) {
-        let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "SearchVC") as! SearchVC
+        let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     @IBAction func ShowMenu(_ sender: UIButton) {
@@ -94,7 +94,7 @@ class HomeVC2: UIViewController {
     }
     
     @IBAction func GoToCart(_ sender: UIButton) {
-        let addtoCartVC = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(identifier: "AddtoCartVC") as! AddtoCartVC
+        let addtoCartVC = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "AddtoCartVC") as! AddtoCartVC
         self.navigationController?.pushViewController(addtoCartVC, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +105,7 @@ class HomeVC2: UIViewController {
     
     
 }
-extension HomeVC2: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension HomeVC2: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.Collectioview_lastProductList{
             return lastProductArray.count
@@ -266,35 +266,35 @@ extension HomeVC2: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
         if collectionView == self.Collectioview_lastProductList{
             let storyBoardProduct = UIStoryboard(name: "Products", bundle: nil)
             let data = self.lastProductArray[indexPath.row]
-            let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = storyBoardProduct.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"].stringValue
             vc.SubCategoryId = data["sub_cat_id"].stringValue
             self.navigationController?.pushViewController(vc, animated: true)
         }else if collectionView == self.Collectioview_HomeHotCategoryList{
             let data = self.homeHotCategoryArray[indexPath.row]
-            let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "SearchVC") as! SearchVC
+            let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
             searchVC.cat_id=data["_id"].stringValue;
             self.navigationController?.pushViewController(searchVC, animated: true)
         }else if collectionView == self.Collectioview_HomeHotProductList{
             let data = self.homeHotProductArray[indexPath.row]
-            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"].stringValue
             vc.SubCategoryId = data["sub_cat_id"].stringValue
             self.navigationController?.pushViewController(vc, animated: true)
         }else if collectionView == self.Collectioview_HomeDiscountProductList{
             let data = self.homeDiscountProductArray[indexPath.row]
-            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"].stringValue
             vc.SubCategoryId = data["sub_cat_id"].stringValue
             self.navigationController?.pushViewController(vc, animated: true)
         }else if collectionView == self.Collectioview_HomeCategoryList{
             let data = self.homeCategoryArray[indexPath.row]
-            let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "SearchVC") as! SearchVC
+            let searchVC = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
             searchVC.cat_id=data["_id"].stringValue;
             self.navigationController?.pushViewController(searchVC, animated: true)
         }else if collectionView == self.Collectioview_HomeFeatureProductList{
             let data = self.homeFeatureProductArray[indexPath.row]
-            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"].stringValue
             vc.SubCategoryId = data["sub_cat_id"].stringValue
             self.navigationController?.pushViewController(vc, animated: true)
@@ -308,7 +308,7 @@ extension HomeVC2: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     
 }
 
-extension HomeVC2
+@available(iOS 13.0, *) extension HomeVC2
 {
     func Webservice_getMainShopInfo(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
@@ -484,7 +484,7 @@ extension HomeVC2
     }
     
 }
-extension String {
+@available(iOS 13.0, *) extension String {
     func strikeThrough() -> NSAttributedString {
         let attributeString =  NSMutableAttributedString(string: self)
         attributeString.addAttribute(

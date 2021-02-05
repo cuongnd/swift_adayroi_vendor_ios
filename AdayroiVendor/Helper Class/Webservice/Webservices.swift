@@ -14,7 +14,7 @@ import SwiftyJSON
 import MBProgressHUD
 
 let reachability = Reachability()!
-
+@available(iOS 13.0, *)
 class WebServices: NSObject
 {
     var operationQueue = OperationQueue()

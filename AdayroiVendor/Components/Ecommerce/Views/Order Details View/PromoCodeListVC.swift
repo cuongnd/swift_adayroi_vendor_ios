@@ -16,6 +16,7 @@ class PromoCell: UITableViewCell {
     @IBOutlet weak var lbl_OfferName: UILabel!
     @IBOutlet weak var lbl_descripation: UILabel!
 }
+@available(iOS 13.0, *)
 class PromoCodeListVC: UIViewController {
     
     @IBOutlet weak var TableView_PromocodeList: UITableView!
@@ -31,7 +32,7 @@ class PromoCodeListVC: UIViewController {
     }
     
 }
-extension PromoCodeListVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension PromoCodeListVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.TableView_PromocodeList.bounds.size.width, height: self.TableView_PromocodeList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -78,7 +79,7 @@ extension PromoCodeListVC: UITableViewDelegate,UITableViewDataSource {
     }
 }
 //MARK: Webservices
-extension PromoCodeListVC {
+@available(iOS 13.0, *) extension PromoCodeListVC {
     func Webservice_GetPromocodelist(url:String, params:NSDictionary) -> Void {
         
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

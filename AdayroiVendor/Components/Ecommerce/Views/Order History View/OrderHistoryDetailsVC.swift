@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import iOSDropDown
 import TagListView
-protocol OrderHistoryDetailsDelegate {
+@available(iOS 13.0, *) protocol OrderHistoryDetailsDelegate {
     func refreshData()
 }
 
@@ -34,7 +34,7 @@ class historyOrderProductCell: UICollectionViewCell {
      */
     
 }
-
+@available(iOS 13.0, *)
 class OrderHistoryDetailsVC: UIViewController {
     
     @IBOutlet weak var btn_cancelHeight: NSLayoutConstraint!
@@ -126,7 +126,7 @@ class OrderHistoryDetailsVC: UIViewController {
     }
     
 }
-extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if(collectionView==self.UICollectionViewOrderProducts){
@@ -174,7 +174,7 @@ extension OrderHistoryDetailsVC: UICollectionViewDelegate,UICollectionViewDataSo
 
 
 //MARK: Webservices
-extension OrderHistoryDetailsVC {
+@available(iOS 13.0, *) extension OrderHistoryDetailsVC {
     func Webservice_getOrderInfo(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {

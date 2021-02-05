@@ -42,6 +42,7 @@ class RelatedProductCell: UICollectionViewCell {
     @IBOutlet weak var lbl_RelatedProductOriginalPrice: UILabel!
     @IBOutlet weak var lbl_RelatedProductUnitPrice: UILabel!
 }
+@available(iOS 13.0, *)
 class ProductDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var text_view: UITextView!
@@ -185,7 +186,7 @@ class ProductDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavi
        {
            
            let storyBoardProduct = UIStoryboard(name: "Products", bundle: nil)
-           let searchVC = storyBoardProduct.instantiateViewController(identifier: "SearchVC") as! SearchVC
+           let searchVC = storyBoardProduct.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
             searchVC.cat_id = self.productItem.cat_id
             searchVC.sub_cat_id = self.productItem.sub_cat_id
            self.navigationController?.pushViewController(searchVC, animated: true)
@@ -301,7 +302,7 @@ class ProductDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavi
         
     }
     @IBAction func btnTap_AddOns(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "AddOnsVC") as! AddOnsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddOnsVC") as! AddOnsVC
         vc.delegate = self
         vc.addonsArray = self.addonsArray
         self.present(vc, animated: true, completion: nil)
@@ -352,7 +353,7 @@ class ProductDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavi
     }
 }
 
-extension ProductDetailsVC {
+@available(iOS 13.0, *) extension ProductDetailsVC {
     func imageSliderData() {
         self.image_Slider.slideshowInterval = 3.0
         self.image_Slider.pageIndicatorPosition = .init(horizontal: .center, vertical: .customBottom(padding: 10.0))
@@ -370,7 +371,7 @@ extension ProductDetailsVC {
         self.image_Slider.presentFullScreenController(from: self)
     }
 }
-extension ProductDetailsVC: AddOnsDelegate {
+@available(iOS 13.0, *) extension ProductDetailsVC: AddOnsDelegate {
     
     func refreshData(AddonsArray: [[String : String]]) {
         print(AddonsArray)
@@ -424,7 +425,7 @@ extension ProductDetailsVC: AddOnsDelegate {
     }
     
 }
-extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.CollectionViewRelatedProducts{
             let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.CollectionViewRelatedProducts.bounds.size.width, height: self.CollectionViewRelatedProducts.bounds.size.height))
@@ -510,7 +511,7 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
         if collectionView == self.CollectionViewRelatedProducts{
             let data = self.RelatedProductsData[indexPath.row]
             itemsId = data["_id"].stringValue
-            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+            let vc = UIStoryboard(name: "Products", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
             vc.itemsId = data["_id"].stringValue
             vc.SubCategoryId = data["sub_cat_id"].stringValue
             self.navigationController?.pushViewController(vc, animated: true)
@@ -566,7 +567,7 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
     }
     
 }
-extension ProductDetailsVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension ProductDetailsVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.TableView_AddonsList.bounds.size.width, height: self.TableView_AddonsList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -652,7 +653,7 @@ extension ProductDetailsVC: UITableViewDelegate,UITableViewDataSource {
         self.TableView_AddonsList.reloadData()
     }
 }
-extension ProductDetailsVC
+@available(iOS 13.0, *) extension ProductDetailsVC
 {
     func Webservice_getImageByProductDetail(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in
@@ -806,7 +807,7 @@ extension ProductDetailsVC
                 if responseCode == "1" {
                     let responceData = jsonResponse!["data"].dictionaryValue
                     
-                    //                    let vc = self.storyboard?.instantiateViewController(identifier: "AddtoCartVC") as! AddtoCartVC
+                    //                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddtoCartVC") as! AddtoCartVC
                     //                    self.navigationController?.pushViewController(vc, animated:true)
                     self.SelectedAddons.removeAll()
                     self.text_view.text = ""

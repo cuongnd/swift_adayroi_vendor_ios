@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+@available(iOS 13.0, *)
 class FavoriteListVC: UIViewController {
     @IBOutlet weak var Collectioview_FavoriteList: UICollectionView!
     var pageIndex = 1
@@ -33,7 +34,7 @@ class FavoriteListVC: UIViewController {
         }
     }
 }
-extension FavoriteListVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension FavoriteListVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Collectioview_FavoriteList.bounds.size.width, height: self.Collectioview_FavoriteList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -79,7 +80,7 @@ extension FavoriteListVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let data = self.FavoriteListArray[indexPath.row]
-        let vc = self.storyboard?.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
         vc.itemsId = data["id"]!
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -106,7 +107,7 @@ extension FavoriteListVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
         self.present(alertVC,animated: true,completion: nil)
     }
 }
-extension FavoriteListVC
+@available(iOS 13.0, *) extension FavoriteListVC
 {
     func Webservice_getFavoriteList(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

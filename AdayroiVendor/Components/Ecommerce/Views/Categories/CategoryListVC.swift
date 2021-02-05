@@ -18,7 +18,7 @@ import AnyFormatKit
     @IBOutlet weak var UILabelCategoryName: UILabel!
     
  }
-
+@available(iOS 13.0, *)
 class CategoryListVC: UIViewController {
    
     var list_category:[CategoryModel]=[CategoryModel]()
@@ -46,7 +46,7 @@ class CategoryListVC: UIViewController {
 
 
 //MARK: CategoryListVC
-extension CategoryListVC {
+@available(iOS 13.0, *) extension CategoryListVC {
     
     
     func Webservice_getListCategory(url:String, params:NSDictionary) -> Void {
@@ -83,7 +83,7 @@ extension CategoryListVC {
    
     
 }
- extension CategoryListVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+ @available(iOS 13.0, *) extension CategoryListVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          return list_category.count
          
@@ -114,7 +114,7 @@ extension CategoryListVC {
         
          let storyBoardProduct = UIStoryboard(name: "Products", bundle: nil)
          let categoryItem = self.list_category[indexPath.row]
-         let searchVC = storyBoardProduct.instantiateViewController(identifier: "SearchVC") as! SearchVC
+         let searchVC = storyBoardProduct.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
          searchVC.cat_id = categoryItem._id
          self.navigationController?.pushViewController(searchVC, animated: true)
   

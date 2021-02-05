@@ -8,6 +8,7 @@
 import SQLite
 import Foundation
 import SwiftyJSON
+@available(iOS 13.0, *)
 class ADRFrontEndModelCartItem: ADRModel {
     static let shared: ADRFrontEndModelCartItem = {
         let instance = ADRFrontEndModelCartItem()

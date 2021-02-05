@@ -11,7 +11,7 @@ import SwiftyJSON
 import SQLite
 import ETBinding
 import TagListView
-import SlideMenuControllerSwift
+
 
 class CartCell: UITableViewCell {
     
@@ -35,6 +35,7 @@ class attributeCell: UICollectionViewCell {
     @IBOutlet weak var UILabelKey: UILabel!
     @IBOutlet weak var UILabelValue: UILabel!
 }
+@available(iOS 13.0, *)
 class AddtoCartVC: UIViewController {
     
     @IBOutlet weak var btn_Checkout: UIButton!
@@ -119,7 +120,7 @@ class AddtoCartVC: UIViewController {
         }
     }
 }
-extension AddtoCartVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension AddtoCartVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: self.TableView_CartList.bounds.size.width, height: self.TableView_CartList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -249,7 +250,7 @@ extension AddtoCartVC: UITableViewDelegate,UITableViewDataSource {
         let data = cartDetailsarray[sender.tag]
         let addonceData = data["addons"]!
         print(addonceData)
-        let vc = self.storyboard?.instantiateViewController(identifier: "AddonceListVC") as! AddonceListVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddonceListVC") as! AddonceListVC
         vc.SelectedAddons = addonceData as! [JSON]
         self.present(vc, animated: true, completion: nil)
     }
@@ -265,7 +266,7 @@ extension AddtoCartVC: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-extension AddtoCartVC
+@available(iOS 13.0, *) extension AddtoCartVC
 {
     func showCart() -> Void{
         self.cartDetailsarray.removeAll(keepingCapacity: true)
@@ -433,7 +434,7 @@ extension AddtoCartVC
                 print(jsonResponse!)
                 let responseCode = jsonResponse!["status"].stringValue
                 if responseCode == "1" {
-                    let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetails") as! OrderDetails
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderDetails") as! OrderDetails
                     self.navigationController?.pushViewController(vc, animated:true)
                 }
                 else {
@@ -443,7 +444,7 @@ extension AddtoCartVC
         }
     }
 }
-extension AddtoCartVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension AddtoCartVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let data=self.cartDetailsarray[collectionView.tag]
         let attributes=JSON(data["attributes"]!);

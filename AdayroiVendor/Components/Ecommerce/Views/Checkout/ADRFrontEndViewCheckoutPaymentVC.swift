@@ -13,14 +13,14 @@
     import RxCocoa
     import Foundation
     import Alamofire
-    import SlideMenuControllerSwift
+    
     class paymentCell: UICollectionViewCell {
         
         @IBOutlet weak var UIButtonSelectedPayment: UIButton!
         @IBOutlet weak var UIImageViewPayment: UIImageView!
         @IBOutlet weak var UILabelPaymentName: UILabel!
     }
-    
+    @available(iOS 13.0, *)
     class ADRFrontEndViewCheckoutPaymentVC: UIViewController {
         
         
@@ -161,11 +161,11 @@
             
         }
         @IBAction func UIButtonTouchUpInsideBack(_ sender: UIButton) {
-            let vc = self.storyboard?.instantiateViewController(identifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
             self.navigationController?.pushViewController(vc, animated:true)
         }
     }
-    extension ADRFrontEndViewCheckoutPaymentVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    @available(iOS 13.0, *) extension ADRFrontEndViewCheckoutPaymentVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             
             return self.payments.count
@@ -231,7 +231,7 @@
         
     }
     
-    extension ADRFrontEndViewCheckoutPaymentVC
+    @available(iOS 13.0, *) extension ADRFrontEndViewCheckoutPaymentVC
     {
         
         func Webservice_getPayments(url:String, params:NSDictionary) -> Void {
@@ -272,7 +272,7 @@
                     if responseCode == "success" {
                         let data = jsonResponse!["data"].dictionaryValue
                         showAlertMessage(titleStr: Bundle.main.displayName!, messageStr: jsonResponse!["msg"].stringValue)
-                        let vc = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(identifier: "ADRFrontEndViewCheckoutThankyouVC") as! ADRFrontEndViewCheckoutThankyouVC
+                        let vc = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutThankyouVC") as! ADRFrontEndViewCheckoutThankyouVC
                          vc.order_id=data["_id"]?.stringValue as! String
                         self.navigationController?.pushViewController(vc, animated: true)
                     }

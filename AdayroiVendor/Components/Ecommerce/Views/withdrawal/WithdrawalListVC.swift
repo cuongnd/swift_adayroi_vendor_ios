@@ -27,6 +27,7 @@ private enum Properties {
     static let horizontalMargin: CGFloat = 15
     static let widthConstant: CGFloat = 20
 }
+ @available(iOS 13.0, *)
 class WithdrawalListVC: UIViewController {
     var OrderHistoryData = [JSON]()
     var selected = String()
@@ -118,7 +119,7 @@ class WithdrawalListVC: UIViewController {
     
 }
 
-extension WithdrawalListVC: WithdrawalLapLenhRutDelegate {
+@available(iOS 13.0, *) extension WithdrawalListVC: WithdrawalLapLenhRutDelegate {
     
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
@@ -132,7 +133,7 @@ extension WithdrawalListVC: WithdrawalLapLenhRutDelegate {
 }
 
 //MARK: WithdrawalList
-extension WithdrawalListVC {
+@available(iOS 13.0, *) extension WithdrawalListVC {
     
     
     func Webservice_GetLichSuRutTien(url:String, params:NSDictionary) -> Void {
@@ -291,7 +292,7 @@ extension WithdrawalListVC {
     }
 }
 
-extension WithdrawalListVC: UICollectionViewDataSource {
+@available(iOS 13.0, *) extension WithdrawalListVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.rutTienList.count+1
@@ -351,7 +352,7 @@ extension WithdrawalListVC: UICollectionViewDataSource {
     }
 }
 
-extension WithdrawalListVC: UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension WithdrawalListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let row_index=indexPath[0]

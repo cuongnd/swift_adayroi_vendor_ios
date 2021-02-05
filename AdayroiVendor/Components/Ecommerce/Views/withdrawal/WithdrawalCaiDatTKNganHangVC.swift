@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 
-
+@available(iOS 13.0, *)
 class WithdrawalCaiDatTKNganHangVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
@@ -120,7 +120,7 @@ class WithdrawalCaiDatTKNganHangVC: UIViewController {
 
 
 //MARK: WithdrawalList
-extension WithdrawalCaiDatTKNganHangVC {
+@available(iOS 13.0, *) extension WithdrawalCaiDatTKNganHangVC {
     
     
     func Webservice_GetTaiKhoanNganHang(url:String, params:NSDictionary) -> Void {

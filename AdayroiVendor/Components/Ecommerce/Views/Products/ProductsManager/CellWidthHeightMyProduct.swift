@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct CellWidthHeightMyProduct {
+@available(iOS 13.0, *) struct CellWidthHeightMyProduct {
     var width:[Int]
     var headHeight:Int
     var bodyHeight:Int

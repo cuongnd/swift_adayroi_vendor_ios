@@ -9,10 +9,10 @@ import TLCustomMask
 import UIKit
 import SwiftyJSON
 
-protocol EditWareHouseVCEditDelegate {
+@available(iOS 13.0, *) protocol EditWareHouseVCEditDelegate {
     func refreshData(warehouse_index:Int,warehouseModel:WarehouseModel)
 }
-
+@available(iOS 13.0, *)
 class EditWareHouseVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
@@ -119,7 +119,7 @@ class EditWareHouseVC: UIViewController {
     
 }
 
-extension EditWareHouseVC {
+@available(iOS 13.0, *) extension EditWareHouseVC {
     func Webservice_getUpdateWareHouse(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {

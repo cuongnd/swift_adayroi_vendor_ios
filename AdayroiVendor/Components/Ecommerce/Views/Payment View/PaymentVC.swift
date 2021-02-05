@@ -9,9 +9,9 @@
 import UIKit
 import Razorpay
 import SwiftyJSON
-import SlideMenuControllerSwift
 
 
+@available(iOS 13.0, *)
 class PaymentVC: UIViewController,RazorpayPaymentCompletionProtocol {
      var razorpayTestKey = "rzp_test_FJItCDPMYxVIDN"
 //    var razorpayTestKey = "rzp_test_hgVVr19y3viG0C"
@@ -155,6 +155,7 @@ class PaymentVC: UIViewController,RazorpayPaymentCompletionProtocol {
     }
 }
 //MARK: Webservices
+@available(iOS 13.0, *)
 extension PaymentVC {
     func Webservice_order(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

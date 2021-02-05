@@ -24,7 +24,7 @@ class SearchProductCell: UICollectionViewCell {
     }
     
 }
-
+@available(iOS 13.0, *)
 class SearchVC: UIViewController {
     @IBOutlet weak var Collectioview_SearchList: UICollectionView!
     var pageIndex = 1
@@ -63,7 +63,7 @@ class SearchVC: UIViewController {
         }
     }
 }
-extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Collectioview_SearchList.bounds.size.width, height: self.Collectioview_SearchList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -133,7 +133,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let productItem = self.list_product[indexPath.row]
-        let vc = self.storyboard?.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
         //vc.itemsId = data["id"]!
         vc.itemsId = productItem._id
         vc.SubCategoryId = productItem.sub_cat_id
@@ -153,7 +153,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     }
     
 }
-extension SearchVC
+@available(iOS 13.0, *) extension SearchVC
 {
     func Webservice_getSearch(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in

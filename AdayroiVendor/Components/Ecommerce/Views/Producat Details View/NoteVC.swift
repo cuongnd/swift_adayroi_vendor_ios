@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class NoteVC: UIViewController {
 
     @IBOutlet weak var btn_ok: UIButton!

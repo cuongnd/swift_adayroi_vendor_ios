@@ -9,10 +9,10 @@ import TLCustomMask
 import UIKit
 import SwiftyJSON
 
-protocol OtherAttributeEditDelegate {
+@available(iOS 13.0, *) protocol OtherAttributeEditDelegate {
     func refreshData(otherAttributeHeadIndex:Int,otherAttributeTitleHeadIndex:Int,otherAttributeHead:[CellOrtherHeadAttribute])
 }
-
+@available(iOS 13.0, *)
 class OtherAttributeEditVC: UIViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
@@ -89,7 +89,7 @@ class OtherAttributeEditVC: UIViewController {
 
 
 
-extension OtherAttributeEditVC: UITextFieldDelegate{
+@available(iOS 13.0, *) extension OtherAttributeEditVC: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

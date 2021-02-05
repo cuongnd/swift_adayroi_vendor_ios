@@ -9,10 +9,10 @@ import TLCustomMask
 import UIKit
 import SwiftyJSON
 
-protocol EditProductInWareHouseVCEditDelegate {
+@available(iOS 13.0, *) protocol EditProductInWareHouseVCEditDelegate {
     func refreshData(productInWarehouseIndex:Int,productInWarehouse:ProductInWarehouseModel)
 }
-
+@available(iOS 13.0, *)
 class EditProductInWareHouseVC: UIViewController {
     
     @IBOutlet weak var UITextFieldTotalProduct: UITextField!
@@ -111,7 +111,7 @@ class EditProductInWareHouseVC: UIViewController {
     
 }
 
-extension EditProductInWareHouseVC {
+@available(iOS 13.0, *) extension EditProductInWareHouseVC {
    
     
     

@@ -24,7 +24,7 @@ class OrderHistoryCell: UITableViewCell {
     @IBOutlet weak var lbl_itemQty: UILabel!
 }
 
-
+@available(iOS 13.0, *)
 class OrderHistoryVC: UIViewController {
     @IBOutlet weak var Tableview_OrderHistory: UITableView!
     @IBOutlet weak var lbl_titleLabel: UILabel!
@@ -60,7 +60,7 @@ class OrderHistoryVC: UIViewController {
         }
     }
 }
-extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.Tableview_OrderHistory.bounds.size.width, height: self.Tableview_OrderHistory.bounds.size.height))
         let messageLabel = UILabel(frame: rect)
@@ -110,7 +110,7 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let order = self.list_my_order[indexPath.row]
-        let vc = self.storyboard?.instantiateViewController(identifier: "OrderHistoryDetailsVC") as! OrderHistoryDetailsVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderHistoryDetailsVC") as! OrderHistoryDetailsVC
         vc.OrderId = order.order_id
         vc.orderHistoryDetailsDelegate = self
         vc.modalPresentationStyle = .overFullScreen
@@ -120,7 +120,7 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
     
 }
 //MARK: Webservices
-extension OrderHistoryVC {
+@available(iOS 13.0, *) extension OrderHistoryVC {
     func Webservice_GetHistory(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
@@ -178,7 +178,7 @@ extension OrderHistoryVC {
     }
  */
 }
-extension OrderHistoryVC: OrderHistoryDetailsDelegate {
+@available(iOS 13.0, *) extension OrderHistoryVC: OrderHistoryDetailsDelegate {
     
     func refreshData() {
         

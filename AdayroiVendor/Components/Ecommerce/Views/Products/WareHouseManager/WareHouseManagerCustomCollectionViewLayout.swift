@@ -7,7 +7,7 @@
 //
 
 import UIKit
-struct CellWidthHeightWareHouseManager {
+@available(iOS 13.0, *) struct CellWidthHeightWareHouseManager {
     var width:[Int]
     var headHeight:Int
     var bodyHeight:Int
@@ -17,7 +17,7 @@ struct CellWidthHeightWareHouseManager {
         self.bodyHeight=bodyHeight
        }
 }
-
+@available(iOS 13.0, *)
 class WareHouseManagerCustomCollectionViewLayout: UICollectionViewLayout {
 
     
@@ -95,7 +95,8 @@ class WareHouseManagerCustomCollectionViewLayout: UICollectionViewLayout {
 }
 
 // MARK: - Helpers
-extension WareHouseManagerCustomCollectionViewLayout {
+
+@available(iOS 13.0, *) extension WareHouseManagerCustomCollectionViewLayout {
 
     func generateItemAttributes(collectionView: UICollectionView) {
         if itemsSize.count != numberOfColumns {

@@ -14,7 +14,6 @@ target 'AdayroiVendor' do
     pod 'IQKeyboardManagerSwift'
     pod 'SDWebImage'
     pod 'ImageSlideshow'
-    pod 'SlideMenuControllerSwift'
     pod 'razorpay-pod'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'

@@ -13,9 +13,9 @@ import RxSwift
 import RxCocoa
 import Foundation
 import Alamofire
-import SlideMenuControllerSwift
 
 
+@available(iOS 13.0, *)
 class ADRFrontEndViewCheckoutVC: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var UITextFieldShippingFullName: UITextField!
@@ -215,7 +215,7 @@ class ADRFrontEndViewCheckoutVC: UIViewController,UITextViewDelegate {
     }
     
 }
-extension ADRFrontEndViewCheckoutVC
+@available(iOS 13.0, *) extension ADRFrontEndViewCheckoutVC
 {
     
     func fill_UserInfo(url:String, params:NSDictionary) -> Void {
@@ -256,7 +256,7 @@ extension ADRFrontEndViewCheckoutVC
                 let responseCode = jsonResponse!["result"].stringValue
                 if responseCode == "success" {
                     let data = jsonResponse!["data"].dictionaryValue
-                    let vc = self.storyboard?.instantiateViewController(identifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADRFrontEndViewCheckoutSummaryVC") as! ADRFrontEndViewCheckoutSummaryVC
                     self.navigationController?.pushViewController(vc, animated:true)
                     
                     

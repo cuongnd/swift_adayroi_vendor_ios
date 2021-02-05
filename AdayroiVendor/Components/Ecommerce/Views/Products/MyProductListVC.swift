@@ -29,6 +29,7 @@
     static let horizontalMargin: CGFloat = 15
     static let widthConstant: CGFloat = 20
  }
+ @available(iOS 13.0, *)
  class MyProductListVC: UIViewController {
     var OrderHistoryData = [JSON]()
     var selected = String()
@@ -163,7 +164,7 @@
     
  }
  
- extension MyProductListVC: AddNewProductDelegate {
+ @available(iOS 13.0, *) extension MyProductListVC: AddNewProductDelegate {
     
     func refreshData() {
         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
@@ -175,7 +176,7 @@
  }
  
  //MARK: WithdrawalList
- extension MyProductListVC {
+ @available(iOS 13.0, *) extension MyProductListVC {
     
     func Webservice_GetDeleteProduct(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
@@ -323,7 +324,7 @@
     }
  }
  
- extension MyProductListVC: UICollectionViewDataSource {
+ @available(iOS 13.0, *) extension MyProductListVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.list_cell_product.count
@@ -346,7 +347,7 @@
     }
  }
  
- extension MyProductListVC: UICollectionViewDelegateFlowLayout {
+ @available(iOS 13.0, *) extension MyProductListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width:300, height: 40)

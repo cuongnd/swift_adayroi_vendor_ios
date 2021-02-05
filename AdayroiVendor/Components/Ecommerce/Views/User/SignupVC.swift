@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
+@available(iOS 13.0, *)
 class SignupVC: UIViewController {
     @IBOutlet weak var btn_signup: UIButton!
     @IBOutlet weak var txt_MobileNumber: UITextField!
@@ -22,7 +22,7 @@ class SignupVC: UIViewController {
         self.btn_showPassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
     }
 }
-extension SignupVC
+@available(iOS 13.0, *) extension SignupVC
 {
     
     @IBAction func btnTap_ShowPassword(_ sender: UIButton) {
@@ -50,12 +50,12 @@ extension SignupVC
     }
     
     @IBAction func btnTap_Login(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as! LoginVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }
-extension SignupVC
+@available(iOS 13.0, *) extension SignupVC
 {
     func Webservice_Register(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class ProductDeleteCollectionViewCell: UICollectionViewCell {
      static let reuseID = "ProductDeleteCollectionViewCell"
     @IBOutlet weak var UIButtonDeleteProduct: UIButton!

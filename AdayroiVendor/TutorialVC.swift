@@ -36,6 +36,7 @@ class TutorialVC: UIViewController {
     }
 }
 //MARK: Actions
+@available(iOS 13.0, *)
 extension TutorialVC {
     @IBAction func btnSkip_Clicked(_ sender: UIButton) {
         UserDefaults.standard.set("1", forKey: UD_isTutorial)

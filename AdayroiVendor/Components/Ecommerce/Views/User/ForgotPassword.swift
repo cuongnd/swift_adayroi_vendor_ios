@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+@available(iOS 13.0, *)
 class ForgotPassword: UIViewController {
     
     @IBOutlet weak var btn_submit: UIButton!
@@ -17,7 +18,7 @@ class ForgotPassword: UIViewController {
         cornerRadius(viewName: self.btn_submit, radius: 8.0)
     }
     @IBAction func btnTap_Signup(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "SignupVC") as! SignupVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupVC") as! SignupVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func btnTap_Submit(_ sender: UIButton) {
@@ -27,7 +28,7 @@ class ForgotPassword: UIViewController {
     }
 }
 //MARK: Webservices
-extension ForgotPassword
+@available(iOS 13.0, *) extension ForgotPassword
 {
     func Webservice_ForgotPassword(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPI(url: url, headers: [:], parameters:params, httpMethod: "POST", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:JSON? , _ strErrorMessage:String) in

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+@available(iOS 13.0, *)
 class AddonceListVC: UIViewController {
 
     @IBOutlet weak var TableView_AddonsList: UITableView!
@@ -25,7 +26,7 @@ class AddonceListVC: UIViewController {
     }
     
 }
-extension AddonceListVC: UITableViewDelegate,UITableViewDataSource {
+@available(iOS 13.0, *) extension AddonceListVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.TableView_AddonsList.bounds.size.width, height: self.TableView_AddonsList.bounds.size.height))
         let messageLabel = UILabel(frame: rect)

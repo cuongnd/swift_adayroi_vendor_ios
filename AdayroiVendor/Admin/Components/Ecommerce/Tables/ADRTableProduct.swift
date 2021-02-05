@@ -7,6 +7,7 @@
 //
 import SQLite
 import Foundation
+@available(iOS 13.0, *)
 class ADRTableProduct:ADRTable{
        static var shared: ADRTableCart = ADRTableCart()
        public var context: String = "ADRTableProduct"

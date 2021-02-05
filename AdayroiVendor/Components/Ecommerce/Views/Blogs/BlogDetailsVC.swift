@@ -22,6 +22,7 @@ class RelatedBlogCell: UICollectionViewCell {
     @IBOutlet weak var UILabelBlogTitle: UILabel!
     
 }
+@available(iOS 13.0, *)
 class BlogDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavigationDelegate {
     
     
@@ -85,7 +86,7 @@ class BlogDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavigat
     {
         
         let storyBoardProduct = UIStoryboard(name: "Blogs", bundle: nil)
-        let blogsVC = storyBoardProduct.instantiateViewController(identifier: "BlogsVC") as! BlogsVC
+        let blogsVC = storyBoardProduct.instantiateViewController(withIdentifier: "BlogsVC") as! BlogsVC
         blogsVC.sub_cat_id = self.blogItem.sub_cat_id
         self.navigationController?.pushViewController(blogsVC, animated: true)
         
@@ -169,7 +170,7 @@ class BlogDetailsVC: UIViewController,UITextViewDelegate,WKUIDelegate, WKNavigat
 }
 
 
-extension BlogDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *) extension BlogDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return list_blog_related.count
     }
@@ -192,14 +193,14 @@ extension BlogDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
         
          let currentBlog = self.list_blog_related[indexPath.row]
          blog_id = currentBlog._id
-         let vc = UIStoryboard(name: "Blogs", bundle: nil).instantiateViewController(identifier: "BlogDetailsVC") as! BlogDetailsVC
+         let vc = UIStoryboard(name: "Blogs", bundle: nil).instantiateViewController(withIdentifier: "BlogDetailsVC") as! BlogDetailsVC
          vc.blog_id = blog_id
          vc.sub_cat_id = currentBlog.sub_cat_id
          self.navigationController?.pushViewController(vc, animated: true)
          
     }
 }
-extension BlogDetailsVC
+@available(iOS 13.0, *) extension BlogDetailsVC
 {
     
     func Webservice_getBlogDetail(url:String, params:NSDictionary) -> Void {

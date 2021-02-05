@@ -1,49 +1,49 @@
 PODS:
   - Alamofire (5.4.1)
-  - AnyFormatKit (2.2.0)
+  - AnyFormatKit (2.4.0)
   - AXRatingView (1.0.3)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
   - DLRadioButton (1.4.12)
   - ETBinding (3.0)
-  - Firebase/Core (7.4.0):
+  - Firebase/Core (7.5.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 7.4.0)
-  - Firebase/CoreOnly (7.4.0):
-    - FirebaseCore (= 7.4.0)
-  - Firebase/Messaging (7.4.0):
+    - FirebaseAnalytics (= 7.5.0)
+  - Firebase/CoreOnly (7.5.0):
+    - FirebaseCore (= 7.5.0)
+  - Firebase/Messaging (7.5.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 7.4.0)
-  - FirebaseAnalytics (7.4.0):
+    - FirebaseMessaging (~> 7.5.0)
+  - FirebaseAnalytics (7.5.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
-    - GoogleAppMeasurement (= 7.4.0)
+    - GoogleAppMeasurement (= 7.5.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30907.0)
-  - FirebaseCore (7.4.0):
+  - FirebaseCore (7.5.0):
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.4.0):
+  - FirebaseCoreDiagnostics (7.5.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.4.0):
+  - FirebaseInstallations (7.5.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (7.4.0):
+  - FirebaseInstanceID (7.5.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
-  - FirebaseMessaging (7.4.0):
+  - FirebaseMessaging (7.5.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstanceID (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
@@ -51,7 +51,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
   - FlexColorPicker (1.4.2)
-  - GoogleAppMeasurement (7.4.0):
+  - GoogleAppMeasurement (7.5.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
@@ -59,24 +59,24 @@ PODS:
     - nanopb (~> 2.30907.0)
   - GoogleDataTransport (8.2.0):
     - nanopb (~> 2.30907.0)
-  - GoogleUtilities/AppDelegateSwizzler (7.2.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.2.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.2.0):
+  - GoogleUtilities/Environment (7.2.2):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.2.0):
+  - GoogleUtilities/Logger (7.2.2):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.2.0):
+  - GoogleUtilities/MethodSwizzler (7.2.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.2.0):
+  - GoogleUtilities/Network (7.2.2):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.2.0)"
-  - GoogleUtilities/Reachability (7.2.0):
+  - "GoogleUtilities/NSData+zlib (7.2.2)"
+  - GoogleUtilities/Reachability (7.2.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.2.0):
+  - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
@@ -105,10 +105,9 @@ PODS:
   - RxRelay (6.0.0-rc.2):
     - RxSwift (= 6.0.0-rc.2)
   - RxSwift (6.0.0-rc.2)
-  - SDWebImage (5.10.2):
-    - SDWebImage/Core (= 5.10.2)
-  - SDWebImage/Core (5.10.2)
-  - SlideMenuControllerSwift (4.0.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -142,7 +141,6 @@ DEPENDENCIES:
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
   - SDWebImage
-  - SlideMenuControllerSwift
   - SQLite.swift (~> 0.12.0)
   - SwiftyJSON
   - SwipeMenuViewController
@@ -186,7 +184,6 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
-    - SlideMenuControllerSwift
     - SQLite.swift
     - SwiftyJSON
     - SwipeMenuViewController
@@ -196,22 +193,22 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AnyFormatKit: 89823b15a569319c3ae4cb1211e550f877504645
+  AnyFormatKit: 2ca2ad3f6fa0f6862a650342141d2bcaa42e9186
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   ETBinding: 27be01c2b38dbc88b63189a0ca05187cd24be2ec
-  Firebase: 09fb40287b6dfc8ee65f726fa0b788719d3f2a07
-  FirebaseAnalytics: adb3c8f02f83d00661cdaac6dbb4d54e9720d1b6
-  FirebaseCore: 99c06e5a1e8d6952e75cb1f0a6d0b23c0f5ccdcf
-  FirebaseCoreDiagnostics: 3770093ac4f2be4590fa03cfa1d3a6e5602d4557
-  FirebaseInstallations: 30646fc9a61c6f4ee3cd7a8b7231721842b40c95
-  FirebaseInstanceID: 46d93d287108246fabbd85371ca27141d2c21ff9
-  FirebaseMessaging: 6112b5cd04e0ff58c4a9920e5e29cf193ea88439
+  Firebase: fd5e4d2b756292c6e7ee6faac1eb320225d6e97e
+  FirebaseAnalytics: 00b7f74571d346ee1ffb9bf0a2e6f2ffff222bcc
+  FirebaseCore: 06a2b68af8901f2244eb989419eb89edc3789b4d
+  FirebaseCoreDiagnostics: 35685db68b11fe7d19d2d8b557fd7e3a56ac81cc
+  FirebaseInstallations: a46ae59915f0931e18814164849cd0354bea24ed
+  FirebaseInstanceID: 47fcb3b70d6349cfd471f430b01bbd01a7698e8f
+  FirebaseMessaging: a2a23671eb281b1eed38b155af8549b335a4a38b
   FlexColorPicker: d7ed5cfd8ceb936f2930e4e30629f9448967a5f8
-  GoogleAppMeasurement: 688d7f00e2894d9e13823ed9a028b13b993bc277
+  GoogleAppMeasurement: 65a1071e5f52f63ab03d0a4d814a54fd762d885a
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
-  GoogleUtilities: d866834472f1324d080496bc67ab3ce5d0d46027
+  GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
@@ -228,8 +225,7 @@ SPEC CHECKSUMS:
   RxCocoa: 38445a25751be5907f52f7ea02c137f52ce2e7f2
   RxRelay: b9e2483e83f46e4e7bf1234c6fe418e5c2eaf825
   RxSwift: ada35be6643bedf6881cdbd6bbfb27aeea527670
-  SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
-  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
@@ -237,6 +233,6 @@ SPEC CHECKSUMS:
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: a5f9631cec3205e0f0d96b2547a7a0e761940eed
+PODFILE CHECKSUM: c674648e9cbde83ef83fba9a7850980c49957237
 
 COCOAPODS: 1.10.0

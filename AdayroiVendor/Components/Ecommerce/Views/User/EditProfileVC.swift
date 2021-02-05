@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import MBProgressHUD
 import Alamofire
-
+@available(iOS 13.0, *)
 class EditProfileVC: UIViewController {
     
     @IBOutlet weak var btn_save: UIButton!
@@ -94,7 +94,7 @@ class EditProfileVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+@available(iOS 13.0, *) extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.img_Profile.image = pickedImage
@@ -106,7 +106,7 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
     }
 }
 //MARK: Webservices
-extension EditProfileVC {
+@available(iOS 13.0, *) extension EditProfileVC {
     func Webservice_GetProfile(url:String, params:NSDictionary) -> Void {
         WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
             if strErrorMessage.count != 0 {
