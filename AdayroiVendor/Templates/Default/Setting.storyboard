@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,7 @@
         <!--SettingsVC-->
         <scene sceneID="EMl-iL-DFj">
             <objects>
-                <viewController storyboardIdentifier="SettingsVC" id="II7-hn-EdV" customClass="SettingsVC" customModule="Food_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsVC" id="II7-hn-EdV" customClass="SettingsVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wip-su-ude">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +27,7 @@
                                             <constraint firstAttribute="width" constant="44" id="ecd-gp-QBV"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -49,7 +50,7 @@
                                     <constraint firstItem="Iyn-eL-Ger" firstAttribute="centerY" secondItem="sHA-rK-ims" secondAttribute="centerY" id="xNi-Dy-5Oq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9M-8U-hgZ" customClass="CornerView" customModule="Food_App" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9M-8U-hgZ" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="240" width="390" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OY0-Kf-QoN">
@@ -96,7 +97,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIA-G0-SYH" customClass="CornerView" customModule="Food_App" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIA-G0-SYH" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="174" width="390" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mUK-WK-ofF">
@@ -143,7 +144,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-bM-kO0" customClass="CornerView" customModule="Food_App" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-bM-kO0" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="108" width="390" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IEx-Hh-cY4">
@@ -199,7 +200,7 @@
                                 <color key="textColor" red="0.99607843139999996" green="0.44705882349999998" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoA-Z3-ife" customClass="CornerView" customModule="Food_App" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoA-Z3-ife" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="306" width="390" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="l.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KBB-Il-89J">
@@ -246,7 +247,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvn-k9-7rs" customClass="CornerView" customModule="Food_App" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvn-k9-7rs" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="372" width="390" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dTw-Fg-rNn">
@@ -337,8 +338,8 @@
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="checkmark.seal" catalog="system" width="128" height="122"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
+        <image name="ic_list" width="512" height="512"/>
         <image name="l.circle" catalog="system" width="128" height="121"/>
-        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>

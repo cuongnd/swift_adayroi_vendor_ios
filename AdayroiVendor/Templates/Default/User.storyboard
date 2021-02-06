@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
         <!--LoginVC-->
         <scene sceneID="W6T-Vj-pZv">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="Fuq-Hh-pwf" customClass="LoginVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Fuq-Hh-pwf" customClass="LoginVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aQ4-sb-bjf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,10 +28,10 @@
                                     <constraint firstAttribute="height" constant="100" id="T6d-7E-deB"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqP-uc-0t4" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqP-uc-0t4" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="239" width="414" height="540"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fL-7m-lC6" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fL-7m-lC6" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="20" y="62" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên đăng nhập" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-Z8-aiv">
@@ -62,7 +63,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kI-X9-NwA" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kI-X9-NwA" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="20" y="124" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E9s-Kj-QFY">
@@ -160,7 +161,7 @@
                                         <color key="textColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-mp-Ch5" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-mp-Ch5" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="20" y="321.5" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Change language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-eZ-ytA" customClass="DropDown" customModule="iOSDropDown">
@@ -259,7 +260,7 @@
         <!--Edit ProfileVC-->
         <scene sceneID="rIy-nv-kEK">
             <objects>
-                <viewController storyboardIdentifier="EditProfileVC" id="Jil-wp-eXB" customClass="EditProfileVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileVC" id="Jil-wp-eXB" customClass="EditProfileVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eMd-OL-GmT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +322,7 @@
                                     <constraint firstAttribute="width" constant="150" id="iiQ-WD-sA9"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAy-Gz-vQv" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAy-Gz-vQv" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="323" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r7p-DG-lQo">
@@ -353,7 +354,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-3h-apW" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-3h-apW" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="389" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-ew-d5t">
@@ -385,7 +386,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1s5-MP-PvG" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1s5-MP-PvG" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="455" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2wS-W1-g1a">
@@ -474,12 +475,12 @@
         <!--SignupVC-->
         <scene sceneID="CtK-JA-5vS">
             <objects>
-                <viewController storyboardIdentifier="SignupVC" id="xQc-p9-wXb" customClass="SignupVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupVC" id="xQc-p9-wXb" customClass="SignupVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ub5-5x-gvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj1-9y-Lp3" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj1-9y-Lp3" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="34" width="414" height="862"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rQ-gY-hxR">
@@ -504,7 +505,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z88-va-xP6">
                                                 <rect key="frame" x="20" y="389" width="374" height="318"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsv-WE-mmO" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsv-WE-mmO" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên đăng nhập" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-7B-58l">
@@ -536,7 +537,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Ym-VbT" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Ym-VbT" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="67" width="374" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGT-cr-edl">
@@ -568,7 +569,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-dc-kpr" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-dc-kpr" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="134" width="374" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhm-Au-RuJ">
@@ -600,7 +601,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOc-1B-eJt" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOc-1B-eJt" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="201" width="374" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vpL-B3-IFm">
@@ -744,15 +745,15 @@
         <!--Forgot Password-->
         <scene sceneID="RS2-bj-K5K">
             <objects>
-                <viewController storyboardIdentifier="ForgotPassword" id="hD2-EH-buo" customClass="ForgotPassword" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPassword" id="hD2-EH-buo" customClass="ForgotPassword" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P8b-eh-P84">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5g9-aa-dkt" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5g9-aa-dkt" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="616" width="414" height="280"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGv-UA-PWu" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGv-UA-PWu" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="20" y="76.5" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ech-Gf-2Yh">
@@ -883,7 +884,7 @@
         <!--Change PassswordVC-->
         <scene sceneID="HQA-mW-Zin">
             <objects>
-                <viewController storyboardIdentifier="ChangePassswordVC" id="aXl-1R-PI4" customClass="ChangePassswordVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePassswordVC" id="aXl-1R-PI4" customClass="ChangePassswordVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Izw-JT-mh1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -937,7 +938,7 @@
                                     <action selector="btnTap_Reset:" destination="aXl-1R-PI4" eventType="touchUpInside" id="YLs-WZ-kLk"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUN-2c-aM7" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUN-2c-aM7" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="108" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VgE-aB-6KD">
@@ -969,7 +970,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTm-x9-Ti4" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTm-x9-Ti4" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="174" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRO-qm-Yk0">
@@ -1001,7 +1002,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-sC-kVb" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-sC-kVb" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="12" y="240" width="390" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fno-Fa-tHW">

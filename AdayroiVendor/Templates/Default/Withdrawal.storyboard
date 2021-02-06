@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,7 @@
         <!--Withdrawal ListVC-->
         <scene sceneID="Q87-kj-zH6">
             <objects>
-                <viewController storyboardIdentifier="WithdrawalListVC" id="YGX-IX-FwL" customClass="WithdrawalListVC" customModule="adayroi_online" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawalListVC" id="YGX-IX-FwL" customClass="WithdrawalListVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DvI-HB-zjE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +27,7 @@
                                             <constraint firstAttribute="width" constant="44" id="U6i-Yb-OzP"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -147,14 +148,14 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oub-hO-SAh">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="654"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9NW-mF-Z9E" customClass="WithdrawalStickyGridCollectionViewLayout" customModule="adayroi_online" customModuleProvider="target">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9NW-mF-Z9E" customClass="WithdrawalStickyGridCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                     <size key="itemSize" width="168" height="158"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithdrawalLabelCollectionViewCell" id="Scd-ed-0SB" customClass="WithdrawalLabelCollectionViewCell" customModule="adayroi_online" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithdrawalLabelCollectionViewCell" id="Scd-ed-0SB" customClass="WithdrawalLabelCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1.5" width="168" height="39"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -180,7 +181,7 @@
                                                             <outlet property="UILabelText" destination="hL7-od-5MH" id="AFS-UD-s09"/>
                                                         </connections>
                                                     </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithdrawalButtonCollectionViewCell" id="eBy-0J-Y25" customClass="WithdrawalButtonCollectionViewCell" customModule="adayroi_online" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithdrawalButtonCollectionViewCell" id="eBy-0J-Y25" customClass="WithdrawalButtonCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="178" y="0.0" width="168" height="42"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -259,7 +260,7 @@
         <!--Withdrawal Lap Lenh Rut TienVC-->
         <scene sceneID="wpl-80-DWz">
             <objects>
-                <viewController storyboardIdentifier="WithdrawalLapLenhRutTienVC" id="T39-Fu-d9u" customClass="WithdrawalLapLenhRutTienVC" customModule="adayroi_online" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawalLapLenhRutTienVC" id="T39-Fu-d9u" customClass="WithdrawalLapLenhRutTienVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MCq-0y-EMF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,7 +272,7 @@
                                     <action selector="btnTap_dismiss:" destination="T39-Fu-d9u" eventType="touchUpInside" id="soz-yj-elv"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM0-LO-edB" customClass="CornerView" customModule="adayroi_online" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM0-LO-edB" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="20" y="335" width="374" height="226"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lập lệnh rút tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-pF-QpS">
@@ -408,7 +409,7 @@
         <!--Withdrawal Cai DatTK Ngan HangVC-->
         <scene sceneID="8qR-t8-DbH">
             <objects>
-                <viewController storyboardIdentifier="WithdrawalCaiDatTKNganHangVC" id="Opv-hQ-IfA" customClass="WithdrawalCaiDatTKNganHangVC" customModule="adayroi_online" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawalCaiDatTKNganHangVC" id="Opv-hQ-IfA" customClass="WithdrawalCaiDatTKNganHangVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mco-LT-aJg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,7 +421,7 @@
                                     <action selector="btnTap_dismiss:" destination="Opv-hQ-IfA" eventType="touchUpInside" id="jWj-Kh-5xp"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDE-Om-ml4" customClass="CornerView" customModule="adayroi_online" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDE-Om-ml4" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="60" y="197" width="294" height="502"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cài đặt tài khoản ngân hàng" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM3-XP-fEm">
@@ -613,6 +614,6 @@
     </scenes>
     <resources>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
+        <image name="ic_list" width="512" height="512"/>
     </resources>
 </document>
