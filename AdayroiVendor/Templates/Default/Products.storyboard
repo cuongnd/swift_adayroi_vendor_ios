@@ -2531,7 +2531,7 @@
                                                                 <constraint firstAttribute="width" constant="40" id="bwo-UN-v2s"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="pencil" catalog="system">
+                                                            <state key="normal" image="edit">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -3821,7 +3821,6 @@
         <image name="link" width="128" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="palet_color" width="150" height="150"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="placeholder_image" width="1200" height="800"/>
         <image name="plus" width="150" height="150"/>
         <image name="restaurant" width="1620" height="1080"/>

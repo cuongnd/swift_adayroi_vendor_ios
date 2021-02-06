@@ -1488,16 +1488,28 @@ class EditProductVC: UIViewController {
                         let getApiResponseAddNewProductModel = try jsonDecoder.decode(GetApiResponseAddNewProductModel.self, from: jsonResponse!)
                         print("getApiResponseAddNewProductModel response \(getApiResponseAddNewProductModel)")
                         if(getApiResponseAddNewProductModel.result=="success"){
-                            self.dismiss(animated: true) {
-                                var msg="lưu sản phẩm thành công";
-                                if(self.ProductId != ""){
-                                    msg="Cập nhật sản phẩm thành công"
-                                }
-                                let alert = UIAlertController(title: "Thông báo", message: msg, preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                                self.present(alert, animated: true)
-                                self.delegate.refreshData()
+                            
+                            var msg="lưu sản phẩm thành công";
+                            if(self.ProductId != ""){
+                                msg="Cập nhật sản phẩm thành công"
                             }
+                            let alertVC = UIAlertController(title: Bundle.main.displayName!, message: msg.localiz(), preferredStyle: .alert)
+                                   let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                                    self.dismiss(animated: true){
+                                        self.delegate.refreshData()
+                                    }
+                                       
+                                   }
+                                   alertVC.addAction(yesAction)
+                                   self.present(alertVC,animated: true,completion: nil)
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         }else{
                             let alert = UIAlertController(title: "Có lỗi phát sinh", message: getApiResponseAddNewProductModel.errorMessage, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
