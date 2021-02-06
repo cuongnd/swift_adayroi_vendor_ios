@@ -1920,7 +1920,7 @@
                                                                 <constraint firstAttribute="width" constant="24" id="yVJ-uf-0j2"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="pencil" catalog="system">
+                                                            <state key="normal" image="edit">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -2260,7 +2260,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="o64-hU-y7J"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="pencil" catalog="system">
+                                                            <state key="normal" image="edit">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -3811,6 +3811,7 @@
         <image name="camera3" width="112.5" height="112.5"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="copy-icon" width="60" height="60"/>
+        <image name="edit" width="256" height="256"/>
         <image name="eye-icon" width="60" height="60"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="ic_Star" width="180" height="29"/>
