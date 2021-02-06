@@ -2251,6 +2251,8 @@ class EditProductVC: UIViewController {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.list_image_color[self.productImageColorChanging].img_path="";
+            self.list_image_color[self.productImageColorChanging].has_image=1;
             self.list_image_color[self.productImageColorChanging].image=pickedImage
             //self.img_Profile.image = pickedImage
         }
@@ -2476,6 +2478,7 @@ class EditProductVC: UIViewController {
     }
     
     func imagePicker(_ picker: OpalImagePickerController, imageURLforExternalItemAtIndex index: Int) -> URL? {
+        print("helo35453543534")
         return URL(string: "https://placeimg.com/500/500/nature")
     }
 }
