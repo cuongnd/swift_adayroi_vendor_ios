@@ -32,6 +32,7 @@ ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework
 ${BUILT_PRODUCTS_DIR}/TLCustomMask/TLCustomMask.framework
 ${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework
+${BUILT_PRODUCTS_DIR}/WSTagsField/WSTagsField.framework
 ${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework
 ${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

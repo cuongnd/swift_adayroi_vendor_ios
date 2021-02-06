@@ -37,6 +37,7 @@ target 'AdayroiVendor' do
     pod 'AXRatingView', '1.0.3', :inhibit_warnings => true
     pod 'DLRadioButton', '~> 1.4'
     pod 'SwipeMenuViewController'
+    pod "WSTagsField"
 
   target 'AdayroiVendorTests' do
     inherit! :search_paths

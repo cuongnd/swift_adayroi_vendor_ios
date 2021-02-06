@@ -115,6 +115,7 @@ PODS:
   - SwipeMenuViewController (4.1.0)
   - TagListView (1.4.1)
   - TLCustomMask (2.0.0)
+  - WSTagsField (5.4.0)
   - XLForm (4.2.0)
 
 DEPENDENCIES:
@@ -146,6 +147,7 @@ DEPENDENCIES:
   - SwipeMenuViewController
   - TagListView (~> 1.0)
   - TLCustomMask
+  - WSTagsField
   - XLForm
 
 SPEC REPOS:
@@ -189,6 +191,7 @@ SPEC REPOS:
     - SwipeMenuViewController
     - TagListView
     - TLCustomMask
+    - WSTagsField
     - XLForm
 
 SPEC CHECKSUMS:
@@ -231,8 +234,9 @@ SPEC CHECKSUMS:
   SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TLCustomMask: 32bcd873851167c2d2a3726b048766b737873710
+  WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: c674648e9cbde83ef83fba9a7850980c49957237
+PODFILE CHECKSUM: 89bcea59998710073c274662faba7f0251d20536
 
 COCOAPODS: 1.10.0

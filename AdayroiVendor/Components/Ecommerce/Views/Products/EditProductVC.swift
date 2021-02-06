@@ -18,6 +18,7 @@ import SystemConfiguration
 import Alamofire
 import MBProgressHUD
 import DLRadioButton
+import WSTagsField
 
 @available(iOS 13.0, *) protocol AddNewProductDelegate {
     func refreshData()
@@ -485,7 +486,8 @@ class EditProductVC: UIViewController {
     @IBOutlet var DLRadioButtonProductType : DLRadioButton!;
     @IBOutlet weak var UIScrollViewMain: UIScrollView!
     @IBOutlet weak var UILabelPageHeader: UILabel!
-    
+    @IBOutlet weak var UIViewAddTags: UIView!
+    fileprivate var tagsField = WSTagsField()
     override func viewDidLoad() {
         super.viewDidLoad()
         if(self.ProductId != ""){
@@ -584,6 +586,31 @@ class EditProductVC: UIViewController {
             self.Webservice_getListTotalProductInWareHouse(url: urlStringGetListWarehouse, params: params)
             
         }
+        tagsField.frame = UIViewAddTags.bounds
+        UIViewAddTags.addSubview(tagsField)
+
+        //tagsField.translatesAutoresizingMaskIntoConstraints = false
+        //tagsField.heightAnchor.constraint(equalToConstant: 150).isActive = true
+
+        tagsField.cornerRadius = 3.0
+        tagsField.spaceBetweenLines = 10
+        tagsField.spaceBetweenTags = 10
+
+        //tagsField.numberOfLines = 3
+        //tagsField.maxHeight = 100.0
+
+        tagsField.layoutMargins = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
+        tagsField.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) //old padding
+
+        tagsField.placeholder = "Nhập các từ khóa"
+        tagsField.placeholderColor = .red
+        tagsField.placeholderAlwaysVisible = true
+        tagsField.backgroundColor = .lightGray
+        tagsField.textField.returnKeyType = .continue
+        tagsField.delimiter = ""
+
+        tagsField.textDelegate = self
+        
         
         
         
@@ -1199,6 +1226,24 @@ class EditProductVC: UIViewController {
             
             return
         }
+        
+        let list_tag=tagsField.tags
+        if(list_tag.count==0){
+            let alert = UIAlertController(title: "Thông báo", message: "Vui lòng nhập các từ khóa liên quan đến sản phẩm", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
+        var array_tag:[String]=[String]()
+        
+        for index in 0...list_tag.count-1 {
+            let currentItem=list_tag[index]
+            array_tag.append(currentItem.text);
+        }
+        var search_tag = array_tag.joined(separator: ",")
+        
+        
+        
         product_alias=product_alias.condenseWhitespaceToAlias()
         if(self.curentCategory._id==""){
             DropDownCategoriesProduct.text="";
@@ -1456,6 +1501,7 @@ class EditProductVC: UIViewController {
             "weight": product_weight,
             "product_unit": product_unit,
             "alias": product_alias,
+            "search_tag": search_tag,
             "original_price": product_orignal_price,
             "unit_price": product_unit_price,
             "productShortDescription": product_short_description,
@@ -1602,7 +1648,6 @@ class EditProductVC: UIViewController {
                     let getApiRespondeProductDetailModel = try jsonDecoder.decode(GetApiRespondeProductDetailModel.self, from: jsonResponse!)
                     if(getApiRespondeProductDetailModel.result=="success"){
                         self.product=getApiRespondeProductDetailModel.product
-                        print("self.product \(self.product)")
                         self.UITextFieldProductName.text=self.product.name
                         self.UITextFieldProductCode.text=self.product.code
                         self.UITextFieldProductLength.text=String(self.product.length!)
@@ -1614,6 +1659,19 @@ class EditProductVC: UIViewController {
                         self.UITextFieldAlias.text=self.product.alias
                         self.UITextFieldProductOrignalPrice.text=String(self.product.original_price)
                         self.UITextFieldProductUnitPrice.text=String(self.product.unit_price)
+                        
+                        
+                        let search_tag=self.product.search_tag;
+                        let list_tag:[String.SubSequence]=search_tag.split(separator: ",");
+                        if(list_tag.count>0){
+                            for index in 0...list_tag.count-1 {
+                                let currentItem=list_tag[index]
+                                self.tagsField.addTag(currentItem.description)
+                            }
+                        }
+                        
+                        
+                        
                         
                         let user_id:String=UserDefaultManager.getStringFromUserDefaults(key: UD_userId);
                         
@@ -2543,3 +2601,4 @@ class EditProductVC: UIViewController {
     }
     
 }
+ 
