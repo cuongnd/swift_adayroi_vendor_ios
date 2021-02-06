@@ -302,6 +302,8 @@ class WebServices: NSObject
             showAlertMessage(titleStr: "Error!", messageStr: MESSAGE_ERR_NETWORK)
             return
         }
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 100
         
         AF.upload(multipartFormData: { MultipartFormData in
             for (key, value) in parameters {

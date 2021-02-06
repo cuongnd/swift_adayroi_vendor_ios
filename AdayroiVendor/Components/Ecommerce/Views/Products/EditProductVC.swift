@@ -75,17 +75,20 @@ import WSTagsField
     var image_description: String
     var image: UIImage
     var img_path: String
+    var index_upload:Int
     
-    init(image_id:String,image_description:String,image:UIImage,img_path:String) {
+    init(image_id:String,image_description:String,image:UIImage,index_upload:Int,img_path:String) {
         self.image_id=image_id
         self.image_description=image_description
         self.image=image
+        self.index_upload=index_upload
         self.img_path=img_path
     }
     var dictionary: [String: Any] {
         return [
             "image_id":image_id,
             "image_description": image_description,
+            "index_upload":index_upload,
             "img_path":img_path
         ]
     }
@@ -1098,6 +1101,24 @@ class EditProductVC: UIViewController {
             
             return
         }
+        
+        
+        if(self.list_product_image.count>0){
+            var index_upload:Int=0
+            for index in 0...self.list_product_image.count-1 {
+                let currentItem=self.list_product_image[index]
+                if(currentItem.img_path == ""){
+                    self.list_product_image[index].index_upload=index_upload
+                    index_upload = index_upload + 1
+                }
+                
+                
+            }
+            
+        }
+        
+        
+        
         //product image
         var listImageProductCodableDict = [NSDictionary]() // or [String:AnyCodable]()
         var jsonStringImageProduct:String=""
@@ -2057,7 +2078,7 @@ class EditProductVC: UIViewController {
                         if(getApiRespondeImagesByParentModel.list_image.count>0){
                             for index in 0...getApiRespondeImagesByParentModel.list_image.count-1 {
                                 let currentItem:ImageModel=getApiRespondeImagesByParentModel.list_image[index]
-                                self.list_product_image.append(ImageProductModel(image_id: currentItem._id,image_description:"", image:UIImage(),img_path: currentItem.img_path))
+                                self.list_product_image.append(ImageProductModel(image_id: currentItem._id,image_description:"", image:UIImage(),index_upload: index,img_path: currentItem.img_path))
                                 self.UICollectionViewListProductImage.delegate = self
                                 self.UICollectionViewListProductImage.dataSource = self
                                 self.UICollectionViewListProductImage.reloadData()
@@ -2254,22 +2275,22 @@ class EditProductVC: UIViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if(picker==imagePickerProductImage){
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: pickedImage,img_path: "")
+                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: pickedImage,index_upload: self.list_product_image.count,img_path: "")
                 self.list_product_image.append(imageProductModel)
             }
             self.UICollectionViewListProductImage.delegate = self
-           self.UICollectionViewListProductImage.dataSource = self
-           self.UICollectionViewListProductImage.reloadData()
+            self.UICollectionViewListProductImage.dataSource = self
+            self.UICollectionViewListProductImage.reloadData()
         }else{
             if(self.productImageColorChanging == -1){
                 if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                   let imageColorModel:ImageColorModel=ImageColorModel(attribute_header_id: "",color_name: "", image: pickedImage, color_value: UIColor.brown,img_path: "",has_image: 1)
-                   self.list_image_color.append(imageColorModel)
+                    let imageColorModel:ImageColorModel=ImageColorModel(attribute_header_id: "",color_name: "", image: pickedImage, color_value: UIColor.brown,img_path: "",has_image: 1)
+                    self.list_image_color.append(imageColorModel)
                     
                 }
-                   
                 
-               
+                
+                
             }else{
                 if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                     self.list_image_color[self.productImageColorChanging].img_path="";
@@ -2468,7 +2489,7 @@ class EditProductVC: UIViewController {
             //Save Images, update UI
             for i in 0..<assets.count
             {
-                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: assets[i],img_path: "")
+                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: assets[i],index_upload: self.list_product_image.count,img_path: "")
                 self.list_product_image.append(imageProductModel)
             }
             
