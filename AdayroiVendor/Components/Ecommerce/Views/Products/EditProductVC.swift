@@ -597,7 +597,7 @@ class EditProductVC: UIViewController {
     }
     @IBAction func UIButtonQLCacThuocTinh(_ sender: UIButton) {
         let storyBoardProduct = UIStoryboard(name: "Products", bundle: nil)
-        let qlCacThuocTinhVC = storyBoardProduct.instantiateViewController(identifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
+        let qlCacThuocTinhVC = storyBoardProduct.instantiateViewController(withIdentifier: "QlCacThuocTinhVC") as! QlCacThuocTinhVC
         qlCacThuocTinhVC.modalAttributeHeadIndexDelegate = self
         qlCacThuocTinhVC.attributeHeadIndex = sender.tag
         qlCacThuocTinhVC.attributeTitleHeadIndex = sender.tag-1
@@ -734,7 +734,7 @@ class EditProductVC: UIViewController {
     }
     @IBAction func UIButtonPickupColorProduct(_ sender: UIButton) {
         
-        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(withIdentifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
         modalSelectColorViewController.modalSelectColorRutDelegate = self
         modalSelectColorViewController.pickedColor=UIColor.brown
         modalSelectColorViewController.colorIndex = -1
@@ -743,7 +743,7 @@ class EditProductVC: UIViewController {
     }
     
     @IBAction func UIButtonSelectProductColor(_ sender: UIButton) {
-        let modalSelectColorViewController = self.storyboard?.instantiateViewController(identifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
+        let modalSelectColorViewController = self.storyboard?.instantiateViewController(withIdentifier: "ModalSelectColorViewController") as! ModalSelectColorViewController
         modalSelectColorViewController.modalSelectColorRutDelegate = self
         modalSelectColorViewController.pickedColor=self.list_image_color[sender.tag].color_value
         modalSelectColorViewController.colorIndex=sender.tag
@@ -968,7 +968,7 @@ class EditProductVC: UIViewController {
     @IBAction func UIButtonTouchUpInsideDeleteLinkVideo(_ sender: UIButton) {
     }
     @IBAction func UIButtonTouchUpInsideQLKhoHang(_ sender: UIButton) {
-        let qlKhoHangVC = self.storyboard?.instantiateViewController(identifier: "QlKhoHangVC") as! QlKhoHangVC
+        let qlKhoHangVC = self.storyboard?.instantiateViewController(withIdentifier: "QlKhoHangVC") as! QlKhoHangVC
         qlKhoHangVC.Delegate = self
         //qlKhoHangVC.attributeHeadIndex = sender.tag
         //qlKhoHangVC.attributeHead=self.headerAttributeTitleProduct[sender.tag]
@@ -1001,7 +1001,7 @@ class EditProductVC: UIViewController {
     }
     @IBAction func UIButtonTouchUpInsideEditAndAddNewOtherAttributeProduct(_ sender: UIButton) {
         
-        let otherAttributeEditVC = self.storyboard?.instantiateViewController(identifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
+        let otherAttributeEditVC = self.storyboard?.instantiateViewController(withIdentifier: "OtherAttributeEditVC") as! OtherAttributeEditVC
         otherAttributeEditVC.delegate = self
         if(sender.tag==0){
             otherAttributeEditVC.otherAttributeHeadIndex = -1
@@ -1033,7 +1033,7 @@ class EditProductVC: UIViewController {
     }
     @objc func editTotalProductWarehouse(_ sender: UIButton){
         
-        let editProductInWareHouseVC = self.storyboard?.instantiateViewController(identifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
+        let editProductInWareHouseVC = self.storyboard?.instantiateViewController(withIdentifier: "EditProductInWareHouseVC") as! EditProductInWareHouseVC
         editProductInWareHouseVC.delegate = self
         print("sender.tag-1 \(sender.tag-1)")
         editProductInWareHouseVC.productInWarehouse = self.list_total_product_in_warehouse[sender.tag-1]
@@ -2341,7 +2341,7 @@ class EditProductVC: UIViewController {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         /*
-         let vc = storyBoardProduct.instantiateViewController(identifier: "ProductDetailsVC") as! ProductDetailsVC
+         let vc = storyBoardProduct.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
          vc.itemsId = data["_id"].stringValue
          vc.SubCategoryId = data["sub_cat_id"].stringValue
          self.navigationController?.pushViewController(vc, animated: true)

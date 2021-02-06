@@ -15,9 +15,6 @@ class HomeHotProductCell: UICollectionViewCell {
     @IBOutlet weak var lbl_HotProductPercent: UILabel!
     @IBOutlet weak var lbl_HotProductOriginalPrice: UILabel!
     @IBOutlet weak var lbl_HotProductUnitPrice: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
 
 }

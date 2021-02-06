@@ -59,6 +59,8 @@
 		0443F7862594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */; };
 		0443F7882594E8C7005D5637 /* PostLapLenhRutTienModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */; };
 		0447E53D25CDAC8400A8E5DE /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */; };
+		0447E53F25CE3C8200A8E5DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0447E53E25CE3C8100A8E5DE /* CFNetwork.framework */; };
+		0447E54125CE434F00A8E5DE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0447E54025CE434F00A8E5DE /* PassKit.framework */; };
 		04536B2725B7DDEA00DC7397 /* GetApiResponeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */; };
 		0469042825ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */; };
 		0469042925ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */; };
@@ -332,6 +334,8 @@
 		0443F7852594DCD1005D5637 /* UpdateTaiKhoanNganHangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTaiKhoanNganHangModel.swift; sourceTree = "<group>"; };
 		0443F7872594E8C7005D5637 /* PostLapLenhRutTienModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLapLenhRutTienModel.swift; sourceTree = "<group>"; };
 		0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		0447E53E25CE3C8100A8E5DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0447E54025CE434F00A8E5DE /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponeProducts.swift; sourceTree = "<group>"; };
 		0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseDeleteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0447E54125CE434F00A8E5DE /* PassKit.framework in Frameworks */,
+				0447E53F25CE3C8200A8E5DE /* CFNetwork.framework in Frameworks */,
 				0DDA8942EC391C3163E410CD /* Pods_AdayroiVendor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1302,6 +1308,8 @@
 		4E2EE3BC4FE959BCD8FF7A6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0447E54025CE434F00A8E5DE /* PassKit.framework */,
+				0447E53E25CE3C8100A8E5DE /* CFNetwork.framework */,
 				6201FCD769BB13F1FB461059 /* Pods_AdayroiVendor.framework */,
 				B791C6A9E0C86701FA792A84 /* Pods_AdayroiVendorTests.framework */,
 				A4B78B950B7A5895A1F4A8AD /* Pods_AdayroiVendorUITests.framework */,
@@ -2189,7 +2197,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = vantinviet.adayroivendor;
 				PRODUCT_NAME = "Adayroi Vendor";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2212,7 +2220,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = vantinviet.adayroivendor;
 				PRODUCT_NAME = "Adayroi Vendor";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
