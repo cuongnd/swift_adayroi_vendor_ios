@@ -800,6 +800,7 @@ class EditProductVC: UIViewController {
     @IBOutlet weak var UIButtonAddImageColor: UIButton!
     @IBAction func UIButtonClickAddImageColor(_ sender: UIButton) {
         self.imagePicker.delegate = self
+        self.productImageColorChanging = -1;
         let alert = UIAlertController(title: "", message: "Select image color".localiz(), preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
@@ -2260,13 +2261,24 @@ class EditProductVC: UIViewController {
            self.UICollectionViewListProductImage.dataSource = self
            self.UICollectionViewListProductImage.reloadData()
         }else{
-            
-            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                self.list_image_color[self.productImageColorChanging].img_path="";
-                self.list_image_color[self.productImageColorChanging].has_image=1;
-                self.list_image_color[self.productImageColorChanging].image=pickedImage
-                //self.img_Profile.image = pickedImage
+            if(self.productImageColorChanging == -1){
+                if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                   let imageColorModel:ImageColorModel=ImageColorModel(attribute_header_id: "",color_name: "", image: pickedImage, color_value: UIColor.brown,img_path: "",has_image: 1)
+                   self.list_image_color.append(imageColorModel)
+                    
+                }
+                   
+                
+               
+            }else{
+                if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    self.list_image_color[self.productImageColorChanging].img_path="";
+                    self.list_image_color[self.productImageColorChanging].has_image=1;
+                    self.list_image_color[self.productImageColorChanging].image=pickedImage
+                    //self.img_Profile.image = pickedImage
+                }
             }
+            
             self.UICollectionViewColorProducts.delegate = self
             self.UICollectionViewColorProducts.dataSource = self
             self.UICollectionViewColorProducts.reloadData()
