@@ -19,21 +19,21 @@ class SignupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cornerRadius(viewName: self.btn_signup, radius: 8.0)
-        //self.btn_showPassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        self.btn_showPassword.setImage(UIImage(contentsOfFile: "eye.slash.fill"), for: .normal)
     }
 }
 @available(iOS 13.0, *) extension SignupVC
 {
     
     @IBAction func btnTap_ShowPassword(_ sender: UIButton) {
-        if self.btn_showPassword.image(for: .normal) == UIImage(systemName: "eye.slash.fill")
+        if self.btn_showPassword.image(for: .normal) == UIImage(contentsOfFile: "eye.slash.fill")
         {
-            self.btn_showPassword.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+            self.btn_showPassword.setImage(UIImage(contentsOfFile: "eye.fill"), for: .normal)
             self.txt_Password.isSecureTextEntry = false
         }
         else{
             self.txt_Password.isSecureTextEntry = true
-            self.btn_showPassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+            self.btn_showPassword.setImage(UIImage(contentsOfFile: "eye.slash.fill"), for: .normal)
         }
         
     }

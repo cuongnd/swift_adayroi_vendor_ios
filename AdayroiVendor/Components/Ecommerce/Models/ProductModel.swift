@@ -24,6 +24,7 @@ struct ProductModel: Codable {
     let width: Double?
     let weight: Double?
     let discount_percent: Int
+    let published: Int
     let discount_value: Double
     let commistion: Double
     let productShortDescription: String?
@@ -46,6 +47,7 @@ struct ProductModel: Codable {
         case height = "height"
         case width = "width"
         case weight = "weight"
+        case published = "published"
         case productShortDescription = "productShortDescription"
         case productFullDescription = "productFullDescription"
         case product_unit = "product_unit"
@@ -71,6 +73,7 @@ struct ProductModel: Codable {
         name = ""
         alias = ""
         length = 0.0
+        published = 1
         height = 0.0
         width = 0.0
         weight = 0.0

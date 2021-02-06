@@ -1652,6 +1652,11 @@ class EditProductVC: UIViewController {
                         self.product=getApiRespondeProductDetailModel.product
                         self.UITextFieldProductName.text=self.product.name
                         self.UITextFieldProductCode.text=self.product.code
+                        if(self.product.published==1){
+                            self.UISwitchPublished.setOn(true, animated: false)
+                        }else{
+                            self.UISwitchPublished.setOn(false, animated: false)
+                        }
                         self.UITextFieldProductLength.text=String(self.product.length!)
                         self.UITextFieldProductWidth.text=String(self.product.width!)
                         self.UITextFieldProductHeight.text=String(self.product.height!)
