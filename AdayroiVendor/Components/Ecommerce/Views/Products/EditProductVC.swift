@@ -2601,4 +2601,37 @@ class EditProductVC: UIViewController {
     }
     
 }
- 
+ @available(iOS 13.0, *)
+extension EditProductVC {
+
+    fileprivate func textFieldEvents() {
+        tagsField.onDidAddTag = { field, tag in
+            print("onDidAddTag", tag.text)
+        }
+
+        tagsField.onDidRemoveTag = { field, tag in
+            print("onDidRemoveTag", tag.text)
+        }
+
+        tagsField.onDidChangeText = { _, text in
+            print("onDidChangeText")
+        }
+
+        tagsField.onDidChangeHeightTo = { _, height in
+            print("HeightTo \(height)")
+        }
+
+        tagsField.onDidSelectTagView = { _, tagView in
+            print("Select \(tagView)")
+        }
+
+        tagsField.onDidUnselectTagView = { _, tagView in
+            print("Unselect \(tagView)")
+        }
+
+        tagsField.onShouldAcceptTag = { field in
+            return field.text != "OMG"
+        }
+    }
+
+}
