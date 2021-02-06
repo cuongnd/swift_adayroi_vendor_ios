@@ -76,12 +76,10 @@ class LoginVC: UIViewController {
 @available(iOS 13.0, *) extension LoginVC
 {
     @IBAction func btnTap_forgotPassword(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPassword") as! ForgotPassword
-        self.navigationController?.pushViewController(vc, animated: true)
+         NavigationView.goForgotPassword()
     }
     @IBAction func btnTap_Signup(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupVC") as! SignupVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        NavigationView.goToSignupVC()
     }
     @IBAction func btnTap_Login(_ sender: UIButton) {
         let urlString = API_URL + "/api_task/users.vendor_login"

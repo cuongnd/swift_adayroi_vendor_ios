@@ -276,7 +276,7 @@
                                             <constraint firstAttribute="width" constant="44" id="qF0-WY-lbT"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="arrow.left" catalog="system">
+                                        <state key="normal" image="arow_left">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -426,7 +426,7 @@
                                     <constraint firstAttribute="height" constant="44" id="zOc-uu-FpA"/>
                                 </constraints>
                                 <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="camera.circle" catalog="system">
+                                <state key="normal" image="camera3">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                 </state>
                                 <connections>
@@ -475,7 +475,7 @@
         <!--SignupVC-->
         <scene sceneID="CtK-JA-5vS">
             <objects>
-                <viewController storyboardIdentifier="SignupVC" id="xQc-p9-wXb" customClass="SignupVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xQc-p9-wXb" customClass="SignupVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ub5-5x-gvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,7 +616,7 @@
                                                                     <constraint firstAttribute="width" constant="30" id="g8O-gF-rg3"/>
                                                                 </constraints>
                                                                 <color key="tintColor" red="0.99607843139999996" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <state key="normal" image="eye.slash.fill" catalog="system"/>
+                                                                <state key="normal" image="eye-icon"/>
                                                                 <connections>
                                                                     <action selector="btnTap_ShowPassword:" destination="xQc-p9-wXb" eventType="touchUpInside" id="Iia-jE-N9b"/>
                                                                 </connections>
@@ -900,7 +900,7 @@
                                             <constraint firstAttribute="width" constant="44" id="mQJ-z7-TNs"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="arrow.left" catalog="system">
+                                        <state key="normal" image="arow_left">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -1069,8 +1069,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="camera.circle" catalog="system" width="128" height="121"/>
+        <image name="arow_left" width="150" height="146"/>
+        <image name="camera3" width="112.5" height="112.5"/>
+        <image name="eye-icon" width="60" height="60"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <image name="logo1" width="512" height="512"/>
         <image name="placeholder_image" width="1200" height="800"/>

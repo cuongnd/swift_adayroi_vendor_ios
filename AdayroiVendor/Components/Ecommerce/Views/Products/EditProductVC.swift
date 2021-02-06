@@ -488,6 +488,7 @@ class EditProductVC: UIViewController {
     @IBOutlet weak var UILabelPageHeader: UILabel!
     @IBOutlet weak var UIViewAddTags: UIView!
     fileprivate var tagsField = WSTagsField()
+    @IBOutlet weak var UISwitchPublished: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
         if(self.ProductId != ""){
@@ -1288,7 +1289,7 @@ class EditProductVC: UIViewController {
             return
         }
         
-        
+        let published:Int=self.UISwitchPublished.isOn ? 1:0
         
         var product_unit_price=String(self.UITextFieldProductUnitPrice.text!)
         product_unit_price = String(product_unit_price.filter { !" \n\t\r".contains($0) })
@@ -1501,6 +1502,7 @@ class EditProductVC: UIViewController {
             "weight": product_weight,
             "product_unit": product_unit,
             "alias": product_alias,
+            "published": published,
             "search_tag": search_tag,
             "original_price": product_orignal_price,
             "unit_price": product_unit_price,

@@ -19,7 +19,7 @@ class SignupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cornerRadius(viewName: self.btn_signup, radius: 8.0)
-        self.btn_showPassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        //self.btn_showPassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
     }
 }
 @available(iOS 13.0, *) extension SignupVC

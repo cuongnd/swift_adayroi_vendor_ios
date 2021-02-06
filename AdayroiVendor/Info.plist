@@ -37,6 +37,10 @@
 	<string>Chúng tôi cần truy cập vị trí của bạn để cung cấp kết quả mà bạn tìm kiếm một cách tốt nhất, xin vui lòng cho phép điều này</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Để có thể cập nhật ảnh đại diện xin vui lòng cho phép chúng tôi truy cập thư viện ảnh của bạn</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -77,9 +81,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>FontAwesome.ttf</string>
-	</array>
 </dict>
 </plist>
