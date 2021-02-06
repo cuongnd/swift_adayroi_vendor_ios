@@ -425,6 +425,7 @@ class EditProductVC: UIViewController {
     
     @IBOutlet weak var UICollectionViewListProductImage: UICollectionView!
     let imagePicker = UIImagePickerController()
+    let imagePickerProductImage = UIImagePickerController()
     let multiImagePicker = OpalImagePickerController()
     let multiImageColorPicker = OpalImagePickerController()
     let headerTitlesImage = [
@@ -589,27 +590,27 @@ class EditProductVC: UIViewController {
         }
         tagsField.frame = UIViewAddTags.bounds
         UIViewAddTags.addSubview(tagsField)
-
+        
         //tagsField.translatesAutoresizingMaskIntoConstraints = false
         //tagsField.heightAnchor.constraint(equalToConstant: 150).isActive = true
-
+        
         tagsField.cornerRadius = 3.0
         tagsField.spaceBetweenLines = 10
         tagsField.spaceBetweenTags = 10
-
+        
         //tagsField.numberOfLines = 3
         //tagsField.maxHeight = 100.0
-
+        
         tagsField.layoutMargins = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         tagsField.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) //old padding
-
+        
         tagsField.placeholder = "Nhập các từ khóa"
         tagsField.placeholderColor = .red
         tagsField.placeholderAlwaysVisible = true
         tagsField.backgroundColor = .lightGray
         tagsField.textField.returnKeyType = .continue
         tagsField.delimiter = ""
-
+        
         tagsField.textDelegate = self
         
         
@@ -832,10 +833,10 @@ class EditProductVC: UIViewController {
         
         
         
-        self.imagePicker.delegate = self
+        self.imagePickerProductImage.delegate = self
         let alert = UIAlertController(title: "", message: "Select image".localiz(), preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library".localiz(), style: .default) { (action) in
-            self.imagePicker.sourceType = .photoLibrary
+            self.imagePickerProductImage.sourceType = .photoLibrary
             
             self.present(self.multiImagePicker, animated: true, completion: nil)
         }
@@ -849,8 +850,8 @@ class EditProductVC: UIViewController {
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             } else {
-                self.imagePicker.sourceType = .camera
-                self.present(self.imagePicker, animated: true, completion: nil)
+                self.imagePickerProductImage.sourceType = .camera
+                self.present(self.imagePickerProductImage, animated: true, completion: nil)
                 
             }
             
@@ -1151,7 +1152,7 @@ class EditProductVC: UIViewController {
             }
             
             
-           
+            
         }
         
         var product_height=String(self.UITextFieldProductHeight.text!)
@@ -1170,7 +1171,7 @@ class EditProductVC: UIViewController {
         var product_width=String(self.UITextFieldProductWidth.text!)
         product_width = String(product_width.filter { !" \n\t\r".contains($0) })
         if(product_width != ""){
-           if let check_width = Double(self.UITextFieldProductWidth.text!) {
+            if let check_width = Double(self.UITextFieldProductWidth.text!) {
                 
             } else {
                 let alert = UIAlertController(title: "Thông báo", message: "Kiểu dữ liệu phải là dạng số, nếu bạn muốn sử dụng phần thập phân xin sử dụng dấu \".\" ví dụ 4,5 thì nhập là 4.5", preferredStyle: .alert)
@@ -1542,14 +1543,14 @@ class EditProductVC: UIViewController {
                                 msg="Cập nhật sản phẩm thành công"
                             }
                             let alertVC = UIAlertController(title: Bundle.main.displayName!, message: msg.localiz(), preferredStyle: .alert)
-                                   let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
-                                    self.dismiss(animated: true){
-                                        self.delegate.refreshData()
-                                    }
-                                       
-                                   }
-                                   alertVC.addAction(yesAction)
-                                   self.present(alertVC,animated: true,completion: nil)
+                            let yesAction = UIAlertAction(title: "Yes".localiz(), style: .default) { (action) in
+                                self.dismiss(animated: true){
+                                    self.delegate.refreshData()
+                                }
+                                
+                            }
+                            alertVC.addAction(yesAction)
+                            self.present(alertVC,animated: true,completion: nil)
                             
                             
                             
@@ -1565,7 +1566,7 @@ class EditProductVC: UIViewController {
                         }
                         
                     } catch let error as NSError  {
-                         print("url:\(urlStringPostAddNewProduct)")
+                        print("url:\(urlStringPostAddNewProduct)")
                         print("error:\(error)")
                         let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1803,18 +1804,18 @@ class EditProductVC: UIViewController {
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
+        
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
-
+        
         if ((cString.count) != 6) {
             return UIColor.gray
         }
-
+        
         var rgbValue:UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
-
+        
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -1868,7 +1869,7 @@ class EditProductVC: UIViewController {
                     }
                     
                 } catch let error as NSError  {
-                     print("url:\(url)")
+                    print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1912,7 +1913,7 @@ class EditProductVC: UIViewController {
                                 ]
                                 var CellAttributeList:[[CellAttribute]]=[[CellAttribute]]();
                                 let list_attribute:[AttributeModel]=headAttributeModel.list_attribute ?? [AttributeModel]()
-                                 var list_string_attribute:[String]=[String]()
+                                var list_string_attribute:[String]=[String]()
                                 var list_attributeModel: [HeaderAttributeModel]=[HeaderAttributeModel]()
                                 if(list_attribute.count>0){
                                     for index_attribute in 0...list_attribute.count-1 {
@@ -1926,16 +1927,16 @@ class EditProductVC: UIViewController {
                                             
                                             
                                         ]);
-                                       
+                                        
                                         let title:String=attributeModel.value
                                         let price:String=String(attributeModel.price)
                                         list_string_attribute.append("\(title)(\(price))");
                                         list_attributeModel.append(HeaderAttributeModel(title:attributeModel.value, price: attributeModel.price, note: ""))
-                                       
+                                        
                                     }
                                 }
                                 
-                                 let joined2 = list_string_attribute.joined(separator: ", ")
+                                let joined2 = list_string_attribute.joined(separator: ", ")
                                 row[3].title=joined2
                                 row[3].list_attribute=CellAttributeList
                                 self.headerAttributeTitleProduct.append(row);
@@ -1960,7 +1961,7 @@ class EditProductVC: UIViewController {
                     }
                     
                 } catch let error as NSError  {
-                     print("url:\(url)")
+                    print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -1975,68 +1976,68 @@ class EditProductVC: UIViewController {
         }
     }
     func Webservice_getOtherHeaderAttributesByProductId(url:String, params:NSDictionary) -> Void {
-           WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
-               if strErrorMessage.count != 0 {
-                   let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
-                   alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                   self.present(alert, animated: true)
-               }
-               else {
-                   print(jsonResponse!)
-                   do {
-                       let jsonDecoder = JSONDecoder()
+        WebServices().CallGlobalAPIResponseData(url: url, headers: [:], parameters:params, httpMethod: "GET", progressView:true, uiView:self.view, networkAlert: true) {(_ jsonResponse:Data? , _ strErrorMessage:String) in
+            if strErrorMessage.count != 0 {
+                let alert = UIAlertController(title: "Error", message: strErrorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else {
+                print(jsonResponse!)
+                do {
+                    let jsonDecoder = JSONDecoder()
                     let getApiRespondeSpecialsModel:GetApiRespondeSpecialsModel = try jsonDecoder.decode(GetApiRespondeSpecialsModel.self, from: jsonResponse!)
-                       if(getApiRespondeSpecialsModel.result=="success"){
-                           
+                    if(getApiRespondeSpecialsModel.result=="success"){
+                        
                         var list_head_attribute=getApiRespondeSpecialsModel.list_special
-                           if(list_head_attribute.count>0){
-                               for index in 0..<list_head_attribute.count{
-                                   let specialsModel:SpecialsModel=list_head_attribute[index]
-                                   var row:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
-                                   row=[
-                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
-                                       CellOrtherHeadAttribute(title: specialsModel.title,is_head: false,columnType: "content", columnName: "title"),
-                                       CellOrtherHeadAttribute(title: specialsModel.value,is_head: false,columnType: "content", columnName: "attributes"),
-                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
-                                       CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
-                                   ]
-                                   
-                                   self.orderheaderAttributeTitleProduct.append(row);
-                                   
+                        if(list_head_attribute.count>0){
+                            for index in 0..<list_head_attribute.count{
+                                let specialsModel:SpecialsModel=list_head_attribute[index]
+                                var row:[CellOrtherHeadAttribute]=[CellOrtherHeadAttribute]()
+                                row=[
+                                    CellOrtherHeadAttribute(title: "",is_head: false,columnType: "content", columnName: "stt"),
+                                    CellOrtherHeadAttribute(title: specialsModel.title,is_head: false,columnType: "content", columnName: "title"),
+                                    CellOrtherHeadAttribute(title: specialsModel.value,is_head: false,columnType: "content", columnName: "attributes"),
+                                    CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "edit"),
+                                    CellOrtherHeadAttribute(title: "",is_head: false,columnType: "button",columnName: "delete"),
+                                ]
+                                
+                                self.orderheaderAttributeTitleProduct.append(row);
+                                
                                 let otherHeaderAttributeTitleModel:OtherHeaderAttributeTitleModel=OtherHeaderAttributeTitleModel(title: specialsModel.title, description:specialsModel.value, note:"")
-                                   self.list_other_header_attribute_title.append(otherHeaderAttributeTitleModel)
-                               }
-                               
-                               
-                           }
-                           self.UICollectionViewOtherHeadAttribute.delegate = self
-                           self.UICollectionViewOtherHeadAttribute.dataSource = self
-                           self.UICollectionViewOtherHeadAttribute.reloadData()
-                           
-                           
-                           
-                           
-                       }else{
-                           let alert = UIAlertController(title: "Error", message: getApiRespondeSpecialsModel.errorMessage, preferredStyle: .alert)
-                           alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                           self.present(alert, animated: true)
-                       }
-                       
-                   } catch let error as NSError  {
-                       print("url:\(url)")
-                       print("error:\(error)")
-                       let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
-                       self.present(alert, animated: true)
-                       
-                   }
-                   
-                   
-                   //print("userModel:\(userModel)")
-                   
-               }
-           }
-       }
+                                self.list_other_header_attribute_title.append(otherHeaderAttributeTitleModel)
+                            }
+                            
+                            
+                        }
+                        self.UICollectionViewOtherHeadAttribute.delegate = self
+                        self.UICollectionViewOtherHeadAttribute.dataSource = self
+                        self.UICollectionViewOtherHeadAttribute.reloadData()
+                        
+                        
+                        
+                        
+                    }else{
+                        let alert = UIAlertController(title: "Error", message: getApiRespondeSpecialsModel.errorMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                } catch let error as NSError  {
+                    print("url:\(url)")
+                    print("error:\(error)")
+                    let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                }
+                
+                
+                //print("userModel:\(userModel)")
+                
+            }
+        }
+    }
     
     
     func Webservice_getImagesByProductId(url:String, params:NSDictionary) -> Void {
@@ -2070,7 +2071,7 @@ class EditProductVC: UIViewController {
                     }
                     
                 } catch let error as NSError  {
-                     print("url:\(url)")
+                    print("url:\(url)")
                     print("error:\(error)")
                     let alert = UIAlertController(title: "NSError", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Đã hiểu", style: .default, handler: nil))
@@ -2250,15 +2251,29 @@ class EditProductVC: UIViewController {
 @available(iOS 13.0, *) extension EditProductVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.list_image_color[self.productImageColorChanging].img_path="";
-            self.list_image_color[self.productImageColorChanging].has_image=1;
-            self.list_image_color[self.productImageColorChanging].image=pickedImage
-            //self.img_Profile.image = pickedImage
+        if(picker==imagePickerProductImage){
+            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                let imageProductModel:ImageProductModel=ImageProductModel(image_id: "",image_description: "", image: pickedImage,img_path: "")
+                self.list_product_image.append(imageProductModel)
+            }
+            self.UICollectionViewListProductImage.delegate = self
+           self.UICollectionViewListProductImage.dataSource = self
+           self.UICollectionViewListProductImage.reloadData()
+        }else{
+            
+            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                self.list_image_color[self.productImageColorChanging].img_path="";
+                self.list_image_color[self.productImageColorChanging].has_image=1;
+                self.list_image_color[self.productImageColorChanging].image=pickedImage
+                //self.img_Profile.image = pickedImage
+            }
+            self.UICollectionViewColorProducts.delegate = self
+            self.UICollectionViewColorProducts.dataSource = self
+            self.UICollectionViewColorProducts.reloadData()
         }
-        self.UICollectionViewColorProducts.delegate = self
-        self.UICollectionViewColorProducts.dataSource = self
-        self.UICollectionViewColorProducts.reloadData()
+        
+        
+        
         
         
         self.dismiss(animated: true, completion: nil)
@@ -2611,37 +2626,37 @@ class EditProductVC: UIViewController {
     }
     
 }
- @available(iOS 13.0, *)
+@available(iOS 13.0, *)
 extension EditProductVC {
-
+    
     fileprivate func textFieldEvents() {
         tagsField.onDidAddTag = { field, tag in
             print("onDidAddTag", tag.text)
         }
-
+        
         tagsField.onDidRemoveTag = { field, tag in
             print("onDidRemoveTag", tag.text)
         }
-
+        
         tagsField.onDidChangeText = { _, text in
             print("onDidChangeText")
         }
-
+        
         tagsField.onDidChangeHeightTo = { _, height in
             print("HeightTo \(height)")
         }
-
+        
         tagsField.onDidSelectTagView = { _, tagView in
             print("Select \(tagView)")
         }
-
+        
         tagsField.onDidUnselectTagView = { _, tagView in
             print("Unselect \(tagView)")
         }
-
+        
         tagsField.onShouldAcceptTag = { field in
             return field.text != "OMG"
         }
     }
-
+    
 }
