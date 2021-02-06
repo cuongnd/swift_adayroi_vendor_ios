@@ -2295,12 +2295,12 @@ class EditProductVC: UIViewController {
             }else{
                 cell.UIImageViewImageUpload.image=uIimage
             }
-            
+            //cell.UIButtonColor.setImage(UIImage(contentsOfFile: "book.fill"), for: .normal)
+            cell.UIButtonColor.backgroundColor = self.list_image_color[indexPath.row].color_value
             cell.UIButtonDeleteImage.tag=indexPath.row
             cell.UIButtonColor.tag=indexPath.row
             cell.UIButtonChangeImageInCell.tag=indexPath.row
             cell.UIButtonEditColorName.tag=indexPath.row
-            cell.UIButtonColor.tintColor=self.list_image_color[indexPath.row].color_value
             cell.UILabelColorName.text=String(self.list_image_color[indexPath.row].color_name)
             cornerRadius(viewName: cell.UIButtonDeleteImage, radius: cell.UIButtonDeleteImage.frame.height / 2)
             cornerRadius(viewName: cell.UIButtonColor, radius: cell.UIButtonColor.frame.height / 2)

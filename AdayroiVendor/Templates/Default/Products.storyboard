@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -11,7 +12,7 @@
         <!--RatingsVC-->
         <scene sceneID="gYy-dt-RNn">
             <objects>
-                <viewController storyboardIdentifier="RatingsVC" id="axr-CY-1M0" customClass="RatingsVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingsVC" id="axr-CY-1M0" customClass="RatingsVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dyr-ht-U1d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +28,7 @@
                                             <constraint firstAttribute="width" constant="44" id="xfg-56-htA"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -47,7 +48,7 @@
                                             <constraint firstAttribute="height" constant="44" id="wuJ-cX-tML"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99607843139999996" green="0.44705882349999998" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="plus.app.fill" catalog="system">
+                                        <state key="normal" image="plus">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                         </state>
                                         <connections>
@@ -71,14 +72,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RatingCell" rowHeight="142" id="r9N-FV-mId" customClass="RatingCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RatingCell" rowHeight="142" id="r9N-FV-mId" customClass="RatingCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r9N-FV-mId" id="kBb-7t-5AZ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-9y-bGX" customClass="CardViewMaster" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-9y-bGX" customClass="CardViewMaster" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="398" height="126"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Star" translatesAutoresizingMaskIntoConstraints="NO" id="Kq5-bv-sYM">
@@ -186,7 +187,7 @@
         <!--Favorite ListVC-->
         <scene sceneID="MEk-fQ-Mac">
             <objects>
-                <viewController storyboardIdentifier="FavoriteListVC" id="HBi-Ql-zZP" customClass="FavoriteListVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteListVC" id="HBi-Ql-zZP" customClass="FavoriteListVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4lT-pt-LHT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +203,7 @@
                                             <constraint firstAttribute="width" constant="44" id="Mg7-pe-ILI"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -235,14 +236,14 @@
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridCell" id="lQe-1c-RvO" customClass="GridCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridCell" id="lQe-1c-RvO" customClass="GridCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="192" height="186"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wgN-Pj-wiu">
                                             <rect key="frame" x="0.0" y="0.0" width="192" height="186"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOM-Tf-5tR" customClass="CardViewMaster" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOM-Tf-5tR" customClass="CardViewMaster" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="192" height="186"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="bhY-54-6uq">
@@ -348,7 +349,7 @@
         <!--SearchVC-->
         <scene sceneID="jZW-YR-uGR">
             <objects>
-                <viewController storyboardIdentifier="SearchVC" id="4Vh-XR-rsv" customClass="SearchVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" id="4Vh-XR-rsv" customClass="SearchVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x1c-Wg-Sww">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,7 +388,7 @@
                                     <constraint firstAttribute="bottom" secondItem="5ht-RU-0Ck" secondAttribute="bottom" id="x5a-iX-bIK"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDO-Hb-aa0" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDO-Hb-aa0" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="374" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="br0-ZN-tBe">
@@ -444,7 +445,7 @@
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" reuseIdentifier="SearchProductCell" id="WCp-wW-8A3" userLabel="Home hot product" customClass="SearchProductCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" reuseIdentifier="SearchProductCell" id="WCp-wW-8A3" userLabel="Home hot product" customClass="SearchProductCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="180" height="275"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -559,7 +560,7 @@
         <!--Add OnsVC-->
         <scene sceneID="DxW-yq-kss">
             <objects>
-                <viewController storyboardIdentifier="AddOnsVC" modalPresentationStyle="fullScreen" id="Ac1-gS-Xsn" customClass="AddOnsVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddOnsVC" modalPresentationStyle="fullScreen" id="Ac1-gS-Xsn" customClass="AddOnsVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z3Q-nR-BlD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -619,14 +620,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddonseCell" rowHeight="85" id="xXA-W3-jbq" customClass="AddonseCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddonseCell" rowHeight="85" id="xXA-W3-jbq" customClass="AddonseCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xXA-W3-jbq" id="soi-5g-V1l">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3b-BN-HZQ" customClass="CardViewMaster" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3b-BN-HZQ" customClass="CardViewMaster" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="398" height="69"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYX-EW-ORs">
@@ -726,7 +727,7 @@
         <!--Category ListVC-->
         <scene sceneID="bPn-1b-5aT">
             <objects>
-                <viewController storyboardIdentifier="CategoryListVC" id="X2q-yH-C9J" customClass="CategoryListVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoryListVC" id="X2q-yH-C9J" customClass="CategoryListVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="njS-SM-cEX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -742,7 +743,7 @@
                                             <constraint firstAttribute="height" constant="44" id="qQd-gd-fCb"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -775,7 +776,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CategoryCell" reuseIdentifier="CategoryCell" id="c0G-lg-8Ow" userLabel="CategoryCell" customClass="CategoryCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CategoryCell" reuseIdentifier="CategoryCell" id="c0G-lg-8Ow" userLabel="CategoryCell" customClass="CategoryCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="192" height="186"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1qA-1y-0hb">
@@ -847,7 +848,7 @@
         <!--Product DetailsVC-->
         <scene sceneID="uG2-sc-CQF">
             <objects>
-                <viewController storyboardIdentifier="ProductDetailsVC" id="NzS-cY-52P" customClass="ProductDetailsVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailsVC" id="NzS-cY-52P" customClass="ProductDetailsVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RvQ-85-Jcl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="4300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -902,7 +903,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductDetailColorCell" id="W3b-Z6-eSE" customClass="ProductDetailColorCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductDetailColorCell" id="W3b-Z6-eSE" customClass="ProductDetailColorCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="3" width="131" height="154"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="a32-hU-Zp9">
@@ -969,7 +970,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="attributesHeaderCell" id="Iz8-If-VnY" customClass="ProductDetailAttributesHeaderCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="attributesHeaderCell" id="Iz8-If-VnY" customClass="ProductDetailAttributesHeaderCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="46"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gat-wk-t3o">
@@ -1064,14 +1065,14 @@
                                                     <constraint firstAttribute="height" constant="299" id="yfe-mX-2z4"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddonseCell" rowHeight="83" id="niq-j1-HML" customClass="AddonseCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddonseCell" rowHeight="83" id="niq-j1-HML" customClass="AddonseCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="359" height="83"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="niq-j1-HML" id="eHh-wn-dMx">
                                                             <rect key="frame" x="0.0" y="0.0" width="359" height="83"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skN-Nq-5Nv" customClass="CardViewMaster" customModule="AdayroiVendor" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skN-Nq-5Nv" customClass="CardViewMaster" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                                     <rect key="frame" x="4" y="8" width="351" height="67"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJs-KC-p8A">
@@ -1162,7 +1163,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RelatedProductCell" id="hUi-2C-kFJ" customClass="RelatedProductCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RelatedProductCell" id="hUi-2C-kFJ" customClass="RelatedProductCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1" width="184" height="248"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hQy-Z1-y0n">
@@ -1389,7 +1390,7 @@
                                     <constraint firstItem="Poi-ml-0dm" firstAttribute="leading" secondItem="oLR-Rr-Ght" secondAttribute="leading" constant="8" id="taL-9G-odx"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdH-bm-pfa" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdH-bm-pfa" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="8" y="4212" width="359" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 000 đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQH-Ck-YjE" userLabel="Product Unit price">
@@ -1517,7 +1518,7 @@
         <!--My Product ListVC-->
         <scene sceneID="vJZ-uW-uhh">
             <objects>
-                <viewController storyboardIdentifier="MyProductListVC" id="13i-OZ-3Z1" customClass="MyProductListVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProductListVC" id="13i-OZ-3Z1" customClass="MyProductListVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zsr-CM-d2z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1533,7 +1534,7 @@
                                             <constraint firstAttribute="height" constant="44" id="fa0-Qq-H2R"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                        <state key="normal" image="ic_list">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
                                         </state>
                                         <connections>
@@ -1606,7 +1607,7 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c6d-vR-spC">
                                                 <rect key="frame" x="0.0" y="4" width="408" height="654"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6oT-MD-3z8" customClass="MyProductsCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6oT-MD-3z8" customClass="MyProductsCustomCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                     <size key="itemSize" width="168" height="158"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1664,7 +1665,7 @@
         <!--Edit ProductVC-->
         <scene sceneID="o1s-wN-pzW">
             <objects>
-                <viewController storyboardIdentifier="EditProductVC" id="Hiw-6r-tKI" customClass="EditProductVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProductVC" id="Hiw-6r-tKI" customClass="EditProductVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4oH-II-j9t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2996"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1701,35 +1702,35 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-QP-VHD">
-                                        <rect key="frame" x="8" y="729.5" width="102.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="717.5" width="102.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qru-Ol-XLG">
-                                        <rect key="frame" x="8" y="758" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="746" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link sản phẩm trên website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFS-sp-JSv">
-                                        <rect key="frame" x="10" y="894.5" width="209" height="20.5"/>
+                                        <rect key="frame" x="10" y="882.5" width="209" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dw-NO-JW5">
-                                        <rect key="frame" x="8" y="923" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="911" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://adayroi.online/landingpage/abc.html" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-Do-3Am">
-                                        <rect key="frame" x="10" y="965" width="332" height="20.5"/>
+                                        <rect key="frame" x="10" y="953" width="332" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục sản phẩm cha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk1-4Q-9B3">
-                                        <rect key="frame" x="10" y="993.5" width="189" height="20.5"/>
+                                        <rect key="frame" x="10" y="981.5" width="189" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="189" id="aLc-l9-STS"/>
                                         </constraints>
@@ -1738,56 +1739,56 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RYH-uS-SD7" customClass="DropDown" customModule="iOSDropDown">
-                                        <rect key="frame" x="8" y="1022" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1010" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục sản phẩm con" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nu-Bw-Yt5">
-                                        <rect key="frame" x="10" y="1064" width="189.5" height="20.5"/>
+                                        <rect key="frame" x="10" y="1052" width="189.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Vo-fZ-O1L" customClass="DropDown" customModule="iOSDropDown">
-                                        <rect key="frame" x="8" y="1092.5" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1080.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục sản phẩm cha trong shop của  bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8r-Rk-3Jh">
-                                        <rect key="frame" x="8" y="1134.5" width="346.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1122.5" width="346.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iEN-7D-yDL">
-                                        <rect key="frame" x="8" y="1163" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1151" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục sản phẩm con trong shop của  bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-Gq-sHb">
-                                        <rect key="frame" x="8" y="1205" width="346.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1193" width="346.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFj-E8-fKq">
-                                        <rect key="frame" x="8" y="1233.5" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1221.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giá thường bán ngoài thị trường" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgD-Dl-rGP">
-                                        <rect key="frame" x="10" y="1275.5" width="243.5" height="20.5"/>
+                                        <rect key="frame" x="10" y="1263.5" width="243.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YLl-Ak-hUp">
-                                        <rect key="frame" x="8" y="1304" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1292" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giá bán của shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OST-MX-cjF">
-                                        <rect key="frame" x="10" y="1346" width="133" height="20.5"/>
+                                        <rect key="frame" x="10" y="1334" width="133" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="133" id="hKj-4q-95l"/>
                                         </constraints>
@@ -1796,61 +1797,61 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Y0-Ad-Vk1">
-                                        <rect key="frame" x="8" y="1374.5" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1362.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Các từ khóa tìm kiếm sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-KF-m7p">
-                                        <rect key="frame" x="8" y="1416.5" width="240.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1404.5" width="240.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQ3-Qo-2Tm">
-                                        <rect key="frame" x="8" y="1445" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="1433" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiển thị sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anU-Wa-8Fe">
-                                        <rect key="frame" x="8" y="1502" width="137.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1490" width="137.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLl-IR-3Jb">
-                                        <rect key="frame" x="357" y="1492" width="51" height="31"/>
+                                        <rect key="frame" x="357" y="1480" width="51" height="31"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h7-pX-eJW">
-                                        <rect key="frame" x="10" y="1544.5" width="147" height="20.5"/>
+                                        <rect key="frame" x="10" y="1532.5" width="147" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng theo kho" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXh-Se-w8V">
-                                        <rect key="frame" x="207.5" y="1544.5" width="139.5" height="20.5"/>
+                                        <rect key="frame" x="207.5" y="1532.5" width="139.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Màu sắc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-Cz-RqB">
-                                        <rect key="frame" x="8" y="1734" width="64.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1722" width="64.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHO-iT-KYn">
-                                        <rect key="frame" x="359" y="1540" width="49" height="31"/>
+                                        <rect key="frame" x="359" y="1528" width="49" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="47" id="6kB-k3-e3N"/>
                                         </constraints>
                                     </switch>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkJ-aF-WgI">
-                                        <rect key="frame" x="8" y="1598" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="1586" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="r36-u5-b3Q"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dXJ-FD-ik5" customClass="WareHouseCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dXJ-FD-ik5" customClass="WareHouseCustomCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1859,7 +1860,7 @@
                                         <cells/>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-JA-0s4" userLabel="Collection View màu sắc">
-                                        <rect key="frame" x="8" y="1763" width="398" height="150"/>
+                                        <rect key="frame" x="8" y="1751" width="398" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="m7B-RE-a2d"/>
@@ -1871,7 +1872,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorCollectionViewCell" id="S0Z-xH-DaI" customClass="ColorCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorCollectionViewCell" id="S0Z-xH-DaI" customClass="ColorCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="12" width="134" height="126"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5Ff-Ia-JpR">
@@ -1880,16 +1881,20 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-gz-BhV">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="94"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="94" id="3b7-9l-jWK"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdF-PO-uNU">
                                                             <rect key="frame" x="109" y="0.0" width="25" height="25"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="KEz-Dt-IfO"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="URZ-0V-ETc"/>
                                                                 <constraint firstAttribute="width" constant="25" id="gUk-p2-4io"/>
                                                                 <constraint firstAttribute="height" constant="25" id="nz6-NW-SJY"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="trash.fill" catalog="system">
+                                                            <state key="normal" image="trash">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -1909,6 +1914,8 @@
                                                             <rect key="frame" x="106" y="97" width="24" height="24"/>
                                                             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="JQk-M2-nvI"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="Q3u-Ix-h9N"/>
                                                                 <constraint firstAttribute="height" constant="24" id="kCP-xs-O8I"/>
                                                                 <constraint firstAttribute="width" constant="24" id="yVJ-uf-0j2"/>
                                                             </constraints>
@@ -1920,15 +1927,17 @@
                                                                 <action selector="UIButtonTouchUpInsideEditColorName:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="z0S-wt-pXg"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-ZN-ILe">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-ZN-ILe">
                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="1H0-f6-5Bd"/>
                                                                 <constraint firstAttribute="height" constant="25" id="6D5-O9-lgu"/>
                                                                 <constraint firstAttribute="width" constant="25" id="KNg-ML-57z"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="ehj-lx-kIC"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="circle.fill" catalog="system">
+                                                            <state key="normal">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -1937,13 +1946,14 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gg-AR-KQo">
                                                             <rect key="frame" x="27" y="0.0" width="25" height="25"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="1d0-Iv-pDi"/>
                                                                 <constraint firstAttribute="height" constant="25" id="MDZ-8p-vhW"/>
                                                                 <constraint firstAttribute="width" constant="25" id="vQz-tX-eWY"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="xg8-c7-oBk"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="camera.circle.fill" catalog="system">
+                                                            <state key="normal" image="camera3">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -1953,21 +1963,32 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="0Fq-gz-BhV" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="0n1-Rt-nLq"/>
+                                                        <constraint firstItem="HdF-PO-uNU" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="1PA-tg-WS2"/>
+                                                        <constraint firstItem="7U5-ZN-ILe" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="5Ut-Lq-NF1"/>
                                                         <constraint firstAttribute="trailing" secondItem="HdF-PO-uNU" secondAttribute="trailing" id="65N-sM-9Nn"/>
+                                                        <constraint firstItem="0Fq-gz-BhV" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="7vw-5i-vDz"/>
                                                         <constraint firstAttribute="bottom" secondItem="hWC-Fx-yCh" secondAttribute="bottom" constant="5" id="D7x-zs-fzf"/>
                                                         <constraint firstItem="7gg-AR-KQo" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="Hbj-4Z-bY5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HdF-PO-uNU" secondAttribute="trailing" id="I7x-GZ-Dfo"/>
                                                         <constraint firstItem="7U5-ZN-ILe" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="JxM-f1-uy6"/>
                                                         <constraint firstItem="C5v-HU-3u0" firstAttribute="top" secondItem="0Fq-gz-BhV" secondAttribute="bottom" constant="3" id="KZl-49-Q4Z"/>
+                                                        <constraint firstItem="7gg-AR-KQo" firstAttribute="leading" secondItem="7U5-ZN-ILe" secondAttribute="trailing" constant="2" id="Ohk-iR-nja"/>
                                                         <constraint firstItem="hWC-Fx-yCh" firstAttribute="top" secondItem="0Fq-gz-BhV" secondAttribute="bottom" constant="8" id="Q0t-eg-nFj"/>
+                                                        <constraint firstItem="7gg-AR-KQo" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="QBb-sq-fk5"/>
                                                         <constraint firstItem="HdF-PO-uNU" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="U6O-x9-8Qq"/>
                                                         <constraint firstItem="hWC-Fx-yCh" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" constant="5" id="WxV-BA-1tQ"/>
                                                         <constraint firstItem="7U5-ZN-ILe" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="Yk5-Nm-dHT"/>
+                                                        <constraint firstItem="C5v-HU-3u0" firstAttribute="top" secondItem="0Fq-gz-BhV" secondAttribute="bottom" constant="3" id="beS-kV-V8f"/>
                                                         <constraint firstAttribute="trailing" secondItem="0Fq-gz-BhV" secondAttribute="trailing" id="c4K-oh-TFi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="C5v-HU-3u0" secondAttribute="trailing" constant="4" id="doc-y0-WHS"/>
                                                         <constraint firstAttribute="trailing" secondItem="C5v-HU-3u0" secondAttribute="trailing" constant="4" id="mmS-AF-272"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0Fq-gz-BhV" secondAttribute="trailing" id="ne0-Sa-yrU"/>
                                                         <constraint firstItem="7gg-AR-KQo" firstAttribute="leading" secondItem="7U5-ZN-ILe" secondAttribute="trailing" constant="2" id="nj8-hd-Mp0"/>
                                                         <constraint firstItem="0Fq-gz-BhV" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="nwM-xI-4GE"/>
                                                         <constraint firstAttribute="bottom" secondItem="C5v-HU-3u0" secondAttribute="bottom" constant="5" id="qGt-gk-N8J"/>
+                                                        <constraint firstItem="7U5-ZN-ILe" firstAttribute="leading" secondItem="5Ff-Ia-JpR" secondAttribute="leading" id="tL5-OU-GrL"/>
                                                         <constraint firstAttribute="trailing" secondItem="hWC-Fx-yCh" secondAttribute="trailing" constant="24" id="vt4-QG-9oi"/>
+                                                        <constraint firstItem="0Fq-gz-BhV" firstAttribute="top" secondItem="5Ff-Ia-JpR" secondAttribute="top" id="wYa-wF-RR4"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="134" height="126"/>
@@ -1999,25 +2020,25 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặc điểm của sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrJ-d3-NBf">
-                                        <rect key="frame" x="8" y="1920.5" width="183.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="1908.5" width="183.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Stt-d9-mqj">
-                                        <rect key="frame" x="8" y="1948.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="1936.5" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="NxM-GO-BML"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JkN-sG-r7v" customClass="HeaderAttributeCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JkN-sG-r7v" customClass="HeaderAttributeCustomCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                             <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="PSX-rk-TZ2" customClass="HeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="PSX-rk-TZ2" customClass="HeaderAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5d4-T5-Dc6">
@@ -2043,7 +2064,7 @@
                                                     <outlet property="contentLabel" destination="78X-cc-N09" id="Uo0-64-3Rc"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Cnk-rQ-1uT" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Cnk-rQ-1uT" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="232" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YXF-jp-aEw">
@@ -2070,7 +2091,7 @@
                                                     <outlet property="UIButtonDelete" destination="xLa-8G-DPi" id="4J6-Uh-uQM"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="cCA-L1-N3K" customClass="EditHeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="cCA-L1-N3K" customClass="EditHeaderAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="36" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ePo-Ug-TPs">
@@ -2097,7 +2118,7 @@
                                                     <outlet property="UIButtonEdit" destination="Tif-Ec-Cc9" id="MgI-4H-nZq"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditAttributesCollectionViewCell" id="qKs-xG-HZB" customClass="EditAttributesCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditAttributesCollectionViewCell" id="qKs-xG-HZB" customClass="EditAttributesCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="232" y="36" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O6J-eP-KdF">
@@ -2127,13 +2148,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả ngắn sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB0-Bz-sxv">
-                                        <rect key="frame" x="8" y="2291.5" width="165" height="20.5"/>
+                                        <rect key="frame" x="8" y="2279.5" width="165" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yrf-q8-Y9Z">
-                                        <rect key="frame" x="10" y="2320" width="398" height="128"/>
+                                        <rect key="frame" x="10" y="2308" width="398" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="LbB-H9-dF4"/>
@@ -2153,13 +2174,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả đầy đủ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r7-Vj-M8R">
-                                        <rect key="frame" x="8" y="2463" width="99.5" height="20.5"/>
+                                        <rect key="frame" x="8" y="2451" width="99.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sPl-MD-VIf">
-                                        <rect key="frame" x="8" y="2491.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="2479.5" width="398" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="md0-t8-TTj"/>
@@ -2179,13 +2200,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ảnh sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0I-DO-niv">
-                                        <rect key="frame" x="11" y="157" width="109.5" height="20.5"/>
+                                        <rect key="frame" x="11" y="145" width="109.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xO4-DA-Gjl">
-                                        <rect key="frame" x="8" y="186.5" width="398" height="250"/>
+                                        <rect key="frame" x="8" y="174.5" width="398" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="LVR-DC-J1b"/>
@@ -2197,7 +2218,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="pAs-f8-BaV" customClass="ImageCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="pAs-f8-BaV" customClass="ImageCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OS1-Qs-bbp">
@@ -2272,10 +2293,14 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VA9-qu-Qtz">
-                                        <rect key="frame" x="370" y="146.5" width="36" height="35"/>
+                                        <rect key="frame" x="370" y="134.5" width="36" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="6Za-dr-gK6"/>
+                                            <constraint firstAttribute="width" constant="36" id="VCW-Dh-5VE"/>
+                                        </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="camera.circle" catalog="system">
+                                        <state key="normal" image="camera3">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2283,14 +2308,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyS-NH-Poo">
-                                        <rect key="frame" x="370" y="1727" width="36" height="35"/>
+                                        <rect key="frame" x="370" y="1715" width="36" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="Ddn-bB-m5V"/>
                                             <constraint firstAttribute="height" constant="35" id="LXF-L8-VvG"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="camera.circle" catalog="system">
+                                        <state key="normal" image="camera3">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2298,14 +2323,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vr-8d-VeV">
-                                        <rect key="frame" x="332" y="1727" width="36" height="35"/>
+                                        <rect key="frame" x="332" y="1715" width="36" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="dMd-tR-w79"/>
                                             <constraint firstAttribute="width" constant="36" id="wEL-Ld-wzU"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="pencil.circle.fill" catalog="system">
+                                        <state key="normal" image="palet_color">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2313,14 +2338,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgX-DU-fZL">
-                                        <rect key="frame" x="376" y="1915" width="30" height="30"/>
+                                        <rect key="frame" x="376" y="1903" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="4MH-D1-aUM"/>
                                             <constraint firstAttribute="height" constant="30" id="9gA-1Z-wmX"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                        <state key="normal" image="plus">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2328,25 +2353,25 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặc điểm khác của sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-pz-CDi">
-                                        <rect key="frame" x="8" y="2089" width="224.5" height="21"/>
+                                        <rect key="frame" x="8" y="2077" width="224.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8pi-YN-mPb">
-                                        <rect key="frame" x="8" y="2117.5" width="398" height="128"/>
+                                        <rect key="frame" x="8" y="2105.5" width="398" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Pxm-Xu-GxP"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uJ6-bO-zlM" customClass="OtherAttributeCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uJ6-bO-zlM" customClass="OtherAttributeCustomCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                             <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherAttributeCollectionViewCell" id="bma-w6-FYc" customClass="OtherAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherAttributeCollectionViewCell" id="bma-w6-FYc" customClass="OtherAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nN9-yq-Z3a">
@@ -2372,7 +2397,7 @@
                                                     <outlet property="contentLabel" destination="JYd-Aw-gjV" id="KQ6-gh-DuV"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherAttributeDeleteCollectionViewCell" id="vzh-Ys-cFe" customClass="OtherAttributeDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherAttributeDeleteCollectionViewCell" id="vzh-Ys-cFe" customClass="OtherAttributeDeleteCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="232" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MTh-X6-C9G">
@@ -2399,7 +2424,7 @@
                                                     <outlet property="UIButtonDelete" destination="w5d-g7-DQi" id="bsa-de-aUi"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditOtherAttributeCollectionViewCell" id="vy8-xX-4H8" customClass="EditOtherAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditOtherAttributeCollectionViewCell" id="vy8-xX-4H8" customClass="EditOtherAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="36" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0u0-Al-OJk">
@@ -2429,14 +2454,14 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0w-Ff-5un">
-                                        <rect key="frame" x="376" y="2084" width="30" height="30"/>
+                                        <rect key="frame" x="376" y="2072" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="g39-aj-FU0"/>
                                             <constraint firstAttribute="height" constant="30" id="pXM-ES-3ha"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                        <state key="normal" image="plus">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2444,13 +2469,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video sản phẩm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-nx-x4e">
-                                        <rect key="frame" x="13" y="444.5" width="123" height="20.5"/>
+                                        <rect key="frame" x="13" y="432.5" width="123" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ak-RK-kWm">
-                                        <rect key="frame" x="8" y="474" width="398" height="250"/>
+                                        <rect key="frame" x="8" y="462" width="398" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="xDh-U0-AF9"/>
@@ -2462,7 +2487,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCollectionViewCell" id="NZH-sV-G8X" customClass="VideoCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCollectionViewCell" id="NZH-sV-G8X" customClass="VideoCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fdx-7t-fvM">
@@ -2477,10 +2502,12 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25" id="ODg-dQ-teA"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="REc-QC-CiL"/>
                                                                 <constraint firstAttribute="height" constant="25" id="U31-5n-bDu"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="rey-31-mg0"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="trash.fill" catalog="system">
+                                                            <state key="normal" image="trash">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -2513,10 +2540,12 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="rF1-gX-yTG" secondAttribute="trailing" id="3bI-wj-zWV"/>
                                                         <constraint firstAttribute="bottom" secondItem="wIm-3u-R9f" secondAttribute="bottom" id="3t0-PR-pYu"/>
                                                         <constraint firstAttribute="trailing" secondItem="yKt-w1-vRf" secondAttribute="trailing" id="4GD-bO-LjY"/>
                                                         <constraint firstItem="yKt-w1-vRf" firstAttribute="leading" secondItem="Fdx-7t-fvM" secondAttribute="leading" id="4z4-Tg-c5b"/>
                                                         <constraint firstItem="4LE-oH-zy6" firstAttribute="top" secondItem="yKt-w1-vRf" secondAttribute="bottom" constant="21.5" id="6Dr-f7-CSL"/>
+                                                        <constraint firstItem="rF1-gX-yTG" firstAttribute="top" secondItem="Fdx-7t-fvM" secondAttribute="top" id="6Wp-zE-bdX"/>
                                                         <constraint firstItem="rF1-gX-yTG" firstAttribute="top" secondItem="Fdx-7t-fvM" secondAttribute="top" id="9pm-QJ-H0A"/>
                                                         <constraint firstItem="wIm-3u-R9f" firstAttribute="leading" secondItem="Fdx-7t-fvM" secondAttribute="leading" constant="3" id="Cdf-Ju-0yK"/>
                                                         <constraint firstAttribute="trailing" secondItem="4LE-oH-zy6" secondAttribute="trailing" constant="8" id="N4b-8m-ma6"/>
@@ -2537,14 +2566,14 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Au-Kg-C3i">
-                                        <rect key="frame" x="370" y="436.5" width="36" height="36"/>
+                                        <rect key="frame" x="370" y="424.5" width="36" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="VIA-bU-4CF"/>
                                             <constraint firstAttribute="height" constant="36" id="wNg-VB-5CO"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="link.circle.fill" catalog="system">
+                                        <state key="normal" image="link">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -2552,14 +2581,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cc-Lx-SFI">
-                                        <rect key="frame" x="8" y="1564" width="120" height="30"/>
+                                        <rect key="frame" x="8" y="1552" width="120" height="30"/>
                                         <state key="normal" title="Quản lý kho hàng"/>
                                         <connections>
                                             <action selector="UIButtonTouchUpInsideQLKhoHang:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="m1Q-fb-vTs"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="tyf-qJ-J2b">
-                                        <rect key="frame" x="8" y="802" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="790" width="398" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dài (cm)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-WZ-Sm7">
                                                 <rect key="frame" x="0.0" y="8.5" width="55" height="17"/>
@@ -2606,7 +2635,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-ZG-QQu">
-                                        <rect key="frame" x="8" y="850.5" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="838.5" width="398" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cân nặng (gram)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFl-Gl-Snn">
                                                 <rect key="frame" x="0.0" y="0.0" width="108.5" height="34"/>
@@ -2642,10 +2671,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="17X-JG-Wrb">
-                                        <rect key="frame" x="8" y="107" width="398" height="30"/>
+                                        <rect key="frame" x="8" y="107" width="398" height="18"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxT-dL-T0n" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="18"/>
                                                 <state key="normal" title="Sản phẩm vật lý"/>
                                                 <connections>
                                                     <action selector="logSelectedButtonWithRadioButton:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="mM6-o2-czz"/>
@@ -2654,14 +2683,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipF-eS-SJs" customClass="DLRadioButton">
-                                                <rect key="frame" x="173.5" y="0.0" width="141.5" height="30"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="140" height="18"/>
                                                 <state key="normal" title="Sản phẩm số"/>
                                                 <connections>
                                                     <action selector="logSelectedButtonWithRadioButton:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="kTl-3b-DSL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1O-QA-3kg" customClass="DLRadioButton">
-                                                <rect key="frame" x="315" y="0.0" width="83" height="30"/>
+                                                <rect key="frame" x="307.5" y="0.0" width="90.5" height="18"/>
                                                 <state key="normal" title="Dịch vụ"/>
                                                 <connections>
                                                     <action selector="logSelectedButtonWithRadioButton:" destination="Hiw-6r-tKI" eventType="touchUpInside" id="xEV-Ol-IrR"/>
@@ -2907,7 +2936,7 @@
         <!--Modal Select Color View Controller-->
         <scene sceneID="bm5-OP-sFj">
             <objects>
-                <viewController storyboardIdentifier="ModalSelectColorViewController" id="uVv-Y5-MHT" customClass="ModalSelectColorViewController" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalSelectColorViewController" id="uVv-Y5-MHT" customClass="ModalSelectColorViewController" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CNn-n0-ENi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2922,7 +2951,7 @@
         <!--Ql Cac Thuoc TinhVC-->
         <scene sceneID="ssD-N8-ELx">
             <objects>
-                <viewController storyboardIdentifier="QlCacThuocTinhVC" id="OEd-cG-9Od" customClass="QlCacThuocTinhVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QlCacThuocTinhVC" id="OEd-cG-9Od" customClass="QlCacThuocTinhVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1BH-JO-o3G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2953,14 +2982,14 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="598" id="1UE-td-p0e"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WF-1N-mPh" customClass="QlCacThuocTinhCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WF-1N-mPh" customClass="QlCacThuocTinhCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                             <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="u5g-Ev-zQw" customClass="HeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeCollectionViewCell" id="u5g-Ev-zQw" customClass="HeaderAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="V7V-cD-uBL">
@@ -2986,7 +3015,7 @@
                                                     <outlet property="contentLabel" destination="o7Y-4d-dzL" id="MW3-hX-TR3"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Y03-e3-egF" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderAttributeDeleteCollectionViewCell" id="Y03-e3-egF" customClass="HeaderAttributeDeleteCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="232" y="0.0" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Gv-Lw-qfx">
@@ -3013,7 +3042,7 @@
                                                     <outlet property="UIButtonDelete" destination="8it-jK-r5E" id="Zkb-9M-dDo"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="jbM-YB-pfQ" customClass="EditHeaderAttributeCollectionViewCell" customModule="AdayroiVendor" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditHeaderAttributeCollectionViewCell" id="jbM-YB-pfQ" customClass="EditHeaderAttributeCollectionViewCell" customModule="Adayroi_Vendor" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="36" width="166" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HBj-Lm-HSo">
@@ -3050,7 +3079,7 @@
                                             <constraint firstAttribute="width" constant="30" id="i03-di-kCT"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                        <state key="normal" image="plus">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -3140,7 +3169,7 @@
         <!--Ql Kho HangVC-->
         <scene sceneID="d3m-kB-MuZ">
             <objects>
-                <viewController storyboardIdentifier="QlKhoHangVC" id="3yW-Ed-HYO" customClass="QlKhoHangVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QlKhoHangVC" id="3yW-Ed-HYO" customClass="QlKhoHangVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvy-br-9lD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3171,7 +3200,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="598" id="82w-Eq-YHP"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xIn-ue-OJX" customClass="WareHouseManagerCustomCollectionViewLayout" customModule="AdayroiVendor" customModuleProvider="target">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xIn-ue-OJX" customClass="WareHouseManagerCustomCollectionViewLayout" customModule="Adayroi_Vendor" customModuleProvider="target">
                                             <size key="itemSize" width="166" height="26"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -3187,7 +3216,7 @@
                                             <constraint firstAttribute="height" constant="30" id="tWh-hW-7jO"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99606674910000004" green="0.44583719970000002" blue="0.2983221412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                        <state key="normal" image="plus">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                         </state>
                                         <connections>
@@ -3277,7 +3306,7 @@
         <!--Other Attribute EditVC-->
         <scene sceneID="dAP-Nv-4Pd">
             <objects>
-                <viewController storyboardIdentifier="OtherAttributeEditVC" id="5a2-Yw-CFI" customClass="OtherAttributeEditVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OtherAttributeEditVC" id="5a2-Yw-CFI" customClass="OtherAttributeEditVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GEa-uR-qdU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3289,7 +3318,7 @@
                                     <action selector="btnTap_dismiss:" destination="5a2-Yw-CFI" eventType="touchUpInside" id="F3b-2H-yrI"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7At-P7-0DH" customClass="CornerView" customModule="AdayroiVendor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7At-P7-0DH" customClass="CornerView" customModule="Adayroi_Vendor" customModuleProvider="target">
                                 <rect key="frame" x="20" y="291.5" width="374" height="348"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm thuộc tính" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-YC-WcJ">
@@ -3450,7 +3479,7 @@
         <!--Edit Ware HouseVC-->
         <scene sceneID="wLK-H5-gy0">
             <objects>
-                <viewController storyboardIdentifier="EditWareHouseVC" id="ooB-DH-OFZ" customClass="EditWareHouseVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditWareHouseVC" id="ooB-DH-OFZ" customClass="EditWareHouseVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Dc-4l-hDJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3628,7 +3657,7 @@
         <!--Edit Product In Ware HouseVC-->
         <scene sceneID="D1C-ZB-rzm">
             <objects>
-                <viewController storyboardIdentifier="EditProductInWareHouseVC" id="LhM-aw-SYg" customClass="EditProductInWareHouseVC" customModule="AdayroiVendor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProductInWareHouseVC" id="LhM-aw-SYg" customClass="EditProductInWareHouseVC" customModule="Adayroi_Vendor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNn-gR-Ggg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3779,27 +3808,25 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="book" catalog="system" width="128" height="101"/>
-        <image name="camera.circle" catalog="system" width="128" height="121"/>
-        <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="camera3" width="112.5" height="112.5"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="copy-icon" width="60" height="60"/>
         <image name="eye-icon" width="60" height="60"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="ic_Star" width="180" height="29"/>
         <image name="ic_cart" width="246" height="259"/>
+        <image name="ic_list" width="512" height="512"/>
         <image name="ic_promotion" width="1056" height="497"/>
-        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
-        <image name="link.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="link" width="128" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="palet_color" width="150" height="150"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="placeholder_image" width="1200" height="800"/>
-        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" width="150" height="150"/>
         <image name="restaurant" width="1620" height="1080"/>
         <image name="shared_icon" width="300.5" height="300.5"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <image name="trash" width="150" height="150"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

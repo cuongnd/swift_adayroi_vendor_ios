@@ -61,6 +61,7 @@
 		0447E53D25CDAC8400A8E5DE /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */; };
 		0447E53F25CE3C8200A8E5DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0447E53E25CE3C8100A8E5DE /* CFNetwork.framework */; };
 		0447E54125CE434F00A8E5DE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0447E54025CE434F00A8E5DE /* PassKit.framework */; };
+		0447E54325CE551E00A8E5DE /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0447E54225CE551D00A8E5DE /* FontAwesome.ttf */; };
 		04536B2725B7DDEA00DC7397 /* GetApiResponeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */; };
 		0469042825ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */; };
 		0469042925ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */; };
@@ -336,6 +337,7 @@
 		0447E53C25CDAC8400A8E5DE /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		0447E53E25CE3C8100A8E5DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0447E54025CE434F00A8E5DE /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		0447E54225CE551D00A8E5DE /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		04536B2625B7DDEA00DC7397 /* GetApiResponeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetApiResponeProducts.swift; sourceTree = "<group>"; };
 		0469042625ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0469042725ABB47C0022EBEF /* WareHouseDeleteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseDeleteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1436,6 +1438,7 @@
 		C8C99DB92488D77E00B5C187 = {
 			isa = PBXGroup;
 			children = (
+				0447E54225CE551D00A8E5DE /* FontAwesome.ttf */,
 				C8C99DC42488D77E00B5C187 /* AdayroiVendor */,
 				C8C99DDE2488D77F00B5C187 /* AdayroiVendorTests */,
 				C8C99DE92488D77F00B5C187 /* AdayroiVendorUITests */,
@@ -1674,6 +1677,7 @@
 				0C3C2E35256AB8EF000B21C5 /* HomeHotCategoryCell.xib in Resources */,
 				0C51710325656F2200C4EA7F /* User.storyboard in Resources */,
 				0C3C2E53256ABF3C000B21C5 /* HomeHeader.xib in Resources */,
+				0447E54325CE551E00A8E5DE /* FontAwesome.ttf in Resources */,
 				0469042E25ABB5750022EBEF /* WareHouseEditCollectionViewCell.xib in Resources */,
 				0CDCD68725807B8C000B7F44 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);

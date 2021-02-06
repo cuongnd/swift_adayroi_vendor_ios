@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:FontAwesome.ttf">
+   </FileRef>
+   <FileRef
       location = "group:/Users/mac/ios_projects/swift_adayroi_vendor_ios/AdayroiVendor.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:AdayroiVendor.xcodeproj">
    </FileRef>
 </Workspace>
