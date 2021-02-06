@@ -1058,7 +1058,7 @@ class EditProductVC: UIViewController {
          @IBOutlet weak var UITextViewProductFullDescription: UITextView!
          */
         var product_name=String(self.UITextFieldProductName.text!)
-        product_name = String(product_name.filter { !" \n\t\r".contains($0) })
+        product_name = String(product_name.filter { !"\n\t\r".contains($0) })
         if(product_name==""){
             UITextFieldProductName.text="";
             UITextFieldProductName.becomeFirstResponder()
