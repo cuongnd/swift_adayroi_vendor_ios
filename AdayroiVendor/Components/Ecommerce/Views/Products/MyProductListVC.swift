@@ -350,6 +350,6 @@
  @available(iOS 13.0, *) extension MyProductListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:300, height: 40)
+        return CGSize(width:300, height: 120)
     }
  }
